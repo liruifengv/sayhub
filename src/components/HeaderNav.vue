@@ -1,81 +1,116 @@
 <template>
   <header class="header">
-      <nav class="inner">
-        <router-link to="/" exact>
-          <img class="logo" src="../assets/logo.png" alt="logo">
-        </router-link>
-        <el-dropdown trigger="click" class="dropdown">
-          <span class="el-dropdown-link">
-            首页<i class="el-icon-caret-bottom el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <router-link to="/" exact>首页</router-link>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <router-link to="/">1111</router-link>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <router-link to="/">2222</router-link>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <router-link to="/">3333</router-link>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <router-link to="/">4444</router-link>
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+    <nav class="inner">
+      <router-link 
+        to="/" 
+        exact>
+        <img 
+          class="logo" 
+          src="../assets/logo.png" 
+          alt="logo">
+      </router-link>
+      <el-dropdown 
+        trigger="click"
+        class="dropdown">
+        <span class="el-dropdown-link">
+          首页<i class="el-icon-caret-bottom el-icon--right"/>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <router-link 
+              to="/" 
+              exact>首页</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/tags">标签</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/">2222</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/">3333</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <router-link to="/">4444</router-link>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <div class="navTag">
+        <el-autocomplete
+          class="searchInput"
+          v-model="search"
+          :fetch-suggestions="fetchData"
+          :trigger-on-focus="false"
+          placeholder="Search Sayhub"
+          icon="search"
+          size="small"
+        />
+        <router-link 
+          to="/" 
+          exact 
+          class="tag">首页</router-link>
+        <router-link 
+          to="/tags" 
+          class="tag">标签</router-link>
+        <router-link 
+          to="/222" 
+          class="tag">222</router-link>
+        <router-link 
+          to="/333" 
+          class="tag">333</router-link>
+        <router-link 
+          to="/444" 
+          class="tag">444</router-link>
+      </div>
+      <div class="btn_box">
+        <router-link 
+          to="/" 
+          tag="span" 
+          class="publish"><i class="el-icon-plus"/></router-link>
         <div class="navTag">
-          <el-autocomplete
-            class="searchInput"
-            v-model="search"
-            :fetch-suggestions="fetchData"
-            :trigger-on-focus="false"
-            placeholder="Search Sayhub"
-            icon="search"
-            size="small"
-          ></el-autocomplete>
-          <router-link to="/" exact class="tag">首页</router-link>
-          <router-link to="/111" class="tag">111</router-link>
-          <router-link to="/222" class="tag">222</router-link>
-          <router-link to="/333" class="tag">333</router-link>
-          <router-link to="/444" class="tag">444</router-link>
-        </div>
-        <div class="btn_box">
-          <router-link to="/" tag="span" class="publish"><i class="el-icon-plus"></i></router-link>
-          <div class="navTag">
-            <div v-show="!loginStatus">
-              <el-button size="small" round>登录</el-button>
-            </div>
-          </div>
-          <div style="display: inline-block">
-            <div v-if="loginStatus" class="login">
-                 <el-dropdown trigger="click" >
-                  <img class="avatar" src="../assets/avatar.jpg"></img>
-                    <el-dropdown-menu slot="dropdown" class="menu">
-                      <router-link to="/" tag="span">
-                        <el-dropdown-item>
-                          <i class="mdi mdi-home-account"></i> 主页
-                        </el-dropdown-item>
-                      </router-link>
-                      <router-link to="/" tag="span">
-                        <el-dropdown-item>
-                          <i class="el-icon-setting"></i> 设置
-                        </el-dropdown-item>
-                      </router-link>
-                      <span @click="signout">
-                        <el-dropdown-item>
-                        <i class="mdi mdi-login-variant"></i> 登出
-                        </el-dropdown-item>
-                      </span>
-                    </el-dropdown-menu>
-                  </el-dropdown>
-            </div>
+          <div v-show="!loginStatus">
+            <el-button 
+              size="small" 
+              round>登录</el-button>
           </div>
         </div>
-      </nav>
-    </header>
+        <div style="display: inline-block">
+          <div 
+            v-if="loginStatus" 
+            class="login">
+            <el-dropdown trigger="click" >
+              <img 
+                class="avatar" 
+                src="../assets/avatar.jpg">
+              <el-dropdown-menu 
+                slot="dropdown" 
+                class="menu">
+                <router-link 
+                  to="/" 
+                  tag="span">
+                  <el-dropdown-item>
+                    <i class="mdi mdi-home-account"/> 主页
+                  </el-dropdown-item>
+                </router-link>
+                <router-link 
+                  to="/" 
+                  tag="span">
+                  <el-dropdown-item>
+                    <i class="el-icon-setting"/> 设置
+                  </el-dropdown-item>
+                </router-link>
+                <span @click="signout">
+                  <el-dropdown-item>
+                    <i class="mdi mdi-login-variant"/> 登出
+                  </el-dropdown-item>
+                </span>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -92,6 +127,7 @@ export default {
     },
     fetchData () {
       console.log('Search Sayhub')
+      console.log(this.search)
     }
   }
 }
@@ -107,7 +143,8 @@ export default {
   right: 0;
   border-bottom: 1px solid #fff;
   line-height: 60px;
-  background: #fff
+  background: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
 }
 .header .inner {
   max-width: 1150px;

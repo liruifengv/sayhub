@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/pages/HomePage'
 
+const TagsPage = () => import('../pages/TagsPage.vue')
+
 Vue.use(Router)
 
 export default new Router({
@@ -11,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'HomePage',
       component: HomePage
+    },
+    {
+      path: '/tags',
+      name: 'TagsPage',
+      component: TagsPage
     }
   ]
 })
