@@ -69,9 +69,11 @@
           class="publish"><i class="el-icon-plus"/></router-link>
         <div class="navTag">
           <div v-show="!loginStatus">
+          <router-link to='/login' tag="span">
             <el-button 
               size="small" 
               round>登录</el-button>
+          </router-link>
           </div>
         </div>
         <div style="display: inline-block">
