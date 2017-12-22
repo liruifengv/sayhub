@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HomePage from '@/pages/HomePage'
 
 const TagsPage = () => import('../pages/TagsPage.vue')
-const SignIn = () => import('../pages/SignIn.vue')
+const SignUp = () => import('../pages/SignUp.vue')
 const LogIn = () => import('../pages/LogIn.vue')
 
 Vue.use(Router)
@@ -22,9 +22,9 @@ export default new Router({
       component: TagsPage
     },
     {
-      path: '/signin',
+      path: '/signup',
       name: 'SignIn',
-      component: SignIn
+      component: SignUp
     },
     {
       path: '/login',

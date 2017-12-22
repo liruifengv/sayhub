@@ -6,8 +6,11 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import 'mdi/css/materialdesignicons.min.css'
+import { instance } from './api/index'
 
 Vue.use(ElementUI)
+
+Vue.prototype.$http = instance
 
 Vue.config.productionTip = false
 

@@ -2,11 +2,11 @@
   <el-row class="row">
     <h1>Sayhub</h1>
     <el-input placeholder="用户名" v-model="username"></el-input>
-    <el-input placeholder="密码" v-model="password"></el-input> 
-    <el-button type="primary" v-if = "type === 'signin'" @click="signin()">注册</el-button>
+    <el-input type="password" placeholder="密码" v-model="password"></el-input> 
+    <el-button type="primary" v-if = "type === 'signin'" @click="signup()">注册</el-button>
     <el-button type="primary" v-else @click="login()">登录</el-button>
-    <router-link to="/login" v-show = "type === 'signin'" tag="p">已有账号，去登录</router-link>
-    <router-link to="/signin" v-show = "type === 'login'" tag="p">没有账号，去注册</router-link>
+    <router-link to="/login" v-show = "type === 'signup'" tag="p">已有账号，去登录</router-link>
+    <router-link to="/signup" v-show = "type === 'login'" tag="p">没有账号，去注册</router-link>
   </el-row>
 </template>
 
@@ -24,10 +24,30 @@ export default{
     }
   },
   methods: {
-    signin () {
-      console.log('注册成功')
+    signup () {
+      if (this.username === '') {
+        this.$message.warning('用户名不能为空哦~~')
+      } else if (this.password === '') {
+        this.$message.warning('密码不能为空哦~~')
+      } else {
+        this.$http.post(`/users`, {
+          'username': this.username,
+          'password': this.password
+        }).then(res => {
+          if (res.status === 200) {
+            this.$message.success('注册成功')
+            this.$router.push({ path: '/login' })
+          }
+        }).catch((error) => {
+          this.$message.error(error.response.data.content)
+        })
+      }
     },
     login () {
+      this.$http.get('/users/5a3cb41fae902220e4c10591')
+       .then(res => {
+         console.log(res)
+       })
       console.log('登陆成功')
     }
   }

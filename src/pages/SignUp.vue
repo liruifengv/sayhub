@@ -1,6 +1,6 @@
 <template>
   <el-row class="container">
-    <Item :type="'signin'"/>
+    <Item :type="'signup'"/>
   </el-row>
 </template>
 
