@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import 'mdi/css/materialdesignicons.min.css'
 import { instance } from './api/index'
+import store from './store/index'
 
 Vue.use(ElementUI)
 
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

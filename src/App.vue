@@ -7,10 +7,20 @@
 
 <script>
 import HeaderNav from './components/HeaderNav'
+import { instance } from './api/index'
 export default {
   name: 'app',
   components: {
     HeaderNav
+  },
+  beforeCreate () {
+    if (window.localStorage.getItem('sayhub_token')) {
+      this.$store.commit('CHANGE_LOGIN_STATUS', true)
+      this.$store.commit('GET_SAYHUB_TOKEN', window.localStorage.getItem('sayhub_token'))
+      instance.defaults.headers.common['Authorization'] = `Bearer ` + window.localStorage.getItem('sayhub_token')
+    } else {
+      this.$store.commit('CHANGE_LOGIN_STATUS', false)
+    }
   }
 }
 </script>

@@ -9,7 +9,7 @@
           src="../assets/logo.png" 
           alt="logo">
       </router-link>
-      <el-dropdown 
+      <el-dropdown
         trigger="click"
         class="dropdown">
         <span class="el-dropdown-link">
@@ -68,7 +68,7 @@
           tag="span" 
           class="publish"><i class="el-icon-plus"/></router-link>
         <div class="navTag">
-          <div v-show="!loginStatus">
+          <div v-show="!login_status">
           <router-link to='/login' tag="span">
             <el-button 
               size="small" 
@@ -78,7 +78,7 @@
         </div>
         <div style="display: inline-block">
           <div 
-            v-if="loginStatus" 
+            v-if="login_status" 
             class="login">
             <el-dropdown trigger="click" >
               <img 
@@ -89,7 +89,8 @@
                 class="menu">
                 <router-link 
                   to="/" 
-                  tag="span">
+                  tag="span"
+                  >
                   <el-dropdown-item>
                     <i class="mdi mdi-home-account"/> 主页
                   </el-dropdown-item>
@@ -119,13 +120,20 @@
 export default {
   data () {
     return {
-      search: '',
-      loginStatus: true
+      search: ''
     }
+  },
+  computed: {
+    login_status () {
+      return this.$store.state.login_status
+    }
+  },
+  created () {
   },
   methods: {
     signout () {
-      this.loginStatus = false
+      window.localStorage.clear()
+      this.$store.commit('CHANGE_LOGIN_STATUS', false)
     },
     fetchData () {
       console.log('Search Sayhub')
