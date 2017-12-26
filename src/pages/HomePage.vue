@@ -18,12 +18,7 @@
     </el-col>
     <el-col :span="14">
       <div class="grid-content bg-purple box">
-        <ArticleItem class="item"/>
-        <ArticleItem class="item"/>
-        <ArticleItem class="item"/>
-        <ArticleItem class="item"/>
-        <ArticleItem class="item"/>
-        <ArticleItem class="item"/>
+        <ArticleItem class="item" v-for="article in articles" :key="article._id" :article = "article"/>
       </div>
     </el-col>
   </el-row>
@@ -34,15 +29,39 @@
   export default {
     name: 'HomePage',
     data () {
-      return {}
+      return {
+        articles: []
+      }
     },
     components: {
       ArticleItem
     },
     created () {
       console.log('首页加载成功')
+      this.getArticles()
     },
     methods: {
+      postArticles () {
+        this.$http.post('/articles', {
+          title: '这是一条测试title',
+          abstract: '这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract',
+          content: '这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content',
+          author: 'test'
+        })
+          .then(res => {
+            if (res.status === 200) {
+              console.log(res)
+            }
+          })
+      },
+      getArticles () {
+        this.$http.get('/articles')
+          .then(res => {
+            if (res.status === 200) {
+              this.articles = res.data
+            }
+          })
+      }
     }
   }
 </script>

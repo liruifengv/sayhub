@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage'
 const TagsPage = () => import('../pages/TagsPage.vue')
 const SignUp = () => import('../pages/SignUp.vue')
 const LogIn = () => import('../pages/LogIn.vue')
+const ArticleList = () => import('../components/ArticleList.vue')
 
 Vue.use(Router)
 
@@ -18,8 +19,15 @@ export default new Router({
     },
     {
       path: '/tags',
-      name: 'TagsPage',
-      component: TagsPage
+      component: TagsPage,
+      children: [{
+        path: ':tagName',
+        component: ArticleList
+      },
+      {
+        path: '',
+        component: ArticleList
+      }]
     },
     {
       path: '/signup',
