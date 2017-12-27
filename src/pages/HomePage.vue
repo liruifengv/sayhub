@@ -1,20 +1,7 @@
 <template class="view">
   <el-row :gutter="20">
     <el-col :span="5" :offset="3">
-    <div class="grid-content bg-purple">
-      <img src="../assets/avatar.jpg" class="avatar" />
-      <div class="user">
-        <h1 class="userName">李瑞丰v</h1>
-        <p class="userEnglishName">liruifengv</p>
-        <p class="bio">来生再修好皮囊</p>        
-      </div>
-      <div class="message">
-      <i class="mdi mdi-account-multiple"></i><span class="message-item">应届校招求坑!</span>
-      <i class="el-icon-message"><a href="mailto:li15227870916@gmail.com" target="_blank" class="message-item">li15227870916@gmail.com</a></i>
-      <br>
-      <i class="mdi mdi-link-variant"></i><a href="http://www.sayhub.me" target="_blank" class="message-item">http://www.sayhub.me</a>
-      </div>
-    </div>
+    <LeftItem />
     </el-col>
     <el-col :span="14">
       <div class="grid-content bg-purple box">
@@ -26,6 +13,7 @@
 
 <script>
   import ArticleItem from '../components/ArticleItem.vue'
+  import LeftItem from '../components/LeftItem.vue'
   export default {
     name: 'HomePage',
     data () {
@@ -34,11 +22,13 @@
       }
     },
     components: {
-      ArticleItem
+      ArticleItem,
+      LeftItem
     },
     created () {
       console.log('首页加载成功')
       this.getArticles()
+      // this.postArticles()
     },
     methods: {
       postArticles () {
@@ -46,7 +36,8 @@
           title: '这是一条测试title',
           abstract: '这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract',
           content: '这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content',
-          author: 'test'
+          author: 'test',
+          category: ['JavaScript']
         })
           .then(res => {
             if (res.status === 200) {
@@ -55,10 +46,10 @@
           })
       },
       getArticles () {
-        this.$http.get('/articles')
+        this.$http.get(`/articles?page=1&page_size=6`)
           .then(res => {
             if (res.status === 200) {
-              this.articles = res.data
+              this.articles = res.data.articles
             }
           })
       }

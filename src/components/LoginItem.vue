@@ -45,52 +45,21 @@ export default{
       }
     },
     login () {
-      this.$store.dispatch('login', {
-        login_user: this.username,
-        login_password: this.password
-      }).then(() => {
-        this.$store.dispatch('getUser')
-        this.$router.push('/')
-      }).catch((error) => {
-        this.$message.error(error.response.data.content)
-      })
-      /*
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')
       } else if (this.password === '') {
         this.$message.warning('密码不能为空哦~~')
       } else {
-        this.$http.post(`/login`, {
-          username: this.username,
-          password: this.password
-        }).then(res => {
-          if (res.status === 200) {
-            this.$message.success('登录成功')
-            // console.log(res)
-            this.sayhub_token = res.data.sayhub_token
-            window.localStorage.setItem('sayhub_token', this.sayhub_token)
-            this.$store.commit('GET_SAYHUB_TOKEN', this.sayhub_token)
-            this.$store.commit('CHANGE_LOGIN_STATUS', true)
-            this.$router.push('/')
-          }
-          this.get_profile()
+        this.$store.dispatch('login', {
+          login_user: this.username,
+          login_password: this.password
+        }).then(() => {
+          this.$store.dispatch('getUser')
+          this.$router.push('/')
         }).catch((error) => {
           this.$message.error(error.response.data.content)
         })
       }
-      // console.log('登陆成功')
-      */
-    },
-    get_profile () {
-      this.$http.get('/profile')
-        .then(res => {
-          if (res.status === 200) {
-            console.log(res.data)
-            this.$store.commit('GET_USERINFO', res.data)
-          }
-        }).catch((error) => {
-          this.$message.error(error.response.data.content)
-        })
     }
   }
 }

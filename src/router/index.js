@@ -21,7 +21,7 @@ export default new Router({
       path: '/tags',
       component: TagsPage,
       children: [{
-        path: ':tagName',
+        path: ':category',
         component: ArticleList
       },
       {
