@@ -7,7 +7,7 @@ export default {
   [types.CHANGE_LOGIN_STATUS] (state, bool) {
     state.login_status = bool
   },
-  [types.GET_USERINFO] (state, info) {
+  [types.GET_USER_INFO] (state, info) {
     state.userInfo = info
   }
 }

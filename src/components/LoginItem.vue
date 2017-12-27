@@ -45,6 +45,16 @@ export default{
       }
     },
     login () {
+      this.$store.dispatch('login', {
+        login_user: this.username,
+        login_password: this.password
+      }).then(() => {
+        this.$store.dispatch('getUser')
+        this.$router.push('/')
+      }).catch((error) => {
+        this.$message.error(error.response.data.content)
+      })
+      /*
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')
       } else if (this.password === '') {
@@ -63,11 +73,13 @@ export default{
             this.$store.commit('CHANGE_LOGIN_STATUS', true)
             this.$router.push('/')
           }
+          this.get_profile()
         }).catch((error) => {
           this.$message.error(error.response.data.content)
         })
       }
       // console.log('登陆成功')
+      */
     },
     get_profile () {
       this.$http.get('/profile')

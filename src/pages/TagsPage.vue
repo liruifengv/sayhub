@@ -1,11 +1,13 @@
 <template>
   <el-row class="container">
-    <el-col :span="8" :offset="5">
+    <el-col :span="10" :offset="5">
     <div class="tags_box">
-      <router-link :to='`/tags/wechat`' class="tag" tag="span">微信公众号</router-link>
       <router-link :to='`/tags/front_end`' class="tag" tag="span">前端</router-link>
       <router-link :to='`/tags/JavaScript`' class="tag" tag="span">JavaScript</router-link>
-      <router-link :to='`/tags/Vue`' class="tag" tag="span">Vue.JS</router-link>
+      <router-link :to='`/tags/CSS`' class="tag" tag="span">CSS</router-link>      
+      <router-link :to='`/tags/Vue`' class="tag" tag="span">Vue</router-link>
+      <router-link :to='`/tags/React`' class="tag" tag="span">React</router-link>      
+      <router-link :to='`/tags/wechat`' class="tag" tag="span">微信公众号</router-link>
     </div>
      <router-view :articles="articles"></router-view>
     </el-col>
@@ -23,7 +25,7 @@
     components: {
     },
     created () {
-      console.log('标签页加载成功')
+      // console.log('标签页加载成功')
       this.getArticles()
     },
     methods: {

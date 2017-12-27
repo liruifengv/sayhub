@@ -134,6 +134,8 @@ export default {
     signout () {
       window.localStorage.clear()
       this.$store.commit('CHANGE_LOGIN_STATUS', false)
+      this.$store.commit('GET_SAYHUB_TOKEN', '')
+      // this.$store.commit('GET_USER_INFO', {})
     },
     fetchData () {
       console.log('Search Sayhub')

@@ -15,6 +15,25 @@ Vue.prototype.$http = instance
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  let path = to.path
+  if (window.localStorage.getItem('sayhub_token')) {
+    store.commit('CHANGE_LOGIN_STATUS', true)
+    store.commit('GET_SAYHUB_TOKEN', window.localStorage.getItem('sayhub_token'))
+    instance.defaults.headers.common['Authorization'] = `Bearer ` + window.localStorage.getItem('sayhub_token')
+  }
+  if (path === '/') {
+    if (window.localStorage.getItem('sayhub_token')) {
+      store.dispatch('getUser')
+    }
+  } else {
+    if (window.localStorage.getItem('sayhub_token')) {
+      store.dispatch('getUser')
+    }
+  }
+  next()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
