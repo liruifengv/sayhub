@@ -1,11 +1,12 @@
 <template class="view">
   <el-row :gutter="20">
-    <el-col :span="5" :offset="3">
+    <el-col :span="3" :xs="24" class="left"></el-col>
+    <el-col :span="5" :xs="24" class="left">
     <LeftItem />
     </el-col>
-    <el-col :span="14">
+    <el-col :span="15" :xs="24" class="right">
       <div class="grid-content bg-purple box">
-        <ArticleItem class="item" v-for="article in articles" :key="article._id" :article = "article"/>
+        <ArticleItem class="item" v-for="article in articles" :key="article._id" :article = "article" :getArticles = "getArticles"/>
       </div>
     </el-col>
   </el-row>
@@ -36,8 +37,8 @@
           title: '这是一条测试title',
           abstract: '这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract',
           content: '这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content',
-          author: 'test',
-          category: ['JavaScript']
+          author: 'liruifengv',
+          category: ['front_end', 'wechat']
         })
           .then(res => {
             if (res.status === 200) {

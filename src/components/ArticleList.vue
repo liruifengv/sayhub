@@ -1,7 +1,7 @@
 <template>
 <el-row>
   <el-row class="contain" v-for="article in articles" :key="article.id">
-    <ArticleItem :article="article" class="item" :type="'tags'"/>
+    <ArticleItem :article="article" class="item" :type="'tags'" :getArticles = "getArticles"/>
   </el-row>
 </el-row>  
 </template>
@@ -13,6 +13,9 @@ export default {
   props: {
     articles: {
       type: Array
+    },
+    getArticles: {
+      type: Function
     }
   },
   components: {

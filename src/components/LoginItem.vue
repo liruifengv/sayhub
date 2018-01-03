@@ -2,7 +2,8 @@
   <el-row class="row">
     <h1>Sayhub</h1>
     <el-input placeholder="用户名" v-model="username"></el-input>
-    <el-input type="password" placeholder="密码" v-model="password"></el-input> 
+    <el-input type="password" placeholder="密码" v-model="password"></el-input>
+    <el-input type="password" placeholder="确认密码" v-if = "type === 'signup'" v-model="re_password"></el-input>    
     <el-button type="primary" v-if = "type === 'signup'" @click="signup()">注册</el-button>
     <el-button type="primary" v-else @click="login()">登录</el-button>
     <router-link to="/login" v-show = "type === 'signup'" tag="p">已有账号，去登录</router-link>
@@ -16,6 +17,7 @@ export default{
     return {
       username: '',
       password: '',
+      re_password: '',
       sayhub_token: ''
     }
   },
@@ -25,11 +27,22 @@ export default{
     }
   },
   methods: {
+    // 注册
     signup () {
+      const usernameReg = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/
+      const passwordReg = /^.{6,}$/g
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')
+      } else if (usernameReg.test(this.username) === false) {
+        this.$message.warning('用户名只能以字母开头，5-16位，允许字母数字下划线')
       } else if (this.password === '') {
         this.$message.warning('密码不能为空哦~~')
+      } else if (passwordReg.test(this.password) === false) {
+        this.$message.warning('密码不能少于6位')
+      } else if (this.re_password === '') {
+        this.$message.warning('请再次输入密码~')
+      } else if (this.password !== this.re_password) {
+        this.$message.warning('两次密码必须相同~')
       } else {
         this.$http.post(`/users`, {
           'username': this.username,
@@ -44,6 +57,7 @@ export default{
         })
       }
     },
+    // 登陆
     login () {
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')

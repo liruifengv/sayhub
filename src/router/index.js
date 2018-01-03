@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage'
 const TagsPage = () => import('../pages/TagsPage.vue')
 const SignUp = () => import('../pages/SignUp.vue')
 const LogIn = () => import('../pages/LogIn.vue')
+const ArticleDetail = () => import('../pages/ArticleDetail.vue')
 const ArticleList = () => import('../components/ArticleList.vue')
 
 Vue.use(Router)
@@ -38,6 +39,11 @@ export default new Router({
       path: '/login',
       name: 'LogIn',
       component: LogIn
+    },
+    {
+      path: '/article/:id',
+      name: 'ArticleDeyail',
+      component: ArticleDetail
     }
   ]
 })

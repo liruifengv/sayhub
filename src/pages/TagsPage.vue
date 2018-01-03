@@ -1,6 +1,6 @@
 <template>
   <el-row class="container">
-    <el-col :span="10" :offset="5">
+    <div class="row">
       <div class="tags_box">
         <router-link :to='`/tags/front_end`' class="tag" tag="span">前端</router-link>
         <router-link :to='`/tags/JavaScript`' class="tag" tag="span">JavaScript</router-link>
@@ -9,7 +9,7 @@
         <router-link :to='`/tags/React`' class="tag" tag="span">React</router-link>      
         <router-link :to='`/tags/wechat`' class="tag" tag="span">微信公众号</router-link>
       </div>
-      <router-view :articles="articles"></router-view>
+      <router-view :articles="articles" :getArticles = "getArticles"></router-view>
       <span v-show="articles.length === 0" class="no_articles">暂无相关文章</span>
       <div class="block" v-show="total > 1">
         <el-pagination
@@ -19,7 +19,7 @@
           :current-page.sync="page">
         </el-pagination>
       </div>
-    </el-col>
+    </div>
   </el-row>
 </template>
 
@@ -41,7 +41,10 @@
     },
     watch: {
       // 如果路由有变化，会再次执行该方法
-      '$route': 'getArticles'
+      $route () {
+        this.getArticles()
+        this.page = 1
+      }
     },
     methods: {
       getArticles () {
@@ -71,9 +74,14 @@
 </script>
 
 <style scoped>
+  .container{
+    display: flex;
+    justify-content: center
+  }
   .tags_box{
     margin-top: 20px;
     padding-bottom: 15px;
+    text-align: center
   }
   .tag{
     font-size: 16px;
@@ -88,10 +96,13 @@
     border-bottom: 3px solid #42b983;
   }
   .no_articles{
-    background:  #fff;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px
   }
   .block{
-    display: flex;
-    justify-content: center
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px
   }
 </style>

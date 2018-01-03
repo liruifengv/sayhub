@@ -1,6 +1,25 @@
 <template>
   <el-row class="container"  :class=" type === 'tags' ? 'tags_container' : 'container'">
-    <p class="title">{{article.title}}</p>
+    <router-link :to='`/article/${article._id}`' tag="p">
+      <p class="title">{{article.title}}</p>
+    </router-link>
+    <div class="edit">
+              <el-dropdown trigger="click"  v-if="isOwner" >
+              <i class="el-icon-arrow-down"></i>
+            <el-dropdown-menu slot="dropdown" class="menu">
+              <span>
+                <el-dropdown-item>
+                <i class="el-icon-edit"></i> 编辑
+              </el-dropdown-item>
+            </span>
+            <span @click="toDelete">
+              <el-dropdown-item>
+                <i class="el-icon-delete"></i> 删除
+              </el-dropdown-item>
+            </span>
+          </el-dropdown-menu>
+        </el-dropdown>
+    </div>
     <div class="author_box">
       <span class="author">{{article.author}}</span>
       <span class="date">{{article.created}}</span>
@@ -10,6 +29,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -21,11 +41,39 @@ export default {
     },
     type: {
       type: String
+    },
+    getArticles: {
+      type: Function
+    }
+  },
+  computed: {
+    ...mapState([
+      'userInfo'
+    ]),
+    isOwner () {
+      if (this.userInfo) {
+        if (this.userInfo.username === this.article.author) {
+          return true
+        } else {
+          return false
+        }
+      }
     }
   },
   created () {
   },
   methods: {
+    toDelete () {
+      this.$http.delete(`/article/${this.article._id}`)
+        .then(res => {
+          if (res.status === 200) {
+            this.$message.success('删除成功~')
+            this.getArticles()
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+    }
   }
 }
 </script>
@@ -38,7 +86,7 @@ export default {
   padding: 0 10px 5px 10px
 }
 .tags_container{
-  width: 800px;
+  width: 750px;
   border: 1px solid #e1e4e8;
   border-radius: 3px;
   padding: 0 10px 5px 10px
@@ -76,5 +124,11 @@ export default {
 }
 .date {
   margin-left: 10px
+}
+.edit{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  cursor: pointer
 }
 </style>

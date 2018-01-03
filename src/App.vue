@@ -17,7 +17,7 @@ export default {
 
 <style>
 html {
-  background: #f9f9f9;
+  background: #fff;
 }
 body {
   max-height: 100vh;
