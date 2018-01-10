@@ -24,7 +24,7 @@
       <span class="author">{{article.author}}</span>
       <span class="date">{{article.created}}</span>
     </div>
-    <p class="abstract">{{article.abstract}}</p>
+    <p class="abstract">{{article.content_text}}</p>
   </el-row>
 </template>
 

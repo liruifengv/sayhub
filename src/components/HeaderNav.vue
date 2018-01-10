@@ -49,18 +49,15 @@
           to="/" 
           exact 
           class="tag">首页</router-link>
-        <router-link 
+        <router-link
           to="/tags" 
           class="tag">标签</router-link>
         <router-link 
-          to="/222" 
-          class="tag">222</router-link>
+          to="/write" 
+          class="tag">写文章</router-link>
         <router-link 
-          to="/333" 
-          class="tag">333</router-link>
-        <router-link 
-          to="/444" 
-          class="tag">444</router-link>
+          to="/draft" 
+          class="tag">草稿</router-link>
       </div>
       <div class="btn_box">
         <router-link 

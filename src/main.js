@@ -8,8 +8,11 @@ import ElementUI from 'element-ui'
 import 'mdi/css/materialdesignicons.min.css'
 import { instance } from './api/index'
 import store from './store/index'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 Vue.use(ElementUI)
+Vue.use(mavonEditor)
 
 Vue.prototype.$http = instance
 

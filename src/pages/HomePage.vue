@@ -32,20 +32,6 @@
       // this.postArticles()
     },
     methods: {
-      postArticles () {
-        this.$http.post('/articles', {
-          title: '这是一条测试title',
-          abstract: '这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract这是一条测试abstract',
-          content: '这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content这是测试content',
-          author: 'liruifengv',
-          category: ['front_end', 'wechat']
-        })
-          .then(res => {
-            if (res.status === 200) {
-              console.log(res)
-            }
-          })
-      },
       getArticles () {
         this.$http.get(`/articles?page=1&page_size=6`)
           .then(res => {

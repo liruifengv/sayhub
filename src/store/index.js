@@ -12,7 +12,8 @@ const debug = process.env.NODE_ENV !== 'production'
 
 const state = {
   sayhub_token: '',
-  login_status: false
+  login_status: false,
+  nav_show: true
 }
 
 export default new Vuex.Store({

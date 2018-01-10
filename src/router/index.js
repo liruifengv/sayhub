@@ -7,6 +7,7 @@ const SignUp = () => import('../pages/SignUp.vue')
 const LogIn = () => import('../pages/LogIn.vue')
 const ArticleDetail = () => import('../pages/ArticleDetail.vue')
 const ArticleList = () => import('../components/ArticleList.vue')
+const ArticleWrite = () => import('../pages/ArticleWrite.vue')
 
 Vue.use(Router)
 
@@ -44,6 +45,11 @@ export default new Router({
       path: '/article/:id',
       name: 'ArticleDeyail',
       component: ArticleDetail
+    },
+    {
+      path: '/write',
+      name: 'ArticleWrite',
+      component: ArticleWrite
     }
   ]
 })

@@ -5,7 +5,7 @@
       <span class="author">{{article.author}}</span>
       <span class="date">发表日期: {{article.created}}</span>
       <el-row class="markdown-body">
-        <p class="content">{{article.content}}</p>
+        <p class="content" v-html="article.content_render"></p>
       </el-row>
     </el-col>
   </el-row>
@@ -45,6 +45,7 @@ export default{
         if (res.status === 200) {
           // console.log(res.data)
           this.article = res.data
+          console.log(res.data)
         }
       }).catch((err) => {
         console.log(err)

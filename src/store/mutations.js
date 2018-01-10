@@ -9,5 +9,8 @@ export default {
   },
   [types.GET_USER_INFO] (state, info) {
     state.userInfo = info
+  },
+  [types.SHOW_NAV] (state, bool) {
+    state.nav_show = bool
   }
 }
