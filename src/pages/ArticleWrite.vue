@@ -2,7 +2,8 @@
   <el-row class="container">
     <div class="right">
       <span class="tip">草稿自动保存至<router-link tag="span" to='/draft' class="draft">草稿箱</router-link></span>
-      <el-button round  @click="dialogVisible = true">发布</el-button>
+      <el-button round  @click="dialogVisible = true" v-if="type === 'write'">发布</el-button>
+      <el-button round  @click="dialogVisible = true" v-else>保存</el-button>      
     </div>
     <el-col :span="12" :xs="24" class="write">
       <input v-model="title" placeholder="请输入标题" class="title" />
@@ -20,7 +21,8 @@
       </el-checkbox-group>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="publishArticle">确认发布</el-button>
+        <el-button type="primary" @click="publishArticle" v-if="type === 'write'">确认发布</el-button>
+        <el-button type="primary" @click="saveEdit" v-else>保存修改</el-button>        
       </div>
     </el-dialog>
   </el-row>
@@ -66,7 +68,14 @@
     computed: {
       ...mapState([
         'userInfo'
-      ])
+      ]),
+      type () {
+        if (this.$route.path.includes('edit')) {
+          return 'edit'
+        } else {
+          return 'write'
+        }
+      }
     },
     beforeCreate () {
       if (!window.localStorage.getItem('sayhub_token')) {
@@ -76,6 +85,16 @@
     },
     created () {
       this.$store.commit('SHOW_NAV', false)
+      if (this.$route.path.includes('edit')) {
+        this.$http.get(`/article/${this.$route.params.id}/`)
+        .then(res => {
+          if (res.status === 200) {
+            this.title = res.data.title
+            this.content = res.data.content
+            this.category = res.data.category
+          }
+        })
+      }
     },
     destroyed () {
       this.$store.commit('SHOW_NAV', true)
@@ -105,6 +124,32 @@
             .catch((error) => {
               console.log(error.response.data.content)
             })
+        }
+      },
+      saveEdit (formName) {
+        if (this.title === '') {
+          this.$message.warning('文章标题不能为空哦~~')
+        } else if (this.content === '') {
+          this.$message.warning('文章内容不能为空哦~~')
+        } else if (this.category.length === 0) {
+          this.$message.warning('文章类型必选哦~~')
+        } else {
+          this.$http.put(`/article/${this.$route.params.id}`, {
+            title: this.title,
+            content: this.content,
+            author: this.userInfo.username,
+            category: this.category
+          })
+          .then(res => {
+            if (res.status === 200) {
+              this.dialogVisible = false
+              this.$message.success('修改成功')
+              this.$router.push(`/article/${res.data.id}`)
+            }
+          })
+          .catch((error) => {
+            console.log(error.response.data.content)
+          })
         }
       }
     }

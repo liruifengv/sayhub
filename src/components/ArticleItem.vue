@@ -4,12 +4,14 @@
       <p class="title">{{article.title}}</p>
     </router-link>
     <div class="edit">
-              <el-dropdown trigger="click"  v-if="isOwner" >
-              <i class="el-icon-arrow-down"></i>
-            <el-dropdown-menu slot="dropdown" class="menu">
-              <span>
-                <el-dropdown-item>
-                <i class="el-icon-edit"></i> 编辑
+      <el-dropdown trigger="click"  v-if="isOwner" >
+        <i class="el-icon-arrow-down"></i>
+          <el-dropdown-menu slot="dropdown" class="menu">
+            <span>
+              <el-dropdown-item>
+                <router-link :to='`/article/${article._id}/edit`' tag="span">
+                  <i class="el-icon-edit"></i> 编辑
+                </router-link>
               </el-dropdown-item>
             </span>
             <span @click="toDelete">
@@ -18,11 +20,11 @@
               </el-dropdown-item>
             </span>
           </el-dropdown-menu>
-        </el-dropdown>
+      </el-dropdown>
     </div>
     <div class="author_box">
       <span class="author">{{article.author}}</span>
-      <span class="date">{{article.created}}</span>
+      <span class="date">{{article.created.toLocaleString()}}</span>
     </div>
     <p class="abstract">{{article.content_text}}</p>
   </el-row>

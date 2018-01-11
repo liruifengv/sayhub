@@ -50,6 +50,11 @@ export default new Router({
       path: '/write',
       name: 'ArticleWrite',
       component: ArticleWrite
+    },
+    {
+      path: '/article/:id/edit',
+      name: 'articleEdit',
+      component: ArticleWrite
     }
   ]
 })
