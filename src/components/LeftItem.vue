@@ -9,6 +9,7 @@
       </div>
       <div class="message">
       <i class="mdi mdi-account-multiple"></i><span class="message-item">应届校招求坑!</span>
+      <br>
       <i class="el-icon-message"><a href="mailto:li15227870916@gmail.com" target="_blank" class="message-item">li15227870916@gmail.com</a></i>
       <br>
       <i class="mdi mdi-link-variant"></i><a href="http://www.sayhub.me" target="_blank" class="message-item">http://www.sayhub.me</a>
@@ -34,7 +35,6 @@ export default{
   }
   .grid-content {
     border-radius: 4px;
-    min-height: 700px;
     padding: 15px
   }
   .avatar{

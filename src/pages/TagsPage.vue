@@ -1,6 +1,6 @@
 <template>
   <el-row class="container">
-    <div class="row">
+    <el-col  :span="12" :xs="24" class="row">
       <div class="tags_box">
         <router-link :to='`/tags/front_end`' class="tag" tag="span">前端</router-link>
         <router-link :to='`/tags/JavaScript`' class="tag" tag="span">JavaScript</router-link>
@@ -19,7 +19,7 @@
           :current-page.sync="page">
         </el-pagination>
       </div>
-    </div>
+    </el-col>
   </el-row>
 </template>
 
@@ -86,9 +86,10 @@
   .tag{
     font-size: 16px;
     color: #8590a6;
-    padding: 15px;
+    padding: 10px;
     cursor: pointer;
-    margin-right: 10px
+    margin-right: 10px;
+    line-height: 40px
   }
   span.router-link-active{
     font-weight: bold;

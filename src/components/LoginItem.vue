@@ -81,12 +81,13 @@ export default{
 
 <style scoped>
 .row{
-  border: 1px solid #000;
+  border: 1px solid #fff;
   text-align: center;
   padding: 20px;
   line-height: 50px;
   background: #fff;
-  width: 300px;  
+  width: 300px;
+  box-shadow: 0 1px 3px 0 rgba(0,34,77,.5);
 }
 p{
   font-size: 12px;

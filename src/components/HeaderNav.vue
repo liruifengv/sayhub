@@ -25,13 +25,10 @@
             <router-link to="/tags">标签</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
-            <router-link to="/">2222</router-link>
+            <router-link to="/write">写文章</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
-            <router-link to="/">3333</router-link>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <router-link to="/">4444</router-link>
+            <router-link to="/draft">草稿</router-link>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -60,12 +57,8 @@
           class="tag">草稿</router-link>
       </div>
       <div class="btn_box">
-        <router-link 
-          to="/" 
-          tag="span" 
-          class="publish"><i class="el-icon-plus"/></router-link>
-        <div class="navTag">
-          <div v-show="!login_status">
+        <div class="nav">
+          <div v-if="!login_status">
           <router-link to='/login' tag="span">
             <el-button 
               size="small" 

@@ -165,7 +165,7 @@
   }
   .right{
     position: fixed;
-    right: 60px;
+    right: 30px;
     top: 10px
   }
   .tip{
@@ -226,5 +226,14 @@
   #editor{
     height: 100%;
     z-index: 500;
+  }
+  @media screen and (max-width: 600px) {
+    .write{
+      padding: 10px;
+      margin-top: 20px
+      }
+    .tip {
+      display: none
+    }
   }
 </style>

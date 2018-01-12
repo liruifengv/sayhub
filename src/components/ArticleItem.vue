@@ -82,16 +82,16 @@ export default {
 
 <style scoped>
 .container{
-  width: 359px;
+  width: 48%;
   border: 1px solid #e1e4e8;
   border-radius: 3px;
-  padding: 0 10px 5px 10px
+  padding: 0 15px 5px 15px
 }
 .tags_container{
-  width: 750px;
+  width: 100%;
   border: 1px solid #e1e4e8;
   border-radius: 3px;
-  padding: 0 10px 5px 10px
+  padding: 0 15px 5px 15px
 }
 .title{
   font-size: 18px;
@@ -133,4 +133,15 @@ export default {
   top: 20px;
   cursor: pointer
 }
+  @media screen and (max-width: 600px) {
+    .container,.tags_container{
+      width: 100%;
+      border-bottom: 1px solid #e1e4e8;
+      border-top: 1px solid #e1e4e8;
+      border-left: none;    
+      border-right: none;          
+      border-radius: 0px;
+      padding: 0 15px 5px 15px
+    }
+  }
 </style>
