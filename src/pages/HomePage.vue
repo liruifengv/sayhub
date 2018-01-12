@@ -6,7 +6,7 @@
     </el-col>
     <el-col :span="15" :xs="24" class="right">
       <div class="grid-content bg-purple box">
-        <ArticleItem class="item" v-for="article in articles" :key="article._id" :article = "article" :getArticles = "getArticles"/>
+        <ArticleItem class="item" v-for="item in articles" :key="item._id" :item = "item" :getArticles = "getArticles"/>
       </div>
     </el-col>
   </el-row>

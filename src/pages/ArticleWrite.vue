@@ -2,12 +2,12 @@
   <el-row class="container">
     <div class="right">
       <span class="tip">草稿自动保存至<router-link tag="span" to='/draft' class="draft">草稿箱</router-link></span>
-      <el-button round  @click="dialogVisible = true" v-if="type === 'write'">发布</el-button>
-      <el-button round  @click="dialogVisible = true" v-else>保存</el-button>      
+      <el-button round  @click="dialogVisible = true" v-if="type === 'articleEdit'">保存</el-button>
+      <el-button round  @click="dialogVisible = true" v-else>发布</el-button>      
     </div>
     <el-col :span="12" :xs="24" class="write">
-      <input v-model="title" placeholder="请输入标题" class="title" />
-        <mavon-editor id="editor" v-model="content" :subfield="false" :toolbars="toolbars" :default_open='`edit`' />
+      <input v-model="title" @focus="updateDraft" placeholder="请输入标题" class="title" />
+      <mavon-editor @change="updateDraft" id="editor" v-model="content" :subfield="false" :toolbars="toolbars" :default_open='`edit`' />
     </el-col>
     <el-dialog title="发布文章" :visible.sync="dialogVisible">
       <p>选择文章所属类型</p>
@@ -21,8 +21,8 @@
       </el-checkbox-group>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="publishArticle" v-if="type === 'write'">确认发布</el-button>
-        <el-button type="primary" @click="saveEdit" v-else>保存修改</el-button>        
+        <el-button type="primary" @click="saveEdit" v-if="type === 'articleEdit'">保存修改</el-button>
+        <el-button type="primary" @click="publishArticle" v-else>确认发布</el-button>        
       </div>
     </el-dialog>
   </el-row>
@@ -37,7 +37,8 @@
         title: '',
         content: '',
         dialogVisible: false,
-        category: []
+        category: [],
+        draftId: ''
       }
     },
     props: {
@@ -70,8 +71,10 @@
         'userInfo'
       ]),
       type () {
-        if (this.$route.path.includes('edit')) {
-          return 'edit'
+        if (this.$route.path.includes('article')) {
+          return 'articleEdit'
+        } else if (this.$route.path.includes('draft')) {
+          return 'draftEdit'
         } else {
           return 'write'
         }
@@ -85,7 +88,8 @@
     },
     created () {
       this.$store.commit('SHOW_NAV', false)
-      if (this.$route.path.includes('edit')) {
+      // 如果是文章再编辑
+      if (this.$route.path.includes('article')) {
         this.$http.get(`/article/${this.$route.params.id}/`)
         .then(res => {
           if (res.status === 200) {
@@ -94,12 +98,27 @@
             this.category = res.data.category
           }
         })
+        // 如果是草稿编辑
+      } else if (this.$route.path.includes('draft')) {
+        this.draftId = this.$route.params.id
+        this.$http.get(`/draft/${this.$route.params.id}/`)
+        .then(res => {
+          if (res.status === 200) {
+            this.title = res.data.title
+            this.content = res.data.content
+            this.category = res.data.category
+          }
+        })
+      } else {
+        // 首次发表文章  创建新草稿
+        this.saveDraft()
       }
     },
     destroyed () {
       this.$store.commit('SHOW_NAV', true)
     },
     methods: {
+      // 发布文章
       publishArticle () {
         if (this.title === '') {
           this.$message.warning('文章标题不能为空哦~~')
@@ -126,6 +145,7 @@
             })
         }
       },
+      // 文章再编辑
       saveEdit (formName) {
         if (this.title === '') {
           this.$message.warning('文章标题不能为空哦~~')
@@ -150,6 +170,51 @@
           .catch((error) => {
             console.log(error.response.data.content)
           })
+        }
+      },
+      // 初始化保存草稿
+      saveDraft () {
+        this.$http.post(`/drafts`, {
+          title: this.title,
+          content: this.content,
+          author: this.userInfo.username,
+          category: this.category
+        })
+          .then(res => {
+            if (res.status === 200) {
+              // console.log(res.data)
+              this.draftId = res.data.id
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      },
+      // 自动保存草稿
+      updateDraft () {
+        if (this.type === 'articleEdit') {
+          console.log('文章再编辑')
+        } else {
+          if (this.timeout) {
+            clearTimeout(this.timeout)
+          }
+          this.timeout = setTimeout(() => {
+            this.$http.put(`/draft/${this.draftId}`, {
+              title: this.title,
+              content: this.content,
+              author: this.userInfo.username,
+              category: this.category
+            })
+              .then(res => {
+                if (res.status === 200) {
+                  // console.log(res.data)
+                  this.draftId = res.data.id
+                }
+              })
+              .catch((err) => {
+                console.log(err)
+              })
+          }, 1000)
         }
       }
     }

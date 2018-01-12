@@ -8,6 +8,7 @@ const LogIn = () => import('../pages/LogIn.vue')
 const ArticleDetail = () => import('../pages/ArticleDetail.vue')
 const ArticleList = () => import('../components/ArticleList.vue')
 const ArticleWrite = () => import('../pages/ArticleWrite.vue')
+const DraftsPage = () => import('../pages/DraftsPage.vue')
 
 Vue.use(Router)
 
@@ -55,6 +56,16 @@ export default new Router({
       path: '/article/:id/edit',
       name: 'articleEdit',
       component: ArticleWrite
+    },
+    {
+      path: '/draft/:id/edit',
+      name: 'draftEdit',
+      component: ArticleWrite
+    },
+    {
+      path: '/draft',
+      name: 'DraftsPage',
+      component: DraftsPage
     }
   ]
 })

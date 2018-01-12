@@ -1,7 +1,7 @@
 <template>
 <el-row>
-  <el-row class="contain" v-for="article in articles" :key="article.id">
-    <ArticleItem :article="article" class="item" :type="'tags'" :getArticles = "getArticles"/>
+  <el-row class="contain" v-for="item in articles" :key="item.id">
+    <ArticleItem :item="item" :type="'article'" class="item" :longWidth="true" :getArticles = "getArticles"/>
   </el-row>
 </el-row>  
 </template>
