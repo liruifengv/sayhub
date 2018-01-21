@@ -1,15 +1,11 @@
 <template>
   <el-row class="container"  :class=" longWidth === true ? 'long_container' : 'container'">
-    <el-row v-if="type === 'article'">
-      <router-link :to='`/${this.type}/${item._id}`' tag="p">
-        <p class="title">{{item.title}}</p>
+      <router-link :to='`/${this.type}/${item._id}`' class="title" v-if="type === 'article'">
+        {{item.title}}
       </router-link>
-    </el-row>
-    <el-row v-else-if="type === 'draft'">
-      <router-link :to='`/${this.type}/${item._id}/edit`' tag="p">
-        <p class="title">{{item.title}}</p>
+      <router-link :to='`/${this.type}/${item._id}/edit`' class="title"  v-else-if="type === 'draft'">
+        {{item.title}}
       </router-link>
-    </el-row>
     <div class="edit">
       <el-dropdown trigger="click"  v-if="isOwner" >
         <i class="el-icon-arrow-down"></i>
@@ -112,25 +108,40 @@ export default {
   padding: 0 15px 5px 15px
 }
 .title{
+  color: #000;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 16px 16px 16px 0;
   overflow: hidden;
   text-overflow: ellipsis;
  	display: -webkit-box;
- 	-webkit-line-clamp: 1;
+ 	-webkit-line-clamp: 2;
  	-webkit-box-orient: vertical;
+  text-decoration: none;
+  word-wrap:break-word
+}
+
+.title:hover {
+  color: #42b983
 }
 .abstract{
+  color: #262626;
+  line-height: 20px;
+  max-height: 60px;
+  font-size: 15px;
   margin-top: 9px;
   overflow: hidden;
-  font-size: 15px;
-  color: #262626;
-  text-overflow: ellipsis;
- 	display: -webkit-box;
- 	-webkit-line-clamp: 3;
- 	-webkit-box-orient: vertical;
+  cursor:auto;
+  position: relative;
+}
+.abstract:after {
+    content:"...";
+    position:absolute;
+    bottom:0;
+    background:#FFF;
+    padding-left:0.2em;
+    background:url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
 }
 .author,.date{
   font-size: 14px;

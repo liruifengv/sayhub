@@ -119,6 +119,9 @@ export default{
   padding: 15px;
   box-sizing: border-box
 }
+.title{
+  word-wrap:break-word
+}
 .author,.date{
   font-size: 15px;
   color: #8590a6;
