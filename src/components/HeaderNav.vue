@@ -6,7 +6,7 @@
         exact>
         <img 
           class="logo" 
-          src="../assets/logo.png" 
+          src="http://images.sayhub.me/logo" 
           alt="logo">
       </router-link>
       <el-dropdown
@@ -73,7 +73,7 @@
             <el-dropdown trigger="click" >
               <img 
                 class="avatar" 
-                src="../assets/avatar.jpg">
+                src="http://images.sayhub.me/avatar">
               <el-dropdown-menu 
                 slot="dropdown" 
                 class="menu">

@@ -1,7 +1,7 @@
 <template>
   <el-row class="container">
     <div class="grid-content bg-purple">
-      <img src="../assets/avatar.jpg" class="avatar" />
+      <img src="http://images.sayhub.me/avatar" class="avatar" />
       <div class="user">
         <h1 class="userName">李瑞丰v</h1>
         <p class="userEnglishName">liruifengv</p>

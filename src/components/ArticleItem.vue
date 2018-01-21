@@ -115,7 +115,12 @@ export default {
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 	display: -webkit-box;
+ 	-webkit-line-clamp: 1;
+ 	-webkit-box-orient: vertical;
 }
 .abstract{
   margin-top: 9px;
