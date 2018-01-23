@@ -131,7 +131,8 @@
             title: this.title,
             content: this.content,
             author: this.userInfo.username,
-            category: this.category
+            category: this.category,
+            draftId: this.draftId
           })
             .then(res => {
               if (res.status === 200) {

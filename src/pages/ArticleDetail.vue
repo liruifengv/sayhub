@@ -3,7 +3,7 @@
     <el-col  :span="12" :xs="24" class="article">
       <h1 class="title">{{article.title}}</h1>
       <span class="author">{{article.author}}</span>
-      <span class="date">发表日期: {{article.created}}</span>
+      <span class="date">发表日期: {{time}}</span>
       <el-row class="markdown-body">
         <p class="content" v-html="article.content_render"></p>
       </el-row>
@@ -29,10 +29,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import moment from 'moment'
 export default{
   data () {
     return {
-      article: {}
+      article: {},
+      time: ''
     }
   },
   components: {
@@ -53,6 +55,7 @@ export default{
   },
   created () {
     this.getArticle()
+    this.time = moment(this.article.created).format('YYYY-MM-DD HH:mm:ss')
   },
   methods: {
     getArticle () {

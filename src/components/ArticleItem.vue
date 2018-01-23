@@ -4,7 +4,7 @@
         {{item.title}}
       </router-link>
       <router-link :to='`/${this.type}/${item._id}/edit`' class="title"  v-else-if="type === 'draft'">
-        {{item.title}}
+        {{item.title === '' ? '未命名草稿' : item.title}}
       </router-link>
     <div class="edit">
       <el-dropdown trigger="click"  v-if="isOwner" >
@@ -27,7 +27,7 @@
     </div>
     <div class="author_box">
       <span class="author">{{item.author}}</span>
-      <span class="date">{{item.updated}}</span>
+      <span class="date">{{time}}</span>
     </div>
     <p class="abstract">{{item.content_text}}</p>
   </el-row>
@@ -35,9 +35,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import moment from 'moment'
 export default {
   data () {
     return {
+      time: ''
     }
   },
   props: {
@@ -73,22 +75,34 @@ export default {
     }
   },
   created () {
+    this.time = moment(this.item.updated).format('YYYY-MM-DD HH:mm:ss')
   },
   methods: {
     toDelete () {
-      this.$http.delete(`/${this.type}/${this.item._id}`)
-        .then(res => {
-          if (res.status === 200) {
-            this.$message.success('删除成功~')
-            if (this.type === 'draft') {
-              this.getDrafts()
-            } else {
-              this.getArticles()
+      this.$confirm('确认要删除吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$http.delete(`/${this.type}/${this.item._id}`)
+          .then(res => {
+            if (res.status === 200) {
+              this.$message.success('删除成功~')
+              if (this.type === 'draft') {
+                this.getDrafts()
+              } else {
+                this.getArticles()
+              }
             }
-          }
-        }).catch(err => {
-          console.log(err)
+          }).catch(err => {
+            console.log(err)
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         })
+      })
     }
   }
 }
