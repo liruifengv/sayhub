@@ -23,6 +23,19 @@
           </span>
         </div>
       </div>
+          <el-row>
+            <el-col :span="3" class="comments_count">
+              0条评论
+            </el-col>
+            <el-col :span="21" class="line"></el-col>
+          </el-row>
+          <el-row class="input_box">
+            <el-input v-model="comment" placeholder="写下你的评论..." ref="comment" size="large" class="input" @focus="focus"></el-input>
+          </el-row>
+          <el-row class="btn">
+            <el-button type="text" class="cancel" v-show="btn_show" @click="cancel">取消</el-button>            
+            <el-button plain v-show="btn_show" @click="toComment()">评论</el-button>
+          </el-row>
     </el-col>
   </el-row>
 </template>
@@ -34,7 +47,9 @@ export default{
   data () {
     return {
       article: {},
-      time: ''
+      time: '',
+      btn_show: false,
+      comment: ''
     }
   },
   components: {
@@ -55,7 +70,6 @@ export default{
   },
   created () {
     this.getArticle()
-    this.time = moment(this.article.created).format('YYYY-MM-DD HH:mm:ss')
   },
   methods: {
     getArticle () {
@@ -64,7 +78,8 @@ export default{
         if (res.status === 200) {
           // console.log(res.data)
           this.article = res.data
-          console.log(res.data)
+          console.log(this.article)
+          this.time = moment(this.article.updated).format('YYYY-MM-DD HH:mm:ss')
         }
       }).catch((err) => {
         console.log(err)
@@ -98,15 +113,36 @@ export default{
       }
     },
     toDelete () {
-      this.$http.delete(`/article/${this.article._id}`)
-        .then(res => {
-          if (res.status === 200) {
-            this.$message.success('删除成功~')
-            this.$router.push('/')
-          }
-        }).catch(err => {
-          console.log(err)
+      this.$confirm('确认要删除吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$http.delete(`/article/${this.article._id}`)
+          .then(res => {
+            if (res.status === 200) {
+              this.$message.success('删除成功~')
+              this.$router.push('/')
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         })
+      })
+    },
+    focus () {
+      this.btn_show = true
+    },
+    toComment () {
+      console.log(this.comment)
+      this.btn_show = false
+    },
+    cancel () {
+      this.btn_show = false
     }
   }
 }
@@ -158,6 +194,7 @@ export default{
 }
 .footer{
   margin-top: 50px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between
 }
@@ -181,5 +218,36 @@ export default{
 }
 .delete{
   margin-left: 10px
+}
+.comments_count {
+  font-size: 14px;
+  color: #494949;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 10px;
+}
+.line{
+  border-bottom: 1px solid #D9D9D9;
+  margin-top: 46px
+}
+.input_box{
+  display: flex;
+  padding: 10px
+}
+.input_avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px
+}
+.input {
+  margin-left: 10px
+}
+.btn{
+  float: right;
+  margin-right: 20px
+}
+.cancel {
+  margin-right: 20px
 }
 </style>
