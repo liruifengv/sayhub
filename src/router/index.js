@@ -14,6 +14,10 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+    return { x: 0, y: 0 } // 对于所有路由导航，简单地让页面滚动到顶部
+  },
   routes: [
     {
       path: '/',

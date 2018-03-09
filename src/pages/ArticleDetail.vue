@@ -152,7 +152,7 @@ export default{
 .container {
   display: flex;
   justify-content: center;
-  padding-bottom: 100px 
+  padding-bottom: 100px
 }
 .article{
   padding: 15px;
