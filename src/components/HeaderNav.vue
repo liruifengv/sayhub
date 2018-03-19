@@ -82,7 +82,9 @@
                   tag="span"
                   >
                   <el-dropdown-item>
+                    <router-link :to='`user/${this.userInfo.username}`'>
                     <i class="mdi mdi-home-account"/> 主页
+                    </router-link>
                   </el-dropdown-item>
                 </router-link>
                 <router-link 
@@ -107,19 +109,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
-      search: '',
-      userInfo: {}
+      search: ''
     }
   },
   computed: {
     login_status () {
       return this.$store.state.login_status
-    }
+    },
+    ...mapState([
+      'userInfo'
+    ])
   },
   created () {
+    console.log(this.userInfo)
   },
   methods: {
     signout () {

@@ -9,6 +9,7 @@ const ArticleDetail = () => import('../pages/ArticleDetail.vue')
 const ArticleList = () => import('../components/ArticleList.vue')
 const ArticleWrite = () => import('../pages/ArticleWrite.vue')
 const DraftsPage = () => import('../pages/DraftsPage.vue')
+const UserInfo = () => import('../pages/UserInfo.vue')
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/draft',
       name: 'DraftsPage',
       component: DraftsPage
+    },
+    {
+      path: '/user/:username',
+      name: 'UserInfo',
+      component: UserInfo
     }
   ]
 })
