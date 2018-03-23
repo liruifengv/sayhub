@@ -36,6 +36,11 @@
             <el-button type="text" class="cancel" v-show="btn_show" @click="cancel">取消</el-button>            
             <el-button plain v-show="btn_show" @click="toComment()">评论</el-button>
           </el-row>
+          <el-row class="comment_box">
+            <comment-item/>
+            <comment-item/>
+            <comment-item/>            
+          </el-row>
     </el-col>
   </el-row>
 </template>
@@ -43,6 +48,8 @@
 <script>
 import { mapState } from 'vuex'
 import moment from 'moment'
+import CommentItem from '../components/CommentItem.vue'
+
 export default{
   data () {
     return {
@@ -53,6 +60,7 @@ export default{
     }
   },
   components: {
+    CommentItem
   },
   computed: {
     ...mapState([
@@ -249,5 +257,8 @@ export default{
 }
 .cancel {
   margin-right: 20px
+}
+.comment_box{
+  margin-top: 50px;
 }
 </style>
