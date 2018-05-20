@@ -82,7 +82,7 @@
                   tag="span"
                   >
                   <el-dropdown-item>
-                    <router-link :to='`user/${this.userInfo.username}`'>
+                    <router-link :to='`user/${this.userInfo.username}`' tag="span">
                     <i class="mdi mdi-home-account"/> 主页
                     </router-link>
                   </el-dropdown-item>

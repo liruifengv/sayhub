@@ -5,7 +5,7 @@ if (window.localStorage.getItem('token')) {
 }
 
 export let instance = Axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'http://sayhub.me/api' : 'http://sayhub.me/api'
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://sayhub.me/api' : 'http://localhost:3000/api'
 })
 
 export const getToken = ({ login_user, login_password }) => {

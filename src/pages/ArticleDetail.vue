@@ -2,7 +2,9 @@
   <el-row class="container">
     <el-col  :span="12" :xs="24" class="article">
       <h1 class="title">{{article.title}}</h1>
+      <router-link :to='`user/${article.author}`' tag="span">
       <span class="author">{{article.author}}</span>
+      </router-link>
       <span class="date">发表日期: {{time}}</span>
       <el-row class="markdown-body">
         <p class="content" v-html="article.content_render"></p>
@@ -25,7 +27,7 @@
       </div>
           <el-row>
             <el-col :span="3" class="comments_count">
-              0条评论
+              {{comments_count}}条评论
             </el-col>
             <el-col :span="21" class="line"></el-col>
           </el-row>
@@ -37,10 +39,18 @@
             <el-button plain v-show="btn_show" @click="toComment()">评论</el-button>
           </el-row>
           <el-row class="comment_box">
-            <comment-item/>
-            <comment-item/>
-            <comment-item/>            
+            <el-row class="comment_list" v-for="item in comments" :key="item._id">
+              <comment-item :comment="item" :getComments="getComments"/>         
+            </el-row>
           </el-row>
+          <div class="block" v-show="total > 1">
+          <el-pagination
+            layout="prev, pager, next"
+            :page-count="total"
+            @current-change="changePage"
+            :current-page.sync="page">
+          </el-pagination>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -56,7 +66,11 @@ export default{
       article: {},
       time: '',
       btn_show: false,
-      comment: ''
+      comments: [],
+      comment: '',
+      total: 0,
+      page: 1,
+      comments_count: ''
     }
   },
   components: {
@@ -88,10 +102,27 @@ export default{
           this.article = res.data
           console.log(this.article)
           this.time = moment(this.article.updated).format('YYYY-MM-DD HH:mm:ss')
+          this.getComments()
         }
       }).catch((err) => {
         console.log(err)
       })
+    },
+    getComments () {
+      this.$http.get(`/article/${this.$route.params.id}/comments?page=${this.page}&page_size=5`)
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data)
+          this.comments = res.data.comments
+          this.comments_count = res.data.total
+          this.total = Math.ceil(res.data.total / 5)
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
+    changePage () {
+      this.getComments()
     },
     vote () {
       if (this.userInfo) {
@@ -146,8 +177,22 @@ export default{
       this.btn_show = true
     },
     toComment () {
-      console.log(this.comment)
-      this.btn_show = false
+      if (this.comment === '') {
+        this.$message.info('评论不能为空~')
+      } else {
+        this.$http.post(`/article/${this.article._id}/comment`, {
+          content: this.comment,
+          author: this.userInfo.username
+        })
+          .then(res => {
+            if (res.status === 200) {
+              this.comments_count = res.data.comments_count
+              this.getComments()
+              this.comment = ''
+              this.btn_show = false
+            }
+          })
+      }
     },
     cancel () {
       this.btn_show = false
@@ -261,4 +306,9 @@ export default{
 .comment_box{
   margin-top: 50px;
 }
+.block{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px
+}  
 </style>

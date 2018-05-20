@@ -26,7 +26,9 @@
       </el-dropdown>
     </div>
     <div class="author_box">
+      <router-link :to='`user/${item.author}`' tag="span">
       <span class="author">{{item.author}}</span>
+      </router-link>
       <span class="date">{{time}}</span>
     </div>
     <p class="abstract">{{item.content_text}}</p>

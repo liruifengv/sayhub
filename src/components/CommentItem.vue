@@ -1,11 +1,13 @@
 <template>
   <el-row class="wrapper">
     <div class="author_box">
-      <span class="author">liruifengv</span>
-      <span class="date">2018-03-23</span>
+      <router-link :to='`user/${comment.author}`' tag="span">
+        <span class="author">{{comment.author}}</span>
+      </router-link>
+      <span class="date">{{time}}</span>
     </div>
-    <div class="content">这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论</div>
-    <div class="edit">
+    <div class="content">{{comment.content}}</div>
+    <div class="edit" v-if="isOwner">
       <el-dropdown trigger="click">
         <i class="el-icon-arrow-down"></i>
           <el-dropdown-menu slot="dropdown" class="menu">
@@ -21,7 +23,7 @@
      <span class="goal" :class="{highlight: is_up}" @click="vote">
         <span class="text">
           <i class="mdi mdi-thumb-up-outline"></i>
-        </span>&nbsp;{{votes_count}}
+        </span>&nbsp;{{comment.votes_count}}
       </span>
     </el-row>
   </el-row>
@@ -29,19 +31,17 @@
 
 <script>
 import { mapState } from 'vuex'
-// import moment from 'moment'
+import moment from 'moment'
 export default {
   data () {
     return {
       time: '',
-      isOwner: true,
-      votes_count: 0,
       is_up: false
     }
   },
   props: {
-    comments: {
-      type: Array
+    comment: {
+      type: Object
     },
     getComments: {
       type: Function
@@ -50,19 +50,24 @@ export default {
   computed: {
     ...mapState([
       'userInfo'
-    ])
-    // isOwner () {
-    //   if (this.userInfo) {
-    //     if (this.userInfo.username === this.item.author) {
-    //       return true
-    //     } else {
-    //       return false
-    //     }
-    //   }
-    // }
+    ]),
+    isOwner () {
+      if (this.userInfo) {
+        if (this.userInfo.username === this.comment.author) {
+          return true
+        } else {
+          return false
+        }
+      }
+    }
   },
   created () {
-    // this.time = moment(this.item.updated).format('YYYY-MM-DD HH:mm:ss')
+    this.time = moment(this.comment.created).format('YYYY-MM-DD HH:mm:ss')
+    if (this.comment.votes.includes(this.userInfo._id)) {
+      this.is_up = true
+    } else {
+      this.is_up = false
+    }
   },
   methods: {
     toDelete () {
@@ -71,15 +76,11 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$http.delete(`/${this.type}/${this.item._id}`)
+        this.$http.delete(`/comment/${this.comment._id}`)
           .then(res => {
             if (res.status === 200) {
               this.$message.success('删除成功~')
-              if (this.type === 'draft') {
-                this.getDrafts()
-              } else {
-                this.getArticles()
-              }
+              this.getComments()
             }
           }).catch(err => {
             console.log(err)
@@ -92,12 +93,30 @@ export default {
       })
     },
     vote () {
-      if (this.is_up == true) {
-        this.votes_count--
-        this.is_up = !this.is_up
+      if (this.userInfo) {
+        if (this.isOwner === false) {
+          if (this.is_up) {
+            this.$http.delete(`/comment/${this.comment._id}/up`)
+              .then(res => {
+                if (res.status === 200) {
+                  this.comment.votes_count = res.data.votes_count
+                  this.is_up = false
+                }
+              })
+          } else {
+            this.$http.post(`/comment/${this.comment._id}/up`)
+              .then(res => {
+                if (res.status === 200) {
+                  this.comment.votes_count = res.data.votes_count
+                  this.is_up = true
+                }
+              })
+          }
+        } else {
+          this.$message.error('不能给自己点赞！')
+        }
       } else {
-        this.is_up = !this.is_up
-        this.votes_count++
+        this.$message.error('请登录后点赞！')
       }
     }
   }
