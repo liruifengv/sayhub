@@ -29,6 +29,8 @@ router.beforeEach((to, from, next) => {
     if (window.localStorage.getItem('sayhub_token')) {
       store.dispatch('getUser')
     }
+  } else if (path === '/settings') {
+    router.push('/settings/profile')
   } else {
     if (window.localStorage.getItem('sayhub_token')) {
       store.dispatch('getUser')

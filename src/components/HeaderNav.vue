@@ -82,13 +82,13 @@
                   tag="span"
                   >
                   <el-dropdown-item>
-                    <router-link :to='`user/${this.userInfo.username}`' tag="span">
+                    <router-link :to='`/user/${this.userInfo.username}`' tag="span">
                     <i class="mdi mdi-home-account"/> 主页
                     </router-link>
                   </el-dropdown-item>
                 </router-link>
                 <router-link 
-                  to="/" 
+                  to="/settings" 
                   tag="span">
                   <el-dropdown-item>
                     <i class="el-icon-setting"/> 设置
@@ -114,7 +114,8 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      search: ''
+      search: '',
+      articles: []
     }
   },
   computed: {
@@ -147,9 +148,46 @@ export default {
         })
       })
     },
-    fetchData () {
-      console.log('Search Sayhub')
-      console.log(this.search)
+    fetchData (string, cb) {
+      if (this.timeout) {
+        clearTimeout(this.timeout)
+      }
+      this.timeout = setTimeout(() => {
+        if (string && this.search === string) {
+          this.articles = []
+          this.$http.get(`/articles?title=${string}`)
+            .then(res => {
+              if (res.status === 200 && res.data.articles.length !== 0) {
+                this.articles = res.data.articles.map(item => {
+                  return Object.assign(item, {
+                    value: item.title
+                  })
+                })
+              }
+              if (!this.articles.some(item => item.id === -1)) {
+                this.articles.push({value: '没有想要的？去发表', id: -1})
+              }
+              cb(this.articles)
+  //          获取下拉框，改变最后一项监听的事件。
+              this.$nextTick(() => {
+                const el = document.getElementsByClassName('el-autocomplete-suggestion__list')[0]
+                console.log(el)
+                let len = el.childNodes.length
+                for (let i = 0; i < len; i++) {
+                  el.childNodes[i].onclick = () => {
+                    this.search = ''
+                    const target = this.articles[i - 1]
+                    if (target._id !== undefined) {
+                      this.$router.push(`/article/${target._id}`)
+                    } else {
+                      this.$router.push('/write')
+                    }
+                  }
+                }
+              })
+            })
+        }
+      }, 500)
     }
   }
 }

@@ -35,7 +35,7 @@
           {{item.title}}
         </router-link>
         <div class="author_box">
-          <router-link :to='`user/${item.author}`' tag="span">
+          <router-link :to='`/user/${item.author}`' tag="span">
           <span class="author">{{item.author}}</span>
           </router-link>
           <span class="date">{{item.created}}</span>
@@ -111,8 +111,6 @@ export default {
   font-size: 16px;
   font-weight: 600
 }
-.bio{}
-
 .Article_box {
   margin-top:20px;
 }

@@ -1,7 +1,7 @@
 <template>
   <el-row class="wrapper">
     <div class="author_box">
-      <router-link :to='`user/${comment.author}`' tag="span">
+      <router-link :to='`/user/${comment.author}`' tag="span">
         <span class="author">{{comment.author}}</span>
       </router-link>
       <span class="date">{{time}}</span>

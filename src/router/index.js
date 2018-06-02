@@ -10,6 +10,9 @@ const ArticleList = () => import('../components/ArticleList.vue')
 const ArticleWrite = () => import('../pages/ArticleWrite.vue')
 const DraftsPage = () => import('../pages/DraftsPage.vue')
 const UserInfo = () => import('../pages/UserInfo.vue')
+const Settings = () => import('../pages/Settings.vue')                    // 设置页面
+const Profile = () => import('../pages/Profile.vue')                 // 个人信息
+const ChangePassword = () => import('../pages/ChangePassword.vue')   // 修改密码
 
 Vue.use(Router)
 
@@ -76,6 +79,19 @@ export default new Router({
       path: '/user/:username',
       name: 'UserInfo',
       component: UserInfo
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
+      children: [{
+        path: 'profile',
+        component: Profile
+      },
+      {
+        path: 'changepassword',
+        component: ChangePassword
+      }]
     }
   ]
 })

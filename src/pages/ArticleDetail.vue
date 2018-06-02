@@ -2,7 +2,7 @@
   <el-row class="container">
     <el-col  :span="12" :xs="24" class="article">
       <h1 class="title">{{article.title}}</h1>
-      <router-link :to='`user/${article.author}`' tag="span">
+      <router-link :to='`/user/${article.author}`' tag="span">
       <span class="author">{{article.author}}</span>
       </router-link>
       <span class="date">发表日期: {{time}}</span>
