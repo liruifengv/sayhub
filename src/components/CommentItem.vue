@@ -52,7 +52,7 @@ export default {
       'userInfo'
     ]),
     isOwner () {
-      if (this.userInfo) {
+      if (this.userInfo.username) {
         if (this.userInfo.username === this.comment.author) {
           return true
         } else {
@@ -63,8 +63,12 @@ export default {
   },
   created () {
     this.time = moment(this.comment.created).format('YYYY-MM-DD HH:mm:ss')
-    if (this.comment.votes.includes(this.userInfo._id)) {
-      this.is_up = true
+    if (this.userInfo._id) {
+      if (this.comment.votes.includes(this.userInfo._id)) {
+        this.is_up = true
+      } else {
+        this.is_up = false
+      }
     } else {
       this.is_up = false
     }

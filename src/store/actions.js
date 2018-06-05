@@ -28,3 +28,11 @@ export const getUser = ({ commit }) => {
     })
   })
 }
+
+export const logOut = ({ commit }) => {
+  return new Promise((resolve, reject) => {
+    commit(types.GET_USER_INFO, {})
+    commit(types.CHANGE_LOGIN_STATUS, false)
+    commit(types.GET_SAYHUB_TOKEN, '')
+  })
+}

@@ -81,12 +81,14 @@ export default{
       'userInfo'
     ]),
     isOwner () {
-      if (this.userInfo) {
+      if (this.userInfo.username) {
         if (this.userInfo.username === this.article.author) {
           return true
         } else {
           return false
         }
+      } else {
+        return false
       }
     }
   },
@@ -125,7 +127,7 @@ export default{
       this.getComments()
     },
     vote () {
-      if (this.userInfo) {
+      if (this.userInfo.username) {
         if (this.isOwner === false) {
           if (this.article.is_up) {
             this.$http.delete(`/article/${this.article._id}/up`)

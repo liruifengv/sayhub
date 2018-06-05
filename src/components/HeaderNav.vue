@@ -137,9 +137,7 @@ export default {
         type: 'warning'
       }).then(() => {
         window.localStorage.clear()
-        this.$store.commit('CHANGE_LOGIN_STATUS', false)
-        this.$store.commit('GET_SAYHUB_TOKEN', '')
-        this.$store.commit('GET_USER_INFO', {})
+        this.$store.dispatch('logOut')
         this.$router.push({ path: '/' })
       }).catch(() => {
         this.$message({

@@ -83,7 +83,7 @@ export default {
       'userInfo'
     ]),
     isOwner () {
-      if (this.userInfo) {
+      if (this.userInfo.username) {
         if (this.userInfo.username === this.item.author) {
           return true
         } else {

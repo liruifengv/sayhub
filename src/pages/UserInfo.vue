@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-col :span="3" :xs="24" class="item"></el-col>    
-    <el-col :span="10" :xs="24" class="item">
+    <el-col :span="10" :xs="24" class="item userInfoBox">
       <div class="userInfo">
         <div class="box">
           <img src="http://images.sayhub.me/avatar" class="avatar"/>
@@ -30,7 +30,7 @@
       </div>
     </el-col>
     <el-col :span="8" :xs="24" class="Article_box">
-      <div class="article"  v-for="item in articles">
+      <div class="article"  v-for="(item,index) in articles" :key="index">
         <router-link :to='`/article/${item._id}`' class="title">
           {{item.title}}
         </router-link>
@@ -113,6 +113,11 @@ export default {
 }
 .Article_box {
   margin-top:20px;
+  background: #fff;
+}
+.userInfoBox {
+  background: #fff;
+  height: 100%;
 }
 .article {
   margin-top:10px;

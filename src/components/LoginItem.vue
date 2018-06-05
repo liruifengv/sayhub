@@ -1,5 +1,5 @@
 <template>
-  <el-row class="row">
+  <el-row class="login-style">
     <h1>Sayhub</h1>
     <el-input placeholder="用户名" v-model="username"></el-input>
     <el-input type="password" placeholder="密码" v-model="password"></el-input>
@@ -80,7 +80,7 @@ export default{
 </script>
 
 <style scoped>
-.row{
+.login-style{
   border: 1px solid #fff;
   text-align: center;
   padding: 20px;

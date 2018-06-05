@@ -13,8 +13,9 @@
         <ArticleItem class="item" v-for="item in articles" :key="item._id" :item = "item" :getArticles = "getArticles"/>
       </div>
     </el-col>
-    <el-col :span="5" :xs="24" class="right">
-      <LeftItem />
+    <el-col :span="3" :xs="24" class="right">
+      <!-- <LeftItem /> -->
+      <Item :type="'signup'" v-if="!this.login_status"/>      
     </el-col>
   </el-row>
 </template>
@@ -22,6 +23,9 @@
 <script>
   import ArticleItem from '../components/ArticleItem.vue'
   import LeftItem from '../components/LeftItem.vue'
+  import Item from '../components/LoginItem'
+  import { mapState } from 'vuex'
+  
   export default {
     name: 'HomePage',
     data () {
@@ -31,7 +35,16 @@
     },
     components: {
       ArticleItem,
-      LeftItem
+      LeftItem,
+      Item
+    },
+    computed: {
+      login_status () {
+        return this.$store.state.login_status
+      },
+      ...mapState([
+        'userInfo'
+      ])
     },
     created () {
       console.log('首页加载成功')
@@ -40,7 +53,7 @@
     },
     methods: {
       getArticles () {
-        this.$http.get(`/articles?page=1&page_size=6`)
+        this.$http.get(`/articles?page=1&page_size=10`)
           .then(res => {
             if (res.status === 200) {
               this.articles = res.data.articles
@@ -79,6 +92,10 @@
     cursor: pointer;
     font-size: 14px;
     color: #90979c;
+  }
+  .login-style{
+    border: none !important;
+    box-shadow: none !important;
   }
   span.router-link-active, span:hover {
     color: #42b983;
