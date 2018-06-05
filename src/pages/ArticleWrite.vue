@@ -223,6 +223,9 @@
 </script>
 
 <style scoped>
+  .view {
+      background: #fff !important;
+  }
   .container {
     display: flex;
     justify-content: center;
@@ -290,7 +293,7 @@
     font-weight: 600;
   }
   #editor{
-    height: 100%;
+    /* height: 100%; */
     z-index: 500;
   }
   @media screen and (max-width: 600px) {

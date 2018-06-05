@@ -1,13 +1,20 @@
 <template class="view">
   <el-row>
-    <el-col :span="3" :xs="24" class="empty"></el-col>
-    <el-col :span="5" :xs="24" class="left">
-      <LeftItem />
-    </el-col>
-    <el-col :span="15" :xs="24" class="right">
+    <el-col :span="5" :xs="24" class="empty"></el-col>
+    <el-col :span="10" :xs="24" class="left">
       <div class="grid-content bg-purple box">
+        <el-row class="title">
+          <div class="sort">
+            <router-link to='/' exact tag="span">热门</router-link> 
+            | 
+            <router-link to='/tags' tag="span">最新</router-link>
+          </div>
+        </el-row>
         <ArticleItem class="item" v-for="item in articles" :key="item._id" :item = "item" :getArticles = "getArticles"/>
       </div>
+    </el-col>
+    <el-col :span="5" :xs="24" class="right">
+      <LeftItem />
     </el-col>
   </el-row>
 </template>
@@ -51,24 +58,39 @@
   .grid-content {
     padding: 15px
   }
-  .item{
-    display: inline-block;
-    margin: 0px 5px 20px 0px;
-    box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+  .item:not(:last-child){
+    border-bottom: 1px solid #ddd;
+  }
+  .left,.right {
+    background: #fff;
+  }
+  .left {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .title {
+    border-bottom: 1px solid #ddd;
+    padding: 0 15px 5px 15px;
+  }
+  .sort {
+    float: right;
+  }
+  .sort span {
+    cursor: pointer;
+    font-size: 14px;
+    color: #90979c;
+  }
+  span.router-link-active, span:hover {
+    color: #42b983;
   }
   @media screen and (max-width: 600px) {
     .view {
       display: flex;
-      flex-direction: column-reverse
+      flex-direction: column
     }
     .empty{
       display: none
     }
-    .grid-content {
-      padding: 0
-    }
-    .item{
-      box-shadow: none
-    }
+
   }
 </style>

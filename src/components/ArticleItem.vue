@@ -1,5 +1,5 @@
 <template>
-  <el-row class="container"  :class=" longWidth === true ? 'long_container' : 'container'">
+  <el-row class="container">
       <router-link :to='`/${this.type}/${item._id}`' class="title" v-if="type === 'article'">
         {{item.title}}
       </router-link>
@@ -26,18 +26,30 @@
       </el-dropdown>
     </div>
     <div class="author_box">
-      <router-link :to='`/user/${item.author}`' tag="span">
-      <span class="author">{{item.author}}</span>
+      <router-link :to='`/user/${item.author}`' tag="span" class="meta">
+        <span class="author">{{item.author}}</span>
       </router-link>
-      <span class="date">{{time}}</span>
+      <span class="date meta">{{time}}</span>
+      <span class="readNum meta"  v-if="this.type === 'article'">10次阅读</span>      
     </div>
     <p class="abstract">{{item.content_text}}</p>
+    <el-row class="footer" v-if="this.type === 'article'">
+      <div class="message">
+        <tags :item='item'/>
+      </div>
+      <div class="votesBox">
+        <action :item="item" :is-owner="isOwner"/>
+      </div>
+    </el-row>
   </el-row>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import moment from 'moment'
+import tags from '../components/Tags.vue'
+import action from '../components/Action.vue'
+
 export default {
   data () {
     return {
@@ -61,6 +73,10 @@ export default {
     getDrafts: {
       type: Function
     }
+  },
+  components: {
+    tags,
+    action
   },
   computed: {
     ...mapState([
@@ -112,15 +128,7 @@ export default {
 
 <style scoped>
 .container{
-  width: 48%;
-  border: 1px solid #e1e4e8;
-  border-radius: 3px;
-  padding: 0 15px 5px 15px
-}
-.long_container{
   width: 100%;
-  border: 1px solid #e1e4e8;
-  border-radius: 3px;
   padding: 0 15px 5px 15px
 }
 .title{
@@ -144,7 +152,7 @@ export default {
 .abstract{
   color: #262626;
   line-height: 20px;
-  max-height: 60px;
+  max-height: 40px;
   font-size: 15px;
   margin-top: 9px;
   overflow: hidden;
@@ -152,15 +160,15 @@ export default {
   position: relative;
 }
 .abstract:after {
-    content:"...";
-    position:absolute;
-    bottom:0;
-    background:#FFF;
-    padding-left:0.2em;
-    background:url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+  content:"...";
+  position:absolute;
+  bottom:0;
+  background:#FFF;
+  padding-left:0.2em;
+  background:url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
 }
-.author,.date{
-  font-size: 14px;
+.meta{
+  font-size: 1rem;
   color: #8590a6;
 }
 .avatar{
@@ -174,17 +182,25 @@ export default {
 .author:hover{
   color: #42b983;
 }
-.date {
-  margin-left: 10px
-}
 .edit{
   position: absolute;
   right: 10px;
   top: 20px;
   cursor: pointer
 }
+.author::after,.date::after {
+  content: "\B7";
+  margin: 0 .4em;
+  color: #8f969c;
+}
+.votesBox,.message {
+  display:inline-block
+}
+.votesBox {
+  float: right;
+}
   @media screen and (max-width: 600px) {
-    .container,.long_container{
+    .container{
       width: 100%;
       border-bottom: 1px solid #e1e4e8;
       border-top: 1px solid #e1e4e8;

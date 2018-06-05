@@ -1,8 +1,8 @@
 <template>
   <el-row class="contain">
     <el-col  :span="12" :xs="24" class="row">
-      <div v-for="item in drafts">
-        <Item :item="item" class="draftItem" :key="item._id" :longWidth="true" :type="'draft'" :getDrafts = "getDrafts"/>        
+      <div v-for="(item,index) in drafts" :key="index">
+        <Item :item="item" class="draftItem" :key="item._id" :type="'draft'" :getDrafts = "getDrafts"/>        
       </div>
       <span v-show="drafts.length === 0" class="no_drafts">暂无草稿</span>
       <div class="block" v-show="total > 1">
@@ -76,6 +76,9 @@
     margin-top: 10px
   }
   .draftItem{
-    margin-top: 20px
+    /* margin-top: 20px; */
+    margin: 20px 5px 10px 0px;
+    box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+    background: #fff;
   }
 </style>

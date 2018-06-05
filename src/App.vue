@@ -38,6 +38,7 @@
     position: relative;
     top: 60px;
     min-height: calc(100vh - 60px);
+    background: #f5f5f5;
   }
   .v-note-wrapper .v-note-panel {
     box-shadow: none !important;

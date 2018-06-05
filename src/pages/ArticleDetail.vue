@@ -202,6 +202,9 @@ export default{
 </script>
 
 <style scoped>
+.view {
+    background: #fff !important;
+}
 .container {
   display: flex;
   justify-content: center;
@@ -209,7 +212,7 @@ export default{
 }
 .article{
   padding: 15px;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 .title{
   word-wrap:break-word
