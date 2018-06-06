@@ -4,8 +4,8 @@
     <el-input placeholder="用户名" v-model="username"></el-input>
     <el-input type="password" placeholder="密码" v-model="password"></el-input>
     <el-input type="password" placeholder="确认密码" v-if = "type === 'signup'" v-model="re_password"></el-input>    
-    <el-button type="primary" v-if = "type === 'signup'" @click="signup()" @keyup.enter.native="signup()">注册</el-button>
-    <el-button type="primary" v-else @click="login()" @keyup.enter.native="login()">登录</el-button>
+    <el-button type="primary" v-if = "type === 'signup'" @click="signup()">注册</el-button>
+    <el-button type="primary" v-else @click="login()">登录</el-button>
     <router-link to="/login" v-show = "type === 'signup'" tag="p">已有账号，去登录</router-link>
     <router-link to="/signup" v-show = "type === 'login'" tag="p">没有账号，去注册</router-link>
   </el-row>
@@ -59,6 +59,7 @@ export default{
     },
     // 登陆
     login () {
+      console.log('111')
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')
       } else if (this.password === '') {
