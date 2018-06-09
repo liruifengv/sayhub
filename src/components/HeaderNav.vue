@@ -2,12 +2,12 @@
   <header class="header">
     <nav class="inner">
       <router-link 
-        to="/" 
+        to="/home" 
         exact>
         <img 
           class="logo" 
           src="http://images.sayhub.me/logo" 
-          alt="logo">
+          >
       </router-link>
       <el-dropdown
         trigger="click"
@@ -18,7 +18,7 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>
             <router-link 
-              to="/" 
+              to="/home" 
               exact>首页</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
@@ -43,7 +43,7 @@
           size="small"
         />
         <router-link 
-          to="/" 
+          to="/home" 
           exact 
           class="tag">首页</router-link>
         <router-link
@@ -127,7 +127,6 @@ export default {
     ])
   },
   created () {
-    console.log(this.userInfo)
   },
   methods: {
     signout () {
@@ -169,7 +168,6 @@ export default {
   //          获取下拉框，改变最后一项监听的事件。
               this.$nextTick(() => {
                 const el = document.getElementsByClassName('el-autocomplete-suggestion__list')[0]
-                console.log(el)
                 let len = el.childNodes.length
                 for (let i = 0; i < len; i++) {
                   el.childNodes[i].onclick = () => {

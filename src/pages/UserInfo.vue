@@ -57,7 +57,6 @@ export default {
     }
   },
   created () {
-    console.log('用户页初始化')
     this.getUserInfo()
     this.getArticles()
   },
@@ -74,7 +73,6 @@ export default {
       this.$http.get(`users/${this.$route.params.username}/articles`)
         .then(res => {
           if (res.status === 200) {
-            console.log(res.data)
             this.articles = res.data
           }
         })

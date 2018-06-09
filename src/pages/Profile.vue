@@ -91,7 +91,6 @@ export default {
         homepage: this.user.homepage
       }).then(res => {
         if (res.status === 200) {
-          console.log(res.data)
           this.$message.success('修改成功~')
         }
       }).catch((error) => {

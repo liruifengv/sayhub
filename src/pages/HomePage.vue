@@ -5,12 +5,15 @@
       <div class="grid-content bg-purple box">
         <el-row class="title">
           <div class="sort">
-            <router-link to='/' exact tag="span">热门</router-link> 
+            <router-link :to='`/home`' tag="span" exact>
+              <router-link :to='`/home/?sort=hot`' tag="span">热门&nbsp;</router-link> 
+            </router-link>
             | 
-            <router-link to='/tags' tag="span">最新</router-link>
+            <router-link :to='`/home/?sort=new`' tag="span">&nbsp;最新</router-link>
           </div>
         </el-row>
-        <ArticleItem class="item" v-for="item in articles" :key="item._id" :item = "item" :getArticles = "getArticles"/>
+        <router-view :articles="articles" :getArticles = "getArticles" :source="'home'"></router-view>
+        <el-row v-show="end" class="end">到底了</el-row>
       </div>
     </el-col>
     <el-col :span="3" :xs="24" class="right">
@@ -30,7 +33,11 @@
     name: 'HomePage',
     data () {
       return {
-        articles: []
+        articles: [],
+        next: '',
+        total: '',
+        end: false,
+        flag: true
       }
     },
     components: {
@@ -44,21 +51,59 @@
       },
       ...mapState([
         'userInfo'
-      ])
+      ]),
+      ordering () {
+        if (this.$route.query.sort === 'new') {
+          return 'new'
+        } else {
+          return 'hot'
+        }
+      }
+    },
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      $route () {
+        this.getArticles()
+      }
     },
     created () {
-      console.log('首页加载成功')
       this.getArticles()
-      // this.postArticles()
+      window.onscroll = () => {
+        const body = document.body
+        if (body.scrollHeight - window.pageYOffset < body.offsetHeight + 130) {
+          this.getMore()
+        }
+      }
     },
     methods: {
       getArticles () {
-        this.$http.get(`/articles?page=1&page_size=10`)
+        this.$http.get(`/articles?page=1&page_size=10&sort=${this.ordering}`)
           .then(res => {
             if (res.status === 200) {
               this.articles = res.data.articles
+              this.next = res.data.next
+              this.total = res.data.total
             }
           })
+      },
+      getMore () {
+        if (this.next !== null && this.flag) {
+          if (this.next > this.total / 10) {
+            this.end = true
+          } else {
+            this.flag = false
+            this.end = false
+            this.$http.get(`/articles?page=${this.next}&page_size=10&sort=${this.ordering}`)
+              .then(res => {
+                if (res.status === 200) {
+                  this.articles = [...this.articles, ...res.data.articles]
+                  this.next = res.data.next
+                  this.total = res.data.total
+                }
+                this.flag = true
+              })
+          }
+        }
       }
     }
   }
@@ -70,9 +115,6 @@
   }
   .grid-content {
     padding: 15px
-  }
-  .item:not(:last-child){
-    border-bottom: 1px solid #ddd;
   }
   .left,.right {
     background: #fff;
@@ -97,8 +139,13 @@
     border: none !important;
     box-shadow: none !important;
   }
-  span.router-link-active, span:hover {
+  span.router-link-exact-active, span:hover {
     color: #42b983;
+  }
+  .end {
+    color: #42b983;
+    text-align: center;
+    margin-top: 20px;
   }
   @media screen and (max-width: 600px) {
     .view {

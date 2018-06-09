@@ -6,10 +6,11 @@
       <span class="author">{{article.author}}</span>
       </router-link>
       <span class="date">发表日期: {{time}}</span>
+      <span class="readNum meta">{{article.readed_count}}次阅读</span> 
       <el-row class="markdown-body">
         <p class="content" v-html="article.content_render"></p>
       </el-row>
-      <router-link :to='`/tags/${item}`' tag="span" class="category" v-for="item in article.category" :key="item">{{item}}</router-link>
+       <tags :item='article'/>
       <div class="footer">
         <span class="goal" :class="{highlight: article.is_up}" @click="vote">
           <span class="text">
@@ -59,6 +60,7 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import CommentItem from '../components/CommentItem.vue'
+import tags from '../components/Tags.vue'
 
 export default{
   data () {
@@ -74,6 +76,7 @@ export default{
     }
   },
   components: {
+    tags,
     CommentItem
   },
   computed: {
@@ -100,7 +103,6 @@ export default{
       this.$http.get(`/article/${this.$route.params.id}`)
       .then(res => {
         if (res.status === 200) {
-          // console.log(res.data)
           this.article = res.data
           console.log(this.article)
           this.time = moment(this.article.updated).format('YYYY-MM-DD HH:mm:ss')
@@ -114,7 +116,6 @@ export default{
       this.$http.get(`/article/${this.$route.params.id}/comments?page=${this.page}&page_size=5`)
       .then(res => {
         if (res.status === 200) {
-          console.log(res.data)
           this.comments = res.data.comments
           this.comments_count = res.data.total
           this.total = Math.ceil(res.data.total / 5)
@@ -219,10 +220,15 @@ export default{
 .title{
   word-wrap:break-word
 }
-.author,.date{
+.author,.date,.readNum{
   font-size: 15px;
   color: #8590a6;
   margin-right: 10px;
+}
+.author::after,.date::after {
+  content: "\B7";
+  margin: 0 .4em;
+  color: #8f969c;
 }
 .content{
   padding-top: 10px;

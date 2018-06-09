@@ -13,6 +13,7 @@ const UserInfo = () => import('../pages/UserInfo.vue')
 const Settings = () => import('../pages/Settings.vue')                    // 设置页面
 const Profile = () => import('../pages/Profile.vue')                 // 个人信息
 const ChangePassword = () => import('../pages/ChangePassword.vue')   // 修改密码
+const NotFound = () => import('../pages/NotFound.vue')   // 修改密码
 
 Vue.use(Router)
 
@@ -24,9 +25,17 @@ export default new Router({
   },
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'HomePage',
-      component: HomePage
+      component: HomePage,
+      children: [{
+        path: ':sort',
+        component: ArticleList
+      },
+      {
+        path: '',
+        component: ArticleList
+      }]
     },
     {
       path: '/tags',
@@ -92,6 +101,10 @@ export default new Router({
         path: 'changepassword',
         component: ChangePassword
       }]
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ]
 })

@@ -194,7 +194,6 @@
       // 自动保存草稿
       updateDraft () {
         if (this.type === 'articleEdit') {
-          console.log('文章再编辑')
         } else {
           if (this.timeout) {
             clearTimeout(this.timeout)

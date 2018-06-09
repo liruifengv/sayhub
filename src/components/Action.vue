@@ -56,10 +56,8 @@ export default {
   methods: {
     vote () {
       if (this.userInfo.username) {
-        console.log('1')
-        console.log(this.userInfo._id)
         if (this.isOwner === false) {
-          if (this.isUp) {
+          if (this.is_up) {
             this.$http.delete(`/article/${this.item._id}/up`)
               .then(res => {
                 if (res.status === 200) {
@@ -80,8 +78,6 @@ export default {
           this.$message.error('不能给自己点赞！')
         }
       } else {
-        console.log('2')
-        console.log(this.userInfo)
         this.$message.error('请登录后点赞！')
       }
     }

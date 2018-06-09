@@ -59,7 +59,6 @@ export default{
     },
     // 登陆
     login () {
-      console.log('111')
       if (this.username === '') {
         this.$message.warning('用户名不能为空哦~~')
       } else if (this.password === '') {

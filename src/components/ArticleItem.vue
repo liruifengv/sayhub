@@ -29,8 +29,8 @@
       <router-link :to='`/user/${item.author}`' tag="span" class="meta">
         <span class="author">{{item.author}}</span>
       </router-link>
-      <span class="date meta">{{time}}</span>
-      <span class="readNum meta"  v-if="this.type === 'article'">10次阅读</span>      
+      <span class="date meta">{{formatTime(item.created)}}</span>
+      <span class="readNum meta"  v-if="this.type === 'article'">{{item.readed_count}}次阅读</span>      
     </div>
     <p class="abstract">{{item.content_text}}</p>
     <el-row class="footer" v-if="this.type === 'article'">
@@ -93,9 +93,12 @@ export default {
     }
   },
   created () {
-    this.time = moment(this.item.updated).format('YYYY-MM-DD HH:mm:ss')
   },
   methods: {
+    formatTime (time) {
+      // this.time = moment(this.item.created).format('YYYY-MM-DD HH:mm:ss')
+      return moment(time).format('YYYY-MM-DD HH:mm:ss')
+    },
     toDelete () {
       this.$confirm('确认要删除吗?', '提示', {
         confirmButtonText: '确定',
@@ -129,7 +132,7 @@ export default {
 <style scoped>
 .container{
   width: 100%;
-  padding: 0 15px 5px 15px
+  padding: 0 15px 5px 15px;
 }
 .title{
   color: #000;
