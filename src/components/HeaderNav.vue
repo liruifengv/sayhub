@@ -6,7 +6,7 @@
         exact>
         <img 
           class="logo" 
-          src="http://images.sayhub.me/logo" 
+          src="http://images.sayhub.me/logo.png" 
           >
       </router-link>
       <el-dropdown
@@ -73,7 +73,7 @@
             <el-dropdown trigger="click" >
               <img 
                 class="avatar" 
-                src="http://images.sayhub.me/avatar">
+                src="http://images.sayhub.me/avatar.jpg">
               <el-dropdown-menu 
                 slot="dropdown" 
                 class="menu">
@@ -137,7 +137,7 @@ export default {
       }).then(() => {
         window.localStorage.clear()
         this.$store.dispatch('logOut')
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/home' })
       }).catch(() => {
         this.$message({
           type: 'info',

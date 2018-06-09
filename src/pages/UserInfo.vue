@@ -4,7 +4,7 @@
     <el-col :span="10" :xs="24" class="item userInfoBox">
       <div class="userInfo">
         <div class="box">
-          <img src="http://images.sayhub.me/avatar" class="avatar"/>
+          <img src="http://images.sayhub.me/avatar.jpg" class="avatar"/>
           <p class="userName">{{userInfo.username}}</p>
         </div>
         <div class="box">
