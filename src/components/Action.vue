@@ -21,7 +21,7 @@ export default {
     return {
       votes_count: '',
       comments_count: '',
-      is_up: false
+      is_up: ''
     }
   },
   props: {
@@ -38,20 +38,18 @@ export default {
   computed: {
     ...mapState([
       'userInfo'
-    ]),
-    isUp () {
-      if (this.userInfo.username) {
-        if (this.item.votes.includes(this.userInfo._id)) {
-          return true
-        } else {
-          return false
-        }
-      } else {
-        return false
-      }
-    }
+    ])
   },
   created () {
+    if (this.userInfo._id) {
+      if (this.item.votes.includes(this.userInfo._id)) {
+        this.is_up = true
+      } else {
+        this.is_up = false
+      }
+    } else {
+      this.is_up = false
+    }
   },
   methods: {
     vote () {
