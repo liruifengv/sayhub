@@ -1,161 +1,113 @@
 <template>
-  <div>
-    <el-col :span="3" :xs="24" class="item"></el-col>    
-    <el-col :span="10" :xs="24" class="item userInfoBox">
-      <div class="userInfo">
-        <div class="box">
-          <img src="http://images.sayhub.me/avatar.jpg" class="avatar"/>
-          <p class="userName">{{userInfo.username}}</p>
+   <el-row class="view">
+   <el-col :span="5" :xs="24" class="empty"></el-col>
+    <el-col :span="10" :xs="24" class="left">
+       <div class="grid-content bg-purple box">
+        <el-row class="title">
+          发表过的文章
+        </el-row>
+         <ArticleItem :source="'home'" class="item" v-for="item in articles" :key="item._id" :item = "item" :getArticles = "getArticles"/>
+         <div v-show="articles.length === 0" class="noData">
+          <img src="../../static/create.png"/>
+          <div>暂无文章</div>
         </div>
-        <div class="box">
-          <span class="label">个性签名：</span>
-          <span class="bio">{{userInfo.bio === '' ? '--' : userInfo.bio}}</span>
-        </div>
-        <div class="box">
-          <span class="label">邮箱：</span>
-          <span class="bio">{{userInfo.email === '' ? '--' : userInfo.email}}</span>
-        </div>
-        <div class="box">
-          <span class="label">公司</span>
-          <span class="bio">{{userInfo.company === '' ? '--' : userInfo.company}}</span>
-        </div>
-        <div class="box">
-          <span class="label">GitHub：</span>
-          <span class="bio">{{userInfo.github === '' ? '--' : userInfo.github}}</span>
-        </div>
-        <div class="box">
-          <span class="label">个人主页：</span>
-          <span class="bio">{{userInfo.homepage === '' ? '--' : userInfo.homepage}}</span>
-        </div>
-      </div>
+       </div>
+     </el-col>
+    <el-col :span="5" :xs="24" class="right">
+      <LeftItem :item="userInfo"/>
     </el-col>
-    <el-col :span="8" :xs="24" class="Article_box">
-      <div class="article"  v-for="(item,index) in articles" :key="index">
-        <router-link :to='`/article/${item._id}`' class="title">
-          {{item.title}}
-        </router-link>
-        <div class="author_box">
-          <router-link :to='`/user/${item.author}`' tag="span">
-          <span class="author">{{item.author}}</span>
-          </router-link>
-          <span class="date">{{item.created}}</span>
-        </div>
-      <p class="abstract">{{item.content_text}}</p>
-      </div>
-    </el-col>    
-  </div>
+   </el-row>
 </template>
 
 <script>
+  import ArticleItem from '../components/ArticleItem.vue'
+  import LeftItem from '../components/LeftItem.vue'
+
 export default {
-  name: 'UserInfo',
-  data () {
-    return {
-      userInfo: {},
-      articles: [],
-      time: ''
-    }
-  },
-  created () {
-    this.getUserInfo()
-    this.getArticles()
-  },
-  methods: {
-    getUserInfo () {
-      this.$http.get(`users/${this.$route.params.username}`)
-        .then(res => {
+    name: 'UserInfo',
+    data () {
+      return {
+        userInfo: {},
+        articles: []
+      }
+    },
+    components: {
+      LeftItem,
+      ArticleItem
+    },
+    created () {
+      this.getUserInfo()
+      this.getArticles()
+    },
+    methods: {
+      getUserInfo () {
+        this.$http.get(`users/${this.$route.params.username}`).then(res => {
           if (res.status === 200) {
             this.userInfo = res.data
           }
         })
-    },
-    getArticles () {
-      this.$http.get(`users/${this.$route.params.username}/articles`)
-        .then(res => {
-          if (res.status === 200) {
-            this.articles = res.data
-          }
-        })
+      },
+      getArticles () {
+        this.$http
+          .get(`users/${this.$route.params.username}/articles`)
+          .then(res => {
+            if (res.status === 200) {
+              this.articles = res.data
+            }
+          })
+      }
     }
-  }
 }
 </script>
 
 <style scoped>
-.item {
-  margin-right: 20px;
+.el-col {
   margin-top: 20px;
-  padding: 10px;
 }
-.box{
-  margin-top:20px;
-  display: flex;
-  justify-content: flex-start;
+.grid-content {
+  padding: 15px;
 }
-.avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 4px;
-  border: 1px solid #fff;
+.left,
+.right {
+  background: #fff;
 }
-.userName {
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 30px;
-  margin-left: 20px;
-  margin-top: 120px;
+.left {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  min-height: 556px;
 }
-.label{
+.title {
   font-size: 16px;
-  font-weight: 600
-}
-.Article_box {
-  margin-top:20px;
-  background: #fff;
-}
-.userInfoBox {
-  background: #fff;
-  height: 100%;
-}
-.article {
-  margin-top:10px;
   border-bottom: 1px solid #ddd;
-}
-.title{
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 0px 16px 16px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
- 	display: -webkit-box;
- 	-webkit-line-clamp: 2;
- 	-webkit-box-orient: vertical;
-  text-decoration: none;
-  word-wrap:break-word
+  padding: 0 15px 5px 15px;
 }
 
-.title:hover {
-  color: #42b983
+.end {
+  color: #42b983;
+  text-align: center;
+  margin-top: 20px;
 }
-.abstract{
-  color: #262626;
-  line-height: 20px;
-  max-height: 60px;
-  font-size: 15px;
-  margin-top: 9px;
-  overflow: hidden;
-  cursor:auto;
-  position: relative;
+.noData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20%;
 }
-.abstract:after {
-    content:"...";
-    position:absolute;
-    bottom:0;
-    background:#FFF;
-    padding-left:0.2em;
-    background:url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+@media screen and (max-width: 600px) {
+  .view {
+    display: flex;
+    flex-direction: column;
+  }
+  .left {
+    order: 2
+  }
+  .right {
+    order: 1
+  }
+  .empty {
+    display: none;
+  }
 }
 </style>
 

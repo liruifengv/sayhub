@@ -1,11 +1,11 @@
 <template>
   <el-row class="container">
-    404
+    <img src="../../static/404.png" />
   </el-row>
 </template>
 
 <script>
-export default{
+export default {
   data () {
     return {
     }

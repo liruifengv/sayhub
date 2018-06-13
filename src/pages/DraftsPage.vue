@@ -4,7 +4,10 @@
       <div v-for="(item,index) in drafts" :key="index">
         <Item :item="item" class="draftItem" :key="item._id" :type="'draft'" :getDrafts = "getDrafts"/>        
       </div>
-      <span v-show="drafts.length === 0" class="no_drafts">暂无草稿</span>
+      <div v-show="drafts.length === 0" class="no_drafts">
+        <img src="../../static/create.png"/>
+        <div>暂无草稿</div>
+      </div>
       <div class="block" v-show="total > 1">
         <el-pagination
           layout="prev, pager, next"
@@ -68,7 +71,9 @@
   .no_drafts{
     display: flex;
     justify-content: center;
-    margin-top: 100px
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20%;
   }
   .block{
     text-align: center;

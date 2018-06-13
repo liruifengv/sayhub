@@ -1,6 +1,6 @@
 <template>
   <div class="Box">
-    <span class="votes"  :class="{highlight: this.is_up}" @click="vote">
+    <span class="votes"  :class="{highlight: item.is_up}" @click="vote">
       <span class="text">
         <i class="mdi mdi-thumb-up-outline"></i>
       </span>&nbsp;{{item.votes_count}}
@@ -40,27 +40,36 @@ export default {
       'userInfo'
     ])
   },
-  created () {
-    if (this.userInfo._id) {
-      if (this.item.votes.includes(this.userInfo._id)) {
-        this.is_up = true
-      } else {
-        this.is_up = false
-      }
-    } else {
-      this.is_up = false
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    $route () {
+      this.isUp()
     }
   },
+  mounted () {
+    this.isUp()
+  },
   methods: {
+    isUp () {
+      if (this.userInfo._id) {
+        if (this.item.votes.includes(this.userInfo._id)) {
+          this.item.is_up = true
+        } else {
+          this.item.is_up = false
+        }
+      } else {
+        this.item.is_up = false
+      }
+    },
     vote () {
       if (this.userInfo.username) {
         if (this.isOwner === false) {
-          if (this.is_up) {
+          if (this.item.is_up) {
             this.$http.delete(`/article/${this.item._id}/up`)
               .then(res => {
                 if (res.status === 200) {
                   this.item.votes_count = res.data.votes_count
-                  this.is_up = false
+                  this.item.is_up = false
                 }
               })
           } else {
@@ -68,7 +77,7 @@ export default {
               .then(res => {
                 if (res.status === 200) {
                   this.item.votes_count = res.data.votes_count
-                  this.is_up = true
+                  this.item.is_up = true
                 }
               })
           }

@@ -10,7 +10,10 @@
         <router-link :to='`/tags/wechat`' class="tag" tag="span">微信公众号</router-link>
       </div>
       <router-view :articles="articles" :getArticles = "getArticles"></router-view>
-      <span v-show="articles.length === 0" class="no_articles">暂无相关文章</span>
+      <div v-show="articles.length === 0" class="noData">
+        <img src="../../static/create.png"/>
+        <div>暂无相关文章</div>
+      </div>
       <div class="block" v-show="total > 1">
         <el-pagination
           layout="prev, pager, next"
@@ -96,10 +99,12 @@
     color: #42b983;
     border-bottom: 3px solid #42b983;
   }
-  .no_articles{
+  .noData{
     display: flex;
     justify-content: center;
-    margin-top: 100px
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20%;
   }
   .block{
     text-align: center;

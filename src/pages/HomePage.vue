@@ -6,10 +6,10 @@
         <el-row class="title">
           <div class="sort">
             <router-link :to='`/home`' tag="span" exact>
-              <router-link :to='`/home/?sort=hot`' tag="span">热门&nbsp;</router-link> 
+              <router-link :to='`/home?sort=hot`' tag="span">热门&nbsp;</router-link> 
             </router-link>
             | 
-            <router-link :to='`/home/?sort=new`' tag="span">&nbsp;最新</router-link>
+            <router-link :to='`/home?sort=new`' tag="span">&nbsp;最新</router-link>
           </div>
         </el-row>
         <router-view :articles="articles" :getArticles = "getArticles" :source="'home'"></router-view>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-  import ArticleItem from '../components/ArticleItem.vue'
   import LeftItem from '../components/LeftItem.vue'
   import Item from '../components/LoginItem'
   import { mapState } from 'vuex'
@@ -41,7 +40,6 @@
       }
     },
     components: {
-      ArticleItem,
       LeftItem,
       Item
     },

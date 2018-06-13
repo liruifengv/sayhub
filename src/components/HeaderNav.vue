@@ -77,16 +77,11 @@
               <el-dropdown-menu 
                 slot="dropdown" 
                 class="menu">
-                <router-link 
-                  to="/" 
-                  tag="span"
-                  >
-                  <el-dropdown-item>
-                    <router-link :to='`/user/${this.userInfo.username}`' tag="span">
+                <el-dropdown-item>
+                  <router-link :to='`/user/${this.userInfo.username}`' tag="span">
                     <i class="mdi mdi-home-account"/> 主页
-                    </router-link>
-                  </el-dropdown-item>
-                </router-link>
+                  </router-link>
+                </el-dropdown-item>
                 <router-link 
                   to="/settings" 
                   tag="span">

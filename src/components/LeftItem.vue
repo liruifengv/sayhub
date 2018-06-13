@@ -1,28 +1,44 @@
 <template>
   <el-row class="container">
-    <div class="grid-content bg-purple">
-      <img src="http://images.sayhub.me/avatar" class="avatar" />
-      <div class="user">
-        <h1 class="userName">李瑞丰v</h1>
-        <p class="userEnglishName">liruifengv</p>
-        <p class="bio">来生再修好皮囊</p>        
+      <div class="userInfo">
+        <div class="ImgBox">
+          <img src="http://images.sayhub.me/logo.png" class="avatar"/>
+          <p class="userName">{{item.username}}</p>
+        </div>
+        <div class="box">
+          <span class="label">个性签名：</span>
+          <span class="bio">{{item.bio === '' ? '--' : item.bio}}</span>
+        </div>
+        <div class="box">
+          <span class="label">邮箱：</span>
+          <span class="bio">{{item.email === '' ? '--' : item.email}}</span>
+        </div>
+        <div class="box">
+          <span class="label">公司：</span>
+          <span class="bio">{{item.company === '' ? '--' : item.company}}</span>
+        </div>
+        <div class="box">
+          <span class="label">GitHub：</span>
+          <span class="bio">{{item.github === '' ? '--' : item.github}}</span>
+        </div>
+        <div class="box">
+          <span class="label">个人主页：</span>
+          <span class="bio">{{item.homepage === '' ? '--' : item.homepage}}</span>
+        </div>
       </div>
-      <div class="message">
-      <i class="mdi mdi-account-multiple"></i><span class="message-item">应届校招求坑!</span>
-      <br>
-      <i class="el-icon-message"><a href="mailto:li15227870916@gmail.com" target="_blank" class="message-item">li15227870916@gmail.com</a></i>
-      <br>
-      <i class="mdi mdi-link-variant"></i><a href="http://www.sayhub.me" target="_blank" class="message-item">http://www.sayhub.me</a>
-      </div>
-    </div>
   </el-row>
 </template>
 
 <script>
 
-export default{
+export default {
   data () {
     return {
+    }
+  },
+  props: {
+    item: {
+      type: Object
     }
   },
   methods: {}
@@ -30,6 +46,15 @@ export default{
 </script>
 
 <style scoped>
+  .userInfo {
+    padding: 20px;
+  }
+  .box {
+    display: flex;
+    justify-content: space-between;
+    line-height: 20px;
+    margin-top: 10px;
+  }
   .bg-purple {
     border: 1px solid #fff
   }
@@ -74,5 +99,16 @@ export default{
   .message-item{
     font-size: 14px;
     margin-left: 5px;
+  }
+  @media screen and (max-width: 600px) {
+    .ImgBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column
+    }
+    .box {
+      border-bottom: 1px solid #ddd;
+    }
   }
 </style>
