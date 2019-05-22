@@ -68,9 +68,7 @@ export default {
             this.$message.success('修改成功，请重新登录~')
             setTimeout(() => {
               window.localStorage.clear()
-              this.$store.commit('CHANGE_LOGIN_STATUS', false)
-              this.$store.commit('GET_SAYHUB_TOKEN', '')
-              this.$store.commit('GET_USER_INFO', {})
+              this.$store.dispatch('logOut')
               this.$router.push({ path: '/login' })
             }, 1000)
           }

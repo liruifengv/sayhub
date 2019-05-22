@@ -52,7 +52,7 @@ export default {
           .get(`users/${this.$route.params.username}/articles`)
           .then(res => {
             if (res.status === 200) {
-              this.articles = res.data
+              this.articles = res.data.formatData
             }
           })
       }

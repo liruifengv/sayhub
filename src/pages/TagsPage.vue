@@ -55,7 +55,7 @@
           this.$http.get(`/articles?category=${this.$route.params.category}&page=${this.page}&page_size=5`)
             .then(res => {
               if (res.status === 200) {
-                this.articles = res.data.articles
+                this.articles = res.data.formatData
                 this.total = Math.ceil(res.data.total / 5)
               }
             })
@@ -63,7 +63,7 @@
           this.$http.get(`/articles?page=${this.page}&page_size=5`)
             .then(res => {
               if (res.status === 200) {
-                this.articles = res.data.articles
+                this.articles = res.data.formatData
                 this.total = Math.ceil(res.data.total / 5)
               }
             })

@@ -97,7 +97,7 @@ export default {
       })
     },
     vote () {
-      if (this.userInfo) {
+      if (this.userInfo.username) {
         if (this.isOwner === false) {
           if (this.is_up) {
             this.$http.delete(`/comment/${this.comment._id}/up`)

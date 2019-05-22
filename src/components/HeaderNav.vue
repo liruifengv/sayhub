@@ -133,6 +133,7 @@ export default {
         window.localStorage.clear()
         this.$store.dispatch('logOut')
         this.$router.push({ path: '/home' })
+        window.location.reload()
       }).catch(() => {
         this.$message({
           type: 'info',

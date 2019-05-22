@@ -21,7 +21,7 @@ export default {
     return {
       votes_count: '',
       comments_count: '',
-      is_up: ''
+      is_up: false
     }
   },
   props: {
@@ -40,27 +40,9 @@ export default {
       'userInfo'
     ])
   },
-  watch: {
-    // 如果路由有变化，会再次执行该方法
-    $route () {
-      this.isUp()
-    }
-  },
-  mounted () {
-    this.isUp()
+  created () {
   },
   methods: {
-    isUp () {
-      if (this.userInfo._id) {
-        if (this.item.votes.includes(this.userInfo._id)) {
-          this.item.is_up = true
-        } else {
-          this.item.is_up = false
-        }
-      } else {
-        this.item.is_up = false
-      }
-    },
     vote () {
       if (this.userInfo.username) {
         if (this.isOwner === false) {

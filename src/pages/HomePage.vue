@@ -78,7 +78,7 @@
         this.$http.get(`/articles?page=1&page_size=10&sort=${this.ordering}`)
           .then(res => {
             if (res.status === 200) {
-              this.articles = res.data.articles
+              this.articles = res.data.formatData
               this.next = res.data.next
               this.total = res.data.total
             }
@@ -94,7 +94,7 @@
             this.$http.get(`/articles?page=${this.next}&page_size=10&sort=${this.ordering}`)
               .then(res => {
                 if (res.status === 200) {
-                  this.articles = [...this.articles, ...res.data.articles]
+                  this.articles = [...this.articles, ...res.data.formatData]
                   this.next = res.data.next
                   this.total = res.data.total
                 }

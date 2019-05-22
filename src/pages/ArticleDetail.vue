@@ -180,21 +180,25 @@ export default{
       this.btn_show = true
     },
     toComment () {
-      if (this.comment === '') {
-        this.$message.info('评论不能为空~')
-      } else {
-        this.$http.post(`/article/${this.article._id}/comment`, {
-          content: this.comment,
-          author: this.userInfo.username
-        })
-          .then(res => {
-            if (res.status === 200) {
-              this.comments_count = res.data.comments_count
-              this.getComments()
-              this.comment = ''
-              this.btn_show = false
-            }
+      if (this.userInfo.username) {
+        if (this.comment === '') {
+          this.$message.info('评论不能为空~')
+        } else {
+          this.$http.post(`/article/${this.article._id}/comment`, {
+            content: this.comment,
+            author: this.userInfo.username
           })
+            .then(res => {
+              if (res.status === 200) {
+                this.comments_count = res.data.comments_count
+                this.getComments()
+                this.comment = ''
+                this.btn_show = false
+              }
+            })
+        }
+      } else {
+        this.$message.error('请登录后评论！')
       }
     },
     cancel () {
