@@ -20,8 +20,7 @@ export default {
   data () {
     return {
       votes_count: '',
-      comments_count: '',
-      is_up: false
+      comments_count: ''
     }
   },
   props: {
