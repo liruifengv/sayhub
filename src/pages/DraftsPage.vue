@@ -74,6 +74,7 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20%;
+    color: #fff;
   }
   .block{
     text-align: center;
@@ -84,6 +85,6 @@
     /* margin-top: 20px; */
     margin: 20px 5px 10px 0px;
     box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
-    background: #fff;
+    background: #000;
   }
 </style>

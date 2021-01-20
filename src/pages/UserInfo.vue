@@ -69,17 +69,23 @@ export default {
 }
 .left,
 .right {
-  background: #fff;
+  background: #000;
 }
 .left {
   margin-right: 20px;
   margin-bottom: 20px;
   min-height: 556px;
 }
+.right {
+  color: #42b983;
+}
+.item {
+  margin-bottom: 20px
+}
 .title {
   font-size: 16px;
-  border-bottom: 1px solid #ddd;
   padding: 0 15px 5px 15px;
+  color: #42b983
 }
 
 .end {
@@ -93,6 +99,7 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-top: 20%;
+  color: #fff;
 }
 @media screen and (max-width: 600px) {
   .view {

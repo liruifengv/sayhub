@@ -114,9 +114,10 @@ export default {
   .row{
     width: 820px;
     height: 500px;
-    background: #fff;
+    background: rgba(22,27,32);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
     padding: 30px;
+    color: #42b983;
     border-radius: 3px;
   }
   .item{
@@ -124,14 +125,10 @@ export default {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    border-top: 1px solid #D9D9D9;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     justify-content: space-between;
-  }
-  .item:last-of-type {
-    border-bottom:  1px solid #D9D9D9
   }
   .box{
     margin-left: -30px;
@@ -158,9 +155,11 @@ export default {
     margin-right: 10px;
     border: none;
     outline: none;
-    color: #000;
+    color: #42b983;
     width: 500px;
+    height:30px;
     font-size: 16px;
+    background-color: #000;
   }
   .save{
     float: right;

@@ -193,9 +193,8 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: 1px solid #fff;
   line-height: 60px;
-  background: #fff;
+  background: rgba(22,27,32);
   box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
 }
 .header .inner {
@@ -231,8 +230,9 @@ a.tag {
 }
 .searchInput {
   width: 300px;
-  margin-left: 30px
+  margin-left: 30px;
 }
+
 
 .btn_box {
   display: inline-block;

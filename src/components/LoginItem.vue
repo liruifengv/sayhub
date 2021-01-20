@@ -81,11 +81,12 @@ export default{
 
 <style scoped>
 .login-style{
-  border: 1px solid #fff;
+  color: #42b983;
+  border: 1px solid #42b983;
   text-align: center;
   padding: 20px;
   line-height: 50px;
-  background: #fff;
+  background: #000;
   width: 300px;
   box-shadow: 0 1px 3px 0 rgba(0,34,77,.5);
 }

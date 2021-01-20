@@ -37,18 +37,18 @@ export default {
     right: 0;
     border-bottom: 1px solid #D9D9D9;
     line-height: 50px;
-    background: #fff
+    background: #000
   }
   .settingTab{
     display: inline-block;
   }
   .tag{
-    color: #000;
+    color: #fff;
     cursor: pointer;
     margin-right: 20px;
   }
   span.router-link-active {
-    color: #108EE9
+    color: #42b983
   }
   .box{
     position: relative;

@@ -115,14 +115,13 @@
     padding: 15px
   }
   .left,.right {
-    background: #fff;
+    background: rgba(13,7,23);
   }
   .left {
     margin-right: 20px;
     margin-bottom: 20px;
   }
   .title {
-    border-bottom: 1px solid #ddd;
     padding: 0 15px 5px 15px;
   }
   .sort {

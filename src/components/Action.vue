@@ -94,9 +94,9 @@ export default {
     font-size: 1.083rem;
     line-height: 1;
     white-space: nowrap;
-    color: #b2bac2;
+    color: #42b983;
     border-radius: 1px;
-    border: 1px solid #edeeef;
+    border: 1px solid #42b983;
     cursor: pointer;
 }
 .text{

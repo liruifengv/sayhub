@@ -105,6 +105,7 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20%;
+    color: #fff;
   }
   .block{
     text-align: center;

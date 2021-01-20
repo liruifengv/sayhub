@@ -30,10 +30,10 @@ export default {
 <style scoped>
   .articleItem {
     margin: 10px 5px 10px 0px;
-    box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
-    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(255,255,255,.1);
   }
   .item{
+    margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
   }
 </style>

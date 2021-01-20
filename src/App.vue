@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-11 18:30:43
+ * @LastEditTime: 2021-01-20 17:36:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Sayhub-vue\src\App.vue
+-->
 <template>
   <div id="app">
     <HeaderNav v-if="nav_show"/>
@@ -22,7 +30,6 @@
 
 <style>
   html {
-    background: #fff;
   }
   body {
     max-height: 100vh;
@@ -38,7 +45,7 @@
     position: relative;
     top: 60px;
     min-height: calc(100vh - 60px);
-    background: #f5f5f5;
+    background: rgba(6,9,15);
   }
   .v-note-wrapper .v-note-panel {
     box-shadow: none !important;

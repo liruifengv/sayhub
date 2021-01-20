@@ -133,9 +133,10 @@ export default {
 .container{
   width: 100%;
   padding: 0 15px 5px 15px;
+  border: 1px solid #42b983;
 }
 .title{
-  color: #000;
+  color: #42b983;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -153,7 +154,7 @@ export default {
   color: #42b983
 }
 .abstract{
-  color: #262626;
+  color: rgba(86,132,158);
   line-height: 20px;
   max-height: 40px;
   font-size: 15px;
