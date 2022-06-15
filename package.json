@@ -31,7 +31,12 @@
     "vite": "^2.9.9",
     "vite-plugin-eslint": "^1.6.1",
     "husky": "^7.0.1",
-    "lint-staged": "^11.0.1"
+    "lint-staged": "^11.0.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -46,9 +51,8 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "> 1%",
+      "ie >= 11"
     ],
     "development": [
       "last 1 chrome version",
