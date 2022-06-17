@@ -51,13 +51,7 @@
     "*.{js,jsx}": [
       "eslint --fix"
     ],
-    "*.{css}": "stylelint --fix --allow-empty-input"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "*.css": "stylelint --fix --allow-empty-input"
   },
   "browserslist": {
     "production": [
