@@ -14,12 +14,13 @@ const routes = [
       {
         path: '/',
         exact: true,
-        render: () => <Redirect to="/home" />,
+        component: Home,
       },
       {
         path: '/home',
         component: Home,
       },
+      { path: '*', render: () => <Redirect to="/404" /> },
     ],
   },
   { path: '*', render: () => <Redirect to="/404" /> },
