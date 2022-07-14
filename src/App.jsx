@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import { renderRoutes } from 'react-router-config'
+import { BrowserRouter as Router } from 'react-router-dom'
+import routes from './router'
 import './App.css'
 
 function App() {
-  return <div className="App">App</div>
+  return (
+    <Router>
+      <Suspense>{renderRoutes(routes)}</Suspense>
+    </Router>
+  )
 }
 
 export default App

@@ -12,9 +12,11 @@
     "style": "stylelint \"src/**/*.(vue|scss|css)\" --fix"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
