@@ -1,0 +1,13 @@
+.welcome {
+  display:flex;
+  justify-content: space-around;
+  height: 400px;
+  padding: 0 20px;
+  background-color: #fff;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
