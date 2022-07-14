@@ -24,8 +24,9 @@
   width: 90%;
   padding: 24px;
   background-color: #FDFDFD;
+  border: 1px solid #000;
   border-radius: 18px;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .item:not(:last-child) {
