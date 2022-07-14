@@ -1,5 +1,24 @@
 import React from 'react'
+import NotFoundImg from '../../static/404.svg'
+import { container, img } from './NotFound.module.css'
 
-const NotFound = () => <div>NotFound</div>
+const clickMe = () => {
+  alert('我走丢了(╥╯^╰╥)')
+}
+
+const NotFound = () => (
+  <div className={container}>
+    <img
+      title="点我"
+      className={img}
+      src={NotFoundImg}
+      alt="404"
+      aria-hidden="true"
+      onClick={() => {
+        clickMe()
+      }}
+    />
+  </div>
+)
 
 export default NotFound

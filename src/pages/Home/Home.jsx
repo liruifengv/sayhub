@@ -2,6 +2,10 @@ import React from 'react'
 import styles from './Home.module.css'
 import welcome from '../../static/welcome.svg'
 
+const clickMe = () => {
+  alert('Welcome 👏🏻 (>^ω^<)')
+}
+
 const Home = () => (
   <div>
     <div className={styles.welcome}>
@@ -9,7 +13,14 @@ const Home = () => (
         <h1>Welcome to SayHub</h1>
         <div>Homepage of liruifeng</div>
       </div>
-      <img src={welcome} alt="Welcome" />
+      <img
+        src={welcome}
+        alt="Welcome"
+        aria-hidden="true"
+        onClick={() => {
+          clickMe()
+        }}
+      />
     </div>
   </div>
 )
