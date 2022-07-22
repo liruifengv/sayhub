@@ -1,0 +1,1 @@
+import{a}from"./index.8c194a0c.js";var t="/sayhub/assets/404.b10f9cbf.svg";const o="_container_cpw30_1",c="_img_cpw30_11";const s=()=>{alert("\u6211\u8D70\u4E22\u4E86(\u2565\u256F^\u2570\u2565)")},n=()=>a("div",{className:o,children:a("img",{title:"\u70B9\u6211",className:c,src:t,alt:"404","aria-hidden":"true",onClick:()=>{s()}})});export{n as default};
