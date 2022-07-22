@@ -6,12 +6,14 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "build_github_ci": "cross-env GITHUB_CI=true vite build --base=/sayhub/",
     "preview": "vite preview",
     "lint": "eslint --ext .js --ext .jsx src --fix",
     "prepare": "husky install",
     "style": "stylelint \"src/**/*.(vue|scss|css)\" --fix"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "prop-types": "^15.7.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
