@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
+    "start": "VITE_GITHUB_CI=true vite",
     "dev": "vite",
     "build": "vite build",
-    "build_github_ci": "cross-env GITHUB_CI=true vite build --base=/sayhub/",
+    "build_github_ci": "VITE_GITHUB_CI=true vite build --base=/sayhub/",
     "preview": "vite preview",
     "lint": "eslint --ext .js --ext .jsx src --fix",
     "prepare": "husky install",
