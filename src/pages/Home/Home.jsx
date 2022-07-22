@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Home.module.css'
-import welcome from '../../static/welcome.svg'
+import welcome from '../../assets/welcome.svg'
 
 const clickMe = () => {
   alert('Welcome 👏🏻 (>^ω^<)')

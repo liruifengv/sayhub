@@ -1,5 +1,5 @@
 import React from 'react'
-import NotFoundImg from '../../static/404.svg'
+import NotFoundImg from '../../assets/404.svg'
 import { container, img } from './NotFound.module.css'
 
 const clickMe = () => {
