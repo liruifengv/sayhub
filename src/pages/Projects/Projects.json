@@ -5,6 +5,11 @@
     "description": "SayHub 是我的个人主页网站，使用 React + vite 编成。"
   },
   {
+    "title": "verify-code-box",
+    "link": "https://github.com/liruifengv/verify-code-box",
+    "description": "一个 React 验证码输入组件。"
+  },
+  {
     "title": "promise-modal",
     "link": "https://github.com/liruifengv/promise-modal",
     "description": "promise-modal 是一个在 React 项目中使用的，把 modal 进行 promise 化的库。"
