@@ -25,7 +25,7 @@
   padding: 24px;
   background-color: #FDFDFD;
   border: 1px solid rgb(209 213 219 / 80%);
-  border-radius: 18px;
+  border-radius: 10px;
   cursor: pointer;
   transition-duration: 200ms;
 }
@@ -42,9 +42,27 @@
   color: #263238;
   font-weight: bold;
   font-size: 18px;
+  word-break: break-all;
 }
 
 .time {
   color: #263238;
   font-size: 14px;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  .container{
+    padding: 0;
+  }
+
+  .item {
+    flex-direction: column
+  }
+
+  .time {
+    margin-top: 12px;
+  }
 }

@@ -10,3 +10,19 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.btn {
+  margin-top: 24px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  .welcome {
+    flex-direction: column-reverse;
+    margin-top: 200px;
+  }
+}
+
