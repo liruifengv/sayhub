@@ -9,10 +9,10 @@ const Header = () => (
     </NavLink>
     <div className={styles.nav}>
       <NavLink className={styles.item} to="/articles" activeClassName={styles.active}>
-        Articles
+        我的文章
       </NavLink>
       <NavLink className={styles.item} to="/Projects" activeClassName={styles.active}>
-        Projects
+        我的项目
       </NavLink>
       <a
         href="https://github.com/liruifengv"
