@@ -42,3 +42,13 @@
   color: #263238;
   font-size: 14px;
 }
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
