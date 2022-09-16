@@ -10,8 +10,22 @@ body {
   background-image:url('./assets/background-pattern.svg')
 }
 
-.content {
-  margin-top: 90px;
+.menu {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  background: #363A3D;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  color: #fff;
+  font-weight: 500;
 }
 
 a {

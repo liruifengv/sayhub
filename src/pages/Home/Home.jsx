@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 import { GithubOutlined, PushpinOutlined, ReadOutlined } from '@ant-design/icons'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './Home.module.css'
 import welcome from '../../assets/welcome.svg'
 
@@ -14,10 +14,10 @@ const goGithub = () => {
 }
 
 const Home = () => {
-  const history = useHistory()
+  const navigateTo = useNavigate()
 
   const goRoute = url => {
-    history.push(url)
+    navigateTo(url)
   }
 
   return (

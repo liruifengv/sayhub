@@ -1,6 +1,4 @@
 .header {
-  position: fixed;
-  top: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -9,13 +7,13 @@
   width: 100%;
   height: 90px;
   padding: 0 20px;
-  color: #000;
+  color: #263238;
   background: #fff;
   border-bottom: 1px solid rgb(240 240 240);
 }
 
 .logo {
-  color: #000;
+  color: #263238;
   font-weight: bold;
   font-size: 24px;
 }
@@ -31,9 +29,41 @@
   align-items: center;
   height: 100%;
   margin-right: 20px;
-  color: #1B2733;
+  color: #263238;
+  font-weight: 500;
 }
 
 .active {
   color: #0A64FA;
+}
+
+.menu {
+  display: none;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+  .header {
+    color: #fff;
+    background: #363A3D;
+  }
+
+  .logo, .item {
+    color: #fff;
+  }
+
+
+  .container{
+    padding: 0;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
 }
