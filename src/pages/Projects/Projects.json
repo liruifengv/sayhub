@@ -1,8 +1,13 @@
 [
   {
-    "title": "SayHub",
+    "title": "sayhub",
     "link": "https://github.com/liruifengv/sayhub",
-    "description": "SayHub 是我的个人主页网站，使用 React + vite 编成。"
+    "description": "SayHub 是我的个人博客网站，使用 React + vite 开发。"
+  },
+  {
+    "title": "sayhub-server",
+    "link": "https://github.com/liruifengv/sayhub-server",
+    "description": "使用 Rust (actix-web) 编写的服务端。"
   },
   {
     "title": "verify-code-box",
