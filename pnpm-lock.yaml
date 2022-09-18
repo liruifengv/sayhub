@@ -24,7 +24,6 @@ specifiers:
   prop-types: ^15.7.2
   react: ^18.0.0
   react-dom: ^18.0.0
-  react-router-config: ^5.1.1
   react-router-dom: ^6.4.0
   stylelint: ^14.9.1
   stylelint-config-css-modules: ^4.1.0
@@ -42,7 +41,6 @@ dependencies:
   prop-types: 15.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-router-config: 5.1.1_react@18.2.0
   react-router-dom: 6.4.0_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -4854,16 +4852,6 @@ packages:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /react-router-config/5.1.1_react@18.2.0:
-    resolution: {integrity: sha512-DuanZjaD8mQp1ppHjgnnUnyOlqYXZVjnov/JzFhjLEwd3Z4dYjMSnqrEzzGThH47vpCOqPPwJM2FtthLeJ8Pbg==}
-    peerDependencies:
-      react: '>=15'
-      react-router: '>=5'
-    dependencies:
-      '@babel/runtime': 7.18.3
-      react: 18.2.0
-    dev: false
 
   /react-router-dom/6.4.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-4Aw1xmXKeleYYQ3x0Lcl2undHR6yMjXZjd9DKZd53SGOYqirrUThyUb0wwAX5VZAyvSuzjNJmZlJ3rR9+/vzqg==}
