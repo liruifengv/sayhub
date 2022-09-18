@@ -30,7 +30,7 @@ specifiers:
   stylelint-config-prettier: ^9.0.3
   stylelint-config-rational-order: ^0.1.2
   stylelint-config-standard: ^26.0.0
-  stylelint-order: ^4.1.0
+  stylelint-order: ^5.0.0
   vite: ^2.9.9
   vite-plugin-eslint: ^1.6.1
   vite-plugin-imp: ^2.3.0
@@ -67,7 +67,7 @@ devDependencies:
   stylelint-config-prettier: 9.0.3_stylelint@14.9.1
   stylelint-config-rational-order: 0.1.2
   stylelint-config-standard: 26.0.0_stylelint@14.9.1
-  stylelint-order: 4.1.0_stylelint@14.9.1
+  stylelint-order: 5.0.0_stylelint@14.9.1
   vite: 2.9.12
   vite-plugin-eslint: 1.6.1_eslint@7.32.0+vite@2.9.12
   vite-plugin-imp: 2.3.0_vite@2.9.12
@@ -4194,12 +4194,12 @@ packages:
       postcss: 7.0.39
     dev: true
 
-  /postcss-sorting/5.0.1:
-    resolution: {integrity: sha512-Y9fUFkIhfrm6i0Ta3n+89j56EFqaNRdUKqXyRp6kvTcSXnmgEjaVowCXH+JBe9+YKWqd4nc28r2sgwnzJalccA==}
-    engines: {node: '>=8.7.0'}
+  /postcss-sorting/7.0.1_postcss@8.4.14:
+    resolution: {integrity: sha512-iLBFYz6VRYyLJEJsBJ8M3TCqNcckVzz4wFounSc5Oez35ogE/X+aoC5fFu103Ot7NyvjU3/xqIXn93Gp3kJk4g==}
+    peerDependencies:
+      postcss: ^8.3.9
     dependencies:
-      lodash: 4.17.21
-      postcss: 7.0.39
+      postcss: 8.4.14
     dev: true
 
   /postcss-syntax/0.36.2_sbwcdikydvvxbbxnj56wt2n5dq:
@@ -5576,14 +5576,13 @@ packages:
       stylelint: 9.10.1
     dev: true
 
-  /stylelint-order/4.1.0_stylelint@14.9.1:
-    resolution: {integrity: sha512-sVTikaDvMqg2aJjh4r48jsdfmqLT+nqB1MOsaBnvM3OwLx4S+WXcsxsgk5w18h/OZoxZCxuyXMh61iBHcj9Qiw==}
+  /stylelint-order/5.0.0_stylelint@14.9.1:
+    resolution: {integrity: sha512-OWQ7pmicXufDw5BlRqzdz3fkGKJPgLyDwD1rFY3AIEfIH/LQY38Vu/85v8/up0I+VPiuGRwbc2Hg3zLAsJaiyw==}
     peerDependencies:
-      stylelint: ^10.0.1 || ^11.0.0 || ^12.0.0 || ^13.0.0
+      stylelint: ^14.0.0
     dependencies:
-      lodash: 4.17.21
-      postcss: 7.0.39
-      postcss-sorting: 5.0.1
+      postcss: 8.4.14
+      postcss-sorting: 7.0.1_postcss@8.4.14
       stylelint: 14.9.1
     dev: true
 
