@@ -41,6 +41,6 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
 /* Styles */
   .content {
-    min-height: calc(100vh - 400px);
+    min-height: calc(100vh - 100px);
   }
 }
