@@ -22,7 +22,7 @@ and (max-device-width : 480px) {
 /* Styles */
   .welcome {
     flex-direction: column-reverse;
-    margin-top: 200px;
+    margin-top: 100px;
   }
 }
 
