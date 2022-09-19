@@ -4,9 +4,27 @@ import { MenuOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
 import styles from './Header.module.css'
 
+const colors = [
+  '#ff80ed',
+  '#065535',
+  '#ff0000',
+  '#008080',
+  '#ffc0cb',
+  '#b0e0e6',
+  '#ffc3a0',
+  '#66cdaa',
+  '#3399ff',
+  '#a0db8e',
+  '#808080',
+]
+
 const Header = ({ showMenu }) => (
   <div className={styles.header}>
-    <NavLink className={styles.logo} to="/">
+    <NavLink
+      className={styles.logo}
+      to="/"
+      style={{ color: colors[crypto.getRandomValues(new Uint32Array(1))[0] % colors.length] }}
+    >
       Sayhub
     </NavLink>
     <div className={styles.nav}>
