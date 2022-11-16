@@ -6,9 +6,8 @@
     "watch": "pnpm -r run watch",
     "build": "pnpm -r run build",
     "clean": "pnpm -r run clean",
-    "lint": "eslint --ext .js --ext .ts --ext .jsx packages --fix",
-    "prepare": "husky install",
-    "style": "stylelint \"packages/**/*.(vue|scss|css)\" --fix"
+    "lint": "pnpm -r run lint",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
