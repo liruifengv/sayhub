@@ -9,7 +9,6 @@
     "build_github_ci": "VITE_GITHUB_CI=true vite build --base=/sayhub/",
     "preview": "vite preview",
     "lint": "eslint --ext .js --ext .jsx src --fix",
-    "prepare": "husky install",
     "style": "stylelint \"src/**/*.(vue|scss|css)\" --fix"
   },
   "dependencies": {

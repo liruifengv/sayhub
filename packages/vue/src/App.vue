@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2020-11-11 18:30:43
- * @LastEditTime: 2021-01-20 17:36:02
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \Sayhub-vue\src\App.vue
--->
 <template>
   <div id="app">
     <HeaderNav v-if="nav_show"/>
