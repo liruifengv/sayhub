@@ -32,6 +32,9 @@ jobs:
       - name: Build 🔧
         run: pnpm run build
 
+      - name: CD react-vite 🔧
+        run: cd packages/react-vite
+
       # build react-vite
       - name: Build-vite 🔧
         run: pnpm run build_github_ci
