@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - ".github/workflows/ci.yml"
+      - "**.json"
+      - "**.js"
+      - "**.ts"
+      - "**.jsx"
+      - "**.tsx"
+  pull_request:
+    branches:
+      - "**"
+    paths:
+      - ".github/workflows/ci.yml"
+      - "**.json"
+      - "**.js"
+      - "**.ts"
+      - "**.jsx"
+      - "**.tsx"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: ^7.0
+
+      - name: Install Deps
+        run: pnpm i
+
+      - name: lint
+        run: pnpm run lint
+
+      - name: build
+        run: pnpm run build
