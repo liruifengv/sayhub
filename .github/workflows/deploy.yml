@@ -33,3 +33,4 @@ jobs:
         with:
           folder: packages/react-vite/dist # The folder the action should deploy.
           force: true
+          clean: true
