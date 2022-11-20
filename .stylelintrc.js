@@ -1,9 +1,17 @@
 module.exports = {
   extends: [
-    "stylelint-config-standard",
-    "stylelint-config-css-modules",
-    "stylelint-config-rational-order",
-    "stylelint-config-prettier",
+    'stylelint-config-standard',
+    'stylelint-config-css-modules',
+    'stylelint-config-rational-order',
+    'stylelint-config-prettier',
   ],
-  plugins: ["stylelint-order"],
-};
+  plugins: ['stylelint-order'],
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['tailwind'],
+      },
+    ],
+  },
+}

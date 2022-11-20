@@ -34,12 +34,7 @@ const Header = ({ showMenu }) => (
       <NavLink className={styles.item} to="/projects" activeclassname={styles.active}>
         我的项目
       </NavLink>
-      <a
-        href="https://github.com/liruifengv"
-        className={styles.item}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <a href="https://github.com/liruifengv" className={styles.item} target="_blank" rel="noreferrer">
         GitHub
       </a>
     </div>

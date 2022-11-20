@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["@commitlint/config-conventional"],
+  extends: ['@commitlint/config-conventional'],
   rules: {
     // 'type-enum': [
     // 	2,
@@ -23,20 +23,20 @@ module.exports = {
 
     // <scope> 不能为空
     // 'scope-empty': [2, 'never'],
-    "scope-case": [
+    'scope-case': [
       2,
-      "always",
+      'always',
       [
-        "lower-case",
-        "upper-case",
-        "camel-case",
-        "kebab-case",
-        "pascal-case",
-        "sentence-case",
-        "snake-case",
-        "start-case",
+        'lower-case',
+        'upper-case',
+        'camel-case',
+        'kebab-case',
+        'pascal-case',
+        'sentence-case',
+        'snake-case',
+        'start-case',
       ],
     ],
-    "subject-case": [0]
+    'subject-case': [0],
   },
-};
+}

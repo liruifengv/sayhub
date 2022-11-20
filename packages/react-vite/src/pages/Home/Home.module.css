@@ -1,5 +1,5 @@
 .welcome {
-  display:flex;
+  display: flex;
   justify-content: space-around;
   height: 400px;
   padding: 0 20px;
@@ -16,13 +16,10 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-/* Styles */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
   .welcome {
     flex-direction: column-reverse;
     margin-top: 100px;
   }
 }
-

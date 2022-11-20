@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Projects.module.css'
 import projects from './Projects.json'
 
-const openUrl = url => {
+const openUrl = (url) => {
   window.open(url)
 }
 

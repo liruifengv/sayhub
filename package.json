@@ -6,26 +6,20 @@
     "watch": "pnpm -r run watch",
     "build": "pnpm -r run build",
     "clean": "pnpm -r run clean",
+    "format": "prettier -w .",
     "lint": "pnpm -r run lint",
-    "prepare": "husky install"
+    "style": "stylelint \"**/*.(vue|scss|css)\" --fix",
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "cross-env": "^7.0.3",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.4",
-    "lint-staged": "^11.2.6",
-    "prettier": "^2.3.2",
-    "stylelint": "^14.9.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.7.0",
+    "stylelint": "^14.15.0",
     "stylelint-config-css-modules": "^4.1.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
@@ -33,10 +27,10 @@
     "stylelint-order": "^5.0.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix"
+    "*.{js,jsx,astro,tsx,vue}": [
+      "prettier --write"
     ],
-    "*.css": "stylelint --fix --allow-empty-input"
+    "*.css": "stylelint --allow-empty-input"
   },
   "browserslist": {
     "production": [

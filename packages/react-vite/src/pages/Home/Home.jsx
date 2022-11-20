@@ -16,7 +16,7 @@ const goGithub = () => {
 const Home = () => {
   const navigateTo = useNavigate()
 
-  const goRoute = url => {
+  const goRoute = (url) => {
     navigateTo(url)
   }
 
@@ -45,13 +45,7 @@ const Home = () => {
           >
             查看我的项目
           </Button>
-          <Button
-            type="primary"
-            className={styles.btn}
-            ghost
-            icon={<GithubOutlined />}
-            onClick={goGithub}
-          >
+          <Button type="primary" className={styles.btn} ghost icon={<GithubOutlined />} onClick={goGithub}>
             我的 Github
           </Button>
         </div>

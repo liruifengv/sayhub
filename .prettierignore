@@ -1,2 +1,7 @@
-dist/*
-build/*
+dist
+node_modules
+.github
+.changeset
+*.yaml
+*.yml
+*.conf.js

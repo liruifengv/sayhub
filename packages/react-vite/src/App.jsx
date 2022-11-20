@@ -1,13 +1,13 @@
 import React, { Suspense, useState } from 'react'
-import { Header, Footer } from '@/components'
 import { useNavigate } from 'react-router-dom'
+import { Header, Footer } from '@/components'
 import AppRoutes from './router'
 
 function App() {
   const [show, setShow] = useState(false)
   const navigateTo = useNavigate()
 
-  const goRoute = url => {
+  const goRoute = (url) => {
     setShow(false)
     navigateTo(url)
   }

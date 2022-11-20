@@ -34,28 +34,26 @@
 }
 
 .active {
-  color: #0A64FA;
+  color: #0a64fa;
 }
 
 .menu {
   display: none;
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-/* Styles */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
   .header {
     color: #fff;
-    background: #363A3D;
+    background: #363a3d;
   }
 
-  .logo, .item {
+  .logo,
+  .item {
     color: #fff;
   }
 
-
-  .container{
+  .container {
     padding: 0;
   }
 

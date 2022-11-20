@@ -1,24 +1,30 @@
 <template>
   <div>
     <span class="tags">
-      <router-link v-for="(tag,index) in item.category" :key="index" :to='`/tags/${tag}`' class="tag" :class='tag' tag="span">{{tag}}</router-link>
+      <router-link
+        v-for="(tag, index) in item.category"
+        :key="index"
+        :to="`/tags/${tag}`"
+        class="tag"
+        :class="tag"
+        tag="span"
+        >{{ tag }}</router-link
+      >
     </span>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   props: {
     item: {
-      type: Object
-    }
+      type: Object,
+    },
   },
-  methods: {
-  }
+  methods: {},
 }
 </script>
 
@@ -26,7 +32,7 @@ export default {
 .tag {
   display: inline-block;
   margin: 0.2rem 0.8rem 0.2rem 0;
-  padding: .38rem;
+  padding: 0.38rem;
   min-width: 3.5rem;
   text-align: center;
   line-height: 1;

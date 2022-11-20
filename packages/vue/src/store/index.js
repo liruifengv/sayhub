@@ -14,7 +14,7 @@ const state = {
   sayhub_token: '',
   login_status: false,
   nav_show: true,
-  userInfo: {}
+  userInfo: {},
 }
 
 export default new Vuex.Store({
@@ -22,5 +22,5 @@ export default new Vuex.Store({
   actions,
   getters,
   mutations,
-  strict: debug
+  strict: debug,
 })

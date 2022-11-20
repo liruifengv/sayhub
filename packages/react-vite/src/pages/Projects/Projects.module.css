@@ -20,7 +20,7 @@
 .item {
   box-sizing: border-box;
   padding: 24px;
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
   border: 1px solid rgb(209 213 219 / 80%);
   border-radius: 10px;
   cursor: pointer;
@@ -28,7 +28,7 @@
 }
 
 .item:hover {
-  border-color: rgb(107 114 128 / 80%)
+  border-color: rgb(107 114 128 / 80%);
 }
 
 .title {
@@ -43,10 +43,8 @@
   font-size: 14px;
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-/* Styles */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
   .container {
     display: flex;
     flex-direction: column;
