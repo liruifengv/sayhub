@@ -26,9 +26,6 @@ module.exports = {
       },
       rules: {
         'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-        'jsx-a11y/control-has-associated-label': 'off',
-        'jsx-a11y/alt-text': 'off',
-        'jsx-a11y/img-redundant-alt': 'off'
       },
     },
     {
