@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { fileURLToPath, URL } from 'url'
 
 import { defineConfig } from 'vite'
@@ -9,25 +10,25 @@ import vitePluginImp from 'vite-plugin-imp'
 
 export default defineConfig({
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
   plugins: [
     react(),
-    eslint(),    
+    eslint(),
     vitePluginImp({
       libList: [
         {
           libName: 'antd',
           style(name) {
             return `antd/es/${name}/style/index.css`
-          }
+          },
         },
-      ]
-    })
+      ],
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })
