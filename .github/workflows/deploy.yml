@@ -26,10 +26,7 @@ jobs:
 
       # build react-vite
       - name: Build-vite 🔧
-        run: cd packages/react-vite && pnpm run build_github_ci
-
-      - name: delete
-        run: git branch -D gh-pages
+        run: cd packages/react-vite && pnpm run build_github_ci     
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v4
