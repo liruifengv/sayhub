@@ -6,7 +6,9 @@
     "watch": "pnpm -r run watch",
     "build": "pnpm -r run build",
     "clean": "pnpm -r run clean",
+    "format": "prettier -w .",
     "lint": "pnpm -r run lint",
+    "style": "stylelint \"**/*.(vue|scss|css)\" --fix",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"
   },
@@ -14,7 +16,21 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "cross-env": "^7.0.3",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.7.0",
+    "stylelint": "^14.15.0",
+    "stylelint-config-css-modules": "^4.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,astro,tsx,vue}": [
+      "prettier --write"
+    ],
+    "*.css": "stylelint --allow-empty-input"
   },
   "browserslist": {
     "production": [

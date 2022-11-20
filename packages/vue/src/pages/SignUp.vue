@@ -1,20 +1,19 @@
 <template>
   <el-row class="container">
-    <Item :type="'signup'"/>
+    <Item :type="'signup'" />
   </el-row>
 </template>
 
 <script>
 import Item from '../components/LoginItem'
-export default{
-  data () {
-    return {
-    }
+export default {
+  data() {
+    return {}
   },
   components: {
-    Item
+    Item,
   },
-  methods: {}
+  methods: {},
 }
 </script>
 

@@ -1,13 +1,12 @@
 body {
   margin: 0;
   overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:url('./assets/background-pattern.svg')
+  background-image: url('./assets/background-pattern.svg');
 }
 
 .menu {
@@ -17,7 +16,7 @@ body {
   width: 100%;
   padding: 20px;
   color: #fff;
-  background: #363A3D;
+  background: #363a3d;
 }
 
 .menu-item {
@@ -36,10 +35,8 @@ a {
   min-height: calc(100vh - 200px);
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-/* Styles */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
   .content {
     min-height: calc(100vh - 100px);
   }

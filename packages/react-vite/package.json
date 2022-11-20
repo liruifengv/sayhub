@@ -8,8 +8,7 @@
     "build": "vite build",
     "build_github_ci": "VITE_GITHUB_CI=true vite build --base=/sayhub/",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.jsx --fix",
-    "style": "stylelint \"src/**/*.(vue|scss|css)\" --fix"
+    "lint": "eslint --ext .js,.jsx --fix"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -33,12 +32,6 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.2",
-    "stylelint": "^14.9.1",
-    "stylelint-config-css-modules": "^4.1.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^26.0.0",
-    "stylelint-order": "^5.0.0",
     "vite": "^2.9.9",
     "vite-plugin-eslint": "^1.6.1",
     "vite-plugin-imp": "^2.3.0"

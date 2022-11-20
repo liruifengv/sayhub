@@ -3,11 +3,13 @@
 ## 博客[Sayhub](http://sayhub.me)前端
 
 ### 测试账号
+
 - username: test123
 - password: test123
+
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 

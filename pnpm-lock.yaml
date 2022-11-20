@@ -8,11 +8,27 @@ importers:
       '@commitlint/config-conventional': ^12.1.4
       cross-env: ^7.0.3
       husky: ^7.0.4
+      prettier: ^2.7.1
+      prettier-plugin-astro: ^0.7.0
+      stylelint: ^14.15.0
+      stylelint-config-css-modules: ^4.1.0
+      stylelint-config-prettier: ^9.0.3
+      stylelint-config-rational-order: ^0.1.2
+      stylelint-config-standard: ^26.0.0
+      stylelint-order: ^5.0.0
     devDependencies:
       '@commitlint/cli': 12.1.4
       '@commitlint/config-conventional': 12.1.4
       cross-env: 7.0.3
       husky: 7.0.4
+      prettier: 2.7.1
+      prettier-plugin-astro: 0.7.0
+      stylelint: 14.15.0
+      stylelint-config-css-modules: 4.1.0_stylelint@14.15.0
+      stylelint-config-prettier: 9.0.4_stylelint@14.15.0
+      stylelint-config-rational-order: 0.1.2
+      stylelint-config-standard: 26.0.0_stylelint@14.15.0
+      stylelint-order: 5.0.0_stylelint@14.15.0
 
   packages/astro-md:
     specifiers:
@@ -91,12 +107,6 @@ importers:
       react: ^18.0.0
       react-dom: ^18.0.0
       react-router-dom: ^6.4.0
-      stylelint: ^14.9.1
-      stylelint-config-css-modules: ^4.1.0
-      stylelint-config-prettier: ^9.0.3
-      stylelint-config-rational-order: ^0.1.2
-      stylelint-config-standard: ^26.0.0
-      stylelint-order: ^5.0.0
       vite: ^2.9.9
       vite-plugin-eslint: ^1.6.1
       vite-plugin-imp: ^2.3.0
@@ -121,12 +131,6 @@ importers:
       eslint-plugin-react: 7.31.10_eslint@7.32.0
       eslint-plugin-react-hooks: 4.6.0_eslint@7.32.0
       prettier: 2.7.1
-      stylelint: 14.15.0
-      stylelint-config-css-modules: 4.1.0_stylelint@14.15.0
-      stylelint-config-prettier: 9.0.4_stylelint@14.15.0
-      stylelint-config-rational-order: 0.1.2
-      stylelint-config-standard: 26.0.0_stylelint@14.15.0
-      stylelint-order: 5.0.0_stylelint@14.15.0
       vite: 2.9.15
       vite-plugin-eslint: 1.8.1_eslint@7.32.0+vite@2.9.15
       vite-plugin-imp: 2.3.1_vite@2.9.15
