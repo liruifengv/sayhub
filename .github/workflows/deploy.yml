@@ -26,10 +26,13 @@ jobs:
 
       # build react-vite
       - name: Build-vite 🔧
-        run: cd packages/react-vite && pnpm run build_github_ci     
+        run: |
+           cd packages/react-vite
+           rm -rf dist
+           pnpm run build_github_ci     
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+        uses: JamesIves/Github-pages-deploy-action@releases/v4
         with:
           folder: packages/react-vite/dist # The folder the action should deploy.
           force: true
