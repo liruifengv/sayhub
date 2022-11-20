@@ -11,15 +11,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18]
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-
+         
       - name: Install PNPM
         uses: pnpm/action-setup@v2
         with:
@@ -27,10 +23,6 @@ jobs:
 
       - name: Install Deps
         run: pnpm i
-
-      # build all packages
-      - name: Build 🔧
-        run: pnpm run build
 
       # build react-vite
       - name: Build-vite 🔧
