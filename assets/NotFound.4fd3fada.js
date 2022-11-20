@@ -1,1 +1,0 @@
-import{m as s}from"./index.46d8531a.js";var t="/sayhub/assets/404.b10f9cbf.svg";const u="_container_1f8us_1",a="_img_1f8us_9";const o=()=>{alert("\u6211\u8D70\u4E22\u4E86(\u2565\u256F^\u2570\u2565)")},c=()=>s("div",{className:u,children:s("img",{title:"\u70B9\u6211",className:a,src:t,alt:"404","aria-hidden":"true",onClick:()=>{o()}})});export{c as default};
