@@ -4,25 +4,9 @@ on:
   push:
     branches:
        - "**"
-    paths:
-       - ".github/workflows/ci.yml"
-       - "**.json"
-       - "**.js"
-       - "**.ts"
-       - "**.jsx"
-       - "**.tsx"
   pull_request:
      branches:
        - "**"
-     paths:
-       - ".github/workflows/ci.yml"
-       - "**.json"
-       - "**.js"
-       - "**.ts"
-       - "**.jsx"
-       - "**.tsx"
-
-
 
 jobs:
   test:
@@ -44,11 +28,11 @@ jobs:
       - name: Install Deps
         run: pnpm i
       
-      - name: format
+      - name: Format
         run: pnpm run format
 
-      - name: lint
+      - name: Lint
         run: pnpm run lint
 
-      - name: build
+      - name: Build
         run: pnpm run build
