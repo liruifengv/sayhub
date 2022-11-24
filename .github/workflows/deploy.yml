@@ -33,4 +33,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/Github-pages-deploy-action@releases/v4
         with:
-          folder: packages/react-vite/dist
+          folder: packages/astro-md/dist
