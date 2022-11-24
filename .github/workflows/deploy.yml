@@ -24,13 +24,13 @@ jobs:
       - name: Install Deps
         run: pnpm i
 
-      # build react-vite
-      - name: Build-vite 🔧
+      # build astro-md
+      - name: Build-astro-md 🔧
         run: |
-           cd packages/react-vite
+           cd packages/astro-md
            pnpm run build_github_ci     
 
       - name: Deploy 🚀
         uses: JamesIves/Github-pages-deploy-action@releases/v4
         with:
-          folder: packages/react-vite/dist
+          folder: packages/astro-md/dist
