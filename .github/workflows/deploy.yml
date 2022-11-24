@@ -24,10 +24,10 @@ jobs:
       - name: Install Deps
         run: pnpm i
 
-      # build react-vite
-      - name: Build-vite 🔧
+      # build astro-md
+      - name: Build-astro-md 🔧
         run: |
-           cd packages/react-vite
+           cd packages/astro-md
            pnpm run build_github_ci     
 
       - name: Deploy 🚀
