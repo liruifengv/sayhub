@@ -1,28 +1,27 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from './HeaderLink.astro'
+import { SITE_TITLE } from '../config'
 
 const basename = import.meta.env.BASE_URL
-
 ---
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href={`${basename}`}>Home</HeaderLink>
-		<HeaderLink href={`${basename}blog`}>Blog</HeaderLink>
-		<HeaderLink href={`${basename}about`}>About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+  <h2 class="font-bold">
+    {SITE_TITLE}
+  </h2>
+  <nav class="flex gap-4">
+    <HeaderLink href={`${basename}`}>Home</HeaderLink>
+    <HeaderLink href={`${basename}blog`}>Blog</HeaderLink>
+    <HeaderLink href={`${basename}about`}>About</HeaderLink>
+    <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
+    <HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+  </nav>
 </header>
 <style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
 </style>
