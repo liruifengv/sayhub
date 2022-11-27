@@ -5,11 +5,12 @@ import { SITE_TITLE } from '../config'
 const basename = import.meta.env.BASE_URL
 ---
 
-<header>
-  <h2 class="font-bold">
-    {SITE_TITLE}
-  </h2>
-  <nav class="flex gap-4">
+<header class="px-8 h-20 text-gray-500 flex items-center">
+  <a class="flex items-center flex-shrink-0" href="/">
+    <img src={`https://esomap-1251572801.cos.ap-beijing.myqcloud.com/ico/eso.ico`} alt="" />
+    <span class="ml-4 text-2xl text-gray-900 font-bold">{SITE_TITLE}</span>
+  </a>
+  <nav class="flex items-center">
     <HeaderLink href={`${basename}`}>Home</HeaderLink>
     <HeaderLink href={`${basename}blog`}>Blog</HeaderLink>
     <HeaderLink href={`${basename}about`}>About</HeaderLink>
