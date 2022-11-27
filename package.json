@@ -6,7 +6,7 @@
     "watch": "pnpm -r run watch",
     "build": "pnpm -r run build",
     "clean": "pnpm -r run clean",
-    "format": "prettier -w .",
+    "format": "prettier --write --plugin-search-dir=. .",
     "lint": "pnpm -r run lint",
     "style": "stylelint \"**/*.(vue|scss|css)\" --fix",
     "prepare": "husky install",
