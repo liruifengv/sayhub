@@ -1,0 +1,20 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+
+const { meta } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
+  <head>
+    <BaseHead {...meta} />
+  </head>
+  <body class="antialiased text-gray-900 tracking-tight bg-white">
+    <slot />
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

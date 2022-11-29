@@ -1,28 +1,31 @@
 ---
+import { Icon } from 'astro-icon'
 import HeaderLink from './HeaderLink.astro'
 import { SITE_TITLE } from '../config'
 
 const basename = import.meta.env.BASE_URL
 ---
 
-<header class="px-8 h-20 text-gray-500 flex items-center">
-  <a class="flex items-center flex-shrink-0" href="/">
-    <img src={`https://esomap-1251572801.cos.ap-beijing.myqcloud.com/ico/eso.ico`} alt="" />
-    <span class="ml-4 text-2xl text-gray-900 font-bold">{SITE_TITLE}</span>
-  </a>
-  <nav class="flex items-center">
-    <HeaderLink href={`${basename}`}>Home</HeaderLink>
-    <HeaderLink href={`${basename}blog`}>Blog</HeaderLink>
-    <HeaderLink href={`${basename}about`}>About</HeaderLink>
-    <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-    <HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-  </nav>
+<header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <a class="flex items-center flex-shrink-0" href="/">
+      <img class="w-10 h-10 rounded-3xl" src="/public/logo.png" alt="logo" />
+      <span class="ml-4 text-2xl text-gray-900 font-bold">{SITE_TITLE}</span>
+    </a>
+    <div class="flex items-center">
+      <nav>
+        <HeaderLink href={`${basename}`}>Home</HeaderLink>
+        <HeaderLink href={`${basename}blog`}>Blog</HeaderLink>
+        <HeaderLink href={`${basename}about`}>About</HeaderLink>
+      </nav>
+      <a
+        href="https://github.com/liruifengv"
+        target="_blank"
+        class="inline-block text-gray-500 ml-6 hover:bg-gray-100 rounded-lg text-sm p-2.5"
+        aria-label="liruifengv Github"
+      >
+        <Icon name="tabler:brand-github" class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
 </header>
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>
