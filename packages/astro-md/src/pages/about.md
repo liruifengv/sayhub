@@ -32,7 +32,7 @@ heroImage: '~/assets/images/placeholder-about.jpg'
 - 知乎：https://www.zhihu.com/people/liruifengv
 - GitHub：https://github.com/liruifengv
 
-#### 联系方式
+### 联系方式
 
 - 邮箱：liruifeng1024@gmail.com
 
