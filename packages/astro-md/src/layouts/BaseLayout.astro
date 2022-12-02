@@ -15,6 +15,27 @@ const { meta } = Astro.props
       img {
         content-visibility: auto;
       }
+      #toggle-menu path {
+        @apply transition;
+      }
+      #toggle-menu.expanded g > path:first-child {
+        @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+      }
+
+      #toggle-menu.expanded g > path:last-child {
+        @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+      }
     </style>
+    <script is:inline>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
   </body>
 </html>
