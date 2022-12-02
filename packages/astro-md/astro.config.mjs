@@ -11,13 +11,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   site: 'http://sayhub.me',
   integrations: [
-    tailwind(),
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
     mdx(),
     sitemap(),
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
   ],
+  markdown: {
+		extendDefaultPlugins: true,
+	},
   vite: {
     resolve: {
       alias: {

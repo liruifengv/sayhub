@@ -1,7 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
 import { Picture } from '@astrojs/image/components'
 import { findImage } from '~/utils/images'
 import Layout from '~/layouts/PageLayout.astro'
@@ -45,7 +42,9 @@ const meta = {
     <article>
       {image && <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />}
       <hr />
-      <slot />
+      <div class="container mx-auto px-6 sm:px-6 max-w-3xl mt-8">
+        <slot />
+      </div>
     </article>
   </section>
 </Layout>
