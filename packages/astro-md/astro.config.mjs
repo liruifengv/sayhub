@@ -11,11 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   site: 'http://sayhub.me',
   integrations: [
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
+		tailwind(),
     mdx(),
     sitemap(),
     image({
