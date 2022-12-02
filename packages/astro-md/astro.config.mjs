@@ -10,17 +10,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://astro.build/config
 export default defineConfig({
   site: 'http://sayhub.me',
+  markdown: {
+    extendDefaultPlugins: true,
+  },
   integrations: [
-		tailwind(),
+    tailwind(),
     mdx(),
     sitemap(),
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
   ],
-  markdown: {
-		extendDefaultPlugins: true,
-	},
   vite: {
     resolve: {
       alias: {
