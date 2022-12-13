@@ -25,8 +25,8 @@ const meta = {
 }
 ---
 
-<Layout {meta}>
-  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-3xl">
+<Layout {meta} isBlog={true}>
+  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
     <header>
       <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
         {title}
@@ -39,12 +39,9 @@ const meta = {
         )
       }
     </header>
-    <article
-      class="container mx-auto max-w-3xl prose dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
-    >
+    <article class="container mx-auto max-w-3xl markdown-body">
       {image && <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />}
-      <hr />
-      <div>
+      <div class="mt-6">
         <slot />
       </div>
     </article>
