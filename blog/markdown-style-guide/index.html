@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
+<html lang="en" class="motion-safe:scroll-smooth">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,9 +25,13 @@
 <meta property="twitter:description" content="Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.">
 <meta property="twitter:image" content="https://liruifengv.github.io/sayhub/blog/assets/images/placeholder-social.jpg">
 
-  <link rel="stylesheet" href="/sayhub/assets/about.298fba9f.css" />
+    <head>
+          <link rel="stylesheet" href="https://eso-cdn.denohub.com/assets/gfm-fba346.css">
+        <link rel="stylesheet" href="/sayhub/assets/about.a7e7fd7c.css" />
 <link rel="stylesheet" href="/sayhub/assets/about.af012363.css" /></head>
-  <body class="antialiased text-gray-900 tracking-tight bg-white">
+  <link rel="stylesheet" href="/sayhub/assets/about.a7e7fd7c.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.af012363.css" /></head>
+  
     <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
     <div class="flex justify-between">
@@ -76,7 +80,7 @@
     </nav>
   </div>
 </header><main>
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-3xl">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
     <header>
       <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
         Markdown Style Guide
@@ -85,13 +89,12 @@
             发表日期： <time>Jul 01 2022</time>
           </div>
     </header>
-    <article class="container mx-auto max-w-3xl prose dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
+    <article class="container mx-auto max-w-3xl markdown-body">
       <picture>
-	<source type="image/avif" srcset="/sayhub/assets/placeholder-hero.9c621933_ZApxJx.avif 400w,/sayhub/assets/placeholder-hero.9c621933_Z2rJXTf.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-hero.9c621933_7Ugde.webp 400w,/sayhub/assets/placeholder-hero.9c621933_Z1Ip9Vt.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-hero.9c621933_Z2sFIgQ.jpg 400w,/sayhub/assets/placeholder-hero.9c621933_Z4eQEe.jpg 900w">
-	<img src="/sayhub/assets/placeholder-hero.9c621933_Z4eQEe.jpg" loading="lazy" decoding="async" alt="descriptive text">
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-about.f32d7b84_2mBjyV.avif 400w,/sayhub/assets/placeholder-about.f32d7b84_vgSpe.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-about.f32d7b84_Z1Yf0he.webp 400w,/sayhub/assets/placeholder-about.f32d7b84_1eBHn0.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-about.f32d7b84_ZSLXF5.jpg 400w,/sayhub/assets/placeholder-about.f32d7b84_1uDRVx.jpg 900w">
+	<img src="/sayhub/assets/placeholder-about.f32d7b84_1uDRVx.jpg" loading="lazy" decoding="async" alt="descriptive text">
 </picture>
-      <hr>
-      <div>
+      <div class="mt-6">
         <p>Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
 <h2 id="headings">Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;</code>—<code>&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
@@ -181,5 +184,4 @@
         })
       }
     </script>
-  </body>
-</html>
+  </html>
