@@ -1,13 +1,20 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
 
-const { meta } = Astro.props
+const { meta, isBlog } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth font-light 2xl:text-[20px]">
+<html lang="en" class="motion-safe:scroll-smooth">
   <head>
     <BaseHead {...meta} />
+    {
+      isBlog && (
+        <head>
+          <link rel="stylesheet" href={`https://eso-cdn.denohub.com/assets/gfm-fba346.css`} />
+        </head>
+      )
+    }
   </head>
   <body class="antialiased text-gray-900 tracking-tight bg-white">
     <slot />

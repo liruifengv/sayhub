@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro'
+import PostItem from '~/components/PostItem.astro'
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
@@ -13,19 +14,12 @@ const meta = {
 ---
 
 <Layout {meta}>
-  <section>
-    <ul class="w-full flex flex-col items-center">
+  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
+    <ul>
       {
         posts.map((post) => (
-          <li>
-            <time datetime={post.frontmatter.pubDate}>
-              {new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </time>
-            <a href={post.url}>{post.frontmatter.title}</a>
+          <li class="mb-5 md:mb-8">
+            <PostItem post={post.frontmatter} url={post.url} />
           </li>
         ))
       }
