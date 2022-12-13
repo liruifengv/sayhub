@@ -1,0 +1,30 @@
+---
+import { Picture } from '@astrojs/image/components'
+import { findImage } from '~/utils/images'
+
+const { post, url } = Astro.props
+const image = await findImage(post.heroImage)
+---
+
+<div class="block md:flex text-gray-900">
+  <div class="md:shrink-0 h-48 w-full md:h-full md:w-80">
+    <a href={url}>
+      <Picture
+        src={image}
+        alt="descriptive text"
+        widths={[400, 900]}
+        sizes="(max-width: 900px) 400px, 900px"
+        alt={post.title}
+      />
+    </a>
+  </div>
+  <div class="md:px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200" href={url}>
+        {post.title}
+      </a>
+    </div>
+    <div class="text-sm mt-2">{post.description}</div>
+    <div class="text-sm mt-4">发表日期：{post.pubDate}</div>
+  </div>
+</div>

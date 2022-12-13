@@ -1,8 +1,8 @@
 ---
 layout: '../../layouts/BlogLayout.astro'
-title: 'First post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: '中文文章名称'
+description: '中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述'
+pubDate: '2022-12-13'
 heroImage: '~/assets/images/placeholder-hero.jpg'
 ---
 
