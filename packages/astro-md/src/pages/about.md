@@ -4,7 +4,7 @@ title: 'About Me'
 showRecent: false
 description: 'About Me'
 updatedDate: 'August 08 2022'
-heroImage: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
+image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 ---
 
 #### Hello World👏
