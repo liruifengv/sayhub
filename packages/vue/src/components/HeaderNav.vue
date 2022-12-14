@@ -2,7 +2,7 @@
   <header class="header">
     <nav class="inner">
       <router-link to="/home" exact>
-        <img class="logo" src="http://images.sayhub.me/logo.png" />
+        <img class="logo" src="https://images.sayhub.me/logo.png" />
       </router-link>
       <el-dropdown trigger="click" class="dropdown">
         <span class="el-dropdown-link"> 首页<i class="el-icon-caret-bottom el-icon--right" /> </span>
@@ -47,7 +47,7 @@
         <div style="display: inline-block">
           <div v-if="login_status" class="login">
             <el-dropdown trigger="click">
-              <img class="avatar" src="http://images.sayhub.me/avatar.jpg" />
+              <img class="avatar" src="https://images.sayhub.me/avatar.jpg" />
               <el-dropdown-menu slot="dropdown" class="menu">
                 <el-dropdown-item>
                   <router-link :to="`/user/${this.userInfo.username}`" tag="span">

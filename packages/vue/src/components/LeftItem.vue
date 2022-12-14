@@ -2,7 +2,7 @@
   <el-row class="container">
     <div class="userInfo">
       <div class="ImgBox">
-        <img src="http://images.sayhub.me/logo.png" class="avatar" />
+        <img src="https://images.sayhub.me/logo.png" class="avatar" />
         <p class="userName">{{ item.username }}</p>
       </div>
       <div class="box">
