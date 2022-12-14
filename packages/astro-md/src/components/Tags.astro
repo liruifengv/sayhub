@@ -1,5 +1,6 @@
 ---
 const { tags, class: className = 'text-sm' } = Astro.props
+const basename = import.meta.env.BASE_URL
 ---
 
 {
@@ -7,7 +8,7 @@ const { tags, class: className = 'text-sm' } = Astro.props
     <ul class={className}>
       {tags.map((tag) => (
         <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2">
-          <a href={`/tag/${tag}`}>{tag}</a>
+          <a href={`${basename}tag/${tag}`}>{tag}</a>
         </li>
       ))}
     </ul>
