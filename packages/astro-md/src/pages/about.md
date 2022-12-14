@@ -3,7 +3,7 @@ layout: '../layouts/BlogLayout.astro'
 title: 'About Me'
 description: 'About Me'
 updatedDate: 'August 08 2022'
-heroImage: '~/assets/images/placeholder-about.jpg'
+heroImage: 'http://images.sayhub.me/static/images/placeholder-about.jpg'
 ---
 
 #### Hello World👏

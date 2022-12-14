@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
+import { CDN_URL } from '~/config'
 
 const { meta, isBlog } = Astro.props
 ---
@@ -11,7 +12,7 @@ const { meta, isBlog } = Astro.props
     {
       isBlog && (
         <head>
-          <link rel="stylesheet" href={`https://eso-cdn.denohub.com/assets/gfm-fba346.css`} />
+          <link rel="stylesheet" href={`${CDN_URL}/static/styles/gfm.css`} />
         </head>
       )
     }
