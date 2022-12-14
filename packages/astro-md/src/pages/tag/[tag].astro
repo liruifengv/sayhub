@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout.astro'
+import PostItem from '~/components/PostItem.astro'
+
+const { tag } = Astro.params
+
+const posts = (await Astro.glob('~/pages/blog/*.{md,mdx}'))
+  .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+  .filter((post) => {
+    return post.frontmatter.tags?.includes(tag)
+  })
+
+export async function getStaticPaths() {
+  return [{ params: { tag: 'astro' } }, { params: { tag: 'tailwind-css' } }, { params: { tag: 'front-end' } }]
+}
+
+const meta = {
+  title: 'Tags',
+  description: ' 这里是根据标签分类的文章',
+}
+---
+
+<Layout {meta}>
+  <header>
+    <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">
+      Tag: {tag}
+    </h1>
+  </header>
+  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="mb-5 md:mb-8">
+            <PostItem post={post.frontmatter} url={post.url} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

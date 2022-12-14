@@ -4,7 +4,7 @@ title: '中文文章名称'
 description: '中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述中文描述'
 pubDate: '2022-12-13'
 image: 'https://images.sayhub.me/static/images/placeholder-hero.jpg'
-tags: [astro, tailwind css, front-end]
+tags: [astro, front-end]
 ---
 
 ## aaa
