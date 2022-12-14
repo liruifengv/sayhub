@@ -1,7 +1,7 @@
 ---
 import { Picture } from '@astrojs/image/components'
-import { findImage } from '~/utils/images'
 import Layout from '~/layouts/PageLayout.astro'
+import PostTags from '~/components/Tags.astro'
 
 export interface Props {
   content: {
@@ -9,21 +9,20 @@ export interface Props {
     description: string
     pubDate?: string
     updatedDate?: string
-    heroImage?: string
+    image?: string
     showRecent?: boolean
+    tags?: Array<string>
   }
 }
 
 const {
-  content: { title, description, pubDate, updatedDate, heroImage, showRecent },
+  content: { title, description, pubDate, updatedDate, image, showRecent, tags },
 } = Astro.props
 
 const posts = (await Astro.glob('../pages/blog/*.{md,mdx}'))
   .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
   .filter((post) => post.frontmatter.title !== title)
   .slice(0, 5)
-
-const image = await findImage(heroImage)
 
 const meta = {
   title,
@@ -57,16 +56,17 @@ const showRightRecent = showRecent !== false
           <slot />
         </div>
       </article>
+      {tags?.length > 0 && <PostTags tags={tags} />}
     </section>
     {
       showRecent !== false && (
         <div class="md:mt-10 md:ml-6 h-full md:w-1/3 p-4 sticky top-20">
           <div class="text-gray-900 text-xl">最近文章</div>
           <ul class="mt-4">
-            {posts.map(({ url, frontmatter: { title, heroImage, pubDate } }) => (
+            {posts.map(({ url, frontmatter: { title, image, pubDate } }) => (
               <li class="mt-8 flex items-center" title={title}>
                 <a href={url}>
-                  <Picture class="w-20" src={heroImage} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />
+                  <Picture class="w-20" src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />
                 </a>
                 <div class="ml-2 flex-1">
                   <a
