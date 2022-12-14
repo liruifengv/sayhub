@@ -2,6 +2,17 @@
 import { Picture } from '@astrojs/image/components'
 import { findImage } from '~/utils/images'
 
+export interface Props {
+  post: {
+    title: string
+    description: string
+    pubDate?: string
+    updatedDate?: string
+    heroImage?: string
+  }
+  url: string
+}
+
 const { post, url } = Astro.props
 const image = await findImage(post.heroImage)
 ---
