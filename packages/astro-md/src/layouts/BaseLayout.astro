@@ -3,6 +3,10 @@ import BaseHead from '../components/BaseHead.astro'
 import { CDN_URL } from '~/config'
 
 const { meta, isBlog } = Astro.props
+const basename = import.meta.env.BASE_URL
+// FIXME sayhub.me 域名需要配置 HTTPS 证书
+const gfmCssPath =
+  basename === '/' ? `${CDN_URL}/static/styles/gfm.css` : 'https://eso-cdn.denohub.com/assets/gfm-fba346.css'
 ---
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@ const { meta, isBlog } = Astro.props
     {
       isBlog && (
         <head>
-          <link rel="stylesheet" href={`${CDN_URL}/static/styles/gfm.css`} />
+          <link rel="stylesheet" href={gfmCssPath} />
         </head>
       )
     }
