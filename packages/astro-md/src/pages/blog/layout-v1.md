@@ -2,9 +2,9 @@
 layout: '../../layouts/BlogLayout.astro'
 title: '双飞翼布局与圣杯布局'
 description: '三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。本文介绍几种常用的三列布局方法。'
-pubDate: '2017年02月21日'
+pubDate: '2017-02-21'
 image: 'https://images.sayhub.me/blog/layout-v1/cover.png'
-tags: [CSS]
+tags: [HTML,CSS]
 ---
 
 三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。
