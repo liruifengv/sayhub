@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>双飞翼布局与圣杯布局</title>
+<meta name="title" content="双飞翼布局与圣杯布局">
+<meta name="description" content="三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。本文介绍几种常用的三列布局方法。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/about.af012363.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.fa929310.css" /></head>
+  <link rel="stylesheet" href="/sayhub/assets/about.af012363.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.fa929310.css" /></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  Home
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  Blog
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  About
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          双飞翼布局与圣杯布局
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2017年02月21日</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-4xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_ZNqh67.avif 400w,/sayhub/assets/cover_Z2ehzk0.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_Z1ef4AF.webp 400w,/sayhub/assets/cover_2q5KYn.webp 900w"><source type="image/png" srcset="/sayhub/assets/cover_1xr43e.png 400w,/sayhub/assets/cover_7zKOl.png 900w">
+	<img src="/sayhub/assets/cover_7zKOl.png" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <p>三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。</p>
+<p>那么我们怎么实现这种三列布局呢，先说一下我们平常的方法。</p>
+<p>让左列 left 右列 right 分别左右浮动，然后给主列设置左右外边距 <code>margin-left</code> 和 <code>margin-right</code>，即可实现主列自适应。</p>
+<p>代码如下：</p>
+<p><strong>DOM</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"container"</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"left"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"right"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"main"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span></code></pre>
+<p><strong>CSS</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.left</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">:</span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#bd4147</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.right</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">right</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#419641</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.main</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">:</span><span style="color: #79C0FF">120</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">220</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#01549b</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>但是这种方法有一个缺点，就是左列 left 和右列 right 必须在主列 main 的前面，顺序不能改变，这就导致主列所显示的主页面无法率先加载，影响用户体验。</p>
+<h3 id="圣杯布局">圣杯布局</h3>
+<p><strong>DOM</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"container"</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"main"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"left"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"right"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span></code></pre>
+<p>圣杯布局的思路是把左列 left 右列 right 主列 main分别浮动，然后用负外边距给左右两列进行定位；</p>
+<p><strong>CSS如下</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.main</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#01549b</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.left</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#bd4147</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.right</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#419641</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>左右两列定位了，main 还没有定位，所以会出现左右列覆盖主列 main 的情况，这时我们给容器 container 添加左右内边距 <code>padding-left</code> 和<code>padding-right</code>，成功定位主列 main</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.container</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">padding-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">120</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">padding-right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">220</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>但这时候左右两列会受容器左右内边距的影响，所以给他们添加相对定位；</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.left</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">position</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">relative</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-120</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #79C0FF">.right</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">position</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">relative</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-220</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><strong>最终代码如下</strong>：</p>
+<p><strong>DOM</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"container"</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"main"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"left"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"right"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span></code></pre>
+<p><strong>CSS</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.container</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">padding-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">120</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">padding-right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">220</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.main</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#01549b</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.left</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">position</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">relative</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-120</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#bd4147</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.right</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">position</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">relative</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-220</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#419641</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>圣杯布局的优点：</p>
+<ul>
+<li>主列率先加载</li>
+<li>允许任何列是最高的</li>
+<li>DOM 结构简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>和双飞翼布局相比 CSS 样式较为复杂</li>
+</ul>
+<h3 id="双飞翼布局">双飞翼布局</h3>
+<p>双飞翼布局源自淘宝 UED，第一步和圣杯布局一样，浮动三列，给左右两列设置负外边距；同样会覆盖主列 main，双飞翼布局的做法是在主列 main 后面添加了一个宽度为100%的 div，再设置主列 main 的左右边距，代码如下：</p>
+<p><strong>DOM</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"wrap"</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"main"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"left"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
+<span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">class</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">"right"</span><span style="color: #C9D1D9">>&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span></code></pre>
+<p><strong>CSS</strong>:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #79C0FF">.wrap</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.main</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">110</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-right</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">210</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#01549b</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.left</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">100</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-100</span><span style="color: #FF7B72">%</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#bd4147</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #79C0FF">.right</span><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">float</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">left</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">height</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">width</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">margin-left</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">-200</span><span style="color: #FF7B72">px</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">#419641</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>优点：</p>
+<ul>
+<li>率先加载主列 main</li>
+<li>允许任何列是最高的</li>
+<li>CSS 样式简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>和圣杯布局相比 DOM 结构较为复杂</li>
+</ul>
+<p>实现三列布局还有很多种方法，比如用时下比较流行的 Flex，等等。</p>
+<p>这里只讨论双飞翼和圣杯布局，请大家指正。</p>
+        </div>
+      </article>
+      <ul class="text-sm">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2">
+          <a href="/sayhub/tag/CSS">CSS</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="中文文章名称">
+                <a href="/sayhub/blog/first-post">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-hero_ZVifUC.avif 400w,/sayhub/assets/placeholder-hero_Z2m9y9v.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-hero_Z1m73qb.webp 400w,/sayhub/assets/placeholder-hero_2idM9R.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-hero_2lCpc3.jpg 400w,/sayhub/assets/placeholder-hero_UL6Xa.jpg 900w">
+	<img src="/sayhub/assets/placeholder-hero_UL6Xa.jpg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/first-post">
+                    中文文章名称
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-13</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Second post">
+                <a href="/sayhub/blog/second-post">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-about_1AhDE.avif 400w,/sayhub/assets/placeholder-about_Z1og0ze.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-about_ZoduPT.webp 400w,/sayhub/assets/placeholder-about_Z1O4N4M.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-about_Z2cDEHI.jpg 400w,/sayhub/assets/placeholder-about_1rGaRk.jpg 900w">
+	<img src="/sayhub/assets/placeholder-about_1rGaRk.jpg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/second-post">
+                    Second post
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：Jul 22 2022</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Third post">
+                <a href="/sayhub/blog/third-post">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-about_1AhDE.avif 400w,/sayhub/assets/placeholder-about_Z1og0ze.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-about_ZoduPT.webp 400w,/sayhub/assets/placeholder-about_Z1O4N4M.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-about_Z2cDEHI.jpg 400w,/sayhub/assets/placeholder-about_1rGaRk.jpg 900w">
+	<img src="/sayhub/assets/placeholder-about_1rGaRk.jpg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/third-post">
+                    Third post
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：Jul 15 2022</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Using MDX">
+                <a href="/sayhub/blog/using-mdx">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-about_1AhDE.avif 400w,/sayhub/assets/placeholder-about_Z1og0ze.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-about_ZoduPT.webp 400w,/sayhub/assets/placeholder-about_Z1O4N4M.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-about_Z2cDEHI.jpg 400w,/sayhub/assets/placeholder-about_1rGaRk.jpg 900w">
+	<img src="/sayhub/assets/placeholder-about_1rGaRk.jpg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/using-mdx">
+                    Using MDX
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：Jul 02 2022</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Markdown Style Guide">
+                <a href="/sayhub/blog/markdown-style-guide">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/placeholder-about_1AhDE.avif 400w,/sayhub/assets/placeholder-about_Z1og0ze.avif 900w"><source type="image/webp" srcset="/sayhub/assets/placeholder-about_ZoduPT.webp 400w,/sayhub/assets/placeholder-about_Z1O4N4M.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/placeholder-about_Z2cDEHI.jpg 400w,/sayhub/assets/placeholder-about_1rGaRk.jpg 900w">
+	<img src="/sayhub/assets/placeholder-about_1rGaRk.jpg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/markdown-style-guide">
+                    Markdown Style Guide
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：Jul 01 2022</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-2ERKAMCF">
+  &copy; 2022 SayHub. All rights reserved.
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
