@@ -11,7 +11,12 @@ const posts = (await Astro.glob('~/pages/blog/*.{md,mdx}'))
   })
 
 export async function getStaticPaths() {
-  return [{ params: { tag: 'astro' } }, { params: { tag: 'tailwind-css' } }, { params: { tag: 'front-end' } }]
+  return [
+    { params: { tag: 'astro' } },
+    { params: { tag: 'tailwind-css' } },
+    { params: { tag: 'front-end' } },
+    { params: { tag: 'CSS' } },
+  ]
 }
 
 const meta = {
