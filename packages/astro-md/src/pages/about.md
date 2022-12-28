@@ -1,9 +1,9 @@
 ---
 layout: '../layouts/BlogLayout.astro'
-title: 'About Me'
+title: '关于我'
 showRecent: false
-description: 'About Me'
-updatedDate: 'August 08 2022'
+description: '关于我/关于本站/关于 SayHub'
+updatedDate: ' 2022-12-28'
 image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 ---
 
