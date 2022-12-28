@@ -1,0 +1,15 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import Layout from '~/layouts/PageLayout.astro'
+
+const meta = {
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+}
+---
+
+<Layout {meta}>
+  <div class="flex h-screen items-center justify-center flex-col">
+    <img class="h-3/5" src="https://images.sayhub.me/404.svg" alt="404" />
+  </div>
+</Layout>
