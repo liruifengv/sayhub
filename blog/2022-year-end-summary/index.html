@@ -6,9 +6,9 @@
 <meta name="generator" content="Astro v1.6.10">
 
 <!-- Primary Meta Tags -->
-<title>ghost 使用 mysql</title>
-<meta name="title" content="ghost 使用 mysql">
-<meta name="description" content="上一篇文章使用 Ghost 从零搭建博客系统 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。">
+<title>2022 年终总结</title>
+<meta name="title" content="2022 年终总结">
+<meta name="description" content="2022 年是难以言表的一年，没完没了的疫情席卷着我们。所幸的是，2022 年末的时候，迎来了新的转机。抓住 12 月的尾巴，写一下今年的年终总结。">
 <link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
 
     <head>
@@ -70,94 +70,92 @@
     <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-          ghost 使用 mysql
+          2022 年终总结
         </h1>
         <div class="text-center px-4 mb-4">
-              发表日期： <time>2021-12-17</time>
+              发表日期： <time>2022-12- 28</time>
             </div>
       </header>
       <article class="container mx-auto max-w-3xl markdown-body">
         <picture>
-	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
-	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text">
+	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
+	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text">
 </picture>
         <div class="mt-6">
-          <p>上一篇文章<a href="https://sayhub.me/blog/ghost/">使用 Ghost 从零搭建博客系统</a> 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。</p>
-<p>之前是使用的 docker 镜像，那么我们直接使用 通过 <a href="https://docs.docker.com/engine/reference/commandline/stack_deploy/">docker stack deploy</a> or <a href="https://github.com/docker/compose">docker-compose</a> 的方式，同时启动多个服务。</p>
-<p>创建一个 stack.yml 文件，内容如下</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #7EE787">version</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">'3.1'</span></span>
-<span class="line"></span>
-<span class="line"><span style="color: #7EE787">services</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">ghost</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">image</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">restart</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">always</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">container_name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">volumes</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #A5D6FF">/home/ghost/data:/var/lib/ghost/content</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">ports</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #A5D6FF">3001:2368</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">environment</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># see https://ghost.org/docs/config/#configuration-options</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__client</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">mysql</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__host</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">db</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__user</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">root</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__password</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">password</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__database</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># this url value is just an example, and is likely wrong for your environment!</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">url</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">http://127.0.0.1:3000</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E">#NODE_ENV: development</span></span>
-<span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">db</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">image</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">mysql:5.7</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">restart</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">always</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">environment</span><span style="color: #C9D1D9">:</span></span>
-<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">MYSQL_ROOT_PASSWORD</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">password</span></span></code></pre>
-<p>然后执行命令：</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">docker stack deploy -c stack.yml ghost</span></span></code></pre>
-<p><img src="https://images.sayhub.me/blog/ghost-mysql/img1.webp" alt="插图"></p>
-<p><code>docker service ls</code> 看到了两个服务</p>
-<p><img src="https://images.sayhub.me/blog/ghost-mysql/img2.webp" alt="插图"></p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">docker ps</span></span></code></pre>
-<p><img src="https://images.sayhub.me/blog/ghost-mysql/img3.webp" alt="插图"></p>
-<p>打开网站，发现我们的博客也顺利启动起来了，那么看一下数据库链接是否变成了 mysql</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">docker </span><span style="color: #79C0FF">exec</span><span style="color: #C9D1D9"> -it 5e66ec87a27a mysql -p</span></span></code></pre>
-<p>进入 mysql 容器</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">use ghost</span><span style="color: #FF7B72">;</span></span>
-<span class="line"><span style="color: #C9D1D9">show tables</span><span style="color: #FF7B72">;</span></span></code></pre>
-<p><img src="https://images.sayhub.me/blog/ghost-mysql/img4.webp" alt="插图"></p>
-<p>我们能看到 mysql 中新建了 ghost 数据库，以及相关的表。</p>
-<p>至此，说明我们切换 mysql 成功了！</p>
-<p>往期文章：<a href="https://sayhub.me/blog/ghost/">使用 Ghost 从零搭建博客系统</a></p>
+          <p>2022 年是难以言表的一年，没完没了的疫情席卷着我们。所幸的是，2022 年末的时候，迎来了新的转机。抓住 12 月的尾巴，写一下今年的年终总结。</p>
+<h3 id="生活">生活</h3>
+<p>生活上呢，上半年疫情没有扩散的时候，过得还不错，由于女朋友在北京，所以频频来往于北京和天津，去过了北海公园、天坛、雍和宫。</p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/baita" alt="白塔"></p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/tiantan" alt="天坛"></p>
+<p>又去了趟杭州旅行，看了西湖，逛了灵隐寺，许了愿。</p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/xihu" alt="西湖"></p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/lingyin" alt="灵隐寺"></p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/lingyin2" alt="灵隐寺"></p>
+<p>下半年比较糟，疫情爆发，频频封在家里，北京弹窗宝一直弹窗 3，很是烦人。</p>
+<p>最后关头终于开放，我也有幸感染了新冠。</p>
+<p><img src="https://images.sayhub.me/blog/2022-year-end-summary/kangyuan" alt="阳了"></p>
+<h3 id="工作">工作</h3>
+<p>工作上呢，还是平平无奇，作为一个普普通通的前端页面仔，做了几个需求，写了很多页面，加了很多班。</p>
+<h3 id="开源技术">开源&#x26;技术</h3>
+<p>2022 年在 GitHub 上混了蛮久，参与了一点开源：</p>
+<ul>
+<li>
+<p>给 <a href="https://github.com/denoland">Deno</a> 和 Deno-std 贡献（蹭）了几个 <a href="https://github.com/denoland/deno/issues?q=author%3Aliruifengv">PR</a>。</p>
+</li>
+<li>
+<p><a href="https://github.com/withastro/astro">Astro</a> 混了几个 PR，修改了官网文档几处中文翻译错误。</p>
+</li>
+<li>
+<p><a href="https://github.com/liruifengv/sayhub">SayHub</a>，使用 Astro 折腾了新的个人博客站点，<a href="https://sayhub.me/%E3%80%82">https://sayhub.me/。</a> 把仓库改造成了 monorepo 管理多个版本。</p>
+</li>
+<li>
+<p><a href="https://github.com/liruifengv/sayhub-server">sayhub-server</a> 学了 Rust。使用 Rust 为我的博客提供后台服务。</p>
+</li>
+<li>
+<p><a href="https://github.com/liruifengv/promise-modal">promise-modal</a> 开源了 promise-modal 库，使用该库可以在 React 中，使用 promise 函数式的开发弹窗 Modal 等。</p>
+</li>
+<li>
+<p><a href="https://github.com/liruifengv/md-parser">md-parser</a> 使用 Rust 开发一个 Markdown 解析器，旨在练习 Rust 和学习编译原理相关知识。进行中，欢迎 PR。</p>
+</li>
+</ul>
+<h3 id="展望-2023">展望 2023</h3>
+<ul>
+<li>
+<p>2022 年没有写文章，没有任何输出。2023 年我要多多写文章，把学到的东西输出出来，以文章为抓手，形成闭环。</p>
+</li>
+<li>
+<p>继续学习 Rust，把 md-parser 写完。</p>
+</li>
+<li>
+<p>学习其他的知识。</p>
+</li>
+<li>
+<p>生活上，希望跟女朋友越来越好，希望许的愿望成真！</p>
+</li>
+</ul>
         </div>
       </article>
       <ul class="text-base">
       <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ghost">ghost</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/建站">建站</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/blog">blog</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/mysql">mysql</a>
+          <a href="/sayhub/tag/年终总结">年终总结</a>
         </li>
     </ul>
     </section>
     <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
           <div class="text-gray-900 text-xl">最近文章</div>
           <ul class="mt-4">
-            <li class="mt-8 flex items-center" title="2022 年终总结">
-                <a href="/sayhub/blog/2022-year-end-summary">
+            <li class="mt-8 flex items-center" title="ghost 使用 mysql">
+                <a href="/sayhub/blog/ghost-mysql">
                   <picture>
-	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
-	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
 </picture>
                 </a>
                 <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/2022-year-end-summary">
-                    2022 年终总结
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/ghost-mysql">
+                    ghost 使用 mysql
                   </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12- 28</div>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-17</div>
                 </div>
               </li><li class="mt-8 flex items-center" title="React PropTypes 中的 elementType">
                 <a href="/sayhub/blog/react-elementtype">
