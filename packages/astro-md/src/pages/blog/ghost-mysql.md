@@ -13,7 +13,7 @@ tags: [ghost, 建站, blog, mysql]
 
 创建一个 stack.yml 文件，内容如下
 
-```yml
+```yaml
 version: '3.1'
 
 services:
