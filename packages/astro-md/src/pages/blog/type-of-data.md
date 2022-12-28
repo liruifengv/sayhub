@@ -4,7 +4,7 @@ title: 'JS学习笔记之数据类型'
 description: '2017 年是我开始学习前端的一年，2018 年我将继续在前端的路上前行。这篇文章会是我的JS 学习笔记的开篇，以后还会有相应的其他内容。这里主要简单写一下 JavaScript 的 几种数据类型。'
 pubDate: '2018-01-02'
 image: 'https://images.sayhub.me/blog/cover.jpeg'
-tags: [web,front-end]
+tags: [front-end, JavaScript]
 ---
 
 2017年是我开始学习前端的一年，2018年我将继续在前端的路上前行。这篇文章会是我的JS 学习笔记的开篇，以后还会有相应的其他内容。
