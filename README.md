@@ -5,7 +5,6 @@
 ## monorepo
 
 - [x] Vue 早期版本，Vue + webpack
-- [x] React + Vite
-- [ ] Astro
+- [x] React + Vite 版本，访问链接：https://react-vite.sayhub.me/
+- [ ] Astro + markdown 当前版本：https://sayhub.me
 - [ ] Next.js + Turbopack
-- [ ] request 网络请求方法封装
