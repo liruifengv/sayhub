@@ -7,13 +7,13 @@ image: 'https://images.sayhub.me/blog/tag-semantics/cover.jpeg'
 tags: [HTML]
 ---
 
-最近在做百度前端技术学院的基础题，HTML 和 CSS 部分，我发现一个问题，我还是习惯于嵌套一堆 div，然而 HTML5 已经定义了很多新的具有明确语义化的标签，大家也都在倡导使用语义化标签，所以想写一写关于HTML标签语义化的东西。
+最近在做百度前端技术学院的基础题，HTML 和 CSS 部分，我发现一个问题，我还是习惯于嵌套一堆 div，然而 HTML5 已经定义了很多新的具有明确语义化的标签，大家也都在倡导使用语义化标签，所以想写一写关于 HTML 标签语义化的东西。
 
 ### 什么是标签语义化
 
 这是标签语义化的定义：
 
-> 首先是关于语义（Semantics）和默认样式的区别，默认样式是浏览器设定的一些常用tag的表现形式，语义化的主要目的就是让大家直观的认识标签(markup)和属性(attribute)的用途和作用，很明显Hx系列看起来很像标题，因为拥有粗体和较大的字号。`<strong>`,`<em>`用来区别于其他文字，起到了强调的作用。至于列表和表格很明显的告诉你他们是做什么的。
+> 首先是关于语义（Semantics）和默认样式的区别，默认样式是浏览器设定的一些常用 tag 的表现形式，语义化的主要目的就是让大家直观的认识标签(markup)和属性(attribute)的用途和作用，很明显 Hx 系列看起来很像标题，因为拥有粗体和较大的字号。`<strong>`,`<em>`用来区别于其他文字，起到了强调的作用。至于列表和表格很明显的告诉你他们是做什么的。
 
 简单来说就是我们要让我们使用的每个标签都拥有具体的意义，我们一眼看去就知道这个标签是什么意思，比如`<header>`标签，它的意思是头部；`<nav>`标签，全拼是 Navigation，导航的意思； `<li>` 标签，list, 列表的意思。HTML5 就是要让我们去用这些标签，而不是一味的用`<div>`，用 CSS 来修饰。
 
@@ -21,23 +21,24 @@ tags: [HTML]
 
 ```html
 <div class="public-header">
-        <div class="header-logo"></div>
-        <ul class="header-nav">
-            <li>
-                 <a href="#">导航链接四</a>
-            </li>
-            <li>
-                 <a href="#">导航链接三</a>
-            </li>
-            <li>
-                 <a href="#">导航链接二</a>
-            </li>
-            <li>
-                 <a href="#">导航链接一</a>
-            </li>
-        </ul>
-   </div>
+  <div class="header-logo"></div>
+  <ul class="header-nav">
+    <li>
+      <a href="#">导航链接四</a>
+    </li>
+    <li>
+      <a href="#">导航链接三</a>
+    </li>
+    <li>
+      <a href="#">导航链接二</a>
+    </li>
+    <li>
+      <a href="#">导航链接一</a>
+    </li>
+  </ul>
+</div>
 ```
+
 这是非常不符合语义化的，我应该用 HTML5 的新标签`<header>`。
 
 ### 为什么要标签语义化
@@ -53,8 +54,8 @@ tags: [HTML]
 
 ```html
 <header>
-    <h1>文章一级标题</h1>
-    <h2>文章二级标题</h2>
+  <h1>文章一级标题</h1>
+  <h2>文章二级标题</h2>
 </header>
 ```
 
@@ -62,11 +63,11 @@ tags: [HTML]
 
 ```html
 <nav>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </nav>
 ```
 
@@ -74,8 +75,8 @@ tags: [HTML]
 
 ```html
 <article>
-    <h2>文章标题</h2>
-    <p>文章内容</p>
+  <h2>文章标题</h2>
+  <p>文章内容</p>
 </article>
 ```
 
@@ -87,8 +88,8 @@ tags: [HTML]
 
 ```html
 <address>
-    本文作者<br>
-    联系方式<a href="#">Email</a>
+  本文作者<br />
+  联系方式<a href="#">Email</a>
 </address>
 ```
 
@@ -96,17 +97,19 @@ tags: [HTML]
 
 ```html
 <footer>
-    <p>版权所属@***<p>
-<footer>
+  <p>版权所属@***</p>
+  <p></p>
+  <footer></footer>
+</footer>
 ```
+
 ### 所以我们以后怎么写
 
-- 尽量减少无意义的div，换用具体意义的标签；
-- 每个input标签对应的说明文本都需要使用label标签，并且通过为- input 设置 id 属性，label 标签使用 for 属性关联 input 标签；
+- 尽量减少无意义的 div，换用具体意义的标签；
+- 每个 input 标签对应的说明文本都需要使用 label 标签，并且通过为- input 设置 id 属性，label 标签使用 for 属性关联 input 标签；
 - 尽量使用 strong 和 em 标签，不要使用 b 和 i；
 - 有待补充
 
-**总之，当我们写HTML页面时，首先应该想到的是怎么简化DOM结构，使页面更简单，更可读。**
+**总之，当我们写 HTML 页面时，首先应该想到的是怎么简化 DOM 结构，使页面更简单，更可读。**
 
 **标签语义化是一种艺术。**
-
