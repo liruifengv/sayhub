@@ -36,8 +36,8 @@ const { post, url } = Astro.props
         {post.title}
       </a>
     </div>
-    <div class="text-sm mt-2 font-normal">{post.description}</div>
-    <div class="text-sm mt-2 font-light">发表日期：{post.pubDate}</div>
+    <div class="mt-2 font-normal">{post.description}</div>
+    <div class="mt-2 font-light">发表日期：{post.pubDate}</div>
     {post.tags?.length > 0 && <PostTags tags={post.tags} class="mt-2" />}
   </div>
 </div>
