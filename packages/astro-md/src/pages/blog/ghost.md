@@ -56,7 +56,7 @@ ghost install local
 
 看下报错信息说我的 Node.js 版本不支持。
 
-查看[文档](https://ghost.org/docs/faq/node-versions/)，找到支持的版本，使用 nvm 或者 n 来切换 node 版本，这里我使用了14.18。
+查看[文档](https://ghost.org/docs/faq/node-versions/)，找到支持的版本，使用 nvm 或者 n 来切换 node 版本，这里我使用了 14.18。
 
 重新执行
 
@@ -72,13 +72,11 @@ ghost install local
 
 ![插图](https://images.sayhub.me/blog/ghost/img3.webp)
 
-
 第一步让创建一个管理员账号，我们输入相关信息，
 
 第二步让邀请团队成员，可以先跳过，后面再邀请，这里直接进入。
 
 进入后看到的是一个管理员的后台界面。我们可以看到左上角我们设置的网站名称
-
 
 ![插图](https://images.sayhub.me/blog/ghost/img4.webp)
 
@@ -104,12 +102,11 @@ ghost install local
 
 https://ghost.org/docs/themes/helpers/translate/
 
-到这一步需要了解一下项目的目录结构了。打开一开始创建的目录，会发现ghost 在该目录下生成了一个项目
+到这一步需要了解一下项目的目录结构了。打开一开始创建的目录，会发现 ghost 在该目录下生成了一个项目
 
 ![插图](https://images.sayhub.me/blog/ghost/img8.jpeg)
 
-
-那么如何设置语言呢，在 content/themes 下，是 Ghost 的主题，默认主题是casper。我们可以在官网找到很多主题，有收费的有免费的。
+那么如何设置语言呢，在 content/themes 下，是 Ghost 的主题，默认主题是 casper。我们可以在官网找到很多主题，有收费的有免费的。
 
 想要设置语言，在主题下面，新建 locales 文件夹，然后新建 en.json 和 zh.json 文件。使用 i18n 进行国际化的同学应该很熟悉这是干什么的了。编辑你想要的翻译文件。然后根据文档，需要补全两个模板文件：pagination.hbs 和 navigation.hbs。然后在主题下的所有模板文件下查找要翻译的文字，使用`{{t key}}` 语法来进行翻译。
 
@@ -139,7 +136,7 @@ docker pull ghost
 docker run -d --name my-ghost -e url=http://域名 -p 3001:2368 ghost
 ```
 
-请注意替换自己的域名和容器名称。以上命令同时把3001 端口映射到了容器的 2368 端口。然后我们在 nginx 配置，指向 3001。这时候直接访问我们的域名，就可以查看 ghost 站点了。
+请注意替换自己的域名和容器名称。以上命令同时把 3001 端口映射到了容器的 2368 端口。然后我们在 nginx 配置，指向 3001。这时候直接访问我们的域名，就可以查看 ghost 站点了。
 
 执行一下命令可以进入容器内
 
@@ -148,7 +145,6 @@ docker exec -it my-ghost /bin/bash
 ```
 
 这时候我想在容器里面执行一下 ghost 命令。
-
 
 ![插图](https://images.sayhub.me/blog/ghost/img10.png)
 

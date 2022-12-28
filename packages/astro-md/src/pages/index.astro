@@ -15,7 +15,7 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}'))
   .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
   .slice(0, 5)
 
-const tags = ['HTML', 'CSS', 'web', 'font', 'JavaScript', 'front-end', 'ghost', '建站', 'blog']
+const tags = ['HTML', 'CSS', 'web', 'font', 'JavaScript', 'front-end', 'ghost', '建站', 'blog', 'mysql']
 ---
 
 <Layout {meta}>
