@@ -2,6 +2,7 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import Layout from '~/layouts/PageLayout.astro'
 import PostItem from '~/components/PostItem.astro'
+import Tags from '~/components/Tags.astro'
 
 const basename = import.meta.env.BASE_URL
 
@@ -13,20 +14,28 @@ const meta = {
 const posts = (await Astro.glob('./blog/*.{md,mdx}'))
   .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
   .slice(0, 5)
+
+const tags = ['HTML', 'CSS', 'web', 'font', 'JavaScript', 'front-end']
 ---
 
 <Layout {meta}>
-  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
-    <div class="mb-6 text-3xl text-center">近期文章</div>
-    <ul>
-      {
-        posts.map((post) => (
-          <li class="mt-5 md:mb-8">
-            <PostItem post={post.frontmatter} url={post.url} />
-          </li>
-        ))
-      }
-    </ul>
-    <a href={`${basename}blog`} class="hover:text-primary-600 mt-6 text-xl flex flex-row-reverse">查看更多&gt;</a>
-  </section>
+  <div class="max-w-7xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 py-8 sm:py-12 lg:py-16 max-w-5xl">
+      <div class="mb-6 text-3xl text-center">近期文章</div>
+      <ul>
+        {
+          posts.map((post) => (
+            <li class="mt-5 md:mb-8">
+              <PostItem post={post.frontmatter} url={post.url} />
+            </li>
+          ))
+        }
+      </ul>
+      <a href={`${basename}blog`} class="hover:text-primary-600 mt-6 text-xl flex flex-row-reverse">查看更多&gt;</a>
+    </section>
+    <div class="px-6 py-8 mt-2 text-base max-w-sm">
+      <div class="mt-6 text-3xl">全部标签</div>
+      <Tags tags={tags} class="text-base mt-6" />
+    </div>
+  </div>
 </Layout>
