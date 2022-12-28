@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>使用 Deno 创建 HTTP 服务</title>
+<meta name="title" content="使用 Deno 创建 HTTP 服务">
+<meta name="description" content="今天我们来使用 Deno 创建一个 HTTP 服务，REST-API 增删查改">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/404.9d940ef4.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /></head>
+  <link rel="stylesheet" href="/sayhub/assets/404.9d940ef4.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  首页
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  文章
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  关于
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          使用 Deno 创建 HTTP 服务
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2020-06-21</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/deno-code_Z1LUESA.avif 400w,/sayhub/assets/deno-code_1RpaGs.avif 900w"><source type="image/webp" srcset="/sayhub/assets/deno-code_Z2cJso9.webp 400w,/sayhub/assets/deno-code_1rAnbT.webp 900w">
+	<img src="/sayhub/assets/deno-code_1rAnbT.webp" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <p>今天我们来使用 Deno 创建一个 HTTP 服务，在这之前呢，我们来做一些准备工作。</p>
+<h2 id="deno-介绍">Deno 介绍</h2>
+<p>对于对 Deno 不了解的同学，我们再来做一下 Deno 的介绍：</p>
+<p>做前端的小伙伴都了解 Node.js，Deno 是和 Node.js 一样的，一个 JS/TS 运行时。
+那么 Deno 的特点是什么呢：</p>
+<ul>
+<li>
+<p>Deno 基于最新的 JavaScript 语言；</p>
+</li>
+<li>
+<p>Deno 具有覆盖面广泛的标准库；</p>
+</li>
+<li>
+<p>Deno 以 TypeScript 为核心，配以更多独特的方式从而带来了巨大的优势，其中包括一流的 TypeScript 支持（Deno 自动编译 TypeScript 而无需你单独编译）；</p>
+</li>
+<li>
+<p>Deno 大力拥抱 ES 模块标准；</p>
+</li>
+<li>
+<p>Deno 没有包管理器；</p>
+</li>
+<li>
+<p>Deno 具有一流的 await 语法支持；</p>
+</li>
+<li>
+<p>Deno 内置测试工具；</p>
+</li>
+<li>
+<p>Deno 旨在尽可能地与浏览器兼容，例如通过提供内置对象 fetch 和全局 window 对象。</p>
+</li>
+</ul>
+<p>Deno 初始的目标可能是 Node.js 的替代品，旨在解决 Node.js 的一些痛点和历史遗留问题。那么它和 Node.js 有哪些异同呢？</p>
+<p>相同点：</p>
+<ul>
+<li>
+<p>两者都是基于 V8 引擎开发的；</p>
+</li>
+<li>
+<p>两者都非常适合在服务器端上编写 JavaScript 应用。</p>
+</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>
+<p>Node.js 用 C++ 和 JavaScript 语言编写。Deno 用 Rust 和 TypeScript 语言编写。</p>
+</li>
+<li>
+<p>Node.js 有一个官方的软件包管理器，称为 NPM。Deno 不会有，而会允许你从 URL 导入任何 ES 模块。</p>
+</li>
+<li>
+<p>Node.js 使用 CommonJS 模块语法导入软件包。Deno 使用 ES 标准模块导入。</p>
+</li>
+<li>
+<p>Deno 在其所有 API 和标准库中都使用现代 ECMAScript 功能，而 Node.js 使用基于回调的标准库，并且没有计划对其进行升级。</p>
+</li>
+<li>
+<p>Deno 通过权限控制提供了一个安全的沙箱环境，程序只能访问由用户设置为可执行标志的文件。Node.js 程序可以直接访问用户足以访问的任何内容。</p>
+</li>
+<li>
+<p>Deno 长期以来一直在探索将程序编译成单个可执行文件的可能性，从而使得该可执行文件可以在没有外部依赖项（例如 Go）的情况下运行，但这并不是一件容易的事，如果做得到，将会成为更有话语权的游戏规则改变者。</p>
+</li>
+<li>
+<p>Deno 没有 npm 一样的包管理器。</p>
+</li>
+</ul>
+<h2 id="安装">安装</h2>
+<p>Deno 的安装其实很简单。</p>
+<h3 id="windows-安装">windows 安装</h3>
+<p>windows 环境，官方推荐使用 <a href="https://chocolatey.org/packages/deno">Chocolatey</a> 安装。</p>
+<h4 id="首先安装-chocolatey">首先安装 Chocolatey</h4>
+<p>那么首先，我们需要安装 Chocolatey。</p>
+<p>用管理员模式运行 cmd，我们可在 C:\Windows\System32 下找到 cmd.exe 右键管理员运行。</p>
+<p>输入以下命令：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">@</span><span style="color: #A5D6FF">"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"</span><span style="color: #C9D1D9"> -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command </span><span style="color: #A5D6FF">"iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&#x26;&#x26;</span><span style="color: #C9D1D9"> SET </span><span style="color: #A5D6FF">"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</span></span></code></pre>
+<p>安装完毕后，使用 <code>choco -v</code> 查看是否安装成功。</p>
+<h4 id="安装-deno">安装 deno</h4>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">choco install deno</span></span></code></pre>
+<p>使用 <code>deno -V</code> 查看是否安装成功。</p>
+<h3 id="mac-安装">Mac 安装</h3>
+<p>Mac 安装最简单的方法是使用 Homebrew：</p>
+<p><code>sh brew install deno </code>
+安装完毕后，使用 <code>deno -V</code> 查看是否安装成功。</p>
+<h2 id="安装-vscode-扩展">安装 Vscode 扩展</h2>
+<p><img src="https://images.sayhub.me/blog/deno-http/img1.awebp" alt=""></p>
+<h2 id="启动一个-deno-服务">启动一个 Deno 服务</h2>
+<p>首先新建一个 index.ts 文件，写入以下代码</p>
+<p><img src="https://images.sayhub.me/blog/deno-http/img2.awebp" alt=""></p>
+<p>使用<code>deno run index.ts</code> 命令运行它。</p>
+<p><img src="https://images.sayhub.me/blog/deno-http/img3.awebp" alt=""></p>
+<p>先下载了一些依赖项，最后在编译的步骤上报错了，提示我们没有网络权限，这其实是 Deno 的 安全沙箱 Sandbox 的问题。Deno 有一个安全沙箱，可以防止程序做一些你不允许的事情。
+那么我们在上面的运行命令上加上 <code>--allow-net</code></p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">deno run --allow-net app.ts</span></span></code></pre>
+<p><img src="https://images.sayhub.me/blog/deno-http/img4.awebp" alt=""></p>
+<p>运行成功了，该应用程序现在监听在 8000 端口上运行着 HTTP 服务器：</p>
+<p><img src="https://images.sayhub.me/blog/deno-http/img5.awebp" alt=""></p>
+<h2 id="构建-rest-api">构建 REST-API</h2>
+<p>我们启动了一个 Deno 服务，那么如果我们想编写一套符合 REST 标准的 API，怎么办呢。我们知道，Node.js 拥有 Express、Koa、egg 等优秀的开源框架。Deno 同样有人开发了一个 Oak
+框架，从名字上我们就能看出来，它是一个类似于 Koa 的中间件框架。</p>
+<p>那么我们接下来构建一个这样的 API：</p>
+<ul>
+<li>添加一本书</li>
+<li>获得书的列表</li>
+<li>获得某本书的详情</li>
+<li>删除一本书</li>
+<li>更新一本书</li>
+</ul>
+<p>创建一个 app.ts 文件。</p>
+<p>从 Oak 导入 Application 和 Router 对象：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">import { Application, Router } from "https://deno.land/x/oak/mod.ts";</span></span></code></pre>
+<p>然后我们得到环境变量 PORT 和 HOST:</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">const env = Deno.env.toObject();</span></span>
+<span class="line"><span style="color: #c9d1d9">const PORT = env.PORT || 8000;</span></span>
+<span class="line"><span style="color: #c9d1d9">const HOST = env.HOST || "127.0.0.1";</span></span></code></pre>
+<p>编写应用代码
+<img src="https://images.sayhub.me/blog/deno-http/img6.awebp" alt=""></p>
+<p>使用命令来运行它</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">deno run --allow-env --allow-net app.ts</span></span></code></pre>
+<p><img src="https://images.sayhub.me/blog/deno-http/img7.awebp" alt=""></p>
+<p>接下来我们来编写我们的 API 吧。</p>
+<p>在文件的顶部，让我们定义一个 BOOK 的接口，然后我们声明一个初始的 books 数组 Book 对象。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Book</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">author</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">introduction</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> books</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Array</span><span style="color: #C9D1D9">&#x3C;</span><span style="color: #FFA657">Book</span><span style="color: #C9D1D9">> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span></span>
+<span class="line"><span style="color: #C9D1D9">  {</span></span>
+<span class="line"><span style="color: #C9D1D9">    name: </span><span style="color: #A5D6FF">'bookOne'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    author: </span><span style="color: #A5D6FF">'张三'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    introduction: </span><span style="color: #A5D6FF">'这是这本书的介绍'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  {</span></span>
+<span class="line"><span style="color: #C9D1D9">    name: </span><span style="color: #A5D6FF">'bookTwo'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    author: </span><span style="color: #A5D6FF">'李四'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    introduction: </span><span style="color: #A5D6FF">'这是这本书的介绍'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">]</span></span></code></pre>
+<p>安装 REST API 的规范定义好我们的结构</p>
+<ul>
+<li>
+<p>GET /books</p>
+</li>
+<li>
+<p>GET /books/:name</p>
+</li>
+<li>
+<p>POST /books</p>
+</li>
+<li>
+<p>PUT /books/:name</p>
+</li>
+<li>
+<p>DELETE /books/:name</p>
+</li>
+</ul>
+<p>那么代码这么写：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">router</span></span>
+<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/books'</span><span style="color: #C9D1D9">, getBooks)</span></span>
+<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/books/:name'</span><span style="color: #C9D1D9">, getBook)</span></span>
+<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">post</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/books'</span><span style="color: #C9D1D9">, addBook)</span></span>
+<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">put</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/books/:name'</span><span style="color: #C9D1D9">, updateBook)</span></span>
+<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">delete</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'/books/:name'</span><span style="color: #C9D1D9">, deleteBook)</span></span></code></pre>
+<p>接下来写每个接口的方法：</p>
+<p><code>GET /books</code> 获取所有书籍列表</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// 获得所有书的列表</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getBooks</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({ </span><span style="color: #FFA657">response</span><span style="color: #C9D1D9"> }</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> { </span><span style="color: #FFA657">response</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9"> }) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> books</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><code>GET /books/:name</code> 通过名字来获取某一本书的详情</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// 获取某一本书</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getBook</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span></span>
+<span class="line"><span style="color: #C9D1D9">  params,</span></span>
+<span class="line"><span style="color: #C9D1D9">  response,</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">params</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">response</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">book</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> books.</span><span style="color: #D2A8FF">filter</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">book</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> book.name </span><span style="color: #FF7B72">===</span><span style="color: #C9D1D9"> params.name)</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (book.</span><span style="color: #79C0FF">length</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">200</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> book[</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">]</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">400</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">`Cannot find book ${</span><span style="color: #C9D1D9">params</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">name</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><code>POST /books</code> 添加一本书</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// 添加一本书</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">addBook</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> ({ </span><span style="color: #FFA657">request</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">response</span><span style="color: #C9D1D9"> }</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> { </span><span style="color: #FFA657">request</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">response</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9"> }) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">body</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> request.</span><span style="color: #D2A8FF">body</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">book</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Book</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> body.value</span></span>
+<span class="line"><span style="color: #C9D1D9">  books.</span><span style="color: #D2A8FF">push</span><span style="color: #C9D1D9">(book)</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">'OK'</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">200</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><code>PUT /books/:name</code> 更新一本书</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// 更新一本书</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">updateBook</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> ({</span></span>
+<span class="line"><span style="color: #C9D1D9">  params,</span></span>
+<span class="line"><span style="color: #C9D1D9">  request,</span></span>
+<span class="line"><span style="color: #C9D1D9">  response,</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">params</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">request</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">response</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">temp</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> books.</span><span style="color: #D2A8FF">filter</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">existingBook</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> existingBook.name </span><span style="color: #FF7B72">===</span><span style="color: #C9D1D9"> params.name)</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">body</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> request.</span><span style="color: #D2A8FF">body</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">introduction</span><span style="color: #C9D1D9"> }</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> { </span><span style="color: #FFA657">introduction</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> body.value</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (temp.</span><span style="color: #79C0FF">length</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    temp[</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">].introduction </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> introduction</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">200</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">'OK'</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">400</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">`Cannot find book ${</span><span style="color: #C9D1D9">params</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">name</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p><code>DELETE /books/:name</code> 删除一本书</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// 删除一本书</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">deleteBook</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span></span>
+<span class="line"><span style="color: #C9D1D9">  params,</span></span>
+<span class="line"><span style="color: #C9D1D9">  response,</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">params</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">response</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">lengthBefore</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> books.</span><span style="color: #79C0FF">length</span></span>
+<span class="line"><span style="color: #C9D1D9">  books </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> books.</span><span style="color: #D2A8FF">filter</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">book</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> book.name </span><span style="color: #FF7B72">!==</span><span style="color: #C9D1D9"> params.name)</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (books.</span><span style="color: #79C0FF">length</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">===</span><span style="color: #C9D1D9"> lengthBefore) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">400</span></span>
+<span class="line"><span style="color: #C9D1D9">    response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">`Cannot find book ${</span><span style="color: #C9D1D9">params</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">name</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.body </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { msg: </span><span style="color: #A5D6FF">'OK'</span><span style="color: #C9D1D9"> }</span></span>
+<span class="line"><span style="color: #C9D1D9">  response.status </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">200</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>好，现在所有的接口都写完了，我们可以用 postman 来进行测试。</p>
+<ul>
+<li>获取所有书的列表</li>
+</ul>
+<p><img src="https://images.sayhub.me/blog/deno-http/img8.awebp" alt=""></p>
+<ul>
+<li>
+<p>获取某一本书的详情
+<img src="https://images.sayhub.me/blog/deno-http/img9.awebp" alt=""></p>
+</li>
+<li>
+<p>添加一本书
+<img src="https://images.sayhub.me/blog/deno-http/img10.awebp" alt=""></p>
+</li>
+</ul>
+<p>再次查询，发现刚才添加的书已经在列表中了。
+<img src="https://images.sayhub.me/blog/deno-http/img11.awebp" alt=""></p>
+<ul>
+<li>修改一本书
+<img src="https://images.sayhub.me/blog/deno-http/img12.awebp" alt=""></li>
+</ul>
+<p>再次查询，发现 bookOne 的简介更新了。
+<img src="https://images.sayhub.me/blog/deno-http/img13.awebp" alt=""></p>
+<ul>
+<li>删除一本书
+<img src="https://images.sayhub.me/blog/deno-http/img14.awebp" alt=""></li>
+</ul>
+<p>再次查询，发现 bookOne 已经从列表中删除了</p>
+<p><img src="https://images.sayhub.me/blog/deno-http/img15.awebp" alt=""></p>
+<p>以上，我们已经完成了我们的 REST API 了。可以看到 Deno 写代码与 Node.js 并没有太大的差异，不同的在于 Deno 的依赖管理方式，下一篇文章我们将讲一讲 Deno 项目如何管理引入依赖，以及它的优缺点。</p>
+<p>本文所有代码可见：<a href="https://github.com/liruifengv/Deno-study">Github</a></p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/Deno">Deno</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/restful">restful</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="ghost 使用 mysql">
+                <a href="/sayhub/blog/ghost-mysql">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/ghost-mysql">
+                    ghost 使用 mysql
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-17</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="React PropTypes 中的 elementType">
+                <a href="/sayhub/blog/react-elementtype">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/React_Z1fqeVP.avif 400w,/sayhub/assets/React_2oTADd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/React_Z1Ff2ro.webp 400w,/sayhub/assets/React_1Y5N8E.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/React_ZuW9Kn.jpeg 400w,/sayhub/assets/React_Z1UNrYg.jpeg 900w">
+	<img src="/sayhub/assets/React_Z1UNrYg.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/react-elementtype">
+                    React PropTypes 中的 elementType
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
+                <a href="/sayhub/blog/ghost">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/ghost">
+                    使用 Ghost 从零搭建博客系统
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-11-19</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Deno 初探">
+                <a href="/sayhub/blog/deno-study">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/deno-v8_Z14DU91.avif 400w,/sayhub/assets/deno-v8_Z2uvdmT.avif 900w"><source type="image/webp" srcset="/sayhub/assets/deno-v8_Z1usHDz.webp 400w,/sayhub/assets/deno-v8_29R7Vt.webp 900w">
+	<img src="/sayhub/assets/deno-v8_29R7Vt.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/deno-study">
+                    Deno 初探
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2019-12-11</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="阿里巴巴普惠体前端应用">
+                <a href="/sayhub/blog/alibaba-puhuiti">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_126Yw3.avif 400w,/sayhub/assets/cover_ZnJiGP.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_Bic1u.webp 400w,/sayhub/assets/cover_ZNy6co.webp 900w"><source type="image/png" srcset="/sayhub/assets/cover_8103J.png 400w,/sayhub/assets/cover_Z1hPia9.png 900w">
+	<img src="/sayhub/assets/cover_Z1hPia9.png" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/alibaba-puhuiti">
+                    阿里巴巴普惠体前端应用
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2019-04-29</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-RBJBZKO7">
+  <a class="hover:text-primary-600 hover:underline astro-RBJBZKO7" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-RBJBZKO7">
+    &copy; 2022 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>

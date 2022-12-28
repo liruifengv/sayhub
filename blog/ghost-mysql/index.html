@@ -13,9 +13,9 @@
 
     <head>
           <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
-        <link rel="stylesheet" href="/sayhub/assets/404.5b1af6bd.css" />
+        <link rel="stylesheet" href="/sayhub/assets/404.9d940ef4.css" />
 <link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /></head>
-  <link rel="stylesheet" href="/sayhub/assets/404.5b1af6bd.css" />
+  <link rel="stylesheet" href="/sayhub/assets/404.9d940ef4.css" />
 <link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /></head>
   
     <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
@@ -76,7 +76,7 @@
               发表日期： <time>2021-12-17</time>
             </div>
       </header>
-      <article class="container mx-auto max-w-4xl markdown-body">
+      <article class="container mx-auto max-w-3xl markdown-body">
         <picture>
 	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
 	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text">
@@ -85,34 +85,34 @@
           <p>上一篇文章<a href="https://zhuanlan.zhihu.com/p/435203692">使用 Ghost 从零搭建博客系统</a> 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。</p>
 <p>之前是使用的 docker 镜像，那么我们直接使用 通过 <a href="https://docs.docker.com/engine/reference/commandline/stack_deploy/">docker stack deploy</a> or <a href="https://github.com/docker/compose">docker-compose</a> 的方式，同时启动多个服务。</p>
 <p>创建一个 stack.yml 文件，内容如下</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">version: '3.1'</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">services:</span></span>
-<span class="line"><span style="color: #c9d1d9">  ghost:</span></span>
-<span class="line"><span style="color: #c9d1d9">    image: ghost</span></span>
-<span class="line"><span style="color: #c9d1d9">    restart: always</span></span>
-<span class="line"><span style="color: #c9d1d9">    container_name: ghost</span></span>
-<span class="line"><span style="color: #c9d1d9">    volumes:</span></span>
-<span class="line"><span style="color: #c9d1d9">      - /home/ghost/data:/var/lib/ghost/content</span></span>
-<span class="line"><span style="color: #c9d1d9">    ports:</span></span>
-<span class="line"><span style="color: #c9d1d9">      - 3001:2368</span></span>
-<span class="line"><span style="color: #c9d1d9">    environment:</span></span>
-<span class="line"><span style="color: #c9d1d9">      # see https://ghost.org/docs/config/#configuration-options</span></span>
-<span class="line"><span style="color: #c9d1d9">      database__client: mysql</span></span>
-<span class="line"><span style="color: #c9d1d9">      database__connection__host: db</span></span>
-<span class="line"><span style="color: #c9d1d9">      database__connection__user: root</span></span>
-<span class="line"><span style="color: #c9d1d9">      database__connection__password: password</span></span>
-<span class="line"><span style="color: #c9d1d9">      database__connection__database: ghost</span></span>
-<span class="line"><span style="color: #c9d1d9">      # this url value is just an example, and is likely wrong for your environment!</span></span>
-<span class="line"><span style="color: #c9d1d9">      url: http://127.0.0.1:3000</span></span>
-<span class="line"><span style="color: #c9d1d9">      # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)</span></span>
-<span class="line"><span style="color: #c9d1d9">      #NODE_ENV: development</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">  db:</span></span>
-<span class="line"><span style="color: #c9d1d9">    image: mysql:5.7</span></span>
-<span class="line"><span style="color: #c9d1d9">    restart: always</span></span>
-<span class="line"><span style="color: #c9d1d9">    environment:</span></span>
-<span class="line"><span style="color: #c9d1d9">      MYSQL_ROOT_PASSWORD: password</span></span></code></pre>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #7EE787">version</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">'3.1'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7EE787">services</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">ghost</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">image</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">restart</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">always</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">container_name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">volumes</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #A5D6FF">/home/ghost/data:/var/lib/ghost/content</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">ports</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #A5D6FF">3001:2368</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">environment</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># see https://ghost.org/docs/config/#configuration-options</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__client</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">mysql</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__host</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">db</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__user</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">root</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__password</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">password</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">database__connection__database</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ghost</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># this url value is just an example, and is likely wrong for your environment!</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">url</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">http://127.0.0.1:3000</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E">#NODE_ENV: development</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">db</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">image</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">mysql:5.7</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">restart</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">always</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">environment</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #7EE787">MYSQL_ROOT_PASSWORD</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">password</span></span></code></pre>
 <p>然后执行命令：</p>
 <pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">docker stack deploy -c stack.yml ghost</span></span></code></pre>
 <p><img src="https://images.sayhub.me/blog/ghost-mysql/img1.webp" alt="插图"></p>
@@ -143,10 +143,23 @@
         </li>
     </ul>
     </section>
-    <div class="md:mt-10 md:ml-6 h-full md:w-1/3 p-4 sticky top-20">
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
           <div class="text-gray-900 text-xl">最近文章</div>
           <ul class="mt-4">
-            <li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
+            <li class="mt-8 flex items-center" title="React PropTypes 中的 elementType">
+                <a href="/sayhub/blog/react-elementtype">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/React_Z1fqeVP.avif 400w,/sayhub/assets/React_2oTADd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/React_Z1Ff2ro.webp 400w,/sayhub/assets/React_1Y5N8E.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/React_ZuW9Kn.jpeg 400w,/sayhub/assets/React_Z1UNrYg.jpeg 900w">
+	<img src="/sayhub/assets/React_Z1UNrYg.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/react-elementtype">
+                    React PropTypes 中的 elementType
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
                 <a href="/sayhub/blog/ghost">
                   <picture>
 	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
@@ -158,6 +171,32 @@
                     使用 Ghost 从零搭建博客系统
                   </a>
                   <div class="text-sm md:mt-2 font-light">发表日期：2021-11-19</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用 Deno 创建 HTTP 服务">
+                <a href="/sayhub/blog/deno-http">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/deno-code_Z1LUESA.avif 400w,/sayhub/assets/deno-code_1RpaGs.avif 900w"><source type="image/webp" srcset="/sayhub/assets/deno-code_Z2cJso9.webp 400w,/sayhub/assets/deno-code_1rAnbT.webp 900w">
+	<img src="/sayhub/assets/deno-code_1rAnbT.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/deno-http">
+                    使用 Deno 创建 HTTP 服务
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2020-06-21</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="Deno 初探">
+                <a href="/sayhub/blog/deno-study">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/deno-v8_Z14DU91.avif 400w,/sayhub/assets/deno-v8_Z2uvdmT.avif 900w"><source type="image/webp" srcset="/sayhub/assets/deno-v8_Z1usHDz.webp 400w,/sayhub/assets/deno-v8_29R7Vt.webp 900w">
+	<img src="/sayhub/assets/deno-v8_29R7Vt.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/deno-study">
+                    Deno 初探
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2019-12-11</div>
                 </div>
               </li><li class="mt-8 flex items-center" title="阿里巴巴普惠体前端应用">
                 <a href="/sayhub/blog/alibaba-puhuiti">
@@ -171,45 +210,6 @@
                     阿里巴巴普惠体前端应用
                   </a>
                   <div class="text-sm md:mt-2 font-light">发表日期：2019-04-29</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="JS学习笔记之数据类型">
-                <a href="/sayhub/blog/type-of-data">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
-	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/type-of-data">
-                    JS学习笔记之数据类型
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2018-01-02</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="浅谈 Web 安全">
-                <a href="/sayhub/blog/web-safety">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
-	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/web-safety">
-                    浅谈 Web 安全
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2017-05-11</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="浅谈前端性能优化">
-                <a href="/sayhub/blog/performance-optimization">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/assets/cover_ZvTxeJ.avif 400w,/sayhub/assets/cover_Z1VKPsC.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_ZVIkJi.webp 400w,/sayhub/assets/cover_Z2mzCXb.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_dywVI.jpeg 400w,/sayhub/assets/cover_Z1chKha.jpeg 900w">
-	<img src="/sayhub/assets/cover_Z1chKha.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-5 hover:text-primary-600 " href="/sayhub/blog/performance-optimization">
-                    浅谈前端性能优化
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2017-05-08</div>
                 </div>
               </li>
           </ul>
