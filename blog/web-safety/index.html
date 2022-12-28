@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth">
+<html lang="en" class="motion-safe:scroll-smooth text-base">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,9 +14,9 @@
     <head>
           <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
         <link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" />
-<link rel="stylesheet" href="/sayhub/assets/about.b76a0983.css" /></head>
+<link rel="stylesheet" href="/sayhub/assets/about.c4bbac12.css" /></head>
   <link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" />
-<link rel="stylesheet" href="/sayhub/assets/about.b76a0983.css" /></head>
+<link rel="stylesheet" href="/sayhub/assets/about.c4bbac12.css" /></head>
   
     <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
@@ -96,22 +96,22 @@
 </ul>
 <h3 id="二xss-攻击">二、XSS 攻击</h3>
 <p><strong>原理</strong>：</p>
-<p>Xss(cross-site scripting)攻击指的是攻击者往Web页面里插入恶意 html标签或者 javascript代码。比如：攻击者在论坛中放一个看似安全的链接，骗取用户点击后，窃取 cookie 中的用户私密信息；或者攻击者在论坛中加一个恶意表单，当用户提交表单的时候，却把信息传送到攻击者的服务器中，而不是用户原本以为的信任站点。</p>
+<p>Xss(cross-site scripting)攻击指的是攻击者往 Web 页面里插入恶意 html 标签或者 javascript 代码。比如：攻击者在论坛中放一个看似安全的链接，骗取用户点击后，窃取 cookie 中的用户私密信息；或者攻击者在论坛中加一个恶意表单，当用户提交表单的时候，却把信息传送到攻击者的服务器中，而不是用户原本以为的信任站点。</p>
 <p><strong>防范方法</strong>：</p>
 <ul>
 <li>代码里对用户输入的地方和变量都需要仔细检查长度和对”&#x3C;”,”>”,”;”,”’”等字符做过滤；其次任何内容写到页面之前都必须加以 encode，避免不小心把 html tag 弄出来。这一个层面做好，至少可以堵住超过一半的 XSS 攻击。</li>
 <li>避免直接在 cookie 中泄露用户隐私，例如 email、密码等等。</li>
-<li>通过使 cookie 和系统 ip 绑定来降低 cookie 泄露后的危险。这样攻击者得到的cookie 没有实际价值，不可能拿来重放。</li>
+<li>通过使 cookie 和系统 ip 绑定来降低 cookie 泄露后的危险。这样攻击者得到的 cookie 没有实际价值，不可能拿来重放。</li>
 <li>如果网站不需要再浏览器端对 cookie 进行操作，可以在 Set-Cookie 末尾加上 HttpOnly 来防止 javascript 代码直接获取 cookie 。</li>
-<li>尽量采用 POST 而非GET 提交表单。</li>
+<li>尽量采用 POST 而非 GET 提交表单。</li>
 </ul>
 <h3 id="三csrf-漏洞">三、CSRF 漏洞</h3>
 <p><strong>原理</strong>：</p>
-<p>当用户访问恶意网站 B，恶意网站 B返回给用户的HTTP信息中要求用户访问网站 A，而由于用户和网站 A 之间可能已经有信任关系导致这个请求就像用户真实发送的一样会被执行。</p>
-<p>要完成一次 CSR F攻击，受害者必须依次完成两个步骤：</p>
+<p>当用户访问恶意网站 B，恶意网站 B 返回给用户的 HTTP 信息中要求用户访问网站 A，而由于用户和网站 A 之间可能已经有信任关系导致这个请求就像用户真实发送的一样会被执行。</p>
+<p>要完成一次 CSR F 攻击，受害者必须依次完成两个步骤：</p>
 <ul>
 <li>登录受信任网站 A，并在本地生成 Cookie。</li>
-<li>在不登出 A 的情况下，访问危险网站B。</li>
+<li>在不登出 A 的情况下，访问危险网站 B。</li>
 </ul>
 <p><strong>防范方法</strong>：</p>
 <ul>
