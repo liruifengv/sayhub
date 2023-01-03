@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://sayhub.me/sitemap-index.xml
