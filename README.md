@@ -20,4 +20,4 @@
 
 你可以使用 RSS 订阅我的博客文章：https://sayhub.me/rss.xml
 
-[如何用RSS订阅？](https://zhuanlan.zhihu.com/p/55026716)
+[如何用 RSS 订阅？](https://zhuanlan.zhihu.com/p/55026716)
