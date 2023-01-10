@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>JS复制文字到剪贴板的坑及完整方案。</title>
+<meta name="title" content="JS复制文字到剪贴板的坑及完整方案。">
+<meta name="description" content="在做 JS 复制到剪贴板功能的时候，遇到了不少坑，这边文章展开记录一下。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.29715e23.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  首页
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  文章
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M">
+  关于
+</a>
+
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-SRM6HH5M" target="_blank">
+  RSS 订阅
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          JS复制文字到剪贴板的坑及完整方案。
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-01-10</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
+	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <p>相信很多人做需求过程中，都遇到过把文字复制到剪贴板的功能。很不幸我也遇到了，本以为是一个简简单单的需求，开发测试过程中却遇到了不少坑，这里一一展开。</p>
+<h3 id="execcommand-方法"><code>execCommand</code> 方法</h3>
+<p>第一次，我使用了选中文字 <code>execCommand</code> 这个方法来实现，代码如下：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">copyText</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">val</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">textArea</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> document.</span><span style="color: #D2A8FF">createElement</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'textArea'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">  textArea.value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> val</span></span>
+<span class="line"><span style="color: #C9D1D9">  document.body.</span><span style="color: #D2A8FF">appendChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  textArea.</span><span style="color: #D2A8FF">select</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">  document.</span><span style="color: #D2A8FF">execCommand</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'copy'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">  document.body.</span><span style="color: #D2A8FF">removeChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>创建了一个<code>textArea</code> DOM 元素，插入到 <code>body</code> 中，再选中 <code>textArea</code> 的内容，执行 <code>document.execCommand('copy')</code>,最后在移除 <code>textArea</code>。</p>
+<p>写完一跑，没问题，完美，就提测了。谁承想，提测之后，测试提出来一个 bug。</p>
+<p><strong>在手机 Safari 浏览器中，点击复制按钮，整个页面会跳动一下。</strong></p>
+<p><strong>这是什么神奇 bug?</strong></p>
+<p>经排查（two thousand years later），创建的<code>textArea</code>不在页面可视区域之内，然后执行<code>textArea.select()</code>，就会触发浏览器的控件跳转行为，页面会滚动到 <code>textArea</code> 所在位置。然后执行完又快速移除了，就会形成闪动的这么一个现状。</p>
+<p>知道问题了，那就很好解决了，给元素增加绝对定位。</p>
+<p>于是我修改代码如下：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">textArea</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> document.</span><span style="color: #D2A8FF">createElement</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'textArea'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> val</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.style.width </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.style.position </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'fixed'</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.style.left </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'-999px'</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.style.top </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'10px'</span></span>
+<span class="line"><span style="color: #C9D1D9">textArea.</span><span style="color: #D2A8FF">setAttribute</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">document.body.</span><span style="color: #D2A8FF">appendChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">textArea.</span><span style="color: #D2A8FF">select</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">document.</span><span style="color: #D2A8FF">execCommand</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'copy'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">document.body.</span><span style="color: #D2A8FF">removeChild</span><span style="color: #C9D1D9">(textArea)</span></span></code></pre>
+<p>增加了一个 fixed 定位，left 是-999px，top 是 10 px，保存代码运行测试，ok 完美。</p>
+<p>这时候我有查了下<code>execCommand</code>的 MDN，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand">https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand</a></p>
+<p><img src="https://images.sayhub.me/blog/copy-text/exexcommand.png" alt=""></p>
+<p>该特性已经被弃用，之所以还能用，是因为有些浏览器还没删除实现。可能不知道哪天就删了，也可能永远不删。</p>
+<p>这不太行啊</p>
+<h3 id="navigatorclipboard">navigator.clipboard</h3>
+<p>于是，我用上了 <code>navigator.clipboard</code>，可能兼容性还不太好，所以代码这么写：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (navigator.clipboard) {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> navigator.clipboard.</span><span style="color: #D2A8FF">writeText</span><span style="color: #C9D1D9">(val)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>测试一下，完美，于是完整代码变成了这样：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">copyText</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">val</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (navigator.clipboard) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> navigator.clipboard.</span><span style="color: #D2A8FF">writeText</span><span style="color: #C9D1D9">(val)</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">textArea</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> document.</span><span style="color: #D2A8FF">createElement</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'textArea'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> val</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.width </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.position </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'fixed'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.left </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'-999px'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.top </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'10px'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.</span><span style="color: #D2A8FF">setAttribute</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.body.</span><span style="color: #D2A8FF">appendChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.</span><span style="color: #D2A8FF">select</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.</span><span style="color: #D2A8FF">execCommand</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'copy'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.body.</span><span style="color: #D2A8FF">removeChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>优先使用 <code>navigator.clipboard</code>，如果不存在再降级使用 <code>execCommand</code>。</p>
+<p>又兴高采烈的提测了。</p>
+<h3 id="bug-它又来了">bug 它又来了。</h3>
+<p>“你来啦，土星，不是，是 bug”</p>
+<p>在安卓 APP 的 WebView 中，点击复制按钮没有反应。</p>
+<p>我特发？</p>
+<p>继续排查（又 two thousand years later）。</p>
+<p><img src="https://images.sayhub.me/blog/copy-text/error" alt=""></p>
+<p>点击复制的时候，报错<code>Write permission denied</code>。</p>
+<p>查看 MDN：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/clipboard">https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/clipboard</a></p>
+<p><img src="https://images.sayhub.me/blog/copy-text/clipboard.png" alt=""></p>
+<blockquote>
+<p>只有在用户事先授予网站或应用对剪切板的访问许可之后，才能使用异步剪切板读写方法。许可操作必须通过取得权限 Permissions API 的 “clipboard-read” 和/或 “clipboard-write” 项获得。</p>
+</blockquote>
+<p>Navigator 这种新 API 都是需要事先授予权限的，而权限是通过 <code>Permissions API</code> 获取的。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Permissions_API">Permissions API MDN</a></p>
+<p><img src="https://images.sayhub.me/blog/copy-text/permission.png" alt="Permissions API 兼容性"></p>
+<p>看这里，原来 <code>Permissions API</code> 在安卓的 WebView 中是没实现的。</p>
+<p><a href="https://github.com/CGQAQ">CGQAQ</a> 同学帮我找了一下 <a href="https://chromium.googlesource.com/chromium/src/+/refs/heads/master/android_webview/browser/aw_permission_manager.cc#:~:text=case%20PermissionType::CLIPBOARD_READ_WRITE">android_webview</a> 的源码</p>
+<p><img src="https://images.sayhub.me/blog/copy-text/webview" alt=""></p>
+<p>果不其然，这里并没实现，直接返回了<code>PermissionStatus::DENIED</code> 状态。</p>
+<p>那么我们再在代码里加一个<code>Permissions API</code>的判断。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (navigator.clipboard </span><span style="color: #FF7B72">&#x26;&#x26;</span><span style="color: #C9D1D9"> navigator.permissions) {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> navigator.clipboard.</span><span style="color: #D2A8FF">writeText</span><span style="color: #C9D1D9">(val)</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<p>完整代码如下：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">copyText</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">val</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (navigator.clipboard </span><span style="color: #FF7B72">&#x26;&#x26;</span><span style="color: #C9D1D9"> navigator.permissions) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> navigator.clipboard.</span><span style="color: #D2A8FF">writeText</span><span style="color: #C9D1D9">(val)</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">textArea</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> document.</span><span style="color: #D2A8FF">createElement</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'textArea'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> val</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.width </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.position </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'fixed'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.left </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'-999px'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.style.top </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'10px'</span></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.</span><span style="color: #D2A8FF">setAttribute</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'readonly'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.body.</span><span style="color: #D2A8FF">appendChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    textArea.</span><span style="color: #D2A8FF">select</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.</span><span style="color: #D2A8FF">execCommand</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'copy'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    document.body.</span><span style="color: #D2A8FF">removeChild</span><span style="color: #C9D1D9">(textArea)</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h3 id="最后">最后</h3>
+<p>又提测了，希望不会出现新的 bug。</p>
+<h3 id="参考文献">参考文献：</h3>
+<ul>
+<li>
+<p><a href="https://www.zhangxinxu.com/wordpress/2021/10/js-copy-paste-clipboard/">JS 复制文字到剪切板的极简实现及扩展-张鑫旭</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/61243646/clipboard-api-call-throws-notallowederror-without-invoking-onpermissionrequest/61546346#61546346">Clipboard API call throws NotAllowedError without invoking onPermissionRequest()</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/execCommand">execCommand MDN</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/clipboard">clipboard MDN</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Permissions_API">Permissions API MDN</a></p>
+</li>
+<li>
+<p><a href="https://chromium.googlesource.com/chromium/src/+/refs/heads/master/android_webview/browser/aw_permission_manager.cc#:~:text=case%20PermissionType::CLIPBOARD_READ_WRITE">android_webview 源码实现</a></p>
+</li>
+</ul>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/front-end">front-end</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/JavaScript">JavaScript</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/HTML">HTML</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/WebView">WebView</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
+                <a href="/sayhub/blog/promise-modal">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/Modal_1WW746.avif 400w,/sayhub/assets/Modal_x5NPd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/Modal_1x8jyx.webp 400w,/sayhub/assets/Modal_7h1kE.webp 900w"><source type="image/png" srcset="/sayhub/assets/Modal_Z1DdsoI.png 400w,/sayhub/assets/Modal_217nbk.png 900w">
+	<img src="/sayhub/assets/Modal_217nbk.png" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/promise-modal">
+                    开发弹窗，你使用状态驱动还是命令式？
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-29</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="2022 年终总结">
+                <a href="/sayhub/blog/2022-year-end-summary">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
+	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/2022-year-end-summary">
+                    2022 年终总结
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-28</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="ghost 使用 mysql">
+                <a href="/sayhub/blog/ghost-mysql">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/ghost-mysql">
+                    ghost 使用 mysql
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-17</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="React PropTypes 中的 elementType">
+                <a href="/sayhub/blog/react-elementtype">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/React_Z1fqeVP.avif 400w,/sayhub/assets/React_2oTADd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/React_Z1Ff2ro.webp 400w,/sayhub/assets/React_1Y5N8E.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/React_ZuW9Kn.jpeg 400w,/sayhub/assets/React_Z1UNrYg.jpeg 900w">
+	<img src="/sayhub/assets/React_Z1UNrYg.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/react-elementtype">
+                    React PropTypes 中的 elementType
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
+                <a href="/sayhub/blog/ghost">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/ghost">
+                    使用 Ghost 从零搭建博客系统
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-11-19</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-RBJBZKO7">
+  <a class="hover:text-primary-600 hover:underline astro-RBJBZKO7" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-RBJBZKO7">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
