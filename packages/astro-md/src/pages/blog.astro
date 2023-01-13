@@ -3,9 +3,9 @@ import Layout from '~/layouts/PageLayout.astro'
 import PostItem from '~/components/PostItem.astro'
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
-  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-)
+const posts = (await Astro.glob('./blog/*.{md,mdx}'))
+  .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+  .filter((post) => !post.frontmatter.tags.includes('读后感'))
 
 const meta = {
   title: '全部文章列表',

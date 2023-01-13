@@ -22,6 +22,7 @@ const {
 const posts = (await Astro.glob('../pages/blog/*.{md,mdx}'))
   .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
   .filter((post) => post.frontmatter.title !== title)
+  .filter((post) => !post.frontmatter.tags.includes('读后感'))
   .slice(0, 5)
 
 const meta = {
@@ -66,7 +67,9 @@ const showRightRecent = showRecent !== false
             {posts.map(({ url, frontmatter: { title, image, pubDate } }) => (
               <li class="mt-8 flex items-center" title={title}>
                 <a href={url}>
-                  <Picture class="w-20" src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />
+                  {image && (
+                    <Picture class="w-20" src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />
+                  )}
                 </a>
                 <div class="ml-2 flex-1">
                   <a
