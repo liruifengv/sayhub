@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>我的开源之旅&amp;新手如何参与开源社区</title>
+<meta name="title" content="我的开源之旅&#38;新手如何参与开源社区">
+<meta name="description" content="本篇文章讲讲我的开源之旅，以及新手程序员如何参与进来。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  首页
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  文章
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  读后感
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  关于
+</a>
+
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7" target="_blank">
+  RSS 订阅
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          我的开源之旅&amp;新手如何参与开源社区
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-1-31</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/github_ZAGe1o.avif 400w,/sayhub/assets/github_Z21xwfh.avif 900w"><source type="image/webp" srcset="/sayhub/assets/github_Z11v1vW.webp 400w,/sayhub/assets/github_Z2rmjJP.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/github_8LQa4.jpeg 400w,/sayhub/assets/github_Z1h4r3O.jpeg 900w">
+	<img src="/sayhub/assets/github_Z1h4r3O.jpeg" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <p>大家好，我是程序猿李瑞丰。</p>
+<p>这几年我也零零散散的在 GitHub 参与了一些开源项目，贡献了几个 PR（蹭了不少）。今天就讲一讲我的开源之旅，以及刚入门的程序员新手，如何快速参与进来。文末有彩蛋。</p>
+<h2 id="我的开源之旅">我的开源之旅</h2>
+<h3 id="第一个-pr">第一个 PR</h3>
+<p>2019 年 7 月 10 日，我在 GitHub 上提交了我的<a href="https://github.com/geoman-io/leaflet-geoman/pull/466">第一个 PR</a>，出发点是我在工作中使用这个开源项目，发现没有中文翻译，我就贡献了中文翻译。</p>
+<h3 id="vue-cli-的-pr">vue-cli 的 PR</h3>
+<p>2019 年 7 月 24 日，我在逛 GitHub 的时候，看到 vue-cli 的 issue 中，有一个<a href="https://github.com/vuejs/vue-cli/issues/3947">问题</a>，使用 vue-cli 创建项目时，同时选择 typescript 和 eslint 的时候，lint-staged 默认配置没有包含对 ts 文件的检查。</p>
+<p>提出这个 issue 的同学，很贴心的指出了对应源码的位置。我看到后，就顺手去修复了，很简单，if 判断 typescript，纯属捡漏。</p>
+<p><a href="https://github.com/vuejs/vue-cli/pull/4347">链接在此</a>。当然后续这段代码被优化了。但这个 PR 被 merge 的时候，我内心是十分激动的，毕竟 vue 和 vue-cli 是我平时工作用的项目，也是大部分程序猿都用过并熟知的，那一刻成就感十足。</p>
+<h3 id="零零散散">零零散散</h3>
+<p>中间零零散散的提了好多 PR，有合并的，也有未合并的。有的是修复错别字，有的是修复半角圆角标点符号等等。也有一些文档的中文翻译。</p>
+<h3 id="deno-的第一个-pr">Deno 的第一个 PR</h3>
+<p>Deno 是一个 JS 运行时，由 Node.js 的创始人 ry 发起并开发的。我们并不清楚 Deno 能否替代 Node.js，但在项目早期， Deno 完善并被广泛使用之前，我们可以早一点参与进来。</p>
+<p>要感谢我的大佬<a href="https://github.com/justjavac">迷渡@justjavac</a>，他是 Deno 的中国布道者，同时参与了 Deno 的核心代码开发。</p>
+<p>在大佬的指导下，我完成了我在 Deno 中的第一个 <a href="https://github.com/denoland/deno/pull/11851">PR</a>。</p>
+<p>起初是大佬发现 Deno 的 <code>Blob</code> 的 <code>SymbolToStringTag</code> 实现没有通过 <a href="https://github.com/denoland/wpt/blob/master/WebIDL/ecmascript-binding/class-string-interface.any.js#L3-L11">wpt</a> 的测试，给我一个贡献的机会，让我去改。关于 SymbolToStringTag 大家可以去 MDN 自行搜索了解。</p>
+<p>发展: Deno 的维护者 lucaca，告诉我不光是 <code>Blob</code> 需要正确设置 <code>SymbolToStringTag</code>。其他的内置类都有同样的问题。让我在 <code>webidl.configurePrototype</code> 的方法里进行处理。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #D2A8FF">ObjectDefineProperty</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">prototype</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">prototype</span><span style="color: #C9D1D9">, SymbolToStringTag, {</span></span>
+<span class="line"><span style="color: #C9D1D9">  value: prototype.name,</span></span>
+<span class="line"><span style="color: #C9D1D9">  enumerable: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  configurable: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  writable: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">})</span></span></code></pre>
+<p>这次的机会，让我对 Deno 的源码有了初始了解，对开源也更加感兴趣了。</p>
+<h3 id="更多的参与到-deno-中来">更多的参与到 Deno 中来</h3>
+<p>后来我给 Deno 提了更多的 PR，期望能更多的参与进来。</p>
+<ul>
+<li>
+<p><a href="https://github.com/denoland/deno/pull/16203">fix(napi_sym): fix readme path</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno/pull/16009">fix(ext/crypto): fix importKey error when leading zeroes</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno/pull/16018">fix(ext/console): fix error when logging a proxied Date</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno_std/pull/2831">docs(encoding): remove await</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno_std/pull/2988">docs: removed types from jsdoc directives</a></p>
+</li>
+<li>
+<p><a href="https://github.com/denoland/deno_std/pull/2985">docs(encoding/front_matter): fix doc error when render page</a></p>
+</li>
+</ul>
+<h3 id="astro">Astro</h3>
+<p><a href="https://astro.build/">Astro</a> 是基于 Vite 的上层框架，首创群岛架构。可以快速构建内容网站如官网博客等，SEO 友好，SSG、SSR 可选。</p>
+<p>Astro 在 2022 年非常火爆，我也尝了把鲜，使用 Astro 把我的<a href="https://github.com/liruifengv/sayhub">个人博客</a>进行了重构。</p>
+<p>一个新兴起的热门开源项目，那么当然也不能错过，蹭 PR 小能手的我，同样给 Astro 提了几个 PR。</p>
+<ul>
+<li>
+<p><a href="https://github.com/withastro/astro/pulls?q=is%3Apr+author%3Aliruifengv+is%3Aclosed">withastro/astro</a></p>
+</li>
+<li>
+<p><a href="https://github.com/withastro/docs/pulls?q=is%3Apr+author%3Aliruifengv+is%3Aclosed">withastro/docs</a></p>
+</li>
+</ul>
+<h2 id="新手如何参与">新手如何参与</h2>
+<p>那么问题来了，讲了这么多，新手如何参与进来呢。根据我的一点点经验，可以从以下几点着手</p>
+<h3 id="如何寻找可以贡献的开源项目">如何寻找可以贡献的开源项目</h3>
+<ul>
+<li>
+<p>从错别字改起。每天花一点时间逛一会 GitHub，查找你感兴趣的开源项目的 README 以及官方文档，可能有错别字，可能有中英文标点符号混用，勿以 PR 小而不为。</p>
+</li>
+<li>
+<p>你工作中用到的开源项目。使用开源项目中，难免会遇到多多少少的 bug，如果确实是该开源项目的 bug，有能力的话就可以去查看对应源码，看能否修改，PR 不是来了么。</p>
+</li>
+<li>
+<p>新兴的开源项目。开源项目的早期，往往还不太完善，代码、文档都需要开源社区来一起参与贡献，例如 Deno、Astro。</p>
+</li>
+<li>
+<p>英文文档的多语言翻译。很多老外的开源项目，是没有中文翻译的，你可以参与进去，一方面锻炼英文，一方面能更了解该项目。</p>
+</li>
+</ul>
+<h3 id="操作步骤">操作步骤</h3>
+<ul>
+<li>
+<p>fork 项目到自己的仓库。</p>
+</li>
+<li>
+<p>创建分支，名字随便起。不建议在主分支直接修改，主分支可以跟上游仓库保持同步。</p>
+</li>
+<li>
+<p>git clone 到本地，修改代码。</p>
+</li>
+<li>
+<p>如果是简单的错别字修改，可以在 GitHub 上在线修改。</p>
+</li>
+<li>
+<p>commit&#x26;push 到自己的远程仓库。</p>
+</li>
+<li>
+<p>向上游仓库 Open pull request。</p>
+</li>
+</ul>
+<h3 id="提交-pr-的注意事项">提交 PR 的注意事项</h3>
+<ul>
+<li>
+<p>第一步要阅读你目标项目的贡献指南。正规的开源项目，都会写有贡献指南，一般可以在 README 找到，它会指导你如何运行、打包项目，如何 PR。例如 <a href="https://deno.land/manual@v1.30.0/references/contributing">Deno</a>。</p>
+</li>
+<li>
+<p>代码风格校验。注意开源项目使用的代码风格，提交前记得运行项目的 format 和 lint。</p>
+</li>
+<li>
+<p>单元测试。好的开源项目都会有单元测试，如果你改了 bug 或者新增 feature，最后增加对应的单元测试，并且运行测试通过。</p>
+</li>
+<li>
+<p><a href="https://www.conventionalcommits.org/zh-hans/v1.0.0/">约定式提交</a>。你的 commit-message 和 PR title，需要符合约定式提交规范。PR 标题是必须的，一般项目都会使用 squash merge，多个 commit 会合并成一个。</p>
+</li>
+<li>
+<p>PR 的描述清楚。在 PR 的描述里，说清楚你修改的东西，一般都有模板，新增了 feature，修复了 bug，记得关联对应的 issue。</p>
+</li>
+<li>
+<p>GitHub CI。开源项目都有 GitHub CI，是利用 GitHub Action，对提交的代码进行检查，一般都会运行 format、lint、单元测试、打包等操作。注意 CI 是否通过，挂了之后要及时修复。</p>
+</li>
+<li>
+<p>最后，不要怕，我遇到的好多维护者都很友好，他们会指导你如何修改你的 PR，跟你讨论。</p>
+</li>
+</ul>
+<h3 id="工具推荐">工具推荐</h3>
+<ul>
+<li><a href="https://www.deepl.com/translator">DeepL 翻译</a>。</li>
+<li><a href="https://chrome.google.com/webstore/detail/octotree-github-code-tree/bkhaagjahfmjljalopjnoealnfndnagc?hl=zh-CN">octotree 扩展</a> 可以在 github 左侧生成目录树，方便阅读源码。</li>
+<li><a href="https://app.grammarly.com/">grammarly</a> 辅助英文写作。</li>
+</ul>
+<h2 id="彩蛋一个-pr-机会">彩蛋，一个 PR 机会</h2>
+<p>最后，有一个 PR 的机会，手慢无。</p>
+<p>我在翻译 Astro 的文档：「<a href="https://docs.astro.build/zh-cn/guides/migrate-to-astro/">将现有项目迁移到 Astro</a>」的时候，不小心留下一个错别字。</p>
+<p><img src="https://images.sayhub.me/blog/opensource/astro-doc.png" alt=""></p>
+<p>感兴趣的同学可以修改一下。</p>
+<p><img src="https://images.sayhub.me/blog/opensource/avatar.png" alt=""></p>
+<p>修复之后，你的头像就会出现在<a href="https://docs.astro.build/zh-cn/getting-started/">这里</a>。找到我的头像了吗？</p>
+<p>今天就到这里了，我们下回再见。</p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/开源">开源</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="JS复制文字到剪贴板的坑及完整方案。">
+                <a href="/sayhub/blog/copy-text">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
+	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/copy-text">
+                    JS复制文字到剪贴板的坑及完整方案。
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-01-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
+                <a href="/sayhub/blog/promise-modal">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/Modal_1WW746.avif 400w,/sayhub/assets/Modal_x5NPd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/Modal_1x8jyx.webp 400w,/sayhub/assets/Modal_7h1kE.webp 900w"><source type="image/png" srcset="/sayhub/assets/Modal_Z1DdsoI.png 400w,/sayhub/assets/Modal_217nbk.png 900w">
+	<img src="/sayhub/assets/Modal_217nbk.png" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/promise-modal">
+                    开发弹窗，你使用状态驱动还是命令式？
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-29</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="2022 年终总结">
+                <a href="/sayhub/blog/2022-year-end-summary">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
+	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/2022-year-end-summary">
+                    2022 年终总结
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-28</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="ghost 使用 mysql">
+                <a href="/sayhub/blog/ghost-mysql">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/ghost-mysql">
+                    ghost 使用 mysql
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-17</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="React PropTypes 中的 elementType">
+                <a href="/sayhub/blog/react-elementtype">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/React_Z1fqeVP.avif 400w,/sayhub/assets/React_2oTADd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/React_Z1Ff2ro.webp 400w,/sayhub/assets/React_1Y5N8E.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/React_ZuW9Kn.jpeg 400w,/sayhub/assets/React_Z1UNrYg.jpeg 900w">
+	<img src="/sayhub/assets/React_Z1UNrYg.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/react-elementtype">
+                    React PropTypes 中的 elementType
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-10</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-RBJBZKO7">
+  <a class="hover:text-primary-600 hover:underline astro-RBJBZKO7" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-RBJBZKO7">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
