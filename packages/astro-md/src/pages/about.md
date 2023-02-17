@@ -1,6 +1,6 @@
 ---
 layout: '../layouts/BlogLayout.astro'
-title: '关于我'
+title: '关于我/关于本站'
 showRecent: false
 description: '李瑞丰/liruifengv/关于我/关于本站/关于 SayHub'
 updatedDate: ' 2022-12-28'
@@ -11,7 +11,12 @@ image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 
 ## 我是 lirufiengv(李瑞丰)
 
-目前是一名前端工程师，居住地天津。17 年入行，目前工作于前端，向往于 Rust。现在正在尝试参与 [Deno](https://github.com/denoland) 之中（修一些小 bug，目前有几个已合并的 [PR](https://github.com/denoland/deno/issues?q=author%3Aliruifengv) ）。
+我是一名前端工程师，居住工作在 中国天津。2017 年入行，热爱前端，热爱技术，热爱开源。
+
+### 目前在做的事：
+- [Deno](https://github.com/denoland/deno/issues?q=author%3Aliruifengv) 参与代码贡献。
+- [Astro](https://github.com/withastro) 参与代码贡献，中文文档维护翻译。
+- 探索 Rust 在前端领域的可行之处。
 
 ### 我的技术栈有
 
@@ -20,17 +25,18 @@ image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 - 后端：Actix、Express
 - 客户端跨平台：Electron
 
-### 开发
+### 关于本站
+
+SayHub 是我的个人主站，主要是我的个人博客文章的发布，包括但不限于技术类、读后感、生活琐事等。
 
 本网站使用如下技术构建：
 
 - [Astro](https://astro.build/)
 - [TailwindCSS](https://tailwindcss.com/)
 
-### 社交网站
-
-- 个站： http://sayhub.me
+### 我的其他主页
 - 知乎：https://www.zhihu.com/people/liruifengv
+- 掘金：https://juejin.cn/user/237150239994471
 - GitHub：https://github.com/liruifengv
 
 ### 联系方式
