@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>使用 GitHub Action 自动化发布 npm 版本</title>
+<meta name="title" content="使用 GitHub Action 自动化发布 npm 版本">
+<meta name="description" content="本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  首页
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  文章
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  读后感
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  关于
+</a>
+
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7" target="_blank">
+  RSS 订阅
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          使用 GitHub Action 自动化发布 npm 版本
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-02-18</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/github_ZAGe1o.avif 400w,/sayhub/assets/github_Z21xwfh.avif 900w"><source type="image/webp" srcset="/sayhub/assets/github_Z11v1vW.webp 400w,/sayhub/assets/github_Z2rmjJP.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/github_8LQa4.jpeg 400w,/sayhub/assets/github_Z1h4r3O.jpeg 900w">
+	<img src="/sayhub/assets/github_Z1h4r3O.jpeg" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <p>GitHub Action 是一套提供给 GitHub 仓库使用的CI/CD 工具。它可以自动化、自定义和执行软件开发工作流程。本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。</p>
+<h2 id="changelog">CHANGELOG</h2>
+<p>作为一个开源仓库，<code>CHANGELOG</code> 变更记录是必不可少的。有很多的工具可以生成 <code>CHANGELOG.md</code>，这里我们使用<code>@changesets/cli</code>。</p>
+<h3 id="安装">安装</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">pnpm i @changesets/cli</span></span></code></pre>
+<h3 id="使用">使用</h3>
+<p>执行以下命令进行初始化，它会在你的项目根目录生成一个<code>.changeset</code> 文件夹，里面包括一个配置文件和 README。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">pnpm </span><span style="color: #79C0FF">exec</span><span style="color: #C9D1D9"> changeset init</span></span></code></pre>
+<p>每次修改代码之后，运行以下命令：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">pnpm </span><span style="color: #79C0FF">exec</span><span style="color: #C9D1D9"> changeset</span></span></code></pre>
+<p><img src="https://images.sayhub.me/blog/github-action-release/changeset.png" alt=""></p>
+<p>这里会提示我们选择这次更改的类型。不了解的可以自行搜索 npm semver 版本号规范。</p>
+<p>简单来说 <code>patch</code>是小的 bug 修改，不影响之前功能的小 feature 功能增加可以选 <code>minjor</code>，<code>major</code> 代表包含了 breaking change 的大版本号变动，比如 1.0.0 到 2.0.0。</p>
+<p>输入本次修改的信息，一路回车就行。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/changeset-patch.png" alt=""></p>
+<p>这时候它会在<code>.changeset</code> 文件夹生成一个随机名字的md 文件，包含你刚才提交的信息。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/changeset-file.png" alt=""></p>
+<p>接下来生成版本号。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">pnpm </span><span style="color: #79C0FF">exec</span><span style="color: #C9D1D9"> changeset version</span></span></code></pre>
+<p>这个命令会读取你刚才生成的 changeset 文件，写入 <code>CHANGELOG.md</code>，并且把 <code>package.json</code> 中的版本号按照你选择的类型进行升级。</p>
+<p>以上就是 <code>changeset</code> 的完整用法。</p>
+<h2 id="releaseyml">release.yml</h2>
+<p>接下来开始创建 GitHub Action 的自动化脚本。</p>
+<p>在你的项目根目录创建一个<code>.github</code>的文件夹，里面再创建一个<code>workflows</code>的文件夹，创建一个<code>release.yml</code>的文件。</p>
+<p>文件内容如下，我来一一解读：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E"># 整个流程的名字</span></span>
+<span class="line"><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Release</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E"># 触发时机，在 main 分支 push 操作触发</span></span>
+<span class="line"><span style="color: #79C0FF">on</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">push</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">branches</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #A5D6FF">main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E"># 默认shell</span></span>
+<span class="line"><span style="color: #7EE787">defaults</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">run</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">shell</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E"># 任务，定义个changelog 的任务</span></span>
+<span class="line"><span style="color: #7EE787">jobs</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">changelog</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Changelog PR or Release</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E"># 这里判断仓库owner是否是我自己，为了避免别人 fork 仓库触发，请自行修改</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">if</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">${{ github.repository_owner == 'liruifengv' }}</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">runs-on</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">ubuntu-latest</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">steps</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">uses</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">actions/checkout@v3</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># 设置 pnpm。指定版本7.0，不然会报错</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Setup PNPM</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">uses</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">pnpm/action-setup@v2.2.1</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">with</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">version</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">^7.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># 设置 Node</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Setup Node</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">uses</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">actions/setup-node@v3</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">with</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">node-version</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">16</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">cache</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">'pnpm'</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># 安装依赖</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Install dependencies</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">run</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">pnpm install</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># 打包</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Build Packages</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">run</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">pnpm run build</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #8B949E"># 这一步是最重要的。使用changesets/action自动创建 PR 或者发布</span></span>
+<span class="line"><span style="color: #C9D1D9">      - </span><span style="color: #7EE787">name</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">Create Release Pull Request or Publish</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">id</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">changesets</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">uses</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">changesets/action@v1</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">with</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #8B949E"># 执行更新版本和发布的命令</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">version</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">pnpm run version</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">publish</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">pnpm exec changeset publish</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">commit</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">'[ci] release'</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">title</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">'[ci] release'</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #7EE787">env</span><span style="color: #C9D1D9">:</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #8B949E"># 这里需要几个 Token 变量</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #8B949E"># GITHUB_TOKEN 是 CI 里自带的默认 token</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">GITHUB_TOKEN</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">${{ secrets.GITHUB_TOKEN }}</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #8B949E"># NPM_TOKEN 需要稍后在 npm 网站生成。</span></span>
+<span class="line"><span style="color: #C9D1D9">          </span><span style="color: #7EE787">NPM_TOKEN</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">${{ secrets.NPM_TOKEN }}</span></span>
+<span class="line"></span></code></pre>
+<p>为了方便，我们在项目的<code>package.json</code>中添加几个脚本：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// package.json</span></span>
+<span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #7EE787">"scripts"</span><span style="color: #C9D1D9">: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"changeset"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"changeset"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">"version"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"changeset version &#x26;&#x26; pnpm install"</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h2 id="设置-token">设置 TOKEN</h2>
+<p>把以上文件提交之后，我们来设置一下 token。</p>
+<p>登录你的 npm 账号，点击头像选择 Access tokens。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/npm_setting.png" alt=""></p>
+<p>点击 Generate New Token。可以选择一键生成也可以更细粒度的控制权限。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/npm_token_ge.png" alt=""></p>
+<p>生成之后记得复制，关闭页面之后就看不到了。</p>
+<p>回到 GitHub，你的仓库，点击 Settings，选择Secrets and variables。创建一个 NPM_TOKEN。这样 GitHub Action 中就能取到它了。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/github-new-token.png" alt=""></p>
+<h2 id="完整工作流程">完整工作流程</h2>
+<h3 id="本地提交修改">本地提交修改</h3>
+<p>修改你要修改的代码。</p>
+<h3 id="运行生成-changeset-文件">运行生成 <code>changeset</code> 文件</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">pnpm </span><span style="color: #79C0FF">exec</span><span style="color: #C9D1D9"> changeset</span></span></code></pre>
+<p>生成 <code>changeset</code> 文件之后，注意不用执行再 <code>version</code> 命令了。</p>
+<p>保存，把 <code>changeset</code> 文件和我们的代码修改一并提交。</p>
+<h3 id="发起-pr">发起 PR</h3>
+<p><img src="https://images.sayhub.me/blog/github-action-release/changeset-bot.png" alt=""></p>
+<p>这里我安装了<a href="https://github.com/apps/changeset-bot">changeset-bot</a>。它可以自动探测 PR 中是否包含了 <code>changeset</code> 文件并进行评论。你可以点击链接安装它。</p>
+<p>作为仓库 owner 你也可以直接 push 到 main 分支，但更多的开源贡献者喜欢用 PR 的方式。</p>
+<h2 id="ci-发起-release-pr">CI 发起 release PR</h2>
+<p>PR 合并进 main 分支之后，就触发了我们前面设置的 action。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/workflow.png" alt=""></p>
+<p>点击 Actions 查看，我们刚才的提交，触发了一个叫做 Release 的工作流。你可以点开查看，它会在 CI 环境里执行我们预设好的脚本。</p>
+<p>我们的脚本就是，如果检测到提交携带有 <code>changeset</code> 信息，就好自动发起一个叫做 <code>[ci] release </code> 的 PR。这个 PR 中，CI 自动帮我们做好了 <code>CHANGELOG</code> 的生成，版本号的升级。</p>
+<p><img src="https://images.sayhub.me/blog/github-action-release/release-pr.png" alt=""></p>
+<p>当你点击 merge，合到到 main 分支之后，它就会自动地发布版本，同时发布到 npm 仓库和 GitHub release。</p>
+<p>未合并期间，所有携带有 <code>changeset</code>的提交都会更新这个 PR。</p>
+<h3 id="发布">发布</h3>
+<p>点击 merge 发布！恭喜你完成了整个流程。</p>
+<p>过一会就能看到 GitHub release 和 npm 包都发布成功了。</p>
+<h2 id="总结">总结</h2>
+<p>可能有人说，好像也是半自动化哦。</p>
+<p>其实这是一套开源协作流程。</p>
+<ul>
+<li>仓库的贡献者，修改代码，生成 <code>changeset</code>。</li>
+<li>CI 自动归结，生成 <code>CHANGELOG</code> 并 PR。</li>
+<li>仓库的维护者，点击 merge 自动发布。</li>
+</ul>
+<p>你还在手动改版本发布吗？你的开源项目还缺少完善的协作流程吗？来试一下这套流程吧。</p>
+<h2 id="结语">结语</h2>
+<p>GitHub Action 还可以做很多事，比如lint、format 代码；自动化部署等等。你可以<a href="https://github.com/liruifengv">在我的 GitHub 找到更多例子</a>。</p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/开源">开源</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="我的开源之旅&#38;新手如何参与开源社区">
+                <a href="/sayhub/blog/opensource">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/github_ZAGe1o.avif 400w,/sayhub/assets/github_Z21xwfh.avif 900w"><source type="image/webp" srcset="/sayhub/assets/github_Z11v1vW.webp 400w,/sayhub/assets/github_Z2rmjJP.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/github_8LQa4.jpeg 400w,/sayhub/assets/github_Z1h4r3O.jpeg 900w">
+	<img src="/sayhub/assets/github_Z1h4r3O.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/opensource">
+                    我的开源之旅&amp;新手如何参与开源社区
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-1-31</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="JS复制文字到剪贴板的坑及完整方案。">
+                <a href="/sayhub/blog/copy-text">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
+	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/copy-text">
+                    JS复制文字到剪贴板的坑及完整方案。
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-01-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
+                <a href="/sayhub/blog/promise-modal">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/Modal_1WW746.avif 400w,/sayhub/assets/Modal_x5NPd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/Modal_1x8jyx.webp 400w,/sayhub/assets/Modal_7h1kE.webp 900w"><source type="image/png" srcset="/sayhub/assets/Modal_Z1DdsoI.png 400w,/sayhub/assets/Modal_217nbk.png 900w">
+	<img src="/sayhub/assets/Modal_217nbk.png" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/promise-modal">
+                    开发弹窗，你使用状态驱动还是命令式？
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-29</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="2022 年终总结">
+                <a href="/sayhub/blog/2022-year-end-summary">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
+	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/2022-year-end-summary">
+                    2022 年终总结
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-28</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="ghost 使用 mysql">
+                <a href="/sayhub/blog/ghost-mysql">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/img3_Z1QdCgM.avif 400w,/sayhub/assets/img3_1N7djg.avif 900w"><source type="image/webp" srcset="/sayhub/assets/img3_Z2h2pLl.webp 400w,/sayhub/assets/img3_1nipNH.webp 900w">
+	<img src="/sayhub/assets/img3_1nipNH.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/ghost-mysql">
+                    ghost 使用 mysql
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2021-12-17</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-RBJBZKO7">
+  <a class="hover:text-primary-600 hover:underline astro-RBJBZKO7" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-RBJBZKO7">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
