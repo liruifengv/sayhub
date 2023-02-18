@@ -175,7 +175,7 @@ pnpm exec changeset
 
 作为仓库 owner 你也可以直接 push 到 main 分支，但更多的开源贡献者喜欢用 PR 的方式。
 
-## CI 发起 release PR
+### CI 发起 release PR
 
  PR 合并进 main 分支之后，就触发了我们前面设置的 action。
 
