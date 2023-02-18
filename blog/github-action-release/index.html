@@ -209,7 +209,7 @@
 <p><img src="https://images.sayhub.me/blog/github-action-release/changeset-bot.png" alt=""></p>
 <p>这里我安装了<a href="https://github.com/apps/changeset-bot">changeset-bot</a>。它可以自动探测 PR 中是否包含了 <code>changeset</code> 文件并进行评论。你可以点击链接安装它。</p>
 <p>作为仓库 owner 你也可以直接 push 到 main 分支，但更多的开源贡献者喜欢用 PR 的方式。</p>
-<h2 id="ci-发起-release-pr">CI 发起 release PR</h2>
+<h3 id="ci-发起-release-pr">CI 发起 release PR</h3>
 <p>PR 合并进 main 分支之后，就触发了我们前面设置的 action。</p>
 <p><img src="https://images.sayhub.me/blog/github-action-release/workflow.png" alt=""></p>
 <p>点击 Actions 查看，我们刚才的提交，触发了一个叫做 Release 的工作流。你可以点开查看，它会在 CI 环境里执行我们预设好的脚本。</p>
