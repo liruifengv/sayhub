@@ -38,6 +38,9 @@ SayHub 是我的个人主站，主要是我的个人博客文章的发布，包�
 - 知乎：https://www.zhihu.com/people/liruifengv
 - 掘金：https://juejin.cn/user/237150239994471
 - GitHub：https://github.com/liruifengv
+- 微信公众号: SayHub
+
+![](https://images.sayhub.me/blog/qrcode.png)
 
 ### 联系方式
 
