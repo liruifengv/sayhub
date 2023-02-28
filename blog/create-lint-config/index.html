@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.6.10">
+
+<!-- Primary Meta Tags -->
+<title>写一个命令行CLI，一键生成各种烦人的lint配置</title>
+<meta name="title" content="写一个命令行CLI，一键生成各种烦人的lint配置">
+<meta name="description" content="前端工程中各种配置文件eslint、prettier等搞得我很头大，那就写一个命令行工具来搞定它吧。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  <link rel="stylesheet" href="/sayhub/assets/404.bb96d8e2.css" />
+<link rel="stylesheet" href="/sayhub/assets/about.6d56a54d.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script></head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  首页
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  文章
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  读后感
+</a>
+
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7">
+  关于
+</a>
+
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-4VKOHXD7" target="_blank">
+  RSS 订阅
+</a>
+
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          写一个命令行CLI，一键生成各种烦人的lint配置
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-02-21</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/assets/screenshot_Z19bab7.avif 400w,/sayhub/assets/screenshot_2v9FoV.avif 900w"><source type="image/webp" srcset="/sayhub/assets/screenshot_Z1yYWFF.webp 400w,/sayhub/assets/screenshot_25kRTn.webp 900w"><source type="image/png" srcset="/sayhub/assets/screenshot_2vNzur.png 400w,/sayhub/assets/screenshot_15Whgy.png 900w">
+	<img src="/sayhub/assets/screenshot_15Whgy.png" loading="lazy" decoding="async" alt="descriptive text">
+</picture>
+        <div class="mt-6">
+          <h2 id="前言">前言</h2>
+<p>写一个前端工程，要配置特别多的配置文件，大量的配置文件让我们很烦心，占用了大量写代码的时间。</p>
+<p><img src="https://images.sayhub.me/blog/create-lint-config/mulu.png" alt=""></p>
+<p>就像上图，看着就头大。</p>
+<p>每次要启动一个新的项目，都要从头配一遍。有人可能把这些文件当做模板保存下来，有需要的时候再复制粘贴。可是各个项目还是不尽相同，还是需要手动改动。</p>
+<p>于是我决定写一个命令行工具来解决这件事。</p>
+<h2 id="create-lint-config">create-lint-config</h2>
+<p>这个工具叫做 <code>create-lint-config</code>，一个一键创建所有的 lint 配置的 CLI 命令行工具。前端工程中特别多的配置文件例如 Eslint、Prettier 等让我们心烦意乱。我们的目标是快速而轻松地生成这些配置！</p>
+<p><a href="https://github.com/liruifengv/create-lint-config">github 地址</a></p>
+<p><a href="https://www.npmjs.com/package/create-lint-config">npm 地址</a></p>
+<h3 id="使用">使用</h3>
+<p>在你的项目根目录执行以下命令：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E"># npm</span></span>
+<span class="line"><span style="color: #C9D1D9">npm create lint-config@latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E"># yarn</span></span>
+<span class="line"><span style="color: #C9D1D9">yarn create lint-config</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E"># pnpm</span></span>
+<span class="line"><span style="color: #C9D1D9">pnpm create lint-config@latest</span></span></code></pre>
+<p>执行结果如下：</p>
+<p><img src="https://images.sayhub.me/blog/create-lint-config/screenshot.png" alt="screenshot"></p>
+<p>这个命令，一次执行，创建了 Eslint、StyleLint、prettier、commitlint、husy、lint-staged 等所有配置文件。</p>
+<h3 id="现有功能">现有功能</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> 生成 Eslint 配置。</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 生成 prettier 配置。</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 生成 stylelint 配置。</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 生成 husky 配置。</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 生成 commitlint 配置。</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> 自动安装依赖。</li>
+<li class="task-list-item"><input type="checkbox" disabled> 期待更多。</li>
+</ul>
+<h3 id="源码解读">源码解读</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">#!/usr/bin/env node</span></span>
+<span class="line"><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">install</span><span style="color: #C9D1D9">({ </span><span style="color: #FFA657">pkgManager</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">cwd</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">_arguments</span><span style="color: #C9D1D9"> }</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> { </span><span style="color: #FFA657">pkgManager</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">cwd</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">arguments</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">array</span><span style="color: #C9D1D9"> }) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">init</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// 拷贝配置文件基础模板，包括 Eslint、StyleLint、prettier、commitlint、husy、lint-staged</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">spinner</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">    start: </span><span style="color: #A5D6FF">`Base template copying...`</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    end: </span><span style="color: #A5D6FF">'Template copied'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">while</span><span style="color: #C9D1D9">: () </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">copy</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'base'</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (e) {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error'</span><span style="color: #C9D1D9">, e)</span></span>
+<span class="line"><span style="color: #C9D1D9">        process.</span><span style="color: #D2A8FF">exit</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      }</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// 安装 husky</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">spinner</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">    start: </span><span style="color: #A5D6FF">`Husky installing...`</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    end: </span><span style="color: #A5D6FF">'Husky installed'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">while</span><span style="color: #C9D1D9">: () </span><span style="color: #FF7B72">=></span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #D2A8FF">install</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        cwd: process.</span><span style="color: #D2A8FF">cwd</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">        pkgManager: </span><span style="color: #A5D6FF">'npx'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        _arguments: [</span><span style="color: #A5D6FF">'husky'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'install'</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      }).</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">e</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error'</span><span style="color: #C9D1D9">, e)</span></span>
+<span class="line"><span style="color: #C9D1D9">        process.</span><span style="color: #D2A8FF">exit</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      }),</span></span>
+<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// husky 写入 commit-msg 校验指令，使用 commitlint</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">spinner</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">    start: </span><span style="color: #A5D6FF">`Adding commit-msg lint...`</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    end: </span><span style="color: #A5D6FF">'Commit-msg lint added'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">while</span><span style="color: #C9D1D9">: () </span><span style="color: #FF7B72">=></span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #D2A8FF">install</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        cwd: process.</span><span style="color: #D2A8FF">cwd</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">        pkgManager: </span><span style="color: #A5D6FF">'npx'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        _arguments: [</span><span style="color: #A5D6FF">'husky'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'add'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'.husky/commit-msg'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'npx --no-install commitlint --edit ""'</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      }).</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">e</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error'</span><span style="color: #C9D1D9">, e)</span></span>
+<span class="line"><span style="color: #C9D1D9">        process.</span><span style="color: #D2A8FF">exit</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      }),</span></span>
+<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// husky 写入 pre-commit校验指令，使用 lint-staged 执行 elint 等</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">spinner</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">    start: </span><span style="color: #A5D6FF">`Adding lint-staged...`</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    end: </span><span style="color: #A5D6FF">'Lint-staged added'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">while</span><span style="color: #C9D1D9">: () </span><span style="color: #FF7B72">=></span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #D2A8FF">install</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        cwd: process.</span><span style="color: #D2A8FF">cwd</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">        pkgManager: </span><span style="color: #A5D6FF">'npx'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        _arguments: [</span><span style="color: #A5D6FF">'husky'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'add'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'.husky/pre-commit'</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">'npx lint-staged'</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      }).</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">e</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error'</span><span style="color: #C9D1D9">, e)</span></span>
+<span class="line"><span style="color: #C9D1D9">        process.</span><span style="color: #D2A8FF">exit</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      }),</span></span>
+<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// 安装依赖</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">spinner</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">    start: </span><span style="color: #A5D6FF">`Dependencies installing with npm...`</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    end: </span><span style="color: #A5D6FF">'Dependencies installed'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">while</span><span style="color: #C9D1D9">: () </span><span style="color: #FF7B72">=></span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #D2A8FF">install</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        cwd: process.</span><span style="color: #D2A8FF">cwd</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">        pkgManager: </span><span style="color: #A5D6FF">'npm'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        _arguments: [</span><span style="color: #A5D6FF">'install'</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      }).</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">e</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error'</span><span style="color: #C9D1D9">, e)</span></span>
+<span class="line"><span style="color: #C9D1D9">        process.</span><span style="color: #D2A8FF">exit</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">      }),</span></span>
+<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D2A8FF">init</span><span style="color: #C9D1D9">().</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">e</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  console.</span><span style="color: #D2A8FF">error</span><span style="color: #C9D1D9">(e)</span></span>
+<span class="line"><span style="color: #C9D1D9">})</span></span></code></pre>
+<h3 id="todo">TODO</h3>
+<ul>
+<li>支持通过<code>--template</code>标志来选择模板，创建更多的配置文件模板，包括 ts、vue、react、node 等等</li>
+<li>支持更灵活的交互式选项。现在只能一键生成默认的模板，有些配置可能是一些人不需要的，后续计划可以更灵活。</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>这个包还在起步阶段，我希望有需求的同学可以来参与贡献。</p>
+<ul>
+<li>你可以贡献 feature</li>
+<li>提交你自己正在使用的模板，以后用这个工具一键生成</li>
+<li>你也可以 fork 或 clone 此项目，变成你自己的命令行工具</li>
+<li>你也可以发布到你们公司的私有 npm，今年的 KPI 不就有了么</li>
+</ul>
+<p>欢迎来点个 star，感谢支持
+<a href="https://github.com/liruifengv/create-lint-config">github</a></p>
+<p><a href="https://www.npmjs.com/package/create-lint-config">npm</a></p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/开源">开源</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/CLI">CLI</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/工具">工具</a>
+        </li>
+    </ul>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="使用 GitHub Action 自动化发布 npm 版本">
+                <a href="/sayhub/blog/github-action-release">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/github_ZAGe1o.avif 400w,/sayhub/assets/github_Z21xwfh.avif 900w"><source type="image/webp" srcset="/sayhub/assets/github_Z11v1vW.webp 400w,/sayhub/assets/github_Z2rmjJP.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/github_8LQa4.jpeg 400w,/sayhub/assets/github_Z1h4r3O.jpeg 900w">
+	<img src="/sayhub/assets/github_Z1h4r3O.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/github-action-release">
+                    使用 GitHub Action 自动化发布 npm 版本
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-18</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="我的开源之旅&#38;新手如何参与开源社区">
+                <a href="/sayhub/blog/opensource">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/github_ZAGe1o.avif 400w,/sayhub/assets/github_Z21xwfh.avif 900w"><source type="image/webp" srcset="/sayhub/assets/github_Z11v1vW.webp 400w,/sayhub/assets/github_Z2rmjJP.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/github_8LQa4.jpeg 400w,/sayhub/assets/github_Z1h4r3O.jpeg 900w">
+	<img src="/sayhub/assets/github_Z1h4r3O.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/opensource">
+                    我的开源之旅&amp;新手如何参与开源社区
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-1-31</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="JS复制文字到剪贴板的坑及完整方案。">
+                <a href="/sayhub/blog/copy-text">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/cover_2hGORt.avif 400w,/sayhub/assets/cover_QPwDA.avif 900w"><source type="image/webp" srcset="/sayhub/assets/cover_1QS2mU.webp 400w,/sayhub/assets/cover_r1J92.webp 900w"><source type="image/jpeg" srcset="/sayhub/assets/cover_Z231dK0.jpeg 400w,/sayhub/assets/cover_1BjBP3.jpeg 900w">
+	<img src="/sayhub/assets/cover_1BjBP3.jpeg" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/copy-text">
+                    JS复制文字到剪贴板的坑及完整方案。
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-01-10</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
+                <a href="/sayhub/blog/promise-modal">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/Modal_1WW746.avif 400w,/sayhub/assets/Modal_x5NPd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/Modal_1x8jyx.webp 400w,/sayhub/assets/Modal_7h1kE.webp 900w"><source type="image/png" srcset="/sayhub/assets/Modal_Z1DdsoI.png 400w,/sayhub/assets/Modal_217nbk.png 900w">
+	<img src="/sayhub/assets/Modal_217nbk.png" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/promise-modal">
+                    开发弹窗，你使用状态驱动还是命令式？
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-29</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="2022 年终总结">
+                <a href="/sayhub/blog/2022-year-end-summary">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/assets/2022_1DGaq6.avif 400w,/sayhub/assets/2022_dORcd.avif 900w"><source type="image/webp" srcset="/sayhub/assets/2022_1dRmUx.webp 400w,/sayhub/assets/2022_ZbXUil.webp 900w">
+	<img src="/sayhub/assets/2022_ZbXUil.webp" loading="lazy" decoding="async" alt="descriptive text" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/2022-year-end-summary">
+                    2022 年终总结
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2022-12-28</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-RBJBZKO7">
+  <a class="hover:text-primary-600 hover:underline astro-RBJBZKO7" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-RBJBZKO7">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
