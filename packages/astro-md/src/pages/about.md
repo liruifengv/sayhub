@@ -14,6 +14,7 @@ image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 我是一名前端工程师，居住工作在 中国天津。2017 年入行，热爱前端，热爱技术，热爱开源。
 
 ### 目前在做的事：
+
 - [Deno](https://github.com/denoland/deno/issues?q=author%3Aliruifengv) 参与代码贡献。
 - [Astro](https://github.com/withastro) 参与代码贡献，中文文档维护翻译。
 - 探索 Rust 在前端领域的可行之处。
@@ -35,6 +36,7 @@ SayHub 是我的个人主站，主要是我的个人博客文章的发布，包�
 - [TailwindCSS](https://tailwindcss.com/)
 
 ### 我的其他主页
+
 - 知乎：https://www.zhihu.com/people/liruifengv
 - 掘金：https://juejin.cn/user/237150239994471
 - GitHub：https://github.com/liruifengv

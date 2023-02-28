@@ -7,7 +7,7 @@ image: 'https://images.sayhub.me/blog/opensource/github.jpeg'
 tags: [开源]
 ---
 
-GitHub Action 是一套提供给 GitHub 仓库使用的CI/CD 工具。它可以自动化、自定义和执行软件开发工作流程。本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。
+GitHub Action 是一套提供给 GitHub 仓库使用的 CI/CD 工具。它可以自动化、自定义和执行软件开发工作流程。本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。
 
 ## CHANGELOG
 
@@ -20,7 +20,9 @@ pnpm i @changesets/cli
 ```
 
 ### 使用
+
 执行以下命令进行初始化，它会在你的项目根目录生成一个`.changeset` 文件夹，里面包括一个配置文件和 README。
+
 ```bash
 pnpm exec changeset init
 ```
@@ -30,6 +32,7 @@ pnpm exec changeset init
 ```bash
 pnpm exec changeset
 ```
+
 ![](https://images.sayhub.me/blog/github-action-release/changeset.png)
 
 这里会提示我们选择这次更改的类型。不了解的可以自行搜索 npm semver 版本号规范。
@@ -40,7 +43,7 @@ pnpm exec changeset
 
 ![](https://images.sayhub.me/blog/github-action-release/changeset-patch.png)
 
-这时候它会在`.changeset` 文件夹生成一个随机名字的md 文件，包含你刚才提交的信息。
+这时候它会在`.changeset` 文件夹生成一个随机名字的 md 文件，包含你刚才提交的信息。
 
 ![](https://images.sayhub.me/blog/github-action-release/changeset-file.png)
 
@@ -120,10 +123,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # NPM_TOKEN 需要稍后在 npm 网站生成。
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 ```
 
 为了方便，我们在项目的`package.json`中添加几个脚本：
+
 ```json
 // package.json
 {
@@ -146,19 +149,20 @@ jobs:
 
 ![](https://images.sayhub.me/blog/github-action-release/npm_token_ge.png)
 
-
 生成之后记得复制，关闭页面之后就看不到了。
 
-回到 GitHub，你的仓库，点击 Settings，选择Secrets and variables。创建一个 NPM_TOKEN。这样 GitHub Action 中就能取到它了。
+回到 GitHub，你的仓库，点击 Settings，选择 Secrets and variables。创建一个 NPM_TOKEN。这样 GitHub Action 中就能取到它了。
 
 ![](https://images.sayhub.me/blog/github-action-release/github-new-token.png)
-
 
 ## 完整工作流程
 
 ### 本地提交修改
+
 修改你要修改的代码。
+
 ### 运行生成 `changeset` 文件
+
 ```bash
 pnpm exec changeset
 ```
@@ -177,7 +181,7 @@ pnpm exec changeset
 
 ### CI 发起 release PR
 
- PR 合并进 main 分支之后，就触发了我们前面设置的 action。
+PR 合并进 main 分支之后，就触发了我们前面设置的 action。
 
 ![](https://images.sayhub.me/blog/github-action-release/workflow.png)
 
@@ -195,19 +199,20 @@ pnpm exec changeset
 
 点击 merge 发布！恭喜你完成了整个流程。
 
-过一会就能看到 GitHub release 和 npm 包都发布成功了。 
+过一会就能看到 GitHub release 和 npm 包都发布成功了。
 
 ## 总结
 
 可能有人说，好像也是半自动化哦。
 
 其实这是一套开源协作流程。
+
 - 仓库的贡献者，修改代码，生成 `changeset`。
-- CI 自动归结，生成 `CHANGELOG` 并 PR。 
+- CI 自动归结，生成 `CHANGELOG` 并 PR。
 - 仓库的维护者，点击 merge 自动发布。
 
 你还在手动改版本发布吗？你的开源项目还缺少完善的协作流程吗？来试一下这套流程吧。
 
 ## 结语
 
-GitHub Action 还可以做很多事，比如lint、format 代码；自动化部署等等。你可以[在我的 GitHub 找到更多例子](https://github.com/liruifengv)。
+GitHub Action 还可以做很多事，比如 lint、format 代码；自动化部署等等。你可以[在我的 GitHub 找到更多例子](https://github.com/liruifengv)。
