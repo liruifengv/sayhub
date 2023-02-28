@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/BlogLayout.astro'
 title: '写一个命令行CLI，一键生成各种烦人的lint配置'
 description: '前端工程中各种配置文件eslint、prettier等搞得我很头大，那就写一个命令行工具来搞定它吧。'
 pubDate: '2023-02-21'

@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import Layout from '~/layouts/PageLayout.astro'
 import PostItem from '~/components/PostItem.astro'
@@ -11,32 +12,13 @@ const meta = {
   description: SITE_DESCRIPTION,
 }
 
-const posts = (await Astro.glob('./blog/*.{md,mdx}'))
-  .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+const allPosts = await getCollection('blog')
+
+const posts = allPosts
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
   .slice(0, 5)
 
-const tags = [
-  'HTML',
-  'CSS',
-  'web',
-  'font',
-  'JavaScript',
-  'front-end',
-  'ghost',
-  '建站',
-  'blog',
-  'mysql',
-  'Deno',
-  'restful',
-  'React',
-  '年终总结',
-  'Promise',
-  'WebView',
-  '读后感',
-  '开源',
-  '工具',
-  'CLI',
-]
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 ---
 
 <Layout {meta}>
@@ -47,7 +29,7 @@ const tags = [
         {
           posts.map((post) => (
             <li class="mt-5 md:mb-8">
-              <PostItem post={post.frontmatter} url={post.url} />
+              <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
             </li>
           ))
         }

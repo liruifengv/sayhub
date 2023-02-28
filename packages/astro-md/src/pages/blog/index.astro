@@ -1,11 +1,13 @@
 ---
-import Layout from '~/layouts/PageLayout.astro'
+import { getCollection } from 'astro:content'
+import PageLayout from '~/layouts/PageLayout.astro'
 import PostItem from '~/components/PostItem.astro'
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob('./blog/*.{md,mdx}'))
-  .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
-  .filter((post) => !post.frontmatter.tags.includes('读后感'))
+const basename = import.meta.env.BASE_URL
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .filter((post) => !post.data.tags.includes('读后感'))
 
 const meta = {
   title: '全部文章列表',
@@ -13,16 +15,16 @@ const meta = {
 }
 ---
 
-<Layout {meta}>
+<PageLayout {meta}>
   <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
     <ul>
       {
         posts.map((post) => (
           <li class="mb-5 md:mb-8">
-            <PostItem post={post.frontmatter} url={post.url} />
+            <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
           </li>
         ))
       }
     </ul>
   </section>
-</Layout>
+</PageLayout>

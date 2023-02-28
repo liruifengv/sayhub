@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/BlogLayout.astro'
 title: '浅谈前端性能优化'
 description: '聊一聊什么前端性能优化以及怎么做性能优化。'
 pubDate: '2017-05-08'

@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/BlogLayout.astro'
 title: '使用 Deno 创建 HTTP 服务'
 description: '今天我们来使用 Deno 创建一个 HTTP 服务，REST-API 增删查改'
 pubDate: '2020-06-21'
