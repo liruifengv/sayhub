@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v2.0.16">
+
+<!-- Primary Meta Tags -->
+<title>使用Certbot申请免费 HTTPS 证书及自动续期</title>
+<meta name="title" content="使用Certbot申请免费 HTTPS 证书及自动续期">
+<meta name="description" content="今天来使用 Certbot 来申请免费的HTTPS证书，并且自动续期">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+</script></head>
+  </head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  首页
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  文章
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  读后感
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  关于
+</a>
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+  RSS 订阅
+</a>
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          使用Certbot申请免费 HTTPS 证书及自动续期
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-03-02</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_Z2jcGKN.avif 400w,/sayhub/_astro/HTTPS-cover_1l88Of.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_2laDxz.webp 400w,/sayhub/_astro/HTTPS-cover_UjljG.webp 900w"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_Z1VDK2o.png 400w,/sayhub/_astro/HTTPS-cover_1HG5xE.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/HTTPS-cover_1HG5xE.png" loading="lazy" decoding="async">
+</picture>
+        <div class="mt-6">
+          <p>作为一个前端开发工程师，拥有自己的服务器和网站是必不可少的，网站默认是使用 HTTP 协议，要使用 HTTPS 需要申请证书，而证书也不太便宜。今天就教大家使用 <a href="https://certbot.eff.org/">Certbot</a> 来申请免费的 HTTPS 证书。</p>
+<p>以下所有操作均运行在 Centos 服务器。</p>
+<h2 id="安装-certbot">安装 Certbot</h2>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">yum install epel-release -y</span></span>
+<span class="line"><span style="color: #C9D1D9">yum install certbot -y</span></span></code></pre>
+<h2 id="申请证书">申请证书</h2>
+<p>域名分为主域名 test.com 和泛域名 *.test.com。</p>
+<blockquote>
+<p>理论上泛域名证书可以同时用在主域名和泛域名上面，不知道为什么我的主域名用了泛域名的证书，chrome 提示我的证书无效。
+于是我分开申请了两个证书，有知道解法的同学告知一下。</p>
+</blockquote>
+<p>执行以下命令：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"># 泛域名：</span></span>
+<span class="line"><span style="color: #c9d1d9">certbot certonly -d *.test.com --manual --preferred-challenges dns</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9"># 主域名：</span></span>
+<span class="line"><span style="color: #c9d1d9">certbot certonly -d test.com --manual --preferred-challenges dns</span></span></code></pre>
+<p>这时会出现下图的界面</p>
+<p><img src="https://images.sayhub.me/blog/certbot-https/https.png" alt="image.png"></p>
+<p>你需要按照提示，在你的域名服务商处，添加对应的 DNS TXT 解析记录。</p>
+<p>配置好之后，按回车继续。</p>
+<p>如果成功的话，它会生成两个文件：</p>
+<ul>
+<li><code>/etc/letsencrypt/live/test.com/fullchain.pem</code></li>
+<li><code>/etc/letsencrypt/live/test.com/privkey.pem</code></li>
+</ul>
+<h2 id="nginx-配置">nginx 配置</h2>
+<p>接下来配置 nginx 配置，我主要使用 nginx 代理我的前端项目，nginx 请自行安装。</p>
+<p>我的 nginx 默认配置文件在 <code>/etc/nginx/nginx.conf</code>。当子域名很多的时候，这个文件就会很庞大，所以我把所有域名的配置都拆分到一个<code>/etc/nginx/conf.d</code> 文件夹。</p>
+<p>以<code>www.test.com</code> 为例，在<code>/etc/nginx/conf.d</code> 文件夹下新建一个 <code>www.test.com.conf</code> 文件，内容如下：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">server {</span></span>
+<span class="line"><span style="color: #c9d1d9">    listen 443 ssl;</span></span>
+<span class="line"><span style="color: #c9d1d9">    # 子域名</span></span>
+<span class="line"><span style="color: #c9d1d9">    server_name  www.test.com;</span></span>
+<span class="line"><span style="color: #c9d1d9">    # 这里是你证书的位置</span></span>
+<span class="line"><span style="color: #c9d1d9">    ssl_certificate /etc/letsencrypt/live/test.com/fullchain.pem;</span></span>
+<span class="line"><span style="color: #c9d1d9">    ssl_certificate_key /etc/letsencrypt/live/test.com/privkey.pem;</span></span>
+<span class="line"><span style="color: #c9d1d9">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span></span>
+<span class="line"><span style="color: #c9d1d9">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span></span>
+<span class="line"><span style="color: #c9d1d9">    ssl_prefer_server_ciphers on;</span></span>
+<span class="line"><span style="color: #c9d1d9">    root /usr/share/nginx/html;</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    location / {</span></span>
+<span class="line"><span style="color: #c9d1d9">      # 指向前端资源的路径</span></span>
+<span class="line"><span style="color: #c9d1d9">      root   /home/webapps/test-app/dist;</span></span>
+<span class="line"><span style="color: #c9d1d9">      index  index.html;</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    error_page 404 /404.html;</span></span>
+<span class="line"><span style="color: #c9d1d9">        location = /40x.html {</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    error_page 500 502 503 504 /50x.html;</span></span>
+<span class="line"><span style="color: #c9d1d9">        location = /50x.html {</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span></code></pre>
+<p><code>nginx.conf</code> 配置如下：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">http {</span></span>
+<span class="line"><span style="color: #c9d1d9">    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span>
+<span class="line"><span style="color: #c9d1d9">                      '$status $body_bytes_sent "$http_referer" '</span></span>
+<span class="line"><span style="color: #c9d1d9">                      '"$http_user_agent" "$http_x_forwarded_for"';</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    access_log  /var/log/nginx/access.log  main;</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    sendfile            on;</span></span>
+<span class="line"><span style="color: #c9d1d9">    tcp_nopush          on;</span></span>
+<span class="line"><span style="color: #c9d1d9">    tcp_nodelay         on;</span></span>
+<span class="line"><span style="color: #c9d1d9">    keepalive_timeout   65;</span></span>
+<span class="line"><span style="color: #c9d1d9">    types_hash_max_size 2048;</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    include             /etc/nginx/mime.types;</span></span>
+<span class="line"><span style="color: #c9d1d9">    default_type        application/octet-stream;</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    # 这里是防止别人恶意解析</span></span>
+<span class="line"><span style="color: #c9d1d9">    server {</span></span>
+<span class="line"><span style="color: #c9d1d9">       listen 80 default_server;</span></span>
+<span class="line"><span style="color: #c9d1d9">       server_name _;</span></span>
+<span class="line"><span style="color: #c9d1d9">       access_log off;</span></span>
+<span class="line"><span style="color: #c9d1d9">       return 404;</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    server {</span></span>
+<span class="line"><span style="color: #c9d1d9">        listen 443  default_server;</span></span>
+<span class="line"><span style="color: #c9d1d9">        server_name _;</span></span>
+<span class="line"><span style="color: #c9d1d9">        ssl_certificate /etc/letsencrypt/live/test.com/fullchain.pem;</span></span>
+<span class="line"><span style="color: #c9d1d9">        ssl_certificate_key /etc/letsencrypt/live/test.com/privkey.pem;</span></span>
+<span class="line"><span style="color: #c9d1d9">        access_log off;</span></span>
+<span class="line"><span style="color: #c9d1d9">        return 404;</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    # 这里配置强制把 http 转换成 https</span></span>
+<span class="line"><span style="color: #c9d1d9">    server {</span></span>
+<span class="line"><span style="color: #c9d1d9">        listen       80;</span></span>
+<span class="line"><span style="color: #c9d1d9">        server_name  test.com;</span></span>
+<span class="line"><span style="color: #c9d1d9">        root         /usr/share/nginx/html;</span></span>
+<span class="line"><span style="color: #c9d1d9">        return 301 https://$host$request_uri;</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9">    server {</span></span>
+<span class="line"><span style="color: #c9d1d9">        listen       80;</span></span>
+<span class="line"><span style="color: #c9d1d9">        server_name  *.test.com;</span></span>
+<span class="line"><span style="color: #c9d1d9">        root         /usr/share/nginx/html;</span></span>
+<span class="line"><span style="color: #c9d1d9">        return 301 https://$host$request_uri;</span></span>
+<span class="line"><span style="color: #c9d1d9">    }</span></span>
+<span class="line"><span style="color: #c9d1d9">    # 这里需要把之前拆分出去的配置引入进来</span></span>
+<span class="line"><span style="color: #c9d1d9">    include /etc/nginx/conf.d/*.conf;</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span></code></pre>
+<p>执行<code>nginx -s reload</code>，没问题的话，在浏览器输入域名，已经可以看到 HTTPS 的小锁了。</p>
+<h2 id="续期">续期</h2>
+<p>Certbot 是申请的<a href="https://letsencrypt.org/">Let’s Encrypt</a>的免费证书，有效期 3 个月，到期之后我们可以再次续期，达到永久免费的效果。</p>
+<h3 id="手动续期">手动续期</h3>
+<p>你只需要在到期前，再手动执行生成证书的命令</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">certbot certonly -d *.test.com --manual --preferred-challenges dns</span></span></code></pre>
+<p>再重复一下配置 DNS 解析的操作就 OK 啦。</p>
+<h3 id="自动续期">自动续期</h3>
+<p>再说每次都手动配置 DNS 解析也挺烦的，如果域名很多就更麻烦了。</p>
+<p>好在 certbot 提供了一个 hook，让我们可以编写一个 Shell 脚本。在续期的时候让脚本调用 DNS 服务商的 API 接口动态添加 TXT 记录，验证完成后再删除此记录。</p>
+<p>这里推荐 @justjavac 大佬写的，<a href="https://github.com/justjavac/certbot-dns-aliyun">https://github.com/justjavac/certbot-dns-aliyun</a></p>
+<p>安装和使用指南可看 README。</p>
+<p>生成也可以用：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E"># 泛域名</span></span>
+<span class="line"><span style="color: #C9D1D9">certbot certonly -d </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9">.test.com --manual --preferred-challenges dns --manual-auth-hook </span><span style="color: #A5D6FF">"alidns"</span><span style="color: #C9D1D9"> --manual-cleanup-hook </span><span style="color: #A5D6FF">"alidns clean"</span></span></code></pre>
+<p>续费命令：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E"># 续费命令</span></span>
+<span class="line"><span style="color: #C9D1D9">certbot renew --manual --preferred-challenges dns --manual-auth-hook </span><span style="color: #A5D6FF">"alidns"</span><span style="color: #C9D1D9"> --manual-cleanup-hook </span><span style="color: #A5D6FF">"alidns clean"</span></span></code></pre>
+<p>然后再利用 crontab 定时任务，每天执行一下自动续期。</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">1 1 </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9">/1 </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9"> root certbot renew --manual --preferred-challenges dns --manual-auth-hook </span><span style="color: #A5D6FF">"alidns"</span><span style="color: #C9D1D9"> --manual-cleanup-hook </span><span style="color: #A5D6FF">"alidns clean"</span><span style="color: #C9D1D9"> --deploy-hook </span><span style="color: #A5D6FF">"nginx -s reload"</span></span></code></pre>
+<h2 id="最后">最后</h2>
+<p>还没有用上 HTTPS 证书？快来申请一个吧。还没有自己的服务器和域名？还不快去买一个。</p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/HTTPS">HTTPS</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/nginx">nginx</a>
+        </li>
+    </ul>
+      <div>
+  <hr>
+  <br>
+  <p>
+    <strong>你的鼓励是我最大的支持，关注我的公众号 「SayHub」 获取更多内容。</strong>
+  </p>
+  <img src="https://images.sayhub.me/blog/qrcode.png">
+</div>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="使用Certbot申请免费 HTTPS 证书及自动续期">
+                <a href="/sayhub/blog/chatgpt-vue3/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-code_dtKXF.avif 400w,/sayhub/_astro/deno-code_Z1cmwfd.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-code_Zck1vS.webp 400w,/sayhub/_astro/deno-code_Z1CbjJL.webp 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/chatgpt-vue3/">
+                    我用 ChatGPT 读 Vue3 源码
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-23</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用Certbot申请免费 HTTPS 证书及自动续期">
+                <a href="/sayhub/blog/create-lint-config/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/screenshot_Q0cM3.avif 400w,/sayhub/_astro/screenshot_ZyQ5qP.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/screenshot_qbphu.webp 400w,/sayhub/_astro/screenshot_ZYERVo.webp 900w"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZQnd1t.png 400w,/sayhub/_astro/screenshot_Z2hevfm.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/screenshot_Z2hevfm.png" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/create-lint-config/">
+                    写一个命令行CLI，一键生成各种烦人的lint配置
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-21</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用Certbot申请免费 HTTPS 证书及自动续期">
+                <a href="/sayhub/blog/github-action-release/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/github_1hRq4G.avif 400w,/sayhub/_astro/github_Z7XR9c.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/github_R3Cz8.webp 400w,/sayhub/_astro/github_ZxMEDK.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/github_22lvg9.jpeg 400w,/sayhub/_astro/github_Bud2g.jpeg 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/github_Bud2g.jpeg" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/github-action-release/">
+                    使用 GitHub Action 自动化发布 npm 版本
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-18</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用Certbot申请免费 HTTPS 证书及自动续期">
+                <a href="/sayhub/blog/opensource/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/github_1hRq4G.avif 400w,/sayhub/_astro/github_Z7XR9c.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/github_R3Cz8.webp 400w,/sayhub/_astro/github_ZxMEDK.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/github_22lvg9.jpeg 400w,/sayhub/_astro/github_Bud2g.jpeg 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/github_Bud2g.jpeg" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/opensource/">
+                    我的开源之旅&amp;新手如何参与开源社区
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-1-31</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="使用Certbot申请免费 HTTPS 证书及自动续期">
+                <a href="/sayhub/blog/copy-text/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/cover_1dcxWE.avif 400w,/sayhub/_astro/cover_ZcDJge.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/cover_MnKs6.webp 400w,/sayhub/_astro/cover_ZCswKM.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/cover_1WFD97.jpeg 400w,/sayhub/_astro/cover_wOkUe.jpeg 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/cover_wOkUe.jpeg" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/copy-text/">
+                    JS复制文字到剪贴板的坑及完整方案。
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-01-10</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-SZ7XMLTE">
+  <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-SZ7XMLTE">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
