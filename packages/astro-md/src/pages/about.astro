@@ -1,0 +1,37 @@
+---
+import { getEntryBySlug } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import PageLayout from '~/layouts/PageLayout.astro'
+import { Picture } from '@astrojs/image/components'
+
+const AboutMe = await getEntryBySlug('about', 'about-me')
+
+type Props = CollectionEntry<'about'>['data']
+
+const { Content } = await AboutMe.render()
+
+const { title, description, image } = AboutMe.data
+
+const meta = {
+  title: title,
+  description: description,
+}
+---
+
+<PageLayout {meta} isBlog={true}>
+  <div class:list={['max-w-4xl', 'flex mx-auto flex-col md:flex-row']}>
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          {title}
+        </h1>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        {image && <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />}
+        <div class="mt-6">
+          <Content />
+        </div>
+      </article>
+    </section>
+  </div>
+</PageLayout>

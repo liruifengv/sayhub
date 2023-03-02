@@ -1,9 +1,6 @@
 ---
-layout: '../layouts/BlogLayout.astro'
 title: '关于我/关于本站'
-showRecent: false
 description: '李瑞丰/liruifengv/关于我/关于本站/关于 SayHub'
-updatedDate: ' 2022-12-28'
 image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 ---
 
