@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content'
 import { Picture } from '@astrojs/image/components'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
+import PostFooter from '~/components/PostFooter.astro'
 
 type Props = CollectionEntry<'blog'>['data']
 
@@ -49,6 +50,7 @@ const showRightRecent = showRecent !== false
         </div>
       </article>
       {tags?.length > 0 && <PostTags class="text-base" tags={tags} />}
+      <PostFooter />
     </section>
     {
       showRecent !== false && (
