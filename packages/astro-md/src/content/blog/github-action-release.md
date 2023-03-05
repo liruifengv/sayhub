@@ -186,11 +186,11 @@ PR 合并进 main 分支之后，就触发了我们前面设置的 action。
 
 点击 Actions 查看，我们刚才的提交，触发了一个叫做 Release 的工作流。你可以点开查看，它会在 CI 环境里执行我们预设好的脚本。
 
-我们的脚本就是，如果检测到提交携带有 `changeset` 信息，就好自动发起一个叫做 `[ci] release ` 的 PR。这个 PR 中，CI 自动帮我们做好了 `CHANGELOG` 的生成，版本号的升级。
+我们的脚本就是，如果检测到提交携带有 `changeset` 信息，就会自动发起一个叫做 `[ci] release ` 的 PR。这个 PR 中，CI 自动帮我们做好了 `CHANGELOG` 的生成，版本号的升级。
 
 ![](https://images.sayhub.me/blog/github-action-release/release-pr.png)
 
-当你点击 merge，合到到 main 分支之后，它就会自动地发布版本，同时发布到 npm 仓库和 GitHub release。
+当你点击 merge，合并到 main 分支之后，它就会自动地发布版本，同时发布到 npm 仓库和 GitHub release。
 
 未合并期间，所有携带有 `changeset`的提交都会更新这个 PR。
 
