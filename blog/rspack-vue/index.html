@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v2.0.16">
+
+<!-- Primary Meta Tags -->
+<title>快速尝鲜字节刚刚开源的 Rspack，卷不动了？</title>
+<meta name="title" content="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+<meta name="description" content="你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+</script></head>
+  </head>
+  
+    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  首页
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  文章
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  读后感
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  关于
+</a>
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+  RSS 订阅
+</a>
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header><main>
+    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
+    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          快速尝鲜字节刚刚开源的 Rspack，卷不动了？
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-03-10</time>
+            </div>
+      </header>
+      <article class="container mx-auto max-w-3xl markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/rspack_Z1u4m5P.avif 400w,/sayhub/_astro/rspack_2agtud.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/rspack_Z1TS9Ao.webp 400w,/sayhub/_astro/rspack_1JrFYE.webp 900w"><source type="image/png" srcset="/sayhub/_astro/rspack_Z1q0UjQ.png 400w,/sayhub/_astro/rspack_2ejUgc.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/rspack_2ejUgc.png" loading="lazy" decoding="async">
+</picture>
+        <div class="mt-6">
+          <p>今天，字节跳动刚刚开源了 <a href="https://github.com/web-infra-dev/rspack">Rspack</a>，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。</p>
+<p>官方仓库：<a href="https://github.com/web-infra-dev/rspack">https://github.com/web-infra-dev/rspack</a></p>
+<p>官方文档：<a href="https://www.rspack.dev/zh/">https://www.rspack.dev/zh/</a></p>
+<p>我在第一时间进行了试用，速度确实很快。看一下官方给出的数据：</p>
+<p><img src="https://images.sayhub.me/blog/rspack-vue/dev-compare.png" alt="image.png"></p>
+<p><img src="https://images.sayhub.me/blog/rspack-vue/build-compare.png" alt="image.png"></p>
+<blockquote>
+<p>你猜为什么没有跟 Vite 比？</p>
+</blockquote>
+<h2 id="vue-支持">Vue 支持</h2>
+<p>毫不意外，得益于 JSX 的特性，Rspack 开箱支持 React。 我想看一下 Vue 的支持程度。</p>
+<p>官方说法：</p>
+<p><img src="https://images.sayhub.me/blog/rspack-vue/rspack-vue-support.png" alt="image.png"></p>
+<p>对于单文件组件，大家都知道需要 vue-loader 进行转换。目前支持不是太好，官方例子里，写了个简单的 vue-loader，见：<a href="https://github.com/web-infra-dev/rspack/tree/main/examples/vue">https://github.com/web-infra-dev/rspack/tree/main/examples/vue</a></p>
+<p>试着跑了一下，除了官方给出的代码，其他基本不行。</p>
+<h2 id="vue--jsx">Vue + JSX</h2>
+<p>好在 Vue3 对 JSX 的支持比 2.0 强了很多，那么只能用 Vue3 + JSX + Rspack 了。</p>
+<p>同样官方给出了例子：<a href="https://github.com/web-infra-dev/rspack/tree/main/examples/vue3-jsx">https://github.com/web-infra-dev/rspack/tree/main/examples/vue3-jsx</a></p>
+<p>安装依赖：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npm install -D babel-loader @babel/core @vue/babel-plugin-jsx</span></span></code></pre>
+<p>配置文件：</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// rspack.config.js</span></span>
+<span class="line"><span style="color: #8B949E">/**</span></span>
+<span class="line"><span style="color: #8B949E"> * </span><span style="color: #FF7B72">@type</span><span style="color: #8B949E"> </span><span style="color: #FFA657">{import('@rspack/cli').Configuration}</span></span>
+<span class="line"><span style="color: #8B949E"> */</span></span>
+<span class="line"><span style="color: #79C0FF">module</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">exports</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  context: __dirname,</span></span>
+<span class="line"><span style="color: #C9D1D9">  entry: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    main: </span><span style="color: #A5D6FF">"./src/main.jsx"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  module: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    rules: [</span></span>
+<span class="line"><span style="color: #C9D1D9">      {</span></span>
+<span class="line"><span style="color: #C9D1D9">        test:</span><span style="color: #A5D6FF"> /</span><span style="color: #7EE787; font-style: italic">\.</span><span style="color: #A5D6FF">jsx</span><span style="color: #FF7B72">$</span><span style="color: #A5D6FF">/</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        use: [</span></span>
+<span class="line"><span style="color: #C9D1D9">          {</span></span>
+<span class="line"><span style="color: #C9D1D9">            loader: </span><span style="color: #A5D6FF">"babel-loader"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">            options: {</span></span>
+<span class="line"><span style="color: #C9D1D9">              plugins: [</span><span style="color: #A5D6FF">"@vue/babel-plugin-jsx"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">            },</span></span>
+<span class="line"><span style="color: #C9D1D9">          },</span></span>
+<span class="line"><span style="color: #C9D1D9">        ],</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">      {</span></span>
+<span class="line"><span style="color: #C9D1D9">        test:</span><span style="color: #A5D6FF"> /</span><span style="color: #7EE787; font-style: italic">\.</span><span style="color: #A5D6FF">svg</span><span style="color: #FF7B72">$</span><span style="color: #A5D6FF">/</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        type: </span><span style="color: #A5D6FF">'asset'</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">    ],</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">  builtins: {</span></span>
+<span class="line"><span style="color: #C9D1D9">    html: [</span></span>
+<span class="line"><span style="color: #C9D1D9">      {</span></span>
+<span class="line"><span style="color: #C9D1D9">        template: </span><span style="color: #A5D6FF">"./index.html"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">    ],</span></span>
+<span class="line"><span style="color: #C9D1D9">    define: {</span></span>
+<span class="line"><span style="color: #C9D1D9">      __VUE_OPTIONS_API__: </span><span style="color: #79C0FF">JSON</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">stringify</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">      __VUE_PROD_DEVTOOLS__: </span><span style="color: #79C0FF">JSON</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">stringify</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">  },</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre>
+<p>官方例子较为简略，我尝试新添加了组件、 vue-router、pinia 等。目前看来运行良好。</p>
+<p>我的仓库：<a href="https://github.com/liruifengv/rspack-vue">https://github.com/liruifengv/rspack-vue</a></p>
+<h2 id="插件系统">插件系统</h2>
+<p>Rspack 的目标是对齐 webpack，对于已有的 Loader 和 Plugin 进行兼容。</p>
+<p>其实用 Rust 开发的构建工具有一个问题，就是插件系统，是用 JS 还是 Rust 开发，JS 不可避免的带来性能的下降，Rust 的话有一定的学习曲线。</p>
+<p>插件系统代表一个构建工具的生态，只有生态起来，构建工具才能火起来。Rspack 目前貌似可以用 Rust 和 JS 两种来开发插件（还没来得及细看），并且对于 webpack 现有生态的兼容是一个明智的决定。</p>
+<h2 id="贡献">贡献</h2>
+<p>我刚提交了我在 Rspack 的第一个 PR：<a href="https://github.com/web-infra-dev/rspack/pull/2101">https://github.com/web-infra-dev/rspack/pull/2101</a></p>
+<p>可能的机会？</p>
+<ul>
+<li>Rspack 文档的完善</li>
+<li>create-rspack 工具，提供更多的模板</li>
+<li>create-rspack 工具，嗅探用户使用的包管理器</li>
+<li>提交和 Vite 比较的基准测试？</li>
+<li>生态系统的补充</li>
+</ul>
+<h2 id="最后">最后</h2>
+<p>不知道 Rspack 是否能火起来，还是成为 KPI 工具，还是只在字节内部广泛使用。</p>
+<p>你还记得 <strong>Modern.js</strong> 吗</p>
+<p><img src="https://images.sayhub.me/blog/rspack-vue/evan-rspack" alt="image.png"></p>
+        </div>
+      </article>
+      <ul class="text-base">
+      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/Vue">Vue</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/front-end">front-end</a>
+        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
+          <a href="/sayhub/tag/webpack">webpack</a>
+        </li>
+    </ul>
+      <div>
+  <hr>
+  <br>
+  <p>
+    <strong>你的鼓励是我最大的支持，关注我的公众号 「SayHub」 获取更多内容。</strong>
+  </p>
+  <img src="https://images.sayhub.me/blog/qrcode.png">
+</div>
+    </section>
+    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
+          <div class="text-gray-900 text-xl">最近文章</div>
+          <ul class="mt-4">
+            <li class="mt-8 flex items-center" title="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+                <a href="/sayhub/blog/certbot-https/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_Z2jcGKN.avif 400w,/sayhub/_astro/HTTPS-cover_1l88Of.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_2laDxz.webp 400w,/sayhub/_astro/HTTPS-cover_UjljG.webp 900w"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_Z1VDK2o.png 400w,/sayhub/_astro/HTTPS-cover_1HG5xE.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/HTTPS-cover_1HG5xE.png" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/certbot-https/">
+                    使用Certbot申请免费 HTTPS 证书及自动续期
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-02</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+                <a href="/sayhub/blog/chatgpt-vue3/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-code_dtKXF.avif 400w,/sayhub/_astro/deno-code_Z1cmwfd.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-code_Zck1vS.webp 400w,/sayhub/_astro/deno-code_Z1CbjJL.webp 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/chatgpt-vue3/">
+                    我用 ChatGPT 读 Vue3 源码
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-23</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+                <a href="/sayhub/blog/create-lint-config/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/screenshot_Q0cM3.avif 400w,/sayhub/_astro/screenshot_ZyQ5qP.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/screenshot_qbphu.webp 400w,/sayhub/_astro/screenshot_ZYERVo.webp 900w"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZQnd1t.png 400w,/sayhub/_astro/screenshot_Z2hevfm.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/screenshot_Z2hevfm.png" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/create-lint-config/">
+                    写一个命令行CLI，一键生成各种烦人的lint配置
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-21</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+                <a href="/sayhub/blog/github-action-release/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/github_1hRq4G.avif 400w,/sayhub/_astro/github_Z7XR9c.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/github_R3Cz8.webp 400w,/sayhub/_astro/github_ZxMEDK.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/github_22lvg9.jpeg 400w,/sayhub/_astro/github_Bud2g.jpeg 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/github_Bud2g.jpeg" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/github-action-release/">
+                    使用 GitHub Action 自动化发布 npm 版本
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-18</div>
+                </div>
+              </li><li class="mt-8 flex items-center" title="快速尝鲜字节刚刚开源的 Rspack，卷不动了？">
+                <a href="/sayhub/blog/opensource/">
+                  <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/github_1hRq4G.avif 400w,/sayhub/_astro/github_Z7XR9c.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/github_R3Cz8.webp 400w,/sayhub/_astro/github_ZxMEDK.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/github_22lvg9.jpeg 400w,/sayhub/_astro/github_Bud2g.jpeg 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/github_Bud2g.jpeg" loading="lazy" decoding="async" class="w-20">
+</picture>
+                </a>
+                <div class="ml-2 flex-1">
+                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/opensource/">
+                    我的开源之旅&amp;新手如何参与开源社区
+                  </a>
+                  <div class="text-sm md:mt-2 font-light">发表日期：2023-1-31</div>
+                </div>
+              </li>
+          </ul>
+        </div>
+  </div>
+  </main><footer class="astro-SZ7XMLTE">
+  <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-SZ7XMLTE">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>
