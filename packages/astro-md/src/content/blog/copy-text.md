@@ -175,6 +175,14 @@ const copyText = async (val) => {
 
 又提测了，希望不会出现新的 bug。
 
+### 后记 2023-1-12 
+
+果不其然遇到了新问题，在华为手机自带浏览器上，`navigator.clipboard` 和 `navigator.permissions` 都存在，但是抛了个异常：`DOMExecption: PAESE_ERROR`。
+
+navigator.clipboard 的兼容性有大问题！
+
+最后我删掉了 `navigator.clipboard`，老老实实用execCommand。
+
 ### 参考文献：
 
 - [JS 复制文字到剪切板的极简实现及扩展-张鑫旭](https://www.zhangxinxu.com/wordpress/2021/10/js-copy-paste-clipboard/)
