@@ -199,6 +199,10 @@
 <p>此方案需要多端协调，考虑情况暂未采用，其他人遇到此问题的可以酌情使用。</p>
 <h3 id="最后">最后</h3>
 <p>又提测了，希望不会出现新的 bug。</p>
+<h3 id="后记-2023-1-12">后记 2023-1-12</h3>
+<p>果不其然遇到了新问题，在华为手机自带浏览器上，<code>navigator.clipboard</code> 和 <code>navigator.permissions</code> 都存在，但是抛了个异常：<code>DOMExecption: PAESE_ERROR</code>。</p>
+<p>navigator.clipboard 的兼容性有大问题！</p>
+<p>最后我删掉了 <code>navigator.clipboard</code>，老老实实用execCommand。</p>
 <h3 id="参考文献">参考文献：</h3>
 <ul>
 <li>
