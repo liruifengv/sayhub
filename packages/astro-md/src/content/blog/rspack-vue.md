@@ -18,7 +18,6 @@ tags: [Vue, front-end, webpack]
 
 ![image.png](https://images.sayhub.me/blog/rspack-vue/build-compare.png)
 
-
 > 你猜为什么没有跟 Vite 比？
 
 ## Vue 支持
@@ -40,11 +39,13 @@ tags: [Vue, front-end, webpack]
 同样官方给出了例子：https://github.com/web-infra-dev/rspack/tree/main/examples/vue3-jsx
 
 安装依赖：
+
 ```bash
 npm install -D babel-loader @babel/core @vue/babel-plugin-jsx
 ```
 
 配置文件：
+
 ```js
 // rspack.config.js
 /**
@@ -53,7 +54,7 @@ npm install -D babel-loader @babel/core @vue/babel-plugin-jsx
 module.exports = {
   context: __dirname,
   entry: {
-    main: "./src/main.jsx",
+    main: './src/main.jsx',
   },
   module: {
     rules: [
@@ -61,9 +62,9 @@ module.exports = {
         test: /\.jsx$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              plugins: ["@vue/babel-plugin-jsx"],
+              plugins: ['@vue/babel-plugin-jsx'],
             },
           },
         ],
@@ -77,16 +78,15 @@ module.exports = {
   builtins: {
     html: [
       {
-        template: "./index.html",
+        template: './index.html',
       },
     ],
     define: {
       __VUE_OPTIONS_API__: JSON.stringify(true),
-      __VUE_PROD_DEVTOOLS__: JSON.stringify(false)
-    }
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+    },
   },
-};
-
+}
 ```
 
 官方例子较为简略，我尝试新添加了组件、 vue-router、pinia 等。目前看来运行良好。
@@ -105,13 +105,13 @@ Rspack 的目标是对齐 webpack，对于已有的 Loader 和 Plugin 进行兼�
 
 我刚提交了我在 Rspack 的第一个 PR：https://github.com/web-infra-dev/rspack/pull/2101
 
-
 可能的机会？
--  Rspack 文档的完善
--  create-rspack 工具，提供更多的模板
--  create-rspack 工具，嗅探用户使用的包管理器
--  提交和 Vite 比较的基准测试？
--  生态系统的补充
+
+- Rspack 文档的完善
+- create-rspack 工具，提供更多的模板
+- create-rspack 工具，嗅探用户使用的包管理器
+- 提交和 Vite 比较的基准测试？
+- 生态系统的补充
 
 ## 最后
 
@@ -120,4 +120,3 @@ Rspack 的目标是对齐 webpack，对于已有的 Loader 和 Plugin 进行兼�
 你还记得 **Modern.js** 吗
 
 ![image.png](https://images.sayhub.me/blog/rspack-vue/evan-rspack)
-
