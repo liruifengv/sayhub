@@ -118,7 +118,7 @@
 <span class="line"><span style="color: #79C0FF">module</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">exports</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
 <span class="line"><span style="color: #C9D1D9">  context: __dirname,</span></span>
 <span class="line"><span style="color: #C9D1D9">  entry: {</span></span>
-<span class="line"><span style="color: #C9D1D9">    main: </span><span style="color: #A5D6FF">"./src/main.jsx"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    main: </span><span style="color: #A5D6FF">'./src/main.jsx'</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">  },</span></span>
 <span class="line"><span style="color: #C9D1D9">  module: {</span></span>
 <span class="line"><span style="color: #C9D1D9">    rules: [</span></span>
@@ -126,9 +126,9 @@
 <span class="line"><span style="color: #C9D1D9">        test:</span><span style="color: #A5D6FF"> /</span><span style="color: #7EE787; font-style: italic">\.</span><span style="color: #A5D6FF">jsx</span><span style="color: #FF7B72">$</span><span style="color: #A5D6FF">/</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">        use: [</span></span>
 <span class="line"><span style="color: #C9D1D9">          {</span></span>
-<span class="line"><span style="color: #C9D1D9">            loader: </span><span style="color: #A5D6FF">"babel-loader"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">            loader: </span><span style="color: #A5D6FF">'babel-loader'</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">            options: {</span></span>
-<span class="line"><span style="color: #C9D1D9">              plugins: [</span><span style="color: #A5D6FF">"@vue/babel-plugin-jsx"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">              plugins: [</span><span style="color: #A5D6FF">'@vue/babel-plugin-jsx'</span><span style="color: #C9D1D9">],</span></span>
 <span class="line"><span style="color: #C9D1D9">            },</span></span>
 <span class="line"><span style="color: #C9D1D9">          },</span></span>
 <span class="line"><span style="color: #C9D1D9">        ],</span></span>
@@ -142,16 +142,15 @@
 <span class="line"><span style="color: #C9D1D9">  builtins: {</span></span>
 <span class="line"><span style="color: #C9D1D9">    html: [</span></span>
 <span class="line"><span style="color: #C9D1D9">      {</span></span>
-<span class="line"><span style="color: #C9D1D9">        template: </span><span style="color: #A5D6FF">"./index.html"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">        template: </span><span style="color: #A5D6FF">'./index.html'</span><span style="color: #C9D1D9">,</span></span>
 <span class="line"><span style="color: #C9D1D9">      },</span></span>
 <span class="line"><span style="color: #C9D1D9">    ],</span></span>
 <span class="line"><span style="color: #C9D1D9">    define: {</span></span>
 <span class="line"><span style="color: #C9D1D9">      __VUE_OPTIONS_API__: </span><span style="color: #79C0FF">JSON</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">stringify</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">),</span></span>
-<span class="line"><span style="color: #C9D1D9">      __VUE_PROD_DEVTOOLS__: </span><span style="color: #79C0FF">JSON</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">stringify</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">)</span></span>
-<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">      __VUE_PROD_DEVTOOLS__: </span><span style="color: #79C0FF">JSON</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">stringify</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">),</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
 <span class="line"><span style="color: #C9D1D9">  },</span></span>
-<span class="line"><span style="color: #C9D1D9">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
 <p>官方例子较为简略，我尝试新添加了组件、 vue-router、pinia 等。目前看来运行良好。</p>
 <p>我的仓库：<a href="https://github.com/liruifengv/rspack-vue">https://github.com/liruifengv/rspack-vue</a></p>
 <h2 id="插件系统">插件系统</h2>
