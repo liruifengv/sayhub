@@ -191,11 +191,3 @@ app.listen(port, () => {
 我们有一个非常好的起点，一个 REST API 只有不到 30 行代码。现在，你可以使用 `app.post()` 添加一个 `POST` 处理程序，使用 `app.put()` 添加一个 `PUT` 处理程序，或者你想要的任何其他方法。
 
 在未来的文章中，我们将介绍如何使用 Deno 的测试运行器和基准测试工具，以便我们更加放心地将我们的代码从概念验证转换为我们在生产中信任的内容。我们将在那之后用一些方法来部署我们的项目。
-
-### 引用链接
-
-[1]原文: https://deno.com/blog/build-api-express-typescript
-[2]TypeScript: https://www.typescriptlang.org/
-[3]Express: https://expressjs.com/
-[4]视频：https://www.youtube.com/watch?v=TDFv2hBRUtQ
-[5]代码仓库：https://github.com/tinkertim/deno-express-project
