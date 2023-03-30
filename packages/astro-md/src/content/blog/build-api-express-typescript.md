@@ -3,7 +3,7 @@ title: '使用 Express、TypeScript 和 Deno 构建 REST API'
 description: '使用 Express、TypeScript 和 Deno 构建 REST API的教程，翻译自 Deno 官方博客。'
 pubDate: '2023-03-30'
 image: 'https://images.sayhub.me/blog/build-api-express-typescript/cover.png'
-tags: [deno]
+tags: [Deno]
 ---
 
 > 原文：https://deno.com/blog/build-api-express-typescript
