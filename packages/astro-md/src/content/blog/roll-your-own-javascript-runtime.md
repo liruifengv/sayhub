@@ -329,7 +329,7 @@ $ cargo run
 
 本文由 [李瑞丰](https://github.com/liruifengv) 翻译，原文地址：https://deno.com/blog/roll-your-own-javascript-runtime
 
-此教程的[第二部分]((https://deno.com/blog/roll-your-own-javascript-runtime-pt2))已经发布，实现了 fetch-like API 并添加了 TypeScript 转译功能。
+此教程的[第二部分](https://deno.com/blog/roll-your-own-javascript-runtime-pt2)已经发布，实现了 fetch-like API 并添加了 TypeScript 转译功能。
 
 完整的示例代码在 [denoland 的 GitHub](https://github.com/denoland/roll-your-own-javascript-runtime)。也可以在译者的仓库查看[第一部分代码](https://github.com/liruifengv/runjs)。
 
