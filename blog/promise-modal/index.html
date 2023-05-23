@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base">
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.0.16">
+<meta name="generator" content="Astro v2.5.3">
 
 <!-- Primary Meta Tags -->
 <title>开发弹窗，你使用状态驱动还是命令式？</title>
@@ -14,16 +14,17 @@
 
     <head>
           <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
-        <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
-<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
 </script></head>
   </head>
   
-    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href="/sayhub/">
-        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
         <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
       </a>
       <div class="flex items-center md:hidden">
@@ -35,47 +36,54 @@
     <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
         <li>
-          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   首页
 </a>
         </li>
         <li>
-          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   文章
 </a>
         </li>
         <li>
-          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   读后感
 </a>
         </li>
         <li>
-          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   关于
 </a>
         </li>
         <li>
-          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
   RSS 订阅
 </a>
         </li>
         <li class="md:hidden">
-          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
             <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           </a>
         </div>
       </div>
     </nav>
   </div>
-</header><main>
-    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
           开发弹窗，你使用状态驱动还是命令式？
@@ -84,171 +92,172 @@
               发表日期： <time>2022-12-29</time>
             </div>
       </header>
-      <article class="container mx-auto max-w-3xl markdown-body">
+      <article class="container markdown-body">
         <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/Modal_ZxnNqt.avif 400w,/sayhub/_astro/Modal_Z1Xf6Em.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/Modal_ZXcAV2.webp 400w,/sayhub/_astro/Modal_Z2o3T9U.webp 900w"><source type="image/png" srcset="/sayhub/_astro/Modal_Z1o9pI8.png 400w,/sayhub/_astro/Modal_2gbpQU.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/Modal_2gbpQU.png" loading="lazy" decoding="async">
+	<img alt="descriptive text" src="/sayhub/_astro/Modal_2gbpQU.png" loading="lazy" decoding="async" class="w-full rounded-lg">
 </picture>
         <div class="mt-6">
-          <p>作为一名前端开发工程师，开发各种弹窗是家常便饭，但如何快捷高效、风格统一是一个问题。</p>
+          
+  <p>作为一名前端开发工程师，开发各种弹窗是家常便饭，但如何快捷高效、风格统一是一个问题。</p>
 <h3 id="状态驱动">状态驱动</h3>
 <p>在现如今前端技术栈都是 <code>Vue</code>、 <code>React</code> 的情况下，使用状态驱动是一种常用方式。比如我们页面要引入一个弹窗，点击某个按钮弹出：</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">template</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">	&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">Modal1</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">v-show</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">"visible"</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@close="closeModal"</span><span style="color: #C9D1D9"> /></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@click="showModal"</span><span style="color: #C9D1D9"> >click&#x3C;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">	&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">template</span><span style="color: #C9D1D9">></span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">template</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">	&#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #79B8FF">Modal1</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">v-show</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"visible"</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@close="closeModal"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@click="showModal"</span><span style="color: #E1E4E8"> >click&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">	&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;/</span><span style="color: #85E89D">template</span><span style="color: #E1E4E8">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">import Modal1 from './modals/Modal1.vue'</span></span>
-<span class="line"><span style="color: #C9D1D9">export default </span><span style="color: #FF7B72">{</span></span>
-<span class="line"><span style="color: #C9D1D9">	components: { Modal1 },</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #D2A8FF">data</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">		return {</span></span>
-<span class="line"><span style="color: #C9D1D9">			visible: </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">		}</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">	methods: </span><span style="color: #FF7B72">{</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 弹出弹窗</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">showModal</span><span style="color: #C9D1D9">(){</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">true</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 关闭弹窗，并传回数据</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">closeModal</span><span style="color: #C9D1D9">(data) {</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #8B949E">// 拿到 data  todo something</span></span>
-<span class="line"><span style="color: #C9D1D9">		}</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">}</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">script</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">import Modal1 from './modals/Modal1.vue'</span></span>
+<span class="line"><span style="color: #E1E4E8">export default {</span></span>
+<span class="line"><span style="color: #E1E4E8">	components: { Modal1 },</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #B392F0">data</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">		return {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #B392F0">visible</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">		}</span></span>
+<span class="line"><span style="color: #E1E4E8">	},</span></span>
+<span class="line"><span style="color: #E1E4E8">	methods: {</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 弹出弹窗</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">showModal</span><span style="color: #E1E4E8">(){</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 关闭弹窗，并传回数据</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">closeModal</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #6A737D">// 拿到 data  todo something</span></span>
+<span class="line"><span style="color: #E1E4E8">		}</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
 <p>以上有一个问题，控制弹窗显隐的变量、显示弹窗的逻辑、关闭弹窗的回调逻辑分散在不同的地方。</p>
 <p>假设这个页面有不止一个弹窗，那么这样写：</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">template</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">	&#x3C;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">Modal1</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">v-show</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">"visible1"</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@close="closeModal1"</span><span style="color: #C9D1D9"> /></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">Modal2</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">v-show</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">"visible2"</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@close="closeModal2"</span><span style="color: #C9D1D9"> /></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">Modal3</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">v-show</span><span style="color: #FF7B72">=</span><span style="color: #A5D6FF">"visible3"</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@close="closeModal3"</span><span style="color: #C9D1D9"> /></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@click="showModal1"</span><span style="color: #C9D1D9"> >click&#x3C;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@click="showModal2"</span><span style="color: #C9D1D9"> >click&#x3C;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">		&#x3C;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FFA198">@click="showModal3"</span><span style="color: #C9D1D9"> >click&#x3C;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">	&#x3C;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">&#x3C;/</span><span style="color: #7EE787">template</span><span style="color: #C9D1D9">></span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">template</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">	&#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #79B8FF">Modal1</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">v-show</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"visible1"</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@close="closeModal1"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #79B8FF">Modal2</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">v-show</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"visible2"</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@close="closeModal2"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #79B8FF">Modal3</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">v-show</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"visible3"</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@close="closeModal3"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@click="showModal1"</span><span style="color: #E1E4E8"> >click&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@click="showModal2"</span><span style="color: #E1E4E8"> >click&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">		&#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #FDAEB7; font-style: italic">@click="showModal3"</span><span style="color: #E1E4E8"> >click&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">	&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;/</span><span style="color: #85E89D">template</span><span style="color: #E1E4E8">></span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">&#x3C;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">import Modal1 from './modals/Modal1.vue'</span></span>
-<span class="line"><span style="color: #C9D1D9">import Modal2 from './modals/Modal2.vue'</span></span>
-<span class="line"><span style="color: #C9D1D9">import Modal3 from './modals/Modal3.vue'</span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">script</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">import Modal1 from './modals/Modal1.vue'</span></span>
+<span class="line"><span style="color: #E1E4E8">import Modal2 from './modals/Modal2.vue'</span></span>
+<span class="line"><span style="color: #E1E4E8">import Modal3 from './modals/Modal3.vue'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">export default </span><span style="color: #FF7B72">{</span></span>
-<span class="line"><span style="color: #C9D1D9">	components: { Modal1, Modal2, Modal3 },</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #D2A8FF">data</span><span style="color: #C9D1D9">() {</span></span>
-<span class="line"><span style="color: #C9D1D9">		return {</span></span>
-<span class="line"><span style="color: #C9D1D9">			visible1: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">			visible2: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">			visible3: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">		}</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">	methods: </span><span style="color: #FF7B72">{</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 弹出弹窗</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">showModal1</span><span style="color: #C9D1D9">(){</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible1 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">true</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 关闭弹窗，并传回数据</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">closeModal1</span><span style="color: #C9D1D9">(data) {</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible1 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #8B949E">// 拿到 data  todo something</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">showModal2</span><span style="color: #C9D1D9">(){</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible2 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">true</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 关闭弹窗，并传回数据</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">closeModal2</span><span style="color: #C9D1D9">(data) {</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible2 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #8B949E">// 拿到 data  todo something</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">showModal3</span><span style="color: #C9D1D9">(){</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible3 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">true</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #8B949E">// 关闭弹窗，并传回数据</span></span>
-<span class="line"><span style="color: #C9D1D9">		</span><span style="color: #D2A8FF">closeModal3</span><span style="color: #C9D1D9">(data) {</span></span>
-<span class="line"><span style="color: #C9D1D9">			this.visible3 </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">			</span><span style="color: #8B949E">// 拿到 data  todo something</span></span>
-<span class="line"><span style="color: #C9D1D9">		},</span></span>
-<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">}</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<span class="line"><span style="color: #E1E4E8">export default {</span></span>
+<span class="line"><span style="color: #E1E4E8">	components: { Modal1, Modal2, Modal3 },</span></span>
+<span class="line"><span style="color: #E1E4E8">	</span><span style="color: #B392F0">data</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">		return {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #B392F0">visible1</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #B392F0">visible2</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #B392F0">visible3</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">		}</span></span>
+<span class="line"><span style="color: #E1E4E8">	},</span></span>
+<span class="line"><span style="color: #E1E4E8">	methods: {</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 弹出弹窗</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">showModal1</span><span style="color: #E1E4E8">(){</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible1 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 关闭弹窗，并传回数据</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">closeModal1</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible1 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #6A737D">// 拿到 data  todo something</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">showModal2</span><span style="color: #E1E4E8">(){</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible2 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 关闭弹窗，并传回数据</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">closeModal2</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible2 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #6A737D">// 拿到 data  todo something</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">showModal3</span><span style="color: #E1E4E8">(){</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible3 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #6A737D">// 关闭弹窗，并传回数据</span></span>
+<span class="line"><span style="color: #E1E4E8">		</span><span style="color: #B392F0">closeModal3</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #79B8FF">this</span><span style="color: #E1E4E8">.visible3 </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">			</span><span style="color: #6A737D">// 拿到 data  todo something</span></span>
+<span class="line"><span style="color: #E1E4E8">		},</span></span>
+<span class="line"><span style="color: #E1E4E8">	}</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
 <p>这样写起来简直不要太啰嗦。</p>
 <h3 id="命令式开发函数式">命令式开发（函数式）</h3>
 <p>我开发了 <a href="https://github.com/liruifengv/promise-modal">promise-modal</a> 这个库，可以在 React 项目中 Promise 函数式的开发调用弹窗。</p>
 <h4 id="安装">安装</h4>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npm i promise-modal</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">npm</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">i</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">promise-modal</span></span></code></pre>
 <h4 id="使用">使用</h4>
 <p>你的 Modal 组件这样写，我们会传入 <code>callbackResolve</code>和 <code>callbackReject</code> 两个 props 到你的组件中，你需要在关闭 Modal 的时候调用它们。</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> React, { useState } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'react'</span></span>
-<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> { Modal, Button } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'antd'</span></span>
-<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> PropTypes </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'prop-types'</span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> React, { useState } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'react'</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { Modal, Button } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'antd'</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> PropTypes </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'prop-types'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">TestModal</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">props</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">title</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">callbackResolve</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">callbackReject</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> props</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> [</span><span style="color: #79C0FF">isModalVisible</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">setIsModalVisible</span><span style="color: #C9D1D9">] </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">useState</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">)</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">TestModal</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">props</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> { </span><span style="color: #79B8FF">title</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">callbackResolve</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">callbackReject</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> props</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">isModalVisible</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setIsModalVisible</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">true</span><span style="color: #E1E4E8">)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">handleOk</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> () </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">setIsModalVisible</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">)</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">callbackResolve</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">)</span></span>
-<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleOk</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">setIsModalVisible</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">callbackResolve</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">true</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">handleCancel</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> () </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">setIsModalVisible</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">)</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">callbackReject</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">)</span></span>
-<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleCancel</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">setIsModalVisible</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">callbackReject</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> (</span></span>
-<span class="line"><span style="color: #C9D1D9">    &#x3C;</span><span style="color: #7EE787">Modal</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">destroyOnClose</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">title</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">title</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">visible</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">isModalVisible</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">onOk</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">handleOk</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">onCancel</span><span style="color: #FF7B72">={</span><span style="color: #C9D1D9">handleCancel</span><span style="color: #FF7B72">}</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">      &#x3C;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">>Some contents...&#x3C;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">      &#x3C;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">>Some contents...&#x3C;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">    &#x3C;/</span><span style="color: #7EE787">Modal</span><span style="color: #C9D1D9">></span></span>
-<span class="line"><span style="color: #C9D1D9">  )</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #79B8FF">Modal</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">destroyOnClose</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">title</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{title} </span><span style="color: #B392F0">visible</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{isModalVisible} </span><span style="color: #B392F0">onOk</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleOk} </span><span style="color: #B392F0">onCancel</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleCancel}></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">p</span><span style="color: #E1E4E8">>Some contents...&#x3C;/</span><span style="color: #85E89D">p</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">p</span><span style="color: #E1E4E8">>Some contents...&#x3C;/</span><span style="color: #85E89D">p</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #79B8FF">Modal</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  )</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">TestModal.propTypes </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">  title: PropTypes.string.isRequired,</span></span>
-<span class="line"><span style="color: #C9D1D9">  callbackResolve: PropTypes.func.isRequired,</span></span>
-<span class="line"><span style="color: #C9D1D9">  callbackReject: PropTypes.func.isRequired,</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span>
-<span class="line"><span style="color: #FF7B72">export</span><span style="color: #FFA657"> </span><span style="color: #FF7B72">default</span><span style="color: #FFA657"> </span><span style="color: #C9D1D9">TestModal</span></span></code></pre>
+<span class="line"><span style="color: #E1E4E8">TestModal.propTypes </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  title: PropTypes.string.isRequired,</span></span>
+<span class="line"><span style="color: #E1E4E8">  callbackResolve: PropTypes.func.isRequired,</span></span>
+<span class="line"><span style="color: #E1E4E8">  callbackReject: PropTypes.func.isRequired,</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">default</span><span style="color: #E1E4E8"> TestModal</span></span></code></pre>
 <p>把你的 Modal 组件传入 create 函数</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> { create } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'promise-modal'</span></span>
-<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> TestModal </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'./TestModal'</span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { create } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'promise-modal'</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> TestModal </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./TestModal'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #8B949E">// 如果你使用 Class 组件</span></span>
-<span class="line"><span style="color: #FF7B72">export</span><span style="color: #FFA657"> </span><span style="color: #FF7B72">default</span><span style="color: #FFA657"> (data) </span><span style="color: #FF7B72">=></span><span style="color: #FFA657"> </span><span style="color: #D2A8FF">create</span><span style="color: #FFA657">(</span><span style="color: #C9D1D9">TestModal</span><span style="color: #FFA657">, </span><span style="color: #C9D1D9">data</span><span style="color: #FFA657">)</span></span>
+<span class="line"><span style="color: #6A737D">// 如果你使用 Class 组件</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">default</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">create</span><span style="color: #E1E4E8">(TestModal, data)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #8B949E">// 如果你使用函数式组件和 hooks，你必须创建一个自定义 hooks 返回</span></span>
-<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">useTestModal</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> () </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">showTestModal</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">data</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">create</span><span style="color: #C9D1D9">(TestModal, data)</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> showTestModal</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<span class="line"><span style="color: #6A737D">// 如果你使用函数式组件和 hooks，你必须创建一个自定义 hooks 返回</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useTestModal</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">showTestModal</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">create</span><span style="color: #E1E4E8">(TestModal, data)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> showTestModal</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
 <p>业务代码中使用 Modal，像 Promise 函数一样。</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> { useTestModal } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">'./modals/TestModal'</span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { useTestModal } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./modals/TestModal'</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">showTestModal</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">useTestModal</span><span style="color: #C9D1D9">()</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">showTestModal</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useTestModal</span><span style="color: #E1E4E8">()</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #8B949E">// use Promise.then</span></span>
-<span class="line"><span style="color: #D2A8FF">showTestModal</span><span style="color: #C9D1D9">({</span></span>
-<span class="line"><span style="color: #C9D1D9">  title: </span><span style="color: #A5D6FF">'Test Modal'</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">})</span></span>
-<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">then</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">response</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'response: '</span><span style="color: #C9D1D9">, response)</span></span>
-<span class="line"><span style="color: #C9D1D9">  })</span></span>
-<span class="line"><span style="color: #C9D1D9">  .</span><span style="color: #D2A8FF">catch</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">error</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'error: '</span><span style="color: #C9D1D9">, error)</span></span>
-<span class="line"><span style="color: #C9D1D9">  })</span></span>
+<span class="line"><span style="color: #6A737D">// use Promise.then</span></span>
+<span class="line"><span style="color: #B392F0">showTestModal</span><span style="color: #E1E4E8">({</span></span>
+<span class="line"><span style="color: #E1E4E8">  title: </span><span style="color: #9ECBFF">'Test Modal'</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">})</span></span>
+<span class="line"><span style="color: #E1E4E8">  .</span><span style="color: #B392F0">then</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">response</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'response: '</span><span style="color: #E1E4E8">, response)</span></span>
+<span class="line"><span style="color: #E1E4E8">  })</span></span>
+<span class="line"><span style="color: #E1E4E8">  .</span><span style="color: #B392F0">catch</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">error</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'error: '</span><span style="color: #E1E4E8">, error)</span></span>
+<span class="line"><span style="color: #E1E4E8">  })</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #8B949E">// use await</span></span>
-<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">res</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">showTestModal</span><span style="color: #C9D1D9">({</span></span>
-<span class="line"><span style="color: #C9D1D9">  title: </span><span style="color: #A5D6FF">'Test Modal'</span><span style="color: #C9D1D9">,</span></span>
-<span class="line"><span style="color: #C9D1D9">})</span></span>
-<span class="line"><span style="color: #C9D1D9">console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">'res: '</span><span style="color: #C9D1D9">, res)</span></span>
-<span class="line"><span style="color: #8B949E">// do something here</span></span></code></pre>
+<span class="line"><span style="color: #6A737D">// use await</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">res</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">showTestModal</span><span style="color: #E1E4E8">({</span></span>
+<span class="line"><span style="color: #E1E4E8">  title: </span><span style="color: #9ECBFF">'Test Modal'</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">})</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'res: '</span><span style="color: #E1E4E8">, res)</span></span>
+<span class="line"><span style="color: #6A737D">// do something here</span></span></code></pre>
 <h3 id="当然命令式还是状态驱动开发一直都有争议">当然，命令式还是状态驱动开发，一直都有争议：</h3>
 <p>这是尤雨溪的观点，支持状态驱动：</p>
 <p><a href="https://www.zhihu.com/question/35820643/answer/64646527">https://www.zhihu.com/question/35820643/answer/64646527</a></p>
@@ -273,17 +282,24 @@
 <p>开发弹窗时，你更愿意使用状态驱动还是命令式呢？命令式是否适合你们的团队或项目? 欢迎试用。</p>
 <p><a href="https://github.com/liruifengv/promise-modal">GitHub 地址</a></p>
 <p><a href="https://www.npmjs.com/package/promise-modal">npm 地址</a></p>
+
         </div>
       </article>
-      <ul class="text-base">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/React">React</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Promise">Promise</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/JavaScript">JavaScript</a>
-        </li>
-    </ul>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/React">
+    React
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Promise">
+    Promise
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div>
+    </div>
       <div>
   <hr>
   <br>
@@ -293,79 +309,10 @@
   <img src="https://images.sayhub.me/blog/qrcode.png">
 </div>
     </section>
-    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
-          <div class="text-gray-900 text-xl">最近文章</div>
-          <ul class="mt-4">
-            <li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
-                <a href="/sayhub/blog/build-api-express-typescript/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/cover_ZO0d93.avif 400w,/sayhub/_astro/cover_Z2eQvmV.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/cover_Z1eO0DB.webp 400w,/sayhub/_astro/cover_2pvOVr.webp 900w"><source type="image/png" srcset="/sayhub/_astro/cover_2cruSP.png 400w,/sayhub/_astro/cover_LAcEW.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/cover_LAcEW.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/build-api-express-typescript/">
-                    使用 Express、TypeScript 和 Deno 构建 REST API
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-30</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
-                <a href="/sayhub/blog/rspack-vue/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/rspack_Z1u4m5P.avif 400w,/sayhub/_astro/rspack_2agtud.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/rspack_Z1TS9Ao.webp 400w,/sayhub/_astro/rspack_1JrFYE.webp 900w"><source type="image/png" srcset="/sayhub/_astro/rspack_Z1q0UjQ.png 400w,/sayhub/_astro/rspack_2ejUgc.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/rspack_2ejUgc.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/rspack-vue/">
-                    快速尝鲜字节刚刚开源的 Rspack，卷不动了？
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-10</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
-                <a href="/sayhub/blog/certbot-https/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_Z2jcGKN.avif 400w,/sayhub/_astro/HTTPS-cover_1l88Of.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_2laDxz.webp 400w,/sayhub/_astro/HTTPS-cover_UjljG.webp 900w"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_Z1VDK2o.png 400w,/sayhub/_astro/HTTPS-cover_1HG5xE.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/HTTPS-cover_1HG5xE.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/certbot-https/">
-                    使用Certbot申请免费 HTTPS 证书及自动续期
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-02</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
-                <a href="/sayhub/blog/chatgpt-vue3/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/deno-code_dtKXF.avif 400w,/sayhub/_astro/deno-code_Z1cmwfd.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-code_Zck1vS.webp 400w,/sayhub/_astro/deno-code_Z1CbjJL.webp 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/chatgpt-vue3/">
-                    我用 ChatGPT 读 Vue3 源码
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-23</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="开发弹窗，你使用状态驱动还是命令式？">
-                <a href="/sayhub/blog/create-lint-config/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/screenshot_Q0cM3.avif 400w,/sayhub/_astro/screenshot_ZyQ5qP.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/screenshot_qbphu.webp 400w,/sayhub/_astro/screenshot_ZYERVo.webp 900w"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZQnd1t.png 400w,/sayhub/_astro/screenshot_Z2hevfm.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/screenshot_Z2hevfm.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/create-lint-config/">
-                    写一个命令行CLI，一键生成各种烦人的lint配置
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-21</div>
-                </div>
-              </li>
-          </ul>
-        </div>
   </div>
-  </main><footer class="astro-SZ7XMLTE">
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
   <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
     冀ICP备17036505号-1
   </a>
@@ -373,6 +320,7 @@
     &copy; 2023 SayHub. All rights reserved.
   </div>
 </footer>
+
     
     <script>
       window.onload = function () {

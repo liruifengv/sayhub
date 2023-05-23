@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base">
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.0.16">
+<meta name="generator" content="Astro v2.5.3">
 
 <!-- Primary Meta Tags -->
 <title>使用 Ghost 从零搭建博客系统</title>
@@ -14,16 +14,17 @@
 
     <head>
           <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
-        <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
-<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
 </script></head>
   </head>
   
-    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href="/sayhub/">
-        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
         <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
       </a>
       <div class="flex items-center md:hidden">
@@ -35,47 +36,54 @@
     <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
         <li>
-          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   首页
 </a>
         </li>
         <li>
-          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   文章
 </a>
         </li>
         <li>
-          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   读后感
 </a>
         </li>
         <li>
-          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   关于
 </a>
         </li>
         <li>
-          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
   RSS 订阅
 </a>
         </li>
         <li class="md:hidden">
-          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
             <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           </a>
         </div>
       </div>
     </nav>
   </div>
-</header><main>
-    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
           使用 Ghost 从零搭建博客系统
@@ -84,13 +92,14 @@
               发表日期： <time>2021-11-19</time>
             </div>
       </header>
-      <article class="container mx-auto max-w-3xl markdown-body">
+      <article class="container markdown-body">
         <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/img3_Z1H68Jb.avif 400w,/sayhub/_astro/img3_1WeGPR.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/img3_Z27TVeJ.webp 400w,/sayhub/_astro/img3_1wpTlj.webp 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/img3_1wpTlj.webp" loading="lazy" decoding="async">
+	<img alt="descriptive text" src="/sayhub/_astro/img3_1wpTlj.webp" loading="lazy" decoding="async" class="w-full rounded-lg">
 </picture>
         <div class="mt-6">
-          <h3 id="ghost-介绍">Ghost 介绍</h3>
+          
+  <h3 id="ghost-介绍">Ghost 介绍</h3>
 <p><a href="https://github.com/tryghost/ghost/">GitHub</a></p>
 <p><a href="https://ghost.org/">官网</a></p>
 <p>这是官方介绍：</p>
@@ -104,19 +113,19 @@
 <p>这里是<a href="https://ghost.org/docs/install/local/">官网教程</a></p>
 <p>因为 Ghost 是 Node.js 开发的，它提供了一个脚手架 Ghost-CLI，对于有前端或者 Node.js 知识的同学应该很熟悉。</p>
 <p>这里先全局安装</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">npm install ghost-cli@latest -g</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">npm</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">install</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">ghost-cli@latest</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">-g</span></span></code></pre>
 <p>输入 <code>ghost -v</code>，能正确输出版本号说明安装成功了。</p>
 <p>创建个新目录</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">mkdir test-ghost</span></span>
-<span class="line"><span style="color: #79C0FF">cd</span><span style="color: #C9D1D9"> test-ghost</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">mkdir</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">test-ghost</span></span>
+<span class="line"><span style="color: #79B8FF">cd</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">test-ghost</span></span></code></pre>
 <p>使用脚手架安装</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">ghost install </span><span style="color: #FF7B72">local</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">ghost</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">install</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">local</span></span></code></pre>
 <p>出现了个报错，安装失败</p>
 <p><img src="https://images.sayhub.me/blog/ghost/img1.webp" alt="插图"></p>
 <p>看下报错信息说我的 Node.js 版本不支持。</p>
 <p>查看<a href="https://ghost.org/docs/faq/node-versions/">文档</a>，找到支持的版本，使用 nvm 或者 n 来切换 node 版本，这里我使用了 14.18。</p>
 <p>重新执行</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">ghost install </span><span style="color: #FF7B72">local</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">ghost</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">install</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">local</span></span></code></pre>
 <p><img src="https://images.sayhub.me/blog/ghost/img2.webp" alt="插图"></p>
 <p>运行成功！</p>
 <p>浏览器打开 <a href="http://localhost:2368/ghost/">http://localhost:2368/ghost/</a></p>
@@ -148,12 +157,12 @@
 <p><a href="https://ghost.org/docs/install/">文档</a>中有几种安装方式，我们这里直接使用 docker 安装。docker 的使用暂且不过多赘述。</p>
 <p>这是 Ghost 的 docker <a href="https://hub.docker.com/_/ghost/">镜像</a>。</p>
 <p>首先拉取镜像:</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">docker pull ghost</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">docker</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">pull</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">ghost</span></span></code></pre>
 <p>镜像拉取成功，我们直接运行</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">docker run -d --name my-ghost -e url=http://域名 -p 3001:2368 ghost</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">docker run -d --name my-ghost -e url=http://域名 -p 3001:2368 ghost</span></span></code></pre>
 <p>请注意替换自己的域名和容器名称。以上命令同时把 3001 端口映射到了容器的 2368 端口。然后我们在 nginx 配置，指向 3001。这时候直接访问我们的域名，就可以查看 ghost 站点了。</p>
 <p>执行一下命令可以进入容器内</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">docker exec -it my-ghost /bin/bash</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">docker exec -it my-ghost /bin/bash</span></span></code></pre>
 <p>这时候我想在容器里面执行一下 ghost 命令。</p>
 <p><img src="https://images.sayhub.me/blog/ghost/img10.png" alt="插图"></p>
 <p>突然报错说不能使用 root 用户来运行命令。查看对应文档。不得不说 ghost 的报错信息提示还是很不错的，每个报错都对应了文档链接。这里说让创建个普通用户来执行 ghost 命令。</p>
@@ -162,17 +171,24 @@
 <h3 id="总结">总结</h3>
 <p>到此基本安装完成了。无论是本地安装还是服务器安装，都挺简单的。但是跑起来的还是个比较简单的博客站点，还要做的工作还有很多，比如主题的选择或定制、汉化翻译、文章目录归档等。由于 Ghost 是完全开源并且可以定制的，很多想要的功能，都可以想办法实现。</p>
 <p>Ghost 系列文章还会再更新，包括没讲到的团队版如何使用，如何协作。</p>
+
         </div>
       </article>
-      <ul class="text-base">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ghost">ghost</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/建站">建站</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/blog">blog</a>
-        </li>
-    </ul>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/ghost">
+    ghost
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/建站">
+    建站
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/blog">
+    blog
+  </a>
+</div>
+    </div>
       <div>
   <hr>
   <br>
@@ -182,79 +198,10 @@
   <img src="https://images.sayhub.me/blog/qrcode.png">
 </div>
     </section>
-    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
-          <div class="text-gray-900 text-xl">最近文章</div>
-          <ul class="mt-4">
-            <li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
-                <a href="/sayhub/blog/build-api-express-typescript/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/cover_ZO0d93.avif 400w,/sayhub/_astro/cover_Z2eQvmV.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/cover_Z1eO0DB.webp 400w,/sayhub/_astro/cover_2pvOVr.webp 900w"><source type="image/png" srcset="/sayhub/_astro/cover_2cruSP.png 400w,/sayhub/_astro/cover_LAcEW.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/cover_LAcEW.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/build-api-express-typescript/">
-                    使用 Express、TypeScript 和 Deno 构建 REST API
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-30</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
-                <a href="/sayhub/blog/rspack-vue/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/rspack_Z1u4m5P.avif 400w,/sayhub/_astro/rspack_2agtud.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/rspack_Z1TS9Ao.webp 400w,/sayhub/_astro/rspack_1JrFYE.webp 900w"><source type="image/png" srcset="/sayhub/_astro/rspack_Z1q0UjQ.png 400w,/sayhub/_astro/rspack_2ejUgc.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/rspack_2ejUgc.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/rspack-vue/">
-                    快速尝鲜字节刚刚开源的 Rspack，卷不动了？
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-10</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
-                <a href="/sayhub/blog/certbot-https/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_Z2jcGKN.avif 400w,/sayhub/_astro/HTTPS-cover_1l88Of.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_2laDxz.webp 400w,/sayhub/_astro/HTTPS-cover_UjljG.webp 900w"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_Z1VDK2o.png 400w,/sayhub/_astro/HTTPS-cover_1HG5xE.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/HTTPS-cover_1HG5xE.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/certbot-https/">
-                    使用Certbot申请免费 HTTPS 证书及自动续期
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-02</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
-                <a href="/sayhub/blog/chatgpt-vue3/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/deno-code_dtKXF.avif 400w,/sayhub/_astro/deno-code_Z1cmwfd.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-code_Zck1vS.webp 400w,/sayhub/_astro/deno-code_Z1CbjJL.webp 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/chatgpt-vue3/">
-                    我用 ChatGPT 读 Vue3 源码
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-23</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="使用 Ghost 从零搭建博客系统">
-                <a href="/sayhub/blog/create-lint-config/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/screenshot_Q0cM3.avif 400w,/sayhub/_astro/screenshot_ZyQ5qP.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/screenshot_qbphu.webp 400w,/sayhub/_astro/screenshot_ZYERVo.webp 900w"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZQnd1t.png 400w,/sayhub/_astro/screenshot_Z2hevfm.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/screenshot_Z2hevfm.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/create-lint-config/">
-                    写一个命令行CLI，一键生成各种烦人的lint配置
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-21</div>
-                </div>
-              </li>
-          </ul>
-        </div>
   </div>
-  </main><footer class="astro-SZ7XMLTE">
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
   <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
     冀ICP备17036505号-1
   </a>
@@ -262,6 +209,7 @@
     &copy; 2023 SayHub. All rights reserved.
   </div>
 </footer>
+
     
     <script>
       window.onload = function () {

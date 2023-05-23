@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v2.5.3">
+
+<!-- Primary Meta Tags -->
+<title>打造你自己的 JavaScript 运行时</title>
+<meta name="title" content="打造你自己的 JavaScript 运行时">
+<meta name="description" content="教你使用 Rust 和 deno_core 打造属于你自己的 JavaScript 运行时。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+</script></head>
+  </head>
+  
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  首页
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  文章
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  读后感
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  关于
+</a>
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+  RSS 订阅
+</a>
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          打造你自己的 JavaScript 运行时
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-04-05</time>
+            </div>
+      </header>
+      <article class="container markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-v8_Z1lcyow.avif 400w,/sayhub/_astro/deno-v8_2j8hbw.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-v8_Z1L1lT5.webp 400w,/sayhub/_astro/deno-v8_1SjtFX.webp 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/deno-v8_1SjtFX.webp" loading="lazy" decoding="async" class="w-full rounded-lg">
+</picture>
+        <div class="mt-6">
+          
+  <blockquote>
+<p>原文：<a href="https://deno.com/blog/roll-your-own-javascript-runtime">https://deno.com/blog/roll-your-own-javascript-runtime</a>
+译者：李瑞丰</p>
+</blockquote>
+<p>在这篇文章中，我们将介绍如何创建自定义 JavaScript 运行时。我们称之为 <code>runjs</code>。想象一下，我们正在构建一个（更）简化的 <code>deno</code> 版本。这篇文章的目标是创建一个 CLI，可以执行本地 JavaScript 文件，读取文件，写入文件，删除文件，并具有简化的 <code>console</code> API。</p>
+<p>让我们开始吧。</p>
+<h2 id="前提">前提</h2>
+<p>这篇教程假设读者具有以下知识：</p>
+<ul>
+<li>Rust 基础知识</li>
+<li>JavaScript 事件循环基础知识</li>
+</ul>
+<p>确保你的机器上安装了 Rust（以及 <code>cargo</code>），并且它至少是 <code>1.62.0</code> 版本。访问 rust-lang.org 安装 Rust 编译器和 <code>cargo</code>。</p>
+<p>确保我们已经准备好了：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--version</span></span>
+<span class="line"><span style="color: #B392F0">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1.62</span><span style="color: #9ECBFF">.0</span><span style="color: #E1E4E8"> (a748cf5a3 </span><span style="color: #79B8FF">2022</span><span style="color: #9ECBFF">-06-08</span><span style="color: #E1E4E8">)</span></span></code></pre>
+<h2 id="hello-rust">Hello, Rust!</h2>
+<p>首先，让我们创建一个新的 Rust 项目，它将是一个名为 <code>runjs</code> 的二进制 crate：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">init</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--bin</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">runjs</span></span>
+<span class="line"><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Created</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">binary</span><span style="color: #E1E4E8"> (application) package</span></span></code></pre>
+<p>让我们进入 <code>runjs</code> 目录并在编辑器中打开它。确保一切都设置正确：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cd</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">runjs</span></span>
+<span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">run</span></span>
+<span class="line"><span style="color: #E1E4E8">   </span><span style="color: #B392F0">Compiling</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">runjs</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">v0.1.0</span><span style="color: #E1E4E8"> (/Users/ib/dev/runjs)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Finished</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dev</span><span style="color: #E1E4E8"> [unoptimized </span><span style="color: #9ECBFF">+</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">debuginfo]</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">target</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">s</span><span style="color: #E1E4E8">) </span><span style="color: #9ECBFF">in</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1.76</span><span style="color: #9ECBFF">s</span></span>
+<span class="line"><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Running</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`</span><span style="color: #B392F0">target/debug/runjs</span><span style="color: #9ECBFF">`</span></span>
+<span class="line"><span style="color: #B392F0">Hello,</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">world!</span></span></code></pre>
+<p>很好！现在让我们开始创建我们自己的 JavaScript 运行时。</p>
+<h2 id="依赖">依赖</h2>
+<p>接下来，让我们将 <a href="https://crates.io/crates/deno_core"><code>deno_core</code></a> 和 <a href="https://crates.io/crates/tokio"><code>tokio</code></a> 依赖项添加到我们的项目中：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">add</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">deno_core</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Updating</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">crates.io</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #B392F0">Adding</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">deno_core</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">v0.142.0</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">to</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dependencies.</span></span>
+<span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">add</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">tokio</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--features=full</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Updating</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">crates.io</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #B392F0">Adding</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">tokio</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">v1.19.2</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">to</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dependencies.</span></span></code></pre>
+<p>我们更新后的 <code>Cargo.toml</code> 文件应该如下所示：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">[</span><span style="color: #B392F0">package</span><span style="color: #E1E4E8">]</span></span>
+<span class="line"><span style="color: #E1E4E8">name = </span><span style="color: #9ECBFF">"runjs"</span></span>
+<span class="line"><span style="color: #E1E4E8">version = </span><span style="color: #9ECBFF">"0.1.0"</span></span>
+<span class="line"><span style="color: #E1E4E8">edition = </span><span style="color: #9ECBFF">"2021"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #6A737D"># See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">[</span><span style="color: #B392F0">dependencies</span><span style="color: #E1E4E8">]</span></span>
+<span class="line"><span style="color: #E1E4E8">deno_core = </span><span style="color: #9ECBFF">"0.142.0"</span></span>
+<span class="line"><span style="color: #E1E4E8">tokio = { version = </span><span style="color: #9ECBFF">"1.19.2"</span><span style="color: #E1E4E8">, features = [</span><span style="color: #9ECBFF">"full"</span><span style="color: #E1E4E8">] }</span></span></code></pre>
+<p><code>deno_core</code> 是 Deno 团队的一个 crate，它抽象了与 V8 JavaScript 引擎的交互。V8 是一个复杂的项目，有成千上万的 API，因此为了简化使用它们，<code>deno_core</code> 提供了一个 <code>JsRuntime</code> 结构体，它封装了一个 V8 引擎实例（称为 <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html#details">Isolate</a>），并允许与事件循环集成。</p>
+<p><code>tokio</code> 是一个异步的 Rust 运行时，我们将使用它作为事件循环。Tokio 负责与操作系统抽象（如网络套接字或文件系统）进行交互。<code>deno_core</code> 与 <code>tokio</code> 一起，允许 JavaScript 的 <code>Promise</code> 映射到 Rust 的 <code>Future</code>。</p>
+<p>拥有 JavaScript 引擎和事件循环，使我们能够创建 JavaScript 运行时。</p>
+<h2 id="hello-runjs">Hello, runjs!</h2>
+<p>让我们从编写一个异步的 Rust 函数开始，该函数将创建一个 <code>JsRuntime</code> 实例，该实例负责 JavaScript 执行。</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// main.rs</span></span>
+<span class="line"><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">std</span><span style="color: #F97583">::</span><span style="color: #B392F0">rc</span><span style="color: #F97583">::</span><span style="color: #B392F0">Rc</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">error</span><span style="color: #F97583">::</span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">async</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">run_js</span><span style="color: #E1E4E8">(file_path</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">&#x26;</span><span style="color: #B392F0">str</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Result</span><span style="color: #E1E4E8">&#x3C;(), </span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> main_module </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">resolve_path</span><span style="color: #E1E4E8">(file_path)</span><span style="color: #F97583">?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">mut</span><span style="color: #E1E4E8"> js_runtime </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">JsRuntime</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">RuntimeOptions</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">      module_loader</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Some</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">Rc</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">FsModuleLoader</span><span style="color: #E1E4E8">)),</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">..</span><span style="color: #B392F0">Default</span><span style="color: #F97583">::</span><span style="color: #B392F0">default</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> mod_id </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> js_runtime</span><span style="color: #F97583">.</span><span style="color: #B392F0">load_main_module</span><span style="color: #E1E4E8">(</span><span style="color: #F97583">&#x26;</span><span style="color: #E1E4E8">main_module, </span><span style="color: #B392F0">None</span><span style="color: #E1E4E8">)</span><span style="color: #F97583">.await?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> result </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> js_runtime</span><span style="color: #F97583">.</span><span style="color: #B392F0">mod_evaluate</span><span style="color: #E1E4E8">(mod_id);</span></span>
+<span class="line"><span style="color: #E1E4E8">  js_runtime</span><span style="color: #F97583">.</span><span style="color: #B392F0">run_event_loop</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">)</span><span style="color: #F97583">.await?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  result</span><span style="color: #F97583">.await?</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">main</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">println!</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello, world!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>这里有很多东西要解释。异步的 <code>run_js</code> 函数创建了一个新的 <code>JsRuntime</code> 实例，该实例使用基于文件系统的模块加载器。之后，我们将模块加载到 <code>js_runtime</code> 运行时中，对其进行评估，并运行一个事件循环直到完成。</p>
+<p>这个 <code>run_js</code> 函数封装了我们的 JavaScript 代码将要经历的整个生命周期。但是在我们能够这样做之前，我们需要创建一个单线程的 <code>tokio</code> 运行时，以便能够执行我们的 <code>run_js</code> 函数：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// main.rs</span></span>
+<span class="line"><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">main</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> runtime </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">tokio</span><span style="color: #F97583">::</span><span style="color: #B392F0">runtime</span><span style="color: #F97583">::</span><span style="color: #B392F0">Builder</span><span style="color: #F97583">::</span><span style="color: #B392F0">new_current_thread</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">.</span><span style="color: #B392F0">enable_all</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">.</span><span style="color: #B392F0">build</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">.</span><span style="color: #B392F0">unwrap</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Err</span><span style="color: #E1E4E8">(error) </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> runtime</span><span style="color: #F97583">.</span><span style="color: #B392F0">block_on</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">run_js</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"./example.js"</span><span style="color: #E1E4E8">)) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">eprintln!</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"error: {}"</span><span style="color: #E1E4E8">, error);</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>让我们尝试执行一些 JavaScript 代码！创建一个 <code>example.js</code> 文件，它将打印 “Hello runjs!“：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// example.js</span></span>
+<span class="line"><span style="color: #E1E4E8">Deno.core.</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello runjs!"</span><span style="color: #E1E4E8">);</span></span></code></pre>
+<p>注意，我们使用的是 <code>Deno.core</code> 中的 print 函数 - 这是一个全局可用的内置对象，由 <code>deno_core</code> Rust crate 提供。</p>
+<p>现在运行它：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">run</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Finished</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dev</span><span style="color: #E1E4E8"> [unoptimized </span><span style="color: #9ECBFF">+</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">debuginfo]</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">target</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">s</span><span style="color: #E1E4E8">) </span><span style="color: #9ECBFF">in</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0.05</span><span style="color: #9ECBFF">s</span></span>
+<span class="line"><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Running</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`</span><span style="color: #B392F0">target/debug/runjs</span><span style="color: #9ECBFF">`</span></span>
+<span class="line"><span style="color: #B392F0">Hello</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">runjs!⏎</span></span></code></pre>
+<p>成功！在仅 25 行 Rust 代码中，我们创建了一个简单的 JavaScript 运行时，可以执行本地文件。当然，此时此运行时不能做太多事情（例如，<code>console.log</code> 还不能工作 - 尝试一下！），但是我们已经将 V8 JavaScript 引擎和 <code>tokio</code> 集成到我们的 Rust 项目中。</p>
+<h2 id="添加-console-api">添加 <code>console</code> API</h2>
+<p>让我们开始处理 <code>console</code> API。首先，创建 <code>src/runtime.js</code> 文件，该文件将实例化并使 <code>console</code> 对象全局可用：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// runtime.js</span></span>
+<span class="line"><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">globalThis</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">core</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> Deno.core;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">argsToMessage</span><span style="color: #E1E4E8">(</span><span style="color: #F97583">...</span><span style="color: #FFAB70">args</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> args.</span><span style="color: #B392F0">map</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">arg</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">JSON</span><span style="color: #E1E4E8">.</span><span style="color: #B392F0">stringify</span><span style="color: #E1E4E8">(arg)).</span><span style="color: #B392F0">join</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">" "</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  globalThis.console </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">: (</span><span style="color: #F97583">...</span><span style="color: #FFAB70">args</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">      core.</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">`[out]: ${</span><span style="color: #B392F0">argsToMessage</span><span style="color: #9ECBFF">(</span><span style="color: #F97583">...</span><span style="color: #E1E4E8">args</span><span style="color: #9ECBFF">)</span><span style="color: #9ECBFF">}</span><span style="color: #79B8FF">\n</span><span style="color: #9ECBFF">`</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    },</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">error</span><span style="color: #E1E4E8">: (</span><span style="color: #F97583">...</span><span style="color: #FFAB70">args</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">      core.</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">`[err]: ${</span><span style="color: #B392F0">argsToMessage</span><span style="color: #9ECBFF">(</span><span style="color: #F97583">...</span><span style="color: #E1E4E8">args</span><span style="color: #9ECBFF">)</span><span style="color: #9ECBFF">}</span><span style="color: #79B8FF">\n</span><span style="color: #9ECBFF">`</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">true</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    },</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">})(globalThis);</span></span></code></pre>
+<p>函数 <code>console.log</code> 和 <code>console.error</code> 将接受多个参数，将它们转换为 JSON（以便我们可以检查非原始 JS 对象）并在每个消息前加上 <code>log</code> 或 <code>error</code> 前缀。这是一个“普通的” JavaScript 文件，就像我们在 ES 模块之前在浏览器中编写 JavaScript 一样。</p>
+<p>为了确保我们不会污染全局作用域，我们在 <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a> 中执行此代码。如果我们没有这样做，那么 <code>argsToMessage</code> 辅助函数将在我们的运行时中全局可用。</p>
+<p>现在，让我们将此代码包含在我们的二进制文件中，并在每次运行时执行：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">mut</span><span style="color: #E1E4E8"> js_runtime </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">JsRuntime</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">RuntimeOptions</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  module_loader</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Some</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">Rc</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">FsModuleLoader</span><span style="color: #E1E4E8">)),</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">..</span><span style="color: #B392F0">Default</span><span style="color: #F97583">::</span><span style="color: #B392F0">default</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">});</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> js_runtime</span><span style="color: #F97583">.</span><span style="color: #B392F0">execute_script</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"[runjs:runtime.js]"</span><span style="color: #E1E4E8">,  </span><span style="color: #B392F0">include_str!</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"./runtime.js"</span><span style="color: #E1E4E8">))</span><span style="color: #F97583">.</span><span style="color: #B392F0">unwrap</span><span style="color: #E1E4E8">();</span></span></code></pre>
+<p>最后，让我们使用我们的新 <code>console</code> API 更新 <code>example.js</code>：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">-</span><span style="color: #E1E4E8"> Deno.core.</span><span style="color: #B392F0">print</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello runjs!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"runjs!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">error</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Boom!"</span><span style="color: #E1E4E8">);</span></span></code></pre>
+<p>再次运行它：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">run</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Finished</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dev</span><span style="color: #E1E4E8"> [unoptimized </span><span style="color: #9ECBFF">+</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">debuginfo]</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">target</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">s</span><span style="color: #E1E4E8">) </span><span style="color: #9ECBFF">in</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0.05</span><span style="color: #9ECBFF">s</span></span>
+<span class="line"><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Running</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`</span><span style="color: #B392F0">target/debug/runjs</span><span style="color: #9ECBFF">`</span></span>
+<span class="line"><span style="color: #E1E4E8">[out]: </span><span style="color: #9ECBFF">"Hello"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"runjs!"</span></span>
+<span class="line"><span style="color: #E1E4E8">[err]: </span><span style="color: #9ECBFF">"Boom!"</span></span></code></pre>
+<p>它起作用了！现在让我们添加一个 API，它将允许我们与文件系统进行交互。</p>
+<h2 id="添加一个基本的文件系统-api">添加一个基本的文件系统 API</h2>
+<p>让我们从更新我们的 <code>runtime.js</code> 文件开始：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> core.</span><span style="color: #B392F0">initializeAsyncOps</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> globalThis.runjs </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">+   </span><span style="color: #B392F0">readFile</span><span style="color: #E1E4E8">: (</span><span style="color: #FFAB70">path</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> core.ops.</span><span style="color: #B392F0">op_read_file</span><span style="color: #E1E4E8">(path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   },</span></span>
+<span class="line"><span style="color: #E1E4E8">+   </span><span style="color: #B392F0">writeFile</span><span style="color: #E1E4E8">: (</span><span style="color: #FFAB70">path</span><span style="color: #E1E4E8">, </span><span style="color: #FFAB70">contents</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> core.ops.</span><span style="color: #B392F0">op_write_file</span><span style="color: #E1E4E8">(path, contents);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   },</span></span>
+<span class="line"><span style="color: #E1E4E8">+   </span><span style="color: #B392F0">removeFile</span><span style="color: #E1E4E8">: (</span><span style="color: #FFAB70">path</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> core.ops.</span><span style="color: #B392F0">op_remove_file</span><span style="color: #E1E4E8">(path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   },</span></span>
+<span class="line"><span style="color: #E1E4E8">+ };</span></span>
+<span class="line"><span style="color: #E1E4E8">})(globalThis);</span></span></code></pre>
+<p>我们刚刚添加了一个新的全局对象，称为 <code>runjs</code>，它有三个方法：<code>readFile</code>、<code>writeFile</code> 和 <code>removeFile</code>。前两个方法是异步的，而第三个是同步的。</p>
+<p>你可能想知道这些 <code>core.ops.[op name]</code> 调用是什么 - 它们是 <code>deno_core</code> crate 中用于绑定 JavaScript 和 Rust 函数的机制。当你调用其中任何一个时，<code>deno_core</code> 将查找具有 <code>#[op]</code> 属性和匹配名称的 Rust 函数。</p>
+<p>让我们通过更新 main.rs 来看看它的作用：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #E1E4E8">op;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">Extension</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">error</span><span style="color: #F97583">::</span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">use</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">std</span><span style="color: #F97583">::</span><span style="color: #B392F0">rc</span><span style="color: #F97583">::</span><span style="color: #B392F0">Rc</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> #[op]</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">async</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">op_read_file</span><span style="color: #E1E4E8">(path</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">String</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Result</span><span style="color: #E1E4E8">&#x3C;</span><span style="color: #B392F0">String</span><span style="color: #E1E4E8">, </span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> contents </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">tokio</span><span style="color: #F97583">::</span><span style="color: #B392F0">fs</span><span style="color: #F97583">::</span><span style="color: #B392F0">read_to_string</span><span style="color: #E1E4E8">(path)</span><span style="color: #F97583">.await?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Ok</span><span style="color: #E1E4E8">(contents)</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> }</span></span>
+<span class="line"><span style="color: #F97583">+</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> #[op]</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">async</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">op_write_file</span><span style="color: #E1E4E8">(path</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">String</span><span style="color: #E1E4E8">, contents</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">String</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Result</span><span style="color: #E1E4E8">&#x3C;(), </span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #B392F0">tokio</span><span style="color: #F97583">::</span><span style="color: #B392F0">fs</span><span style="color: #F97583">::</span><span style="color: #B392F0">write</span><span style="color: #E1E4E8">(path, contents)</span><span style="color: #F97583">.await?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Ok</span><span style="color: #E1E4E8">(())</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> }</span></span>
+<span class="line"><span style="color: #F97583">+</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> #[op]</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">op_remove_file</span><span style="color: #E1E4E8">(path</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">String</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Result</span><span style="color: #E1E4E8">&#x3C;(), </span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #B392F0">std</span><span style="color: #F97583">::</span><span style="color: #B392F0">fs</span><span style="color: #F97583">::</span><span style="color: #B392F0">remove_file</span><span style="color: #E1E4E8">(path)</span><span style="color: #F97583">?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Ok</span><span style="color: #E1E4E8">(())</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> }</span></span></code></pre>
+<p>我们刚刚添加了三个可以从 JavaScript 调用的 ops。但是，在这些 ops 可用于我们的 JavaScript 代码之前，我们需要通过注册“扩展”来告诉 <code>deno_core</code>：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">async</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">fn</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">run_js</span><span style="color: #E1E4E8">(file_path</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">&#x26;</span><span style="color: #B392F0">str</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">-></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Result</span><span style="color: #E1E4E8">&#x3C;(), </span><span style="color: #B392F0">AnyError</span><span style="color: #E1E4E8">> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> main_module </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">resolve_path</span><span style="color: #E1E4E8">(file_path)</span><span style="color: #F97583">?</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">    </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> runjs_extension </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Extension</span><span style="color: #F97583">::</span><span style="color: #B392F0">builder</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"runjs"</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">        </span><span style="color: #F97583">.</span><span style="color: #B392F0">ops</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">vec!</span><span style="color: #E1E4E8">[</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">            </span><span style="color: #B392F0">op_read_file</span><span style="color: #F97583">::</span><span style="color: #B392F0">decl</span><span style="color: #E1E4E8">(),</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">            </span><span style="color: #B392F0">op_write_file</span><span style="color: #F97583">::</span><span style="color: #B392F0">decl</span><span style="color: #E1E4E8">(),</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">            </span><span style="color: #B392F0">op_remove_file</span><span style="color: #F97583">::</span><span style="color: #B392F0">decl</span><span style="color: #E1E4E8">(),</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">        ])</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">        </span><span style="color: #F97583">.</span><span style="color: #B392F0">build</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">let</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">mut</span><span style="color: #E1E4E8"> js_runtime </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">JsRuntime</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">RuntimeOptions</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">        module_loader</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Some</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">Rc</span><span style="color: #F97583">::</span><span style="color: #B392F0">new</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">deno_core</span><span style="color: #F97583">::</span><span style="color: #B392F0">FsModuleLoader</span><span style="color: #E1E4E8">)),</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">        extensions</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">vec!</span><span style="color: #E1E4E8">[runjs_extension],</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #F97583">..</span><span style="color: #B392F0">Default</span><span style="color: #F97583">::</span><span style="color: #B392F0">default</span><span style="color: #E1E4E8">()</span></span>
+<span class="line"><span style="color: #E1E4E8">    });</span></span></code></pre>
+<p>Extensions 允许你配置你的 <code>JsRuntime</code> 实例，并将不同的 Rust 函数暴露给 JavaScript，以及执行更高级的操作，如加载其他 JavaScript 代码。</p>
+<p>让我们再次更新我们的 <code>example.js</code>：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Hello"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"runjs!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">error</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Boom!"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">+</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">path</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"./log.txt"</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">try</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">contents</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> runjs.</span><span style="color: #B392F0">readFile</span><span style="color: #E1E4E8">(path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Read from a file"</span><span style="color: #E1E4E8">, contents);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">catch</span><span style="color: #E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8">   console.</span><span style="color: #B392F0">error</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Unable to read file"</span><span style="color: #E1E4E8">, path, err);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> }</span></span>
+<span class="line"><span style="color: #F97583">+</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> runjs.</span><span style="color: #B392F0">writeFile</span><span style="color: #E1E4E8">(path, </span><span style="color: #9ECBFF">"I can write to a file."</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">contents</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> runjs.</span><span style="color: #B392F0">readFile</span><span style="color: #E1E4E8">(path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Read from a file"</span><span style="color: #E1E4E8">, path, </span><span style="color: #9ECBFF">"contents:"</span><span style="color: #E1E4E8">, contents);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"Removing file"</span><span style="color: #E1E4E8">, path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> runjs.</span><span style="color: #B392F0">removeFile</span><span style="color: #E1E4E8">(path);</span></span>
+<span class="line"><span style="color: #F97583">+</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">"File removed"</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">+</span></span></code></pre>
+<p>再次运行它：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"></span>
+<span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">cargo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">run</span></span>
+<span class="line"><span style="color: #E1E4E8">   </span><span style="color: #B392F0">Compiling</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">runjs</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">v0.1.0</span><span style="color: #E1E4E8"> (/Users/ib/dev/runjs)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">Finished</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">dev</span><span style="color: #E1E4E8"> [unoptimized </span><span style="color: #9ECBFF">+</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">debuginfo]</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">target</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">s</span><span style="color: #E1E4E8">) </span><span style="color: #9ECBFF">in</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0.97</span><span style="color: #9ECBFF">s</span></span>
+<span class="line"><span style="color: #E1E4E8">     </span><span style="color: #B392F0">Running</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`</span><span style="color: #B392F0">target/debug/runjs</span><span style="color: #9ECBFF">`</span></span>
+<span class="line"><span style="color: #E1E4E8">[out]: </span><span style="color: #9ECBFF">"Hello"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"runjs!"</span></span>
+<span class="line"><span style="color: #E1E4E8">[err]: </span><span style="color: #9ECBFF">"Boom!"</span></span>
+<span class="line"><span style="color: #E1E4E8">[err]: </span><span style="color: #9ECBFF">"Unable to read file"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"./log.txt"</span><span style="color: #E1E4E8"> {</span><span style="color: #B392F0">"code"</span><span style="color: #79B8FF">:</span><span style="color: #B392F0">"ENOENT"</span><span style="color: #B392F0">}</span></span>
+<span class="line"><span style="color: #E1E4E8">[out]: </span><span style="color: #9ECBFF">"Read from a file"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"./log.txt"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"contents:"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"I can write to a file."</span></span>
+<span class="line"><span style="color: #E1E4E8">[out]: </span><span style="color: #9ECBFF">"Removing file"</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"./log.txt"</span></span>
+<span class="line"><span style="color: #E1E4E8">[out]: </span><span style="color: #9ECBFF">"File removed"</span></span>
+<span class="line"></span></code></pre>
+<p>恭喜，我们的 <code>runjs</code> 运行时现在可以与文件系统一起工作！注意，从 JavaScript 调用 Rust 代码所需的代码量非常少 - <code>deno_core</code> 负责在 JavaScript 和 Rust 之间传递数据，因此我们不需要自己进行任何转换。</p>
+<h2 id="总结">总结</h2>
+<p>在这个简短的例子中，我们开始了一个集成了强大的 JavaScript 引擎（<code>V8</code>）和高效的事件循环实现（<code>tokio</code>）的 Rust 项目。</p>
+<p>本文由 <a href="https://github.com/liruifengv">李瑞丰</a> 翻译，原文地址：<a href="https://deno.com/blog/roll-your-own-javascript-runtime">https://deno.com/blog/roll-your-own-javascript-runtime</a></p>
+<p>此教程的<a href="https://deno.com/blog/roll-your-own-javascript-runtime-pt2">第二部分</a>已经发布，实现了 fetch-like API 并添加了 TypeScript 转译功能。</p>
+<p>完整的示例代码在 <a href="https://github.com/denoland/roll-your-own-javascript-runtime">denoland 的 GitHub</a>。也可以在译者的仓库查看<a href="https://github.com/liruifengv/runjs">第一部分代码</a>。</p>
+
+        </div>
+      </article>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Rust">
+    Rust
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div>
+    </div>
+      <div>
+  <hr>
+  <br>
+  <p>
+    <strong>你的鼓励是我最大的支持，关注我的公众号 「SayHub」 获取更多内容。</strong>
+  </p>
+  <img src="https://images.sayhub.me/blog/qrcode.png">
+</div>
+    </section>
+  </div>
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
+  <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-SZ7XMLTE">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v2.5.3">
+
+<!-- Primary Meta Tags -->
+<title>Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持</title>
+<meta name="title" content="Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持">
+<meta name="description" content="">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+</script></head>
+  </head>
+  
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  首页
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  文章
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  读后感
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  关于
+</a>
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+  RSS 订阅
+</a>
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-04-12</time>
+            </div>
+      </header>
+      <article class="container markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-1_1RyM0E.avif 400w,/sayhub/_astro/deno-1_rHtLL.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-1_1rJYv6.webp 400w,/sayhub/_astro/deno-1_1SGhd.webp 900w"><source type="image/png" srcset="/sayhub/_astro/deno-1_1WJygv.png 400w,/sayhub/_astro/deno-1_wSg2C.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/deno-1_wSg2C.png" loading="lazy" decoding="async" class="w-full rounded-lg">
+</picture>
+        <div class="mt-6">
+          
+  <blockquote>
+<p>原文：<a href="https://deno.com/blog/package-json-support">https://deno.com/blog/package-json-support</a>
+译者：李瑞丰</p>
+</blockquote>
+<p><a href="https://deno.com/blog/v1.31">最新的 Deno 版本</a>引入了一个重大变化：通过 package.json 支持提供了增强的 Node 和 NPM 的兼容性。这个更新引起了一些关于我们的优先事项是否发生了变化的问题，因为 Deno 长期以来一直与打造一条不同于 Node.js 的道路联系在一起。事实上，package.json 在<a href="https://www.youtube.com/watch?v=M3BM9TB-8yA">第一次 Deno 演示</a>中被明确提到是一个遗憾。 因此，许多用户对这一发展感到惊讶。</p>
+<p>在这篇文章中，我们将解释这些问题，分享我们不断发展的想法，并概述我们的未来目标。</p>
+<h2 id="简化和加速-javascript-开发">简化和加速 JavaScript 开发</h2>
+<p>Deno 是为了简化和加速 JavaScript 开发而创建的。核心功能包括原生 TypeScript 支持、内置工具、默认零配置和 Web 标准 API。从历史上看，这也意味着一个基于 Web 标准 HTTP imports 的与 NPM 生态系统分离的简约的去中心化的模块系统。</p>
+<p>Deno 的主要目标是使编程既简单又快速。TypeScript、Web 标准 API 和许多其他功能都有助于实现这一目标，但是，Deno 的简约模块系统是否使编程变得简单和快速已经变得越来越不清楚。</p>
+<h2 id="依赖管理的梦想">依赖管理的梦想</h2>
+<p>JavaScript 生态系统依赖于<a href="https://www.npmjs.com/">单一的集中式模块注册表</a>，这与 Web 的分散性相冲突。随着<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">ES 模块</a>的引入，现在有了一种标准的远程模块加载方式，但这种标准与通过 NPM 加载模块的方式完全不同。Deno 通过 HTTP URL 实现了 ES 模块的加载 - 允许任何人通过运行文件服务器在任何域上托管代码。</p>
+<p>这种方法带来了很多好处。<a href="https://deno.com/blog/a-whole-website-in-a-single-js-file">单文件程序</a>无需依赖清单（例如 <code>package.json</code>、<code>import_map.json</code>、<code>Cargo.toml</code> 或 <code>Gemfile</code> 等文件，用于列出依赖项及其来源）即可访问一些强大的工具。此外，Deno 程序还可以从较小的下载量中受益，因为只下载所需的文件，而不是包含不必要构建产物的大型 npm 包。 此外，使用 HTTP 进行模块链接还为创新提供了机会，例如根据 accept header 显示 HTML 文档，如 <a href="https://deno.land/x">deno.land 注册表</a>中所示。</p>
+<p>我们一直致力于使用 HTTP 导入作为 Deno 模块系统的支柱。我们已经在 deno.land 注册表中内置了各种有用的功能，例如 GitHub 集成的发布标签、不可变缓存和<a href="https://deno.land/x/oak@v12.1.0/mod.ts">自动生成的文档</a>。像 <a href="https://www.skypack.dev/">skypack</a> 和 <a href="https://esm.sh/">esm.sh</a> 这样的第三方注册表已经使用 HTTP 导入将 NPM 包中的单个文件作为 ES 模块提供。我们已经建立了一些约定，例如 <a href="https://deno.land/manual@v1.31.1/examples/manage_dependencies">deps.ts</a> 用于在一个方便的位置合并依赖项。</p>
+<h2 id="悬而未决的问题">悬而未决的问题</h2>
+<p>在某些情况下，像 <code>https://deno.land/std@0.179.0/uuid/mod.ts</code> 这样的模块 URL 有时可能太具体了。它们不仅标识了包（<code>std/uuid/mod.ts</code>），而且还指定了要获取的版本（<code>0.179.0</code>）和服务器（<code>deno.land</code>）。当程序包含类似但略有不同的模块时，问题就会出现 - 如果另一个模块导入一个引用稍微不同版本的 URL，例如 <code>https://deno.land/std@0.179.1/uuid/mod.ts</code>，尽管几乎是相同的代码，但两个模块版本都将包含在模块图中。这被称为<a href="https://gist.github.com/ry/f410f6977a164477953e903bcf9d7d74">重复依赖问题</a>（点击链接查看此问题的更具体的示例）。</p>
+<p>在库代码中，我们开发了<a href="https://deno.land/manual@v1.31.2/examples/manage_dependencies">类似 <code>deps.ts</code> 的模式</a>来管理远程依赖项。但是，<code>deps.ts</code> 并不是特别人性化 - 它需要扁平化和重新导出每个依赖项。 （未来可以通过 <a href="https://github.com/tc39/proposal-module-declarations">Module Declarations</a> 和 <a href="https://github.com/tc39/proposal-import-reflection">Import Reflection</a> TC39 提案来改进。）<code>deps.ts</code> 通常比带有裸指示符的 package.json 更冗长和语法上更混乱。</p>
+<p>理想情况下，<a href="https://html.spec.whatwg.org/multipage/webappapis.html#import-maps">Import Maps</a> 可以通过允许用户在代码中使用裸指示符并仅在导入映射中指定 URL 来解决此问题。但是，<a href="https://github.com/WICG/import-maps/issues/137">import maps 不可组合</a>: 发布的库不能同时使用裸指示符和导入映射，因为导入该库的顶级项目无法将库的导入映射与其自身组合。</p>
+<p>像 <a href="https://esm.sh/">esm.sh</a> 和 <a href="https://www.skypack.dev/">skypack</a> 这样的转译服务器非常适合将一些 NPM 模块导入 Deno，但它们有固有的局限性。例如，如果 NPM 模块在运行时加载数据文件，则这些转译服务器将无法提供兼容版本。这样的问题会导致开发人员体验不佳。</p>
+<h2 id="裸指示符的力量">裸指示符的力量</h2>
+<p>使用裸指示符的导入语句（如下所示）是简洁而熟悉的：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> express </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"express"</span><span style="color: #E1E4E8">;</span></span></code></pre>
+<p>裸指示符（<code>"express"</code>）提供了对依赖项的有用的模糊引用，这允许通过 semver 解析来解决重复依赖问题。但是，如果使用裸指示符编写库，则必须有一个依赖项清单来明确这些裸指示符指的是什么。</p>
+<h2 id="通过兼容性简化和加速">通过兼容性简化和加速</h2>
+<p>我们希望能够让 Deno 用户比使用 Node 时更有效地工作。开发人员希望导入一个库并使用它，而不会遇到麻烦。因此我们提供了 <a href="https://deno.com/blog/v1.28">npm 指示符支持</a>。除了库之外，开发人员希望直接在 Deno 中运行现有的 Node 项目。因此我们新增了 package.json 支持。</p>
+<p>Deno 的向后兼容性将 Node 和 NPM 的不理想的遗留功能保持在一定距离。例如，Deno 仅通过 NPM 导入支持 CommonJS。此外，Deno 不允许用户在 NPM 依赖项之外使用裸指示符（<code>"fs"</code>）引用内置的 Node 模块，而是必须使用 <code>"node:fs"</code>。例如，在 Deno 中，<code>setTimeout</code> 将根据 Web 标准返回一个数字（<a href="https://nodejs.org/en/docs/guides/timers-in-node#leaving-timeouts-behind">与 Node 不同</a>）。Deno 不会随意运行后安装脚本并强制执行用户空间安全权限。向后兼容性并不意味着 JavaScript 生态系统不能发展和改进。</p>
+<p><strong>请注意，Deno 将始终支持通过 URL 链接代码，继续像浏览器一样使用 HTTP 导入。</strong> 现在，使用 <code>https</code>: URLs 只是 Deno 中链接代码的一种方法。从 Deno 1.28 开始，我们有 <code>npm:</code> URLs，很容易想象其他可以提高开发人员速度的方法，例如 <code>github:</code> URLs。</p>
+<h2 id="新的主版本">新的主版本</h2>
+<p>我们正在<a href="https://github.com/denoland/deno/issues/17475">努力</a> 在未来几个月内发布 Deno 的新主版本。这个即将发布的主题是鼓励在 Deno 工作流中使用裸指示符。</p>
+<p>尽管 Deno 对 NPM 模块具有出色的向后兼容性，但我们不会建议为 Deno 用户分发的 Deno 代码在那里发布。如果需要与 Node 和 NPM 项目共享代码，我们建议使用我们的<a href="https://github.com/denoland/dnt">官方 Deno to NPM 编译器 DNT</a>，它输出包含从原始 TypeScript 派生的 Node 兼容的 JavaScript 和 TypeScript 声明文件的高质量 NPM 包。但是，为了真正地成为 TypeScript-first 世界，最好分发和链接到实际的 TypeScript 代码，而不是一些编译输出。</p>
+<p>为了解决重复依赖问题并改善使用 TypeScript-first Deno 模块注册表的人体工程学，Deno 的下一个主要版本将引入 <code>deno:</code> URL 方案。通过使用这些特殊的 URL，而不是 HTTP URL，Deno 运行时能够进行 semver 解析和模块去重。此外，它消除了编写完整 URL 的需要。</p>
+<p>例如，导入 <a href="https://deno.land/x/oak">Oak</a> 将如下所示：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> oak </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"deno:oak@12"</span><span style="color: #E1E4E8">;</span></span></code></pre>
+<p>请注意，只指定了主要版本 - 运行时将具有特殊的 semver 解析逻辑来查找与之匹配的 Oak 的正确版本。</p>
+<p>下一个主要版本还将提倡使用导入映射，作为 package.json 工作流的现代替代方案。Deno 中的导入映射在自动发现的 <code>deno.json</code> 配置文件中指定。这是它看起来的样子：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">{</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">"imports"</span><span style="color: #E1E4E8">: {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">"oak"</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"deno:oak@12"</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">"chalk"</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"npm:chalk@5"</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>这个配置使任何代码都可以在代码中使用 <code>"oak"</code> 和 <code>"chalk"</code> 裸指示符。Oak 来自 Deno 注册表，Chalk 来自 NPM 注册表。代码中的导入将简单地是：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> oak </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"oak"</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> chalk </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">"chalk"</span><span style="color: #E1E4E8">;</span></span></code></pre>
+<p>无论使用现代的 import map 工作流还是 Node.js package.json 工作流，Deno 都旨在成为开发人员用来加速工作的可靠工具。JavaScript，世界级默认的编程语言，值得这种不断努力来改善其生态系统和工具。</p>
+
+        </div>
+      </article>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
+      <div>
+  <hr>
+  <br>
+  <p>
+    <strong>你的鼓励是我最大的支持，关注我的公众号 「SayHub」 获取更多内容。</strong>
+  </p>
+  <img src="https://images.sayhub.me/blog/qrcode.png">
+</div>
+    </section>
+  </div>
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
+  <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-SZ7XMLTE">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>

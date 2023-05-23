@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v2.5.3">
+
+<!-- Primary Meta Tags -->
+<title>Node.js 发布 v20，来看看有什么新玩法</title>
+<meta name="title" content="Node.js 发布 v20，来看看有什么新玩法">
+<meta name="description" content="2023 年 4 月 18 日，Node.js 正式发布了 v20 版本，本篇文章带你快速了解及尝鲜。">
+<link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
+
+
+    <head>
+          <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+</script></head>
+  </head>
+  
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
+    <div class="flex justify-between">
+      <a class="flex items-center flex-shrink-0" href="/sayhub/">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
+        <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
+      </a>
+      <div class="flex items-center md:hidden">
+        <button type="button" class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition" aria-label="Toggle Menu" id="toggle-menu">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="w-6 h-6" astro-icon="tabler:menu"><g class="icon-tabler" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16"/><path d="M4 16h16"/></g></svg>
+</button>
+      </div>
+    </div>
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+        <li>
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  首页
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  文章
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  读后感
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  关于
+</a>
+        </li>
+        <li>
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+  RSS 订阅
+</a>
+        </li>
+        <li class="md:hidden">
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
+          </a>
+        </li>
+      </ul>
+      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+        <div class="hidden items-center md:flex">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
+      <header>
+        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          Node.js 发布 v20，来看看有什么新玩法
+        </h1>
+        <div class="text-center px-4 mb-4">
+              发表日期： <time>2023-4-20</time>
+            </div>
+      </header>
+      <article class="container markdown-body">
+        <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/node-v20_1mTUSi.avif 400w,/sayhub/_astro/node-v20_Z2VmkA.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/node-v20_W68nJ.webp 400w,/sayhub/_astro/node-v20_ZsK9P9.webp 900w"><source type="image/png" srcset="/sayhub/_astro/node-v20_1LJPXU.png 400w,/sayhub/_astro/node-v20_lSxK2.png 900w">
+	<img alt="descriptive text" src="/sayhub/_astro/node-v20_lSxK2.png" loading="lazy" decoding="async" class="w-full rounded-lg">
+</picture>
+        <div class="mt-6">
+          
+  <p>4 月 18 日，Node.js 正式发布了 v20 版本，你个人或者公司在用哪个版本呢？</p>
+<p>先看 changelog: <a href="https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.0.0">https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.0.0</a></p>
+<p>总结一下主要改动：</p>
+<ul>
+<li>
+<p>在 Node.js 中实现了权限模型（实验性），熟悉 Deno 的人应该很耳熟。</p>
+</li>
+<li>
+<p>自定义 ESM loader hooks 接近稳定版。</p>
+</li>
+<li>
+<p>同步化 <code>import.meta.resolve()</code></p>
+</li>
+<li>
+<p>V8 引擎升级到 11.3</p>
+</li>
+<li>
+<p>稳定版 Test Runner</p>
+</li>
+<li>
+<p>最新版本的 URL 解析器 Ada 2.0</p>
+</li>
+<li>
+<p>通过注入 Blob 来准备单个可执行文件</p>
+</li>
+<li>
+<p>Web Crypto API 的优化</p>
+</li>
+<li>
+<p>官方支持 ARM64 Windows</p>
+</li>
+<li>
+<p>在 Node.js V20 中，必须指定 WASI 的版本</p>
+</li>
+<li>
+<p>性能优化（被 bun 卷了）</p>
+</li>
+</ul>
+<h2 id="搞起来">搞起来</h2>
+<p><img src="https://images.sayhub.me/blog/node-v20/node-20.png" alt=""></p>
+<p>下面就我感兴趣的两个点进行详细介绍和代码实践。</p>
+<h3 id="权限模型">权限模型</h3>
+<p>V20 版本实现了一个权限模型，目前还是实验性。它允许开发人员在程序执行期间限制对特定资源的访问，例如文件系统操作、子进程生成和工作线程创建。</p>
+<p>需要使用<code>--experimental-permission</code>标志来启用，启用后将限制对所有可用权限的访问。 通过使用此功能，开发人员可以防止他们的应用程序访问或修改敏感数据或运行可能有害的代码。</p>
+<p>熟悉 Deno 的同学知道 Deno 的一个特性就是提供安全的权限沙箱，是 Deno 的一大卖点，现在也要被 Node 追平了。</p>
+<p>在 Deno 中，可以使用 <code>--allow-read</code> 标志来给 mod.ts 授予对文件系统的只读访问权限。它不能执行写入文件。</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">deno</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">run</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--allow-read</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">mod.ts</span></span></code></pre>
+<p>Deno 的详细权限列表：<a href="https://deno.land/manual@v1.32.5/basics/permissions">https://deno.land/manual@v1.32.5/basics/permissions</a></p>
+<p>Node.js 的权限模型也是类似的，只不过 Node.js 的权限模型是通过实验性标志来开启。</p>
+<p>Node 的权限模型第一个版本有以下功能：</p>
+<ul>
+<li><code>--allow-fs-read</code> 和 <code>--allow-fs-write</code>：限制文件系统的访问（读写）</li>
+<li><code>--allow-child-process</code>: 限制对 <code>child_process</code> 的访问</li>
+<li><code>--allow-worker</code>: 限制对<code>worker_threads</code>的访问</li>
+<li>限制对本机插件的访问（与 <code>--no-addons</code> 标志相同）</li>
+</ul>
+<p>当使用 <code>--experimental-permission</code> 标志启用权限模型之后，以上权限都会被限制。</p>
+<p>同时，将会给运行时的 <code>process</code> 加上一个 <code>process.permission.has</code> 方法，用来检查是否有权限。</p>
+<p>我们来实战一下，写下以下 JS 代码：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">fs</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">require</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'fs'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'test'</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">canWrite</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> process.permission.</span><span style="color: #B392F0">has</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'fs.write'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">canWriteTest</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> process.permission.</span><span style="color: #B392F0">has</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'fs.write'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'/Users/liruifeng/'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'canWrite:'</span><span style="color: #E1E4E8">, canWrite)</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'canWriteTest:'</span><span style="color: #E1E4E8">, canWriteTest)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">canRead</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> process.permission.</span><span style="color: #B392F0">has</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'fs.read'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">canReadTest</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> process.permission.</span><span style="color: #B392F0">has</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'fs.read'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'/Users/liruifeng/'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'canRead:'</span><span style="color: #E1E4E8">, canRead)</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'canReadTest:'</span><span style="color: #E1E4E8">, canReadTest)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">fs.</span><span style="color: #B392F0">readFile</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'./test.txt'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'utf-8'</span><span style="color: #E1E4E8">, (</span><span style="color: #FFAB70">err</span><span style="color: #E1E4E8">, </span><span style="color: #FFAB70">data</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8">(err) </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'err:'</span><span style="color: #E1E4E8">, err)</span></span>
+<span class="line"><span style="color: #E1E4E8">  console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'data:'</span><span style="color: #E1E4E8">, data)</span></span>
+<span class="line"><span style="color: #E1E4E8">})</span></span></code></pre>
+<p>执行：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-permission</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index.js</span></span></code></pre>
+<p>此时我们使用了 <code>--experimental-permission</code> 标志，但是没有指定权限，所以会出现以下报错：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">$</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-permission</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index.js</span></span>
+<span class="line"><span style="color: #B392F0">node:internal/modules/cjs/loader:171</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">const</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">result</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">internalModuleStat</span><span style="color: #E1E4E8">(</span><span style="color: #B392F0">filename</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">                 </span><span style="color: #B392F0">^</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">Error:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Access</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">to</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">this</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">API</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">has</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">been</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">restricted</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">stat</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:171:18)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Module._findPath</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:627:16)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">resolveMainPath</span><span style="color: #E1E4E8"> (node:internal/modules/run_main:19:25)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Function.executeUserEntryPoint</span><span style="color: #E1E4E8"> [as </span><span style="color: #9ECBFF">runMain]</span><span style="color: #E1E4E8"> (node:internal/modules/run_main:76:24)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">node:internal/main/run_main_module:23:47</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">{</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">code:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'ERR_ACCESS_DENIED',</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">permission:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'FileSystemRead'</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>给 <code>/Users/liruifeng/</code> 文件夹加上读取权限：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-permission</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--allow-fs-read=/Users/liruifeng/</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index.js</span></span></code></pre>
+<p>输出如下：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #79B8FF">test</span></span>
+<span class="line"><span style="color: #B392F0">canWrite:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canWriteTest:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canRead:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canReadTest:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">(</span><span style="color: #B392F0">node:15876</span><span style="color: #E1E4E8">) ExperimentalWarning: Permission is an experimental feature</span></span>
+<span class="line"><span style="color: #E1E4E8">(</span><span style="color: #B392F0">Use</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`</span><span style="color: #B392F0">node</span><span style="color: #9ECBFF"> </span><span style="color: #79B8FF">--trace-warnings</span><span style="color: #9ECBFF"> ...`</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">to</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">show</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">where</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">the</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">warning</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">was</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">created</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #B392F0">data:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">test</span></span></code></pre>
+<p>可以看到我们写的<code>process.permission.has('fs.read', '/Users/liruifeng/')</code>这个方法返回了<code>true</code>，说明我们有读取权限。</p>
+<p>并且下面成功用<code>fs.readFile</code>读取了文件内容。</p>
+<p>我们加个写的方法试试：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">fs.</span><span style="color: #B392F0">writeFile</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'./test.txt'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'test write'</span><span style="color: #E1E4E8">, (</span><span style="color: #FFAB70">err</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8">(err) </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'err:'</span><span style="color: #E1E4E8">, err)</span></span>
+<span class="line"><span style="color: #E1E4E8">  console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'write success'</span><span style="color: #E1E4E8">)</span></span>
+<span class="line"><span style="color: #E1E4E8">})</span></span></code></pre>
+<p>再次执行：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-permission</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--allow-fs-read=/Users/liruifeng/</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index.js</span></span></code></pre>
+<p>报错了，因为我们只给了读权限，没有给写权限。</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #79B8FF">test</span></span>
+<span class="line"><span style="color: #B392F0">canWrite:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canWriteTest:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canRead:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #B392F0">canReadTest:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #B392F0">node:fs:568</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">binding.open(pathModule.toNamespacedPath(path</span><span style="color: #E1E4E8">),</span></span>
+<span class="line"><span style="color: #E1E4E8">          </span><span style="color: #B392F0">^</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #B392F0">Error:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Access</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">to</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">this</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">API</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">has</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">been</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">restricted</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Object.open</span><span style="color: #E1E4E8"> (node:fs:568:11)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Object.writeFile</span><span style="color: #E1E4E8"> (node:fs:2215:6)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Object.</span><span style="color: #F97583">&#x3C;</span><span style="color: #9ECBFF">anonymou</span><span style="color: #E1E4E8">s</span><span style="color: #F97583">></span><span style="color: #E1E4E8"> (/Users/liruifeng/Desktop/opensource/mime/index.js:22:4)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Module._compile</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:1267:14)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Module._extensions..js</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:1321:10)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Module.load</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:1125:32)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Module._load</span><span style="color: #E1E4E8"> (node:internal/modules/cjs/loader:965:12)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">Function.executeUserEntryPoint</span><span style="color: #E1E4E8"> [as </span><span style="color: #9ECBFF">runMain]</span><span style="color: #E1E4E8"> (node:internal/modules/run_main:83:12)</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">at</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">node:internal/main/run_main_module:23:47</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">{</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">code:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'ERR_ACCESS_DENIED',</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">permission:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'FileSystemWrite',</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">resource:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'/Users/liruifeng/Desktop/opensource/mime/test.txt'</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>使用 “—allow-fs-write` 来给写权限：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-permission</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--allow-fs-read=/Users/liruifeng/</span><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">--allow-fs-write=/Users/liruifeng/</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">index.js</span></span></code></pre>
+<p>成功了，输出如下：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">test</span></span>
+<span class="line"><span style="color: #e1e4e8">canWrite: false</span></span>
+<span class="line"><span style="color: #e1e4e8">canWriteTest: true</span></span>
+<span class="line"><span style="color: #e1e4e8">canRead: false</span></span>
+<span class="line"><span style="color: #e1e4e8">canReadTest: true</span></span>
+<span class="line"><span style="color: #e1e4e8">(node:16424) ExperimentalWarning: Permission is an experimental feature</span></span>
+<span class="line"><span style="color: #e1e4e8">(Use `node --trace-warnings ...` to show where the warning was created)</span></span>
+<span class="line"><span style="color: #e1e4e8">write success</span></span>
+<span class="line"><span style="color: #e1e4e8">data: test write</span></span></code></pre>
+<p>查看文件内容，发现也成功写入了。</p>
+<h3 id="单个可执行文件">单个可执行文件</h3>
+<p>此功能同样是实验性的，可以将 Node.js 代码打包成单个可执行文件，使得在未安装 Node.js 的机器上也可以运行。</p>
+<p>实战一下：（以下操作均在 Mac 运行，windows 请自行阅读 <a href="https://nodejs.org/api/single-executable-applications.html%EF%BC%89">https://nodejs.org/api/single-executable-applications.html）</a></p>
+<p>我们先创建一个 <code>hello.js</code> 文件：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">`Hello, ${</span><span style="color: #E1E4E8">process</span><span style="color: #9ECBFF">.</span><span style="color: #E1E4E8">argv</span><span style="color: #9ECBFF">[</span><span style="color: #79B8FF">2</span><span style="color: #9ECBFF">]</span><span style="color: #9ECBFF">}!`</span><span style="color: #E1E4E8">);</span></span></code></pre>
+<p>在创建一个 <code>sea-config.json</code> 文件：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">{</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">"main"</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"hello.js"</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">"output"</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"sea-prep.blob"</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>执行：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">node</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--experimental-sea-config</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">sea-config.json</span><span style="color: #E1E4E8"> </span></span></code></pre>
+<p>此时会生成一个 <code>sea-prep.blob</code> 文件。</p>
+<p>然后我们创建可执行文件的副本node并根据需要命名：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">cp</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">$(</span><span style="color: #79B8FF">command</span><span style="color: #9ECBFF"> </span><span style="color: #79B8FF">-v</span><span style="color: #9ECBFF"> node)</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">hello</span><span style="color: #E1E4E8"> </span></span></code></pre>
+<p>删除二进制文件的签名：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">codesign</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--remove-signature</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">hello</span></span></code></pre>
+<p>把上面生成的 sea-prep.blob 注入到二进制文件：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8"> </span><span style="color: #B392F0">npx</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">postject</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">hello</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">NODE_SEA_BLOB</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">sea-prep.blob</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">\</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">--sentinel-fuse</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">\</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #79B8FF">--macho-segment-name</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">NODE_SEA</span><span style="color: #E1E4E8"> </span></span></code></pre>
+<p>签名：</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">codesign</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--sign</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">-</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">hello</span><span style="color: #E1E4E8"> </span></span></code></pre>
+<p>运行</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">./hello</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">liruifeng</span></span>
+<span class="line"><span style="color: #B392F0">Hello,</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">liruifeng!</span></span>
+<span class="line"><span style="color: #E1E4E8">(</span><span style="color: #B392F0">node:17668</span><span style="color: #E1E4E8">) ExperimentalWarning: Single executable application is an experimental feature and might change at any </span><span style="color: #F97583">time</span></span></code></pre>
+<p>Ok，我们成功打包了一个可以在未安装 Node.js 的机器上执行的二进制文件。</p>
+<h2 id="版本时间表">版本时间表</h2>
+<p><img src="https://images.sayhub.me/blog/node-v20/release-schedule.png" alt=""></p>
+<p>上面是 Node.js 官方的版本维护时间表。</p>
+<p>注意 14.x 这个月底就停止维护了。</p>
+<p>目前的 LTS 是 18.x，但是 V20 将在今年 10 月成为 LTS。</p>
+<p>详情看：<a href="https://github.com/nodejs/Release">https://github.com/nodejs/Release</a></p>
+<h2 id="总结">总结</h2>
+<p>Node 现在被 Deno 和 Bun 卷的厉害，Deno 的现代化 Web 标准，Bun 的性能。Node 现在迅猛追赶，相信 JS 生态会越来越好。</p>
+
+        </div>
+      </article>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/node">
+    node
+  </a>
+</div>
+    </div>
+      <div>
+  <hr>
+  <br>
+  <p>
+    <strong>你的鼓励是我最大的支持，关注我的公众号 「SayHub」 获取更多内容。</strong>
+  </p>
+  <img src="https://images.sayhub.me/blog/qrcode.png">
+</div>
+    </section>
+  </div>
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
+  <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
+    冀ICP备17036505号-1
+  </a>
+  <div class="astro-SZ7XMLTE">
+    &copy; 2023 SayHub. All rights reserved.
+  </div>
+</footer>
+
+    
+    <script>
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+      }
+    </script>
+  </html>

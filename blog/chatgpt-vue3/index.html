@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base">
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.0.16">
+<meta name="generator" content="Astro v2.5.3">
 
 <!-- Primary Meta Tags -->
 <title>我用 ChatGPT 读 Vue3 源码</title>
@@ -14,16 +14,17 @@
 
     <head>
           <link rel="stylesheet" href="https://images.sayhub.me/static/styles/gfm.css">
-        <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
-<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+        <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
 </script></head>
   </head>
   
-    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href="/sayhub/">
-        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
         <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
       </a>
       <div class="flex items-center md:hidden">
@@ -35,47 +36,54 @@
     <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
         <li>
-          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   首页
 </a>
         </li>
         <li>
-          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   文章
 </a>
         </li>
         <li>
-          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   读后感
 </a>
         </li>
         <li>
-          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   关于
 </a>
         </li>
         <li>
-          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
   RSS 订阅
 </a>
         </li>
         <li class="md:hidden">
-          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
             <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           </a>
         </div>
       </div>
     </nav>
   </div>
-</header><main>
-    <div class="max-w-6xl flex mx-auto flex-col md:flex-row">
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
           我用 ChatGPT 读 Vue3 源码
@@ -84,13 +92,14 @@
               发表日期： <time>2023-02-23</time>
             </div>
       </header>
-      <article class="container mx-auto max-w-3xl markdown-body">
+      <article class="container markdown-body">
         <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/deno-code_dtKXF.avif 400w,/sayhub/_astro/deno-code_Z1cmwfd.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/deno-code_Zck1vS.webp 400w,/sayhub/_astro/deno-code_Z1CbjJL.webp 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async">
+	<img alt="descriptive text" src="/sayhub/_astro/deno-code_Z1CbjJL.webp" loading="lazy" decoding="async" class="w-full rounded-lg">
 </picture>
         <div class="mt-6">
-          <h2 id="前言">前言</h2>
+          
+  <h2 id="前言">前言</h2>
 <p>ChatGPT 最近十分火爆，今天我也来让 ChatGPT 帮我阅读一下 Vue3 的源代码。</p>
 <p>都知道 Vue3 组件有一个 <code>setup</code>函数。那么它内部做了什么呢，今天跟随 ChatGPT 来一探究竟。</p>
 <h2 id="实战">实战</h2>
@@ -108,33 +117,33 @@
 <blockquote>
 <p><code>mountComponent</code> 是挂载组件的方法，前面还有一堆自定义渲染器的逻辑，不在此篇展开。</p>
 </blockquote>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">mountComponent</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MountComponentFn</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FF7B72">...</span><span style="color: #FFA657">args</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=></span><span style="color: #C9D1D9"> {</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">instance</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ComponentInternalInstance</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span></span>
-<span class="line"><span style="color: #C9D1D9">    compatMountInstance </span><span style="color: #FF7B72">||</span></span>
-<span class="line"><span style="color: #C9D1D9">    (initialVNode.component </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createComponentInstance</span><span style="color: #C9D1D9">(initialVNode, parentComponent, parentSuspense))</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// ... 省略代码</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// resolve props and slots for setup context</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (</span><span style="color: #FF7B72">!</span><span style="color: #C9D1D9">(__COMPAT__ </span><span style="color: #FF7B72">&#x26;&#x26;</span><span style="color: #C9D1D9"> compatMountInstance)) {</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">// ...这里调用了setupComponent，传入了实例，还写了注释，感人</span></span>
-<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">setupComponent</span><span style="color: #C9D1D9">(instance)</span></span>
-<span class="line"><span style="color: #C9D1D9">  }</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// setupRenderEffect 居然也在这</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #D2A8FF">setupRenderEffect</span><span style="color: #C9D1D9">(instance, initialVNode, container, anchor, parentSuspense, isSVG, optimized)</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">mountComponent</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">MountComponentFn</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">...</span><span style="color: #FFAB70">args</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">instance</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">ComponentInternalInstance</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span></span>
+<span class="line"><span style="color: #E1E4E8">    compatMountInstance </span><span style="color: #F97583">||</span></span>
+<span class="line"><span style="color: #E1E4E8">    (initialVNode.component </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">createComponentInstance</span><span style="color: #E1E4E8">(initialVNode, parentComponent, parentSuspense))</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// ... 省略代码</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// resolve props and slots for setup context</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">!</span><span style="color: #E1E4E8">(__COMPAT__ </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> compatMountInstance)) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #6A737D">// ...这里调用了setupComponent，传入了实例，还写了注释，感人</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">setupComponent</span><span style="color: #E1E4E8">(instance)</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// setupRenderEffect 居然也在这</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">setupRenderEffect</span><span style="color: #E1E4E8">(instance, initialVNode, container, anchor, parentSuspense, isSVG, optimized)</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
 <p><code>mountComponent</code>函数先调用了<code>createComponentInstance</code>， 返回个组件实例，又把实例当作参数传给了 <code>setupComponent</code>。顺便我们还在这发现了 ChatGPT 搞丢的<code>setupRenderEffect</code>函数，它是用来处理一些渲染副作用的。</p>
 <p>回到 <code>setupComponent</code>函数，Evan 的注释告诉我们它是处理 props 和 slots 的。</p>
-<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">setupComponent</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">instance</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ComponentInternalInstance</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">isSSR</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">) {</span></span>
-<span class="line"><span style="color: #C9D1D9">  isInSSRComponentSetup </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> isSSR</span></span>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setupComponent</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">instance</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">ComponentInternalInstance</span><span style="color: #E1E4E8">, </span><span style="color: #FFAB70">isSSR</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  isInSSRComponentSetup </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> isSSR</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> { </span><span style="color: #79C0FF">props</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">children</span><span style="color: #C9D1D9"> } </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> instance.vnode</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">isStateful</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">isStatefulComponent</span><span style="color: #C9D1D9">(instance)</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #D2A8FF">initProps</span><span style="color: #C9D1D9">(instance, props, isStateful, isSSR)</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #D2A8FF">initSlots</span><span style="color: #C9D1D9">(instance, children)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> { </span><span style="color: #79B8FF">props</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">children</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> instance.vnode</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">isStateful</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">isStatefulComponent</span><span style="color: #E1E4E8">(instance)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">initProps</span><span style="color: #E1E4E8">(instance, props, isStateful, isSSR)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">initSlots</span><span style="color: #E1E4E8">(instance, children)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">setupResult</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> isStateful </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">setupStatefulComponent</span><span style="color: #C9D1D9">(instance, isSSR) </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">undefined</span></span>
-<span class="line"><span style="color: #C9D1D9">  isInSSRComponentSetup </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
-<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> setupResult</span></span>
-<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">setupResult</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> isStateful </span><span style="color: #F97583">?</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setupStatefulComponent</span><span style="color: #E1E4E8">(instance, isSSR) </span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">undefined</span></span>
+<span class="line"><span style="color: #E1E4E8">  isInSSRComponentSetup </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> setupResult</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
 <p>把代码喂给 ChatGPT：</p>
 <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05cdb740246949e880896cb03f4f83ef~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
 <p><code>setupComponent</code> 函数中，处理完 props 和 slots 后，根据是否是有状态组件调用了<code>setupStatefulComponent</code>。</p>
@@ -163,15 +172,20 @@
 <blockquote>
 <p>PS: vue 源码太多了，喂不动了，有兴趣的自己试一下。</p>
 </blockquote>
+
         </div>
       </article>
-      <ul class="text-base">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ChatGPT">ChatGPT</a>
-        </li>
-    </ul>
+      <div class="text-base">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Vue">
+    Vue
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/ChatGPT">
+    ChatGPT
+  </a>
+</div>
+    </div>
       <div>
   <hr>
   <br>
@@ -181,79 +195,10 @@
   <img src="https://images.sayhub.me/blog/qrcode.png">
 </div>
     </section>
-    <div class="md:mt-10 md:ml-6 h-full min-w-min md:w-1/3 p-4 sticky top-20">
-          <div class="text-gray-900 text-xl">最近文章</div>
-          <ul class="mt-4">
-            <li class="mt-8 flex items-center" title="我用 ChatGPT 读 Vue3 源码">
-                <a href="/sayhub/blog/build-api-express-typescript/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/cover_ZO0d93.avif 400w,/sayhub/_astro/cover_Z2eQvmV.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/cover_Z1eO0DB.webp 400w,/sayhub/_astro/cover_2pvOVr.webp 900w"><source type="image/png" srcset="/sayhub/_astro/cover_2cruSP.png 400w,/sayhub/_astro/cover_LAcEW.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/cover_LAcEW.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/build-api-express-typescript/">
-                    使用 Express、TypeScript 和 Deno 构建 REST API
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-30</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="我用 ChatGPT 读 Vue3 源码">
-                <a href="/sayhub/blog/rspack-vue/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/rspack_Z1u4m5P.avif 400w,/sayhub/_astro/rspack_2agtud.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/rspack_Z1TS9Ao.webp 400w,/sayhub/_astro/rspack_1JrFYE.webp 900w"><source type="image/png" srcset="/sayhub/_astro/rspack_Z1q0UjQ.png 400w,/sayhub/_astro/rspack_2ejUgc.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/rspack_2ejUgc.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/rspack-vue/">
-                    快速尝鲜字节刚刚开源的 Rspack，卷不动了？
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-10</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="我用 ChatGPT 读 Vue3 源码">
-                <a href="/sayhub/blog/certbot-https/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_Z2jcGKN.avif 400w,/sayhub/_astro/HTTPS-cover_1l88Of.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_2laDxz.webp 400w,/sayhub/_astro/HTTPS-cover_UjljG.webp 900w"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_Z1VDK2o.png 400w,/sayhub/_astro/HTTPS-cover_1HG5xE.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/HTTPS-cover_1HG5xE.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/certbot-https/">
-                    使用Certbot申请免费 HTTPS 证书及自动续期
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-03-02</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="我用 ChatGPT 读 Vue3 源码">
-                <a href="/sayhub/blog/create-lint-config/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/screenshot_Q0cM3.avif 400w,/sayhub/_astro/screenshot_ZyQ5qP.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/screenshot_qbphu.webp 400w,/sayhub/_astro/screenshot_ZYERVo.webp 900w"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZQnd1t.png 400w,/sayhub/_astro/screenshot_Z2hevfm.png 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/screenshot_Z2hevfm.png" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/create-lint-config/">
-                    写一个命令行CLI，一键生成各种烦人的lint配置
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-21</div>
-                </div>
-              </li><li class="mt-8 flex items-center" title="我用 ChatGPT 读 Vue3 源码">
-                <a href="/sayhub/blog/github-action-release/">
-                  <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/github_1hRq4G.avif 400w,/sayhub/_astro/github_Z7XR9c.avif 900w"><source type="image/webp" srcset="/sayhub/_astro/github_R3Cz8.webp 400w,/sayhub/_astro/github_ZxMEDK.webp 900w"><source type="image/jpeg" srcset="/sayhub/_astro/github_22lvg9.jpeg 400w,/sayhub/_astro/github_Bud2g.jpeg 900w">
-	<img alt="descriptive text" src="/sayhub/_astro/github_Bud2g.jpeg" loading="lazy" decoding="async" class="w-20">
-</picture>
-                </a>
-                <div class="ml-2 flex-1">
-                  <a class="text-gray-900 block hover:underline overflow-hidden overflow-ellipsis h-6 md:h-5 hover:text-primary-600 " href="/sayhub/blog/github-action-release/">
-                    使用 GitHub Action 自动化发布 npm 版本
-                  </a>
-                  <div class="text-sm md:mt-2 font-light">发表日期：2023-02-18</div>
-                </div>
-              </li>
-          </ul>
-        </div>
   </div>
-  </main><footer class="astro-SZ7XMLTE">
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
   <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
     冀ICP备17036505号-1
   </a>
@@ -261,6 +206,7 @@
     &copy; 2023 SayHub. All rights reserved.
   </div>
 </footer>
+
     
     <script>
       window.onload = function () {

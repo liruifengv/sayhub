@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base">
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.0.16">
+<meta name="generator" content="Astro v2.5.3">
 
 <!-- Primary Meta Tags -->
 <title>全部文章列表</title>
@@ -13,15 +13,16 @@
 
 
     
-  <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
-<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+  <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
 </script></head>
   
-    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href="/sayhub/">
-        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
         <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
       </a>
       <div class="flex items-center md:hidden">
@@ -33,618 +34,822 @@
     <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
         <li>
-          <a href="/sayhub/" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   首页
 </a>
         </li>
         <li>
-          <a href="/sayhub/blog" class="text-primary-600 font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/blog" class="text-primary-600 hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   文章
 </a>
         </li>
         <li>
-          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   读后感
 </a>
         </li>
         <li>
-          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   关于
 </a>
         </li>
         <li>
-          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
   RSS 订阅
 </a>
         </li>
         <li class="md:hidden">
-          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
             <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           </a>
         </div>
       </div>
     </nav>
   </div>
-</header><main>
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
-    <ul>
-      <li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/build-api-express-typescript/">
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <ul>
+    <li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/node-v20/" class="inline-block h-full">
           <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/cover_nttX5.avif 400w,/sayhub/_astro/cover_Z12mNfN.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z2kiwt.webp 400w,/sayhub/_astro/cover_Z1sbAKm.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_Z1mjv21.png 400w,/sayhub/_astro/cover_2i1ky2.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用 Express、TypeScript 和 Deno 构建 REST API" src="/sayhub/_astro/cover_2i1ky2.png" loading="lazy" decoding="async">
+	<source type="image/avif" srcset="/sayhub/_astro/node-v20_1sjAuw.avif 400w,/sayhub/_astro/node-v20_2sigD.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/node-v20_12uMYX.webp 400w,/sayhub/_astro/node-v20_ZnludU.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/node-v20_ZFanLE.png 400w,/sayhub/_astro/node-v20_Z261G0x.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="Node.js 发布 v20，来看看有什么新玩法" src="/sayhub/_astro/node-v20_Z261G0x.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/build-api-express-typescript/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/node-v20/">
+        Node.js 发布 v20，来看看有什么新玩法
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">2023 年 4 月 18 日，Node.js 正式发布了 v20 版本，本篇文章带你快速了解及尝鲜。</div>
+    <div class="mt-2 font-light">发表日期：2023-4-20</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/node">
+    node
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/deno-package-json-support/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-1_Z25oN7w.avif 400w,/sayhub/_astro/deno-1_1yV2sw.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-1_Z2vdAC5.webp 400w,/sayhub/_astro/deno-1_197eWX.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/deno-1_1YVN81.png 400w,/sayhub/_astro/deno-1_z5uT8.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持" src="/sayhub/_astro/deno-1_z5uT8.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/deno-package-json-support/">
+        Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis"></div>
+    <div class="mt-2 font-light">发表日期：2023-04-12</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/roll-your-own-javascript-runtime/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-v8_161CiW.avif 400w,/sayhub/_astro/deno-v8_ZjOETV.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-v8_FcONo.webp 400w,/sayhub/_astro/deno-v8_ZJDspu.webp 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="打造你自己的 JavaScript 运行时" src="/sayhub/_astro/deno-v8_ZJDspu.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/roll-your-own-javascript-runtime/">
+        打造你自己的 JavaScript 运行时
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">教你使用 Rust 和 deno_core 打造属于你自己的 JavaScript 运行时。</div>
+    <div class="mt-2 font-light">发表日期：2023-04-05</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Rust">
+    Rust
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/build-api-express-typescript/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/cover_nttX5.avif 400w,/sayhub/_astro/cover_Z12mNfN.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z2kiwt.webp 400w,/sayhub/_astro/cover_Z1sbAKm.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_Z1mjv21.png 400w,/sayhub/_astro/cover_2i1ky2.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="使用 Express、TypeScript 和 Deno 构建 REST API" src="/sayhub/_astro/cover_2i1ky2.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/build-api-express-typescript/">
         使用 Express、TypeScript 和 Deno 构建 REST API
       </a>
     </div>
-    <div class="mt-2 font-normal">使用 Express、TypeScript 和 Deno 构建 REST API的教程，翻译自 Deno 官方博客。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">使用 Express、TypeScript 和 Deno 构建 REST API的教程，翻译自 Deno 官方博客。</div>
     <div class="mt-2 font-light">发表日期：2023-03-30</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Deno">Deno</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/rspack-vue/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/rspack-vue/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/rspack_ZbPuFW.avif 400w,/sayhub/_astro/rspack_Z1BGMTP.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/rspack_ZBEibv.webp 400w,/sayhub/_astro/rspack_Z22vApo.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/rspack_Z2mumSi.png 400w,/sayhub/_astro/rspack_1hPsGK.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="快速尝鲜字节刚刚开源的 Rspack，卷不动了？" src="/sayhub/_astro/rspack_1hPsGK.png" loading="lazy" decoding="async">
+	<img alt="快速尝鲜字节刚刚开源的 Rspack，卷不动了？" src="/sayhub/_astro/rspack_1hPsGK.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/rspack-vue/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/rspack-vue/">
         快速尝鲜字节刚刚开源的 Rspack，卷不动了？
       </a>
     </div>
-    <div class="mt-2 font-normal">你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。</div>
     <div class="mt-2 font-light">发表日期：2023-03-10</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/webpack">webpack</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Vue">
+    Vue
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/webpack">
+    webpack
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/certbot-https/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/certbot-https/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_2qmMfY.avif 400w,/sayhub/_astro/HTTPS-cover_10vu26.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_20xYKq.webp 400w,/sayhub/_astro/HTTPS-cover_zGGwx.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_19N7gO.png 400w,/sayhub/_astro/HTTPS-cover_Zg3aW4.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用Certbot申请免费 HTTPS 证书及自动续期" src="/sayhub/_astro/HTTPS-cover_Zg3aW4.png" loading="lazy" decoding="async">
+	<img alt="使用Certbot申请免费 HTTPS 证书及自动续期" src="/sayhub/_astro/HTTPS-cover_Zg3aW4.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/certbot-https/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/certbot-https/">
         使用Certbot申请免费 HTTPS 证书及自动续期
       </a>
     </div>
-    <div class="mt-2 font-normal">今天来使用 Certbot 来申请免费的HTTPS证书，并且自动续期</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">今天来使用 Certbot 来申请免费的HTTPS证书，并且自动续期</div>
     <div class="mt-2 font-light">发表日期：2023-03-02</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTTPS">HTTPS</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/nginx">nginx</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/HTTPS">
+    HTTPS
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/nginx">
+    nginx
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/chatgpt-vue3/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/chatgpt-vue3/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/deno-code_cUh1O.avif 400w,/sayhub/_astro/deno-code_Z1cV1c4.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-code_ZcSvsJ.webp 400w,/sayhub/_astro/deno-code_Z1CJNGC.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="我用 ChatGPT 读 Vue3 源码" src="/sayhub/_astro/deno-code_Z1CJNGC.webp" loading="lazy" decoding="async">
+	<img alt="我用 ChatGPT 读 Vue3 源码" src="/sayhub/_astro/deno-code_Z1CJNGC.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/chatgpt-vue3/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/chatgpt-vue3/">
         我用 ChatGPT 读 Vue3 源码
       </a>
     </div>
-    <div class="mt-2 font-normal">ChatGPT 最近十分火爆，今天我也来让 ChatGPT 帮我阅读一下 Vue3 的源代码。看看Vue3 的 setup函数是怎么回事。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">ChatGPT 最近十分火爆，今天我也来让 ChatGPT 帮我阅读一下 Vue3 的源代码。看看Vue3 的 setup函数是怎么回事。</div>
     <div class="mt-2 font-light">发表日期：2023-02-23</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ChatGPT">ChatGPT</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Vue">
+    Vue
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/ChatGPT">
+    ChatGPT
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/create-lint-config/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/create-lint-config/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/screenshot_tzGKY.avif 400w,/sayhub/_astro/screenshot_ZVgArT.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/screenshot_3KTgq.webp 400w,/sayhub/_astro/screenshot_Z1m5nWs.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZR6jUB.png 400w,/sayhub/_astro/screenshot_Z2hWC9u.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="写一个命令行CLI，一键生成各种烦人的lint配置" src="/sayhub/_astro/screenshot_Z2hWC9u.png" loading="lazy" decoding="async">
+	<img alt="写一个命令行CLI，一键生成各种烦人的lint配置" src="/sayhub/_astro/screenshot_Z2hWC9u.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/create-lint-config/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/create-lint-config/">
         写一个命令行CLI，一键生成各种烦人的lint配置
       </a>
     </div>
-    <div class="mt-2 font-normal">前端工程中各种配置文件eslint、prettier等搞得我很头大，那就写一个命令行工具来搞定它吧。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">前端工程中各种配置文件eslint、prettier等搞得我很头大，那就写一个命令行工具来搞定它吧。</div>
     <div class="mt-2 font-light">发表日期：2023-02-21</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/开源">开源</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/CLI">CLI</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/工具">工具</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/开源">
+    开源
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/CLI">
+    CLI
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/工具">
+    工具
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/github-action-release/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/github-action-release/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/github_ZMnuCM.avif 400w,/sayhub/_astro/github_Z2deMQF.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/github_Z1dci8l.webp 400w,/sayhub/_astro/github_2r8xrH.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/github_Z2Tprk.jpeg 400w,/sayhub/_astro/github_Z1sKHFd.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用 GitHub Action 自动化发布 npm 版本" src="/sayhub/_astro/github_Z1sKHFd.jpeg" loading="lazy" decoding="async">
+	<img alt="使用 GitHub Action 自动化发布 npm 版本" src="/sayhub/_astro/github_Z1sKHFd.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/github-action-release/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/github-action-release/">
         使用 GitHub Action 自动化发布 npm 版本
       </a>
     </div>
-    <div class="mt-2 font-normal">本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。</div>
     <div class="mt-2 font-light">发表日期：2023-02-18</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/开源">开源</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/开源">
+    开源
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/opensource/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/opensource/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/github_ZjuRxw.avif 400w,/sayhub/_astro/github_Z1JmaLp.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/github_ZJjF35.webp 400w,/sayhub/_astro/github_Z2aaXgX.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/github_pXcCV.jpeg 400w,/sayhub/_astro/github_ZYS5zW.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="我的开源之旅&#38;新手如何参与开源社区" src="/sayhub/_astro/github_ZYS5zW.jpeg" loading="lazy" decoding="async">
+	<img alt="我的开源之旅&#38;新手如何参与开源社区" src="/sayhub/_astro/github_ZYS5zW.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/opensource/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/opensource/">
         我的开源之旅&amp;新手如何参与开源社区
       </a>
     </div>
-    <div class="mt-2 font-normal">本篇文章讲讲我的开源之旅，以及新手程序员如何参与进来。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">本篇文章讲讲我的开源之旅，以及新手程序员如何参与进来。</div>
     <div class="mt-2 font-light">发表日期：2023-1-31</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/开源">开源</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/开源">
+    开源
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/copy-text/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/kongyiji/">
+        《孔乙己》读后感
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">上学时，读《孔乙己》，并没有从其中感受到什么，只觉很好玩，什么之乎者也，什么茴字的四种写法。时隔多年，再读《孔乙己》，已感慨万千。</div>
+    <div class="mt-2 font-light">发表日期：2023-01-13</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/读后感">
+    读后感
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/copy-text/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_TRF0s.avif 400w,/sayhub/_astro/cover_ZuXCdq.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_u3RuT.webp 400w,/sayhub/_astro/cover_ZUMpHY.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/cover_1ElKbU.jpeg 400w,/sayhub/_astro/cover_eurX2.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="JS复制文字到剪贴板的坑及完整方案。" src="/sayhub/_astro/cover_eurX2.jpeg" loading="lazy" decoding="async">
+	<img alt="JS复制文字到剪贴板的坑及完整方案。" src="/sayhub/_astro/cover_eurX2.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/copy-text/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/copy-text/">
         JS复制文字到剪贴板的坑及完整方案。
       </a>
     </div>
-    <div class="mt-2 font-normal">在做 JS 复制到剪贴板功能的时候，遇到了不少坑，这边文章展开记录一下。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">在做 JS 复制到剪贴板功能的时候，遇到了不少坑，这边文章展开记录一下。</div>
     <div class="mt-2 font-light">发表日期：2023-01-10</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/JavaScript">JavaScript</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTML">HTML</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/WebView">WebView</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/HTML">
+    HTML
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/WebView">
+    WebView
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/promise-modal/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/promise-modal/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/Modal_Khxv0.avif 400w,/sayhub/_astro/Modal_ZEyJHS.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/Modal_ksK0r.webp 400w,/sayhub/_astro/Modal_Z15nxdr.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/Modal_Z1lzCMb.png 400w,/sayhub/_astro/Modal_2iKcMR.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="开发弹窗，你使用状态驱动还是命令式？" src="/sayhub/_astro/Modal_2iKcMR.png" loading="lazy" decoding="async">
+	<img alt="开发弹窗，你使用状态驱动还是命令式？" src="/sayhub/_astro/Modal_2iKcMR.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/promise-modal/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/promise-modal/">
         开发弹窗，你使用状态驱动还是命令式？
       </a>
     </div>
-    <div class="mt-2 font-normal">作为一名前端开发工程师，开发各种弹窗是家常便饭，但如何快捷高效、风格统一是一个问题。本文介绍状态驱动和命令式两种方式。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">作为一名前端开发工程师，开发各种弹窗是家常便饭，但如何快捷高效、风格统一是一个问题。本文介绍状态驱动和命令式两种方式。</div>
     <div class="mt-2 font-light">发表日期：2022-12-29</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/React">React</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Promise">Promise</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/JavaScript">JavaScript</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/React">
+    React
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Promise">
+    Promise
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/2022-year-end-summary/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/2022-year-end-summary/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/2022_1RDoiC.avif 400w,/sayhub/_astro/2022_rM64J.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/2022_1rOAN4.webp 400w,/sayhub/_astro/2022_1Xizb.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="2022 年终总结" src="/sayhub/_astro/2022_1Xizb.webp" loading="lazy" decoding="async">
+	<img alt="2022 年终总结" src="/sayhub/_astro/2022_1Xizb.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/2022-year-end-summary/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/2022-year-end-summary/">
         2022 年终总结
       </a>
     </div>
-    <div class="mt-2 font-normal">2022 年是难以言表的一年，没完没了的疫情席卷着我们。所幸的是，2022 年末的时候，迎来了新的转机。抓住 12 月的尾巴，写一下今年的年终总结。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">2022 年是难以言表的一年，没完没了的疫情席卷着我们。所幸的是，2022 年末的时候，迎来了新的转机。抓住 12 月的尾巴，写一下今年的年终总结。</div>
     <div class="mt-2 font-light">发表日期：2022-12-28</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/年终总结">年终总结</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/年终总结">
+    年终总结
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/ghost-mysql/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/ghost-mysql/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/img3_Z1QcTt2.avif 400w,/sayhub/_astro/img3_1N7V71.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/img3_Z2h1GXA.webp 400w,/sayhub/_astro/img3_1nj8Bs.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="ghost 使用 mysql" src="/sayhub/_astro/img3_1nj8Bs.webp" loading="lazy" decoding="async">
+	<img alt="ghost 使用 mysql" src="/sayhub/_astro/img3_1nj8Bs.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/ghost-mysql/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/ghost-mysql/">
         ghost 使用 mysql
       </a>
     </div>
-    <div class="mt-2 font-normal">上一篇文章使用 Ghost 从零搭建博客系统 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">上一篇文章使用 Ghost 从零搭建博客系统 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。</div>
     <div class="mt-2 font-light">发表日期：2021-12-17</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ghost">ghost</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/建站">建站</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/blog">blog</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/mysql">mysql</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/ghost">
+    ghost
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/建站">
+    建站
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/blog">
+    blog
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/mysql">
+    mysql
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/react-elementtype/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/react-elementtype/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/React_6TdTo.avif 400w,/sayhub/_astro/React_Z1iW4ju.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/React_ZiTyAa.webp 400w,/sayhub/_astro/React_Z1IKQO3.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/React_Qnj5Q.jpeg 400w,/sayhub/_astro/React_ZysY82.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="React PropTypes 中的 elementType" src="/sayhub/_astro/React_ZysY82.jpeg" loading="lazy" decoding="async">
+	<img alt="React PropTypes 中的 elementType" src="/sayhub/_astro/React_ZysY82.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/react-elementtype/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/react-elementtype/">
         React PropTypes 中的 elementType
       </a>
     </div>
-    <div class="mt-2 font-normal">在用 React 进行开发的过程中，要用到 PropTypes 对组件的 props 进行类型检查。其中有两个类型，element 和 elementType，让我百思不得其解。这两个的区别到底是什么，在跟小伙伴探讨和实践之后，产生了这篇文章。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">在用 React 进行开发的过程中，要用到 PropTypes 对组件的 props 进行类型检查。其中有两个类型，element 和 elementType，让我百思不得其解。这两个的区别到底是什么，在跟小伙伴探讨和实践之后，产生了这篇文章。</div>
     <div class="mt-2 font-light">发表日期：2021-12-10</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/React">React</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/React">
+    React
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/ghost/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/ghost/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/img3_1fv9uW.avif 400w,/sayhub/_astro/img3_Zal8HV.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/img3_OGm0o.webp 400w,/sayhub/_astro/img3_ZA9Vdu.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用 Ghost 从零搭建博客系统" src="/sayhub/_astro/img3_ZA9Vdu.webp" loading="lazy" decoding="async">
+	<img alt="使用 Ghost 从零搭建博客系统" src="/sayhub/_astro/img3_ZA9Vdu.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/ghost/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/ghost/">
         使用 Ghost 从零搭建博客系统
       </a>
     </div>
-    <div class="mt-2 font-normal">Ghost 是一个开源的 CMS 博客系统，使用 Node.js 技术栈，让有需求的个人或团队能够快速的搭建想要的博客站点</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">Ghost 是一个开源的 CMS 博客系统，使用 Node.js 技术栈，让有需求的个人或团队能够快速的搭建想要的博客站点</div>
     <div class="mt-2 font-light">发表日期：2021-11-19</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ghost">ghost</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/建站">建站</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/blog">blog</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/ghost">
+    ghost
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/建站">
+    建站
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/blog">
+    blog
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/deno-http/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/deno-http/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/deno-code_ZlRAp4.avif 400w,/sayhub/_astro/deno-code_Z1LISCW.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-code_ZLGnTC.webp 400w,/sayhub/_astro/deno-code_Z2cxG8v.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用 Deno 创建 HTTP 服务" src="/sayhub/_astro/deno-code_Z2cxG8v.webp" loading="lazy" decoding="async">
+	<img alt="使用 Deno 创建 HTTP 服务" src="/sayhub/_astro/deno-code_Z2cxG8v.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/deno-http/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/deno-http/">
         使用 Deno 创建 HTTP 服务
       </a>
     </div>
-    <div class="mt-2 font-normal">今天我们来使用 Deno 创建一个 HTTP 服务，REST-API 增删查改</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">今天我们来使用 Deno 创建一个 HTTP 服务，REST-API 增删查改</div>
     <div class="mt-2 font-light">发表日期：2020-06-21</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Deno">Deno</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/restful">restful</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/restful">
+    restful
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/deno-study/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/deno-study/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/deno-v8_RGzk2.avif 400w,/sayhub/_astro/deno-v8_Zx9HSQ.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-v8_rRLOt.webp 400w,/sayhub/_astro/deno-v8_ZWXvop.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="Deno 初探" src="/sayhub/_astro/deno-v8_ZWXvop.webp" loading="lazy" decoding="async">
+	<img alt="Deno 初探" src="/sayhub/_astro/deno-v8_ZWXvop.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/deno-study/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/deno-study/">
         Deno 初探
       </a>
     </div>
-    <div class="mt-2 font-normal">Deno 的官方介绍是一个 JavaScript 和 TypeScript 的安全运行时。 Deno 旨在为现代程序员提供高效且安全的脚本环境。 它基于V8，Rust和TypeScript构建。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">Deno 的官方介绍是一个 JavaScript 和 TypeScript 的安全运行时。 Deno 旨在为现代程序员提供高效且安全的脚本环境。 它基于V8，Rust和TypeScript构建。</div>
     <div class="mt-2 font-light">发表日期：2019-12-11</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Deno">Deno</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/alibaba-puhuiti/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/alibaba-puhuiti/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_Z2518R6.avif 400w,/sayhub/_astro/cover_1zjGHW.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z2uOVmE.webp 400w,/sayhub/_astro/cover_19uTdo.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_PTOoM.png 400w,/sayhub/_astro/cover_ZyVsO6.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="阿里巴巴普惠体前端应用" src="/sayhub/_astro/cover_ZyVsO6.png" loading="lazy" decoding="async">
+	<img alt="阿里巴巴普惠体前端应用" src="/sayhub/_astro/cover_ZyVsO6.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/alibaba-puhuiti/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/alibaba-puhuiti/">
         阿里巴巴普惠体前端应用
       </a>
     </div>
-    <div class="mt-2 font-normal">在UCAN 2019 设计大会上，阿里巴巴设计率先向全社会发布了一款字体“阿里巴巴普惠体”，希望能够让阿里巴巴的普惠精神，让整个生态的设计师、合作伙伴因为我们平台的赋能，真正得到实惠。本项目是阿里巴巴普惠体在前端开发中的实际应用。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">在UCAN 2019 设计大会上，阿里巴巴设计率先向全社会发布了一款字体“阿里巴巴普惠体”，希望能够让阿里巴巴的普惠精神，让整个生态的设计师、合作伙伴因为我们平台的赋能，真正得到实惠。本项目是阿里巴巴普惠体在前端开发中的实际应用。</div>
     <div class="mt-2 font-light">发表日期：2019-04-29</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/font">font</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/font">
+    font
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/type-of-data/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/type-of-data/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_1sRFWV.avif 400w,/sayhub/_astro/cover_31nJ3.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_133Ssn.webp 400w,/sayhub/_astro/cover_ZmMoKv.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/cover_2dlL9o.jpeg 400w,/sayhub/_astro/cover_MusUv.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="JS学习笔记之数据类型" src="/sayhub/_astro/cover_MusUv.jpeg" loading="lazy" decoding="async">
+	<img alt="JS学习笔记之数据类型" src="/sayhub/_astro/cover_MusUv.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/type-of-data/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/type-of-data/">
         JS学习笔记之数据类型
       </a>
     </div>
-    <div class="mt-2 font-normal">2017 年是我开始学习前端的一年，2018 年我将继续在前端的路上前行。这篇文章会是我的JS 学习笔记的开篇，以后还会有相应的其他内容。这里主要简单写一下 JavaScript 的 几种数据类型。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">2017 年是我开始学习前端的一年，2018 年我将继续在前端的路上前行。这篇文章会是我的JS 学习笔记的开篇，以后还会有相应的其他内容。这里主要简单写一下 JavaScript 的 几种数据类型。</div>
     <div class="mt-2 font-light">发表日期：2018-01-02</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/JavaScript">JavaScript</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/web-safety/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/web-safety/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_Z1gkycl.avif 400w,/sayhub/_astro/cover_2o0hnH.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z1G9lGT.webp 400w,/sayhub/_astro/cover_1XbtS9.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/cover_ZvQt0S.jpeg 400w,/sayhub/_astro/cover_Z1VHLeL.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="浅谈 Web 安全" src="/sayhub/_astro/cover_Z1VHLeL.jpeg" loading="lazy" decoding="async">
+	<img alt="浅谈 Web 安全" src="/sayhub/_astro/cover_Z1VHLeL.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/web-safety/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/web-safety/">
         浅谈 Web 安全
       </a>
     </div>
-    <div class="mt-2 font-normal">为一个前端工程师来说，我们要做的不仅仅的写出代码，构建一个网页，同时，我们还要考虑我们写的网站的安全问题。如果安全性得不到保障，一些有不良企图的人就可能会通过非法手段获取我们的隐私，来进行牟利、诈骗等等一系列非法行为。所以，Web 安全问题同样时我们前端工程师需要非常重视的一个地方。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">为一个前端工程师来说，我们要做的不仅仅的写出代码，构建一个网页，同时，我们还要考虑我们写的网站的安全问题。如果安全性得不到保障，一些有不良企图的人就可能会通过非法手段获取我们的隐私，来进行牟利、诈骗等等一系列非法行为。所以，Web 安全问题同样时我们前端工程师需要非常重视的一个地方。</div>
     <div class="mt-2 font-light">发表日期：2017-05-11</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/web">web</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/web">
+    web
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/performance-optimization/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/performance-optimization/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_2dLLbQ.avif 400w,/sayhub/_astro/cover_MUsWX.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_1MWXGi.webp 400w,/sayhub/_astro/cover_n6Fsp.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/cover_Z26VhqC.jpeg 400w,/sayhub/_astro/cover_1xoy9q.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="浅谈前端性能优化" src="/sayhub/_astro/cover_1xoy9q.jpeg" loading="lazy" decoding="async">
+	<img alt="浅谈前端性能优化" src="/sayhub/_astro/cover_1xoy9q.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/performance-optimization/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/performance-optimization/">
         浅谈前端性能优化
       </a>
     </div>
-    <div class="mt-2 font-normal">聊一聊什么前端性能优化以及怎么做性能优化。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">聊一聊什么前端性能优化以及怎么做性能优化。</div>
     <div class="mt-2 font-light">发表日期：2017-05-08</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/tag-semantics/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/tag-semantics/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_Z2a3X5t.avif 400w,/sayhub/_astro/cover_1ugRuz.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_2ujndT.webp 400w,/sayhub/_astro/cover_14s501.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/jpeg" srcset="/sayhub/_astro/cover_Z1pzRT1.jpeg 400w,/sayhub/_astro/cover_2eJWG2.jpeg 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="谈谈标签语义化" src="/sayhub/_astro/cover_2eJWG2.jpeg" loading="lazy" decoding="async">
+	<img alt="谈谈标签语义化" src="/sayhub/_astro/cover_2eJWG2.jpeg" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/tag-semantics/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/tag-semantics/">
         谈谈标签语义化
       </a>
     </div>
-    <div class="mt-2 font-normal">最近在做百度前端技术学院的基础题，HTML和CSS部分，我发现一个问题，我还是习惯于嵌套一堆div，然而HTML5已经定义了很多新的具有明确语义化的标签，大家也都在倡导使用语义化标签，所以想写一写关于HTML标签语义化的东西。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">最近在做百度前端技术学院的基础题，HTML和CSS部分，我发现一个问题，我还是习惯于嵌套一堆div，然而HTML5已经定义了很多新的具有明确语义化的标签，大家也都在倡导使用语义化标签，所以想写一写关于HTML标签语义化的东西。</div>
     <div class="mt-2 font-light">发表日期：2017-02-27</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTML">HTML</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/HTML">
+    HTML
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li><li class="mb-5 md:mb-8">
-            <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/layout-v1/">
+        </li><li class="mb-4">
+          <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/layout-v1/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/cover_Z12Ue6T.avif 400w,/sayhub/_astro/cover_Z2sLwkM.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z1sJ1Bs.webp 400w,/sayhub/_astro/cover_2bANXA.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_Z157HGf.png 400w,/sayhub/_astro/cover_Z2uY0U8.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="双飞翼布局与圣杯布局" src="/sayhub/_astro/cover_Z2uY0U8.png" loading="lazy" decoding="async">
+	<img alt="双飞翼布局与圣杯布局" src="/sayhub/_astro/cover_Z2uY0U8.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/layout-v1/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/layout-v1/">
         双飞翼布局与圣杯布局
       </a>
     </div>
-    <div class="mt-2 font-normal">三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。本文介绍几种常用的三列布局方法。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">三列布局是一种比较基础的布局，分别是左列 left，主要用作导航，在整个布局的左边，宽度固定；主列 main 居中，用来显示整个网页的主要内容，宽度自适应；右列 right，平时主要用来显示广告等内容，在整个布局的右边，宽度固定。本文介绍几种常用的三列布局方法。</div>
     <div class="mt-2 font-light">发表日期：2017-02-21</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTML">HTML</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/CSS">CSS</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/HTML">
+    HTML
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/CSS">
+    CSS
+  </a>
+</div>
+    </div>
   </div>
 </div>
-          </li>
-    </ul>
-  </section>
-  </main><footer class="astro-SZ7XMLTE">
+        </li>
+  </ul>
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
   <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
     冀ICP备17036505号-1
   </a>
@@ -652,6 +857,7 @@
     &copy; 2023 SayHub. All rights reserved.
   </div>
 </footer>
+
     
     <script>
       window.onload = function () {

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base">
+<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.0.16">
+<meta name="generator" content="Astro v2.5.3">
 
 <!-- Primary Meta Tags -->
 <title>SayHub</title>
 <meta name="title" content="SayHub">
-<meta name="description" content="李瑞丰/liruifengv的博客网站，包括个人文章、自我介绍等内容，技术文章涵盖前端、后端、运维、Rust、Vue、React、Node、Deno等多个领域。">
+<meta name="description" content="使用 Astro 构建的博客模板，快速搭建拥有漂亮主题的个人博客 / A blog site template with a beautiful theme built with Astro">
 <link rel="shortcut icon" href="https://images.sayhub.me/logo.png">
 
 
     
-  <link rel="stylesheet" href="/sayhub/_astro/404.913c0a4f.css" />
-<link rel="stylesheet" href="/sayhub/_astro/_...slug_.258635cf.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
+  <link rel="stylesheet" href="/sayhub/_astro/404.06d6ef7e.css" />
+<link rel="stylesheet" href="/sayhub/_astro/_...slug_.e9fd3a69.css" /><script type="module">(function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?25fe062a2732666635d67e6585c7ea35";var t=document.getElementsByTagName("script")[0];t.parentNode?.insertBefore(e,t)})();
 </script></head>
   
-    <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-7xl">
+    
+  <header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+  <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href="/sayhub/">
-        <img class="w-10 h-10 rounded-3xl" src="https://images.sayhub.me/logo.png" alt="logo">
+        <img class="w-10 h-10 rounded-md" src="https://images.sayhub.me/logo.png" alt="logo">
         <span class="ml-4 text-2xl text-gray-900 font-bold">SayHub</span>
       </a>
       <div class="flex items-center md:hidden">
@@ -33,248 +34,217 @@
     <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto" aria-label="Main navigation">
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
         <li>
-          <a href="/sayhub/" class="text-primary-600 font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/" class="text-primary-600 hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   首页
 </a>
         </li>
         <li>
-          <a href="/sayhub/blog" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/blog" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   文章
 </a>
         </li>
         <li>
-          <a href="/sayhub/tag/读后感" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag/读后感" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   读后感
 </a>
         </li>
         <li>
-          <a href="/sayhub/about" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+          <a href="/sayhub/tag" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
+  标签
+</a>
+        </li>
+        <li>
+          <a href="/sayhub/about" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG">
   关于
 </a>
         </li>
         <li>
-          <a href="https://sayhub.me/rss.xml" class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
+          <a href="https://sayhub.me/rss.xml" class="hover:text-gray-900 px-4 flex items-center transition duration-150 ease-in-out astro-EIMMU3LG" target="_blank">
   RSS 订阅
 </a>
         </li>
         <li class="md:hidden">
-          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv" aria-label="liruifengv Github" target="_blank">Github
+          <a class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out" href="https://github.com/liruifengv/sayhub-blog-template" aria-label="sayhub-blog-template Github" target="_blank">Github
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <a href="https://github.com/liruifengv" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="liruifengv Github" target="_blank">
+          <a href="https://github.com/liruifengv/sayhub-blog-template" class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5" aria-label="sayhub-blog-template Github" target="_blank">
             <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           </a>
         </div>
       </div>
     </nav>
   </div>
-</header><main>
-    <div class="max-w-7xl flex mx-auto flex-col md:flex-row">
-    <section class="px-6 py-8 sm:py-12 lg:py-16 max-w-5xl">
-      <div class="mb-6 text-3xl text-center">最近更新</div>
-      <ul>
-        <li class="mt-5 md:mb-8">
-              <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/build-api-express-typescript/">
+</header>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
+    
+  <div class="min-w-[80%] flex justify-center">
+    <ul>
+      <li class="mb-4">
+            <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/node-v20/" class="inline-block h-full">
           <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/cover_nttX5.avif 400w,/sayhub/_astro/cover_Z12mNfN.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z2kiwt.webp 400w,/sayhub/_astro/cover_Z1sbAKm.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_Z1mjv21.png 400w,/sayhub/_astro/cover_2i1ky2.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用 Express、TypeScript 和 Deno 构建 REST API" src="/sayhub/_astro/cover_2i1ky2.png" loading="lazy" decoding="async">
+	<source type="image/avif" srcset="/sayhub/_astro/node-v20_1sjAuw.avif 400w,/sayhub/_astro/node-v20_2sigD.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/node-v20_12uMYX.webp 400w,/sayhub/_astro/node-v20_ZnludU.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/node-v20_ZFanLE.png 400w,/sayhub/_astro/node-v20_Z261G0x.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="Node.js 发布 v20，来看看有什么新玩法" src="/sayhub/_astro/node-v20_Z261G0x.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/build-api-express-typescript/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/node-v20/">
+        Node.js 发布 v20，来看看有什么新玩法
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">2023 年 4 月 18 日，Node.js 正式发布了 v20 版本，本篇文章带你快速了解及尝鲜。</div>
+    <div class="mt-2 font-light">发表日期：2023-4-20</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/node">
+    node
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+          </li><li class="mb-4">
+            <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/deno-package-json-support/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-1_Z25oN7w.avif 400w,/sayhub/_astro/deno-1_1yV2sw.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-1_Z2vdAC5.webp 400w,/sayhub/_astro/deno-1_197eWX.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/deno-1_1YVN81.png 400w,/sayhub/_astro/deno-1_z5uT8.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持" src="/sayhub/_astro/deno-1_z5uT8.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/deno-package-json-support/">
+        Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支持
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis"></div>
+    <div class="mt-2 font-light">发表日期：2023-04-12</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+          </li><li class="mb-4">
+            <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/roll-your-own-javascript-runtime/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/deno-v8_161CiW.avif 400w,/sayhub/_astro/deno-v8_ZjOETV.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-v8_FcONo.webp 400w,/sayhub/_astro/deno-v8_ZJDspu.webp 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="打造你自己的 JavaScript 运行时" src="/sayhub/_astro/deno-v8_ZJDspu.webp" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/roll-your-own-javascript-runtime/">
+        打造你自己的 JavaScript 运行时
+      </a>
+    </div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">教你使用 Rust 和 deno_core 打造属于你自己的 JavaScript 运行时。</div>
+    <div class="mt-2 font-light">发表日期：2023-04-05</div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/JavaScript">
+    JavaScript
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Rust">
+    Rust
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+          </li><li class="mb-4">
+            <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/build-api-express-typescript/" class="inline-block h-full">
+          <picture>
+	<source type="image/avif" srcset="/sayhub/_astro/cover_nttX5.avif 400w,/sayhub/_astro/cover_Z12mNfN.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/cover_Z2kiwt.webp 400w,/sayhub/_astro/cover_Z1sbAKm.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/cover_Z1mjv21.png 400w,/sayhub/_astro/cover_2i1ky2.png 900w" sizes="(max-width: 900px) 400px, 900px">
+	<img alt="使用 Express、TypeScript 和 Deno 构建 REST API" src="/sayhub/_astro/cover_2i1ky2.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
+</picture>
+        </a>
+      </div>
+  <div class="py-6 px-6">
+    <div class="text-xl font-heading font-bold">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/build-api-express-typescript/">
         使用 Express、TypeScript 和 Deno 构建 REST API
       </a>
     </div>
-    <div class="mt-2 font-normal">使用 Express、TypeScript 和 Deno 构建 REST API的教程，翻译自 Deno 官方博客。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">使用 Express、TypeScript 和 Deno 构建 REST API的教程，翻译自 Deno 官方博客。</div>
     <div class="mt-2 font-light">发表日期：2023-03-30</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Deno">Deno</a>
-        </li>
-    </ul>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Deno">
+    Deno
+  </a>
+</div>
+    </div>
   </div>
 </div>
-            </li><li class="mt-5 md:mb-8">
-              <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/rspack-vue/">
+          </li><li class="mb-4">
+            <div class="flex flex-col md:flex-row bg-white md:h-48 max-w-sm md:max-w-3xl rounded-lg">
+  <div class="md:shrink-0 w-full md:w-80">
+        <a href="/sayhub/blog/rspack-vue/" class="inline-block h-full">
           <picture>
 	<source type="image/avif" srcset="/sayhub/_astro/rspack_ZbPuFW.avif 400w,/sayhub/_astro/rspack_Z1BGMTP.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/rspack_ZBEibv.webp 400w,/sayhub/_astro/rspack_Z22vApo.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/rspack_Z2mumSi.png 400w,/sayhub/_astro/rspack_1hPsGK.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="快速尝鲜字节刚刚开源的 Rspack，卷不动了？" src="/sayhub/_astro/rspack_1hPsGK.png" loading="lazy" decoding="async">
+	<img alt="快速尝鲜字节刚刚开源的 Rspack，卷不动了？" src="/sayhub/_astro/rspack_1hPsGK.png" loading="lazy" decoding="async" class="w-full h-full rounded-t-lg md:rounded-none md:rounded-l-lg">
 </picture>
         </a>
       </div>
-  <div class="mt-2 md:mt-0 md:px-6">
+  <div class="py-6 px-6">
     <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/rspack-vue/">
+      <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-1 text-ellipsis" href="/sayhub/blog/rspack-vue/">
         快速尝鲜字节刚刚开源的 Rspack，卷不动了？
       </a>
     </div>
-    <div class="mt-2 font-normal">你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。</div>
+    <div class="mt-2 font-normal line-clamp-2 text-ellipsis">你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。</div>
     <div class="mt-2 font-light">发表日期：2023-03-10</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/webpack">webpack</a>
-        </li>
-    </ul>
-  </div>
+    <div class="mt-2">
+      <div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/Vue">
+    Vue
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/front-end">
+    front-end
+  </a>
+</div><div class="bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2">
+  <a href="/sayhub/tag/webpack">
+    webpack
+  </a>
 </div>
-            </li><li class="mt-5 md:mb-8">
-              <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/certbot-https/">
-          <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/HTTPS-cover_2qmMfY.avif 400w,/sayhub/_astro/HTTPS-cover_10vu26.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/HTTPS-cover_20xYKq.webp 400w,/sayhub/_astro/HTTPS-cover_zGGwx.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/HTTPS-cover_19N7gO.png 400w,/sayhub/_astro/HTTPS-cover_Zg3aW4.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="使用Certbot申请免费 HTTPS 证书及自动续期" src="/sayhub/_astro/HTTPS-cover_Zg3aW4.png" loading="lazy" decoding="async">
-</picture>
-        </a>
-      </div>
-  <div class="mt-2 md:mt-0 md:px-6">
-    <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/certbot-https/">
-        使用Certbot申请免费 HTTPS 证书及自动续期
-      </a>
-    </div>
-    <div class="mt-2 font-normal">今天来使用 Certbot 来申请免费的HTTPS证书，并且自动续期</div>
-    <div class="mt-2 font-light">发表日期：2023-03-02</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTTPS">HTTPS</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/nginx">nginx</a>
-        </li>
-    </ul>
-  </div>
-</div>
-            </li><li class="mt-5 md:mb-8">
-              <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/chatgpt-vue3/">
-          <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/deno-code_cUh1O.avif 400w,/sayhub/_astro/deno-code_Z1cV1c4.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/deno-code_ZcSvsJ.webp 400w,/sayhub/_astro/deno-code_Z1CJNGC.webp 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="我用 ChatGPT 读 Vue3 源码" src="/sayhub/_astro/deno-code_Z1CJNGC.webp" loading="lazy" decoding="async">
-</picture>
-        </a>
-      </div>
-  <div class="mt-2 md:mt-0 md:px-6">
-    <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/chatgpt-vue3/">
-        我用 ChatGPT 读 Vue3 源码
-      </a>
-    </div>
-    <div class="mt-2 font-normal">ChatGPT 最近十分火爆，今天我也来让 ChatGPT 帮我阅读一下 Vue3 的源代码。看看Vue3 的 setup函数是怎么回事。</div>
-    <div class="mt-2 font-light">发表日期：2023-02-23</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ChatGPT">ChatGPT</a>
-        </li>
-    </ul>
-  </div>
-</div>
-            </li><li class="mt-5 md:mb-8">
-              <div class="flex flex-col md:flex-row text-gray-900">
-  <div class="md:shrink-0 w-full md:h-full md:w-80">
-        <a href="/sayhub/blog/create-lint-config/">
-          <picture>
-	<source type="image/avif" srcset="/sayhub/_astro/screenshot_tzGKY.avif 400w,/sayhub/_astro/screenshot_ZVgArT.avif 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/webp" srcset="/sayhub/_astro/screenshot_3KTgq.webp 400w,/sayhub/_astro/screenshot_Z1m5nWs.webp 900w" sizes="(max-width: 900px) 400px, 900px"><source type="image/png" srcset="/sayhub/_astro/screenshot_ZR6jUB.png 400w,/sayhub/_astro/screenshot_Z2hWC9u.png 900w" sizes="(max-width: 900px) 400px, 900px">
-	<img alt="写一个命令行CLI，一键生成各种烦人的lint配置" src="/sayhub/_astro/screenshot_Z2hWC9u.png" loading="lazy" decoding="async">
-</picture>
-        </a>
-      </div>
-  <div class="mt-2 md:mt-0 md:px-6">
-    <div class="text-xl font-heading font-bold">
-      <a class="hover:text-primary-600 transition ease-in duration-200" href="/sayhub/blog/create-lint-config/">
-        写一个命令行CLI，一键生成各种烦人的lint配置
-      </a>
-    </div>
-    <div class="mt-2 font-normal">前端工程中各种配置文件eslint、prettier等搞得我很头大，那就写一个命令行工具来搞定它吧。</div>
-    <div class="mt-2 font-light">发表日期：2023-02-21</div>
-    <ul class="mt-2">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/开源">开源</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/CLI">CLI</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/工具">工具</a>
-        </li>
-    </ul>
-  </div>
-</div>
-            </li>
-      </ul>
-      <a href="/sayhub/blog" class="hover:text-primary-600 mt-6 text-xl flex flex-row-reverse">查看更多&gt;</a>
-    </section>
-    <div class="px-6 py-8 mt-2 text-base max-w-sm">
-      <div class="mt-6 text-3xl">全部标签</div>
-      <ul class="text-base mt-6">
-      <li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Deno">Deno</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Vue">Vue</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/front-end">front-end</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/webpack">webpack</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTTPS">HTTPS</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/nginx">nginx</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ChatGPT">ChatGPT</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/开源">开源</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/CLI">CLI</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/工具">工具</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/读后感">读后感</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/JavaScript">JavaScript</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/HTML">HTML</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/WebView">WebView</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/React">React</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/Promise">Promise</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/年终总结">年终总结</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/ghost">ghost</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/建站">建站</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/blog">blog</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/mysql">mysql</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/restful">restful</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/font">font</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/web">web</a>
-        </li><li class="text-primary-600 hover:underline bg-gray-100 dark:bg-slate-700 inline-block mr-4 mb-4 py-0.5 px-2">
-          <a href="/sayhub/tag/CSS">CSS</a>
-        </li>
-    </ul>
     </div>
   </div>
-  </main><footer class="astro-SZ7XMLTE">
+</div>
+          </li>
+    </ul>
+  </div>
+
+  
+
+  </main>
+  <footer class="astro-SZ7XMLTE">
   <a class="hover:text-primary-600 hover:underline astro-SZ7XMLTE" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" rel="noreferrer">
     冀ICP备17036505号-1
   </a>
@@ -282,6 +252,7 @@
     &copy; 2023 SayHub. All rights reserved.
   </div>
 </footer>
+
     
     <script>
       window.onload = function () {
