@@ -5,9 +5,9 @@ import PostItem from '~/components/PostItem.astro'
 
 const basename = import.meta.env.BASE_URL
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .filter((post) => !post.data.tags.includes('读后感'))
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+)
 
 const meta = {
   title: '全部文章列表',
@@ -16,15 +16,13 @@ const meta = {
 ---
 
 <PageLayout {meta}>
-  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
-    <ul>
-      {
-        posts.map((post) => (
-          <li class="mb-5 md:mb-8">
-            <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <ul>
+    {
+      posts.map((post) => (
+        <li class="mb-4">
+          <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
+        </li>
+      ))
+    }
+  </ul>
 </PageLayout>

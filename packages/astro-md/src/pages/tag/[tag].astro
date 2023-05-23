@@ -34,15 +34,15 @@ const meta = {
 
 <Layout {meta}>
   <header>
-    <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading">
-      Tag: {tag}
+    <h1 class="text-center text-2xl font-bold leading-tighter tracking-tighter font-heading">
+      标签：{tag}
     </h1>
   </header>
-  <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16 mx-auto max-w-5xl">
+  <section class="py-4 mx-auto max-w-5xl">
     <ul>
       {
         posts.map((post) => (
-          <li class="mb-5 md:mb-8">
+          <li class="mb-4">
             <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
           </li>
         ))

@@ -8,7 +8,7 @@ const { meta, isBlog } = Astro.props
 
 <Layout {meta} isBlog={isBlog}>
   <Header />
-  <main>
+  <main class="flex flex-col items-center min-h-[80%] px-4 py-4">
     <slot />
   </main>
   <Footer />

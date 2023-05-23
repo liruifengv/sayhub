@@ -22,7 +22,19 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 ---
 
 <Layout {meta}>
-  <div class="max-w-7xl flex mx-auto flex-col md:flex-row">
+  <div class="min-w-[80%] flex justify-center">
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="mb-4">
+            <PostItem post={post.data} url={`${basename}blog/${post.slug}/`} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- <div class="max-w-7xl flex mx-auto flex-col md:flex-row">
     <section class="px-6 py-8 sm:py-12 lg:py-16 max-w-5xl">
       <div class="mb-6 text-3xl text-center">最近更新</div>
       <ul>
@@ -40,5 +52,5 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
       <div class="mt-6 text-3xl">全部标签</div>
       <Tags tags={tags} class="text-base mt-6" />
     </div>
-  </div>
+  </div> -->
 </Layout>

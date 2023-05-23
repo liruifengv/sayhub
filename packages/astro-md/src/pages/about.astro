@@ -19,15 +19,19 @@ const meta = {
 ---
 
 <PageLayout {meta} isBlog={true}>
-  <div class:list={['max-w-4xl', 'flex mx-auto flex-col md:flex-row']}>
-    <section class="px-6 sm:px-6 py-8 sm:py-12 lg:py-16">
+  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+    <section class="px-6 py-6 mx-auto max-w-3xl">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
           {title}
         </h1>
       </header>
-      <article class="container mx-auto max-w-3xl markdown-body">
-        {image && <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" />}
+      <article class="container markdown-body">
+        {
+          image && (
+            <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" class="rounded-lg" />
+          )
+        }
         <div class="mt-6">
           <Content />
         </div>
