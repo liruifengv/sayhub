@@ -3,6 +3,7 @@ title: 'ghost 使用 mysql'
 description: '上一篇文章使用 Ghost 从零搭建博客系统 写了如何搭建 Ghost，但是 Ghost 默认使用 SQLite 数据库，我们想使用 mysql 数据库，这篇文章就实践一下。'
 pubDate: '2021-12-17'
 image: 'https://images.sayhub.me/blog/ghost/img3.webp'
+category: '编程技术'
 tags: [ghost, 建站, blog, mysql]
 ---
 

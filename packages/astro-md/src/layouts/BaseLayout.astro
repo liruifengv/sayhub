@@ -9,7 +9,7 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth text-base bg-gray-100 h-screen">
+<html lang="en" class="motion-safe:scroll-smooth text-base h-screen">
   <head>
     <BaseHead {...meta} />
     {
@@ -20,10 +20,42 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
       )
     }
   </head>
-  <body>
+  <body class="antialiased">
     <slot />
+    <script is:inline>
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+
+      window.onload = function () {
+        const menuIcon = document.querySelector('#toggle-menu')
+        menuIcon.addEventListener('click', () => {
+          menuIcon.classList.toggle('expanded')
+          document.body.classList.toggle('overflow-hidden')
+          document.getElementById('header')?.classList.toggle('h-screen')
+          document.querySelector('#header nav')?.classList.toggle('hidden')
+        })
+
+        const themeIcons = document.querySelectorAll('[data-toggle-theme]')
+        if (themeIcons && themeIcons.length) {
+          themeIcons.forEach((elem) => {
+            elem.addEventListener('click', () => {
+              document.documentElement.classList.toggle('dark')
+              localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+            })
+          })
+        }
+      }
+    </script>
     <style is:global>
+      /* body 根据 dark 主题改变背景颜色 */
       body {
+        @apply bg-gray-100 dark:bg-[#17181c];
         height: 100%;
       }
       img {
@@ -40,16 +72,5 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
         @apply rotate-45 translate-y-[-8px] translate-x-[14px];
       }
     </style>
-    <script is:inline>
-      window.onload = function () {
-        const menuIcon = document.querySelector('#toggle-menu')
-        menuIcon.addEventListener('click', () => {
-          menuIcon.classList.toggle('expanded')
-          document.body.classList.toggle('overflow-hidden')
-          document.getElementById('header')?.classList.toggle('h-screen')
-          document.querySelector('#header nav')?.classList.toggle('hidden')
-        })
-      }
-    </script>
   </body>
 </html>

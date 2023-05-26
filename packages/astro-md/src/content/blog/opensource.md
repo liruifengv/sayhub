@@ -3,6 +3,7 @@ title: '我的开源之旅&新手如何参与开源社区'
 description: '本篇文章讲讲我的开源之旅，以及新手程序员如何参与进来。'
 pubDate: '2023-1-31'
 image: 'https://images.sayhub.me/blog/opensource/github.jpeg'
+category: '编程技术'
 tags: [开源]
 ---
 

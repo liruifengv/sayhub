@@ -3,6 +3,7 @@ title: '快速尝鲜字节刚刚开源的 Rspack，卷不动了？'
 description: '你还卷得动吗？今天，字节跳动刚刚开源了 Rspack，一个 Rust 写的打包构建工具，功能和用法上对齐 webpack。'
 pubDate: '2023-03-10'
 image: 'https://images.sayhub.me/blog/rspack-vue/rspack.png'
+category: '编程技术'
 tags: [Vue, front-end, webpack]
 ---
 

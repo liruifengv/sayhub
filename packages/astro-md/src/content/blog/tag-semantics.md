@@ -3,6 +3,7 @@ title: '谈谈标签语义化'
 description: '最近在做百度前端技术学院的基础题，HTML和CSS部分，我发现一个问题，我还是习惯于嵌套一堆div，然而HTML5已经定义了很多新的具有明确语义化的标签，大家也都在倡导使用语义化标签，所以想写一写关于HTML标签语义化的东西。'
 pubDate: '2017-02-27'
 image: 'https://images.sayhub.me/blog/tag-semantics/cover.jpeg'
+category: '编程技术'
 tags: [HTML]
 ---
 

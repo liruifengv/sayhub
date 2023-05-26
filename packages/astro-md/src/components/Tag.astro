@@ -1,13 +1,21 @@
 ---
-const className = `bg-sky-500 rounded-md text-white inline-block mr-4 mb-4 py-0.5 px-2`
+import { getCollection } from 'astro:content'
+const basename = import.meta.env.BASE_URL
+
+const { showCount = false } = Astro.props
+
+const className = `bg-[#0071e3] rounded-md text-[#f5f5f7] inline-block mr-4 mb-4 py-0.5 px-2`
 
 const { tagName } = Astro.props
 
-const basename = import.meta.env.BASE_URL
+const allPosts = await getCollection('blog')
+
+const tagCount = allPosts.filter((post) => post.data.tags.includes(tagName)).length
 ---
 
 <div class={className}>
   <a href={`${basename}tag/${tagName}`}>
     <slot />
+    {showCount && <span>({tagCount})</span>}
   </a>
 </div>

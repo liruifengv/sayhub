@@ -3,6 +3,7 @@ title: '开发弹窗，你使用状态驱动还是命令式？'
 description: '作为一名前端开发工程师，开发各种弹窗是家常便饭，但如何快捷高效、风格统一是一个问题。本文介绍状态驱动和命令式两种方式。'
 pubDate: '2022-12-29'
 image: 'https://images.sayhub.me/blog/promise-modal/Modal.png'
+category: '编程技术'
 tags: [React, Promise, JavaScript]
 ---
 

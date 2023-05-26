@@ -5,37 +5,38 @@ import { getCollection } from 'astro:content'
 
 const basename = import.meta.env.BASE_URL
 
-const { tag } = Astro.params
+const { category } = Astro.params
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
   .filter((post) => {
-    return post.data.tags?.includes(tag)
+    return post.data.category === category
   })
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog')
-  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag))
+  const categories = [...new Set(allPosts.map((post) => post.data.category).flat())]
+
+  return categories.map((category) => {
+    const filteredPosts = allPosts.filter((post) => post.data.category === category)
     return {
-      params: { tag },
+      params: { category },
       props: { posts: filteredPosts },
     }
   })
 }
 
 const meta = {
-  title: `Tag: ${tag}`,
-  description: `这里是根据标签"${tag}"分类的文章`,
+  title: `分类: ${category}`,
+  description: `这里是"${category}"分类的文章`,
 }
 ---
 
 <Layout {meta}>
   <header>
     <h1 class="text-center text-2xl font-bold leading-tighter tracking-tighter font-heading dark:text-white">
-      标签：{tag}
+      分类：{category}
     </h1>
   </header>
   <section class="py-4 mx-auto max-w-5xl">

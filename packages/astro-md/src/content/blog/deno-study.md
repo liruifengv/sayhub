@@ -3,6 +3,7 @@ title: 'Deno 初探'
 description: 'Deno 的官方介绍是一个 JavaScript 和 TypeScript 的安全运行时。 Deno 旨在为现代程序员提供高效且安全的脚本环境。 它基于V8，Rust和TypeScript构建。'
 pubDate: '2019-12-11'
 image: 'https://images.sayhub.me/blog/deno/deno-v8.avif'
+category: '编程技术'
 tags: [Deno]
 ---
 

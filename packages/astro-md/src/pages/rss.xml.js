@@ -1,5 +1,5 @@
 import rss, { pagesGlobToRssItems } from '@astrojs/rss'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../config'
 import { getCollection } from 'astro:content'
 
 export const get = async () => {

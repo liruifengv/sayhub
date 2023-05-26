@@ -3,6 +3,7 @@ title: '使用 Ghost 从零搭建博客系统'
 description: 'Ghost 是一个开源的 CMS 博客系统，使用 Node.js 技术栈，让有需求的个人或团队能够快速的搭建想要的博客站点'
 pubDate: '2021-11-19'
 image: 'https://images.sayhub.me/blog/ghost/img3.webp'
+category: '编程技术'
 tags: [ghost, 建站, blog]
 ---
 

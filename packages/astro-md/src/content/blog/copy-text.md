@@ -3,6 +3,7 @@ title: 'JS复制文字到剪贴板的坑及完整方案。'
 description: '在做 JS 复制到剪贴板功能的时候，遇到了不少坑，这边文章展开记录一下。'
 pubDate: '2023-01-10'
 image: 'https://images.sayhub.me/blog/cover.jpeg'
+category: '编程技术'
 tags: [front-end, JavaScript, HTML, WebView]
 ---
 

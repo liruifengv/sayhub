@@ -2,27 +2,31 @@
 import { Icon } from 'astro-icon'
 import HeaderLink from './HeaderLink.astro'
 import ToggleMenu from '~/components/ToggleMenu.astro'
+import ToggleTheme from '~/components/ToggleTheme.astro'
 import { SITE_TITLE, CDN_URL, SITE_URL } from '~/config'
 
 const basename = import.meta.env.BASE_URL
 ---
 
-<header class="sticky top-0 z-40 mx-auto w-full bg-white" id="header">
+<header class="sticky top-0 z-40 mx-auto w-full bg-white dark:bg-[#24272d]" id="header">
   <div class="py-2 px-2 md:px-10 mx-auto w-full md:flex md:justify-between">
     <div class="flex justify-between">
       <a class="flex items-center flex-shrink-0" href={`${basename}`}>
         <img class="w-10 h-10 rounded-md" src={`${CDN_URL}/logo.png`} alt="logo" />
-        <span class="ml-4 text-2xl text-gray-900 font-bold">{SITE_TITLE}</span>
+        <span class="ml-4 text-2xl text-gray-900 font-bold dark:text-slate-200">{SITE_TITLE}</span>
       </a>
       <div class="flex items-center md:hidden">
+        <ToggleTheme />
         <ToggleMenu />
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex text-gray-600 h-screen md:h-auto"
+      class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-300 h-screen md:h-auto"
       aria-label="Main navigation"
     >
-      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base">
+      <ul
+        class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-2xl md:text-base md:items-center"
+      >
         <li>
           <HeaderLink href={`${basename}`}>首页</HeaderLink>
         </li>
@@ -30,7 +34,7 @@ const basename = import.meta.env.BASE_URL
           <HeaderLink href={`${basename}blog`}>文章</HeaderLink>
         </li>
         <li>
-          <HeaderLink href={`${basename}tag/读后感`}>读后感</HeaderLink>
+          <HeaderLink href={`${basename}categories`}>分类</HeaderLink>
         </li>
         <li>
           <HeaderLink href={`${basename}tag`}>标签</HeaderLink>
@@ -41,9 +45,12 @@ const basename = import.meta.env.BASE_URL
         <li>
           <HeaderLink target="_blank" href={`${SITE_URL}/rss.xml`}>RSS 订阅</HeaderLink>
         </li>
+        <li class="hidden md:block">
+          <ToggleTheme />
+        </li>
         <li class="md:hidden">
           <a
-            class="font-medium hover:text-gray-900 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            class="font-medium px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href="https://github.com/liruifengv"
             aria-label="liruifengv Github"
             target="_blank"
@@ -55,7 +62,7 @@ const basename = import.meta.env.BASE_URL
         <div class="hidden items-center md:flex">
           <a
             href="https://github.com/liruifengv"
-            class="inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5"
+            class="inline-block text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-slate-300 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5"
             aria-label="liruifengv Github"
             target="_blank"
           >

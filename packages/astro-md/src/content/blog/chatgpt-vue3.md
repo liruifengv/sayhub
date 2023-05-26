@@ -3,6 +3,7 @@ title: '我用 ChatGPT 读 Vue3 源码'
 description: 'ChatGPT 最近十分火爆，今天我也来让 ChatGPT 帮我阅读一下 Vue3 的源代码。看看Vue3 的 setup函数是怎么回事。'
 pubDate: '2023-02-23'
 image: 'https://images.sayhub.me/blog/deno-http/deno-code.avif'
+category: '编程技术'
 tags: [Vue, ChatGPT]
 ---
 

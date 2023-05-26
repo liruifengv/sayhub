@@ -3,6 +3,7 @@ title: 'Node.js 发布 v20，来看看有什么新玩法'
 description: '2023 年 4 月 18 日，Node.js 正式发布了 v20 版本，本篇文章带你快速了解及尝鲜。'
 pubDate: '2023-4-20'
 image: 'https://images.sayhub.me/blog/node-v20/node-v20.png'
+category: '编程技术'
 tags: [node]
 ---
 

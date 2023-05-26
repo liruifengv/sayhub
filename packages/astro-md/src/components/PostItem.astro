@@ -17,7 +17,9 @@ export interface Props {
 const { post, url } = Astro.props
 ---
 
-<div class="flex flex-col md:flex-row bg-white md:min-h-48 max-w-sm md:max-w-3xl rounded-lg">
+<div
+  class="flex flex-col md:flex-row bg-white md:min-h-48 max-w-sm md:max-w-3xl rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840]"
+>
   {
     post.image && (
       <div class="md:shrink-0 w-full md:w-80">
@@ -35,7 +37,7 @@ const { post, url } = Astro.props
       </div>
     )
   }
-  <div class="py-6 px-6">
+  <div class="py-6 px-6 md:min-w-[400px]">
     <div class="text-xl font-heading font-bold">
       <a class="hover:text-primary-600 transition ease-in duration-200 line-clamp-2 text-ellipsis" href={url}>
         {post.title}

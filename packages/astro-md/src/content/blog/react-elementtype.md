@@ -3,6 +3,7 @@ title: 'React PropTypes 中的 elementType'
 description: '在用 React 进行开发的过程中，要用到 PropTypes 对组件的 props 进行类型检查。其中有两个类型，element 和 elementType，让我百思不得其解。这两个的区别到底是什么，在跟小伙伴探讨和实践之后，产生了这篇文章。'
 pubDate: '2021-12-10'
 image: 'https://images.sayhub.me/blog/react-elementtype/React.jpeg'
+category: '编程技术'
 tags: [React]
 ---
 

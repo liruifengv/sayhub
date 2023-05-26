@@ -1,5 +1,5 @@
 ---
-const { tags, class: className = 'text-sm' } = Astro.props
+const { tags, class: className = 'text-sm', showCount = false } = Astro.props
 import PostTag from '~/components/Tag.astro'
 ---
 
@@ -7,7 +7,9 @@ import PostTag from '~/components/Tag.astro'
   tags && Array.isArray(tags) && (
     <div class={className}>
       {tags.map((tag) => (
-        <PostTag tagName={tag}>{tag}</PostTag>
+        <PostTag tagName={tag} showCount={showCount}>
+          {tag}
+        </PostTag>
       ))}
     </div>
   )

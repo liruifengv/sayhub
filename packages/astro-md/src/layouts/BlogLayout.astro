@@ -10,7 +10,7 @@ type Props = CollectionEntry<'blog'>['data']
 
 const basename = import.meta.env.BASE_URL
 
-const { title, description, pubDate, image, tags, showRecent } = Astro.props
+const { title, description, pubDate, image, tags, category } = Astro.props
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
@@ -24,21 +24,35 @@ const meta = {
 ---
 
 <PageLayout {meta} isBlog={true}>
-  <div class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg">
+  <div
+    class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840]"
+  >
     <section class="px-6 py-6 mx-auto max-w-3xl">
       <header>
         <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
           {title}
         </h1>
-        {
-          pubDate && (
-            <div class="text-center px-4 mb-4">
-              发表日期： <time>{pubDate}</time>
-            </div>
-          )
-        }
+        <div class="flex justify-center px-4 mb-4">
+          {
+            pubDate && (
+              <div>
+                发表日期： <time>{pubDate}</time>
+              </div>
+            )
+          }
+          {
+            category && (
+              <div class="ml-4">
+                分类：
+                <a class="hover:text-blue-500" href={`${basename}categories/${category}/`}>
+                  {category}
+                </a>
+              </div>
+            )
+          }
+        </div>
       </header>
-      <article class="container markdown-body">
+      <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
         {
           image && (
             <Picture

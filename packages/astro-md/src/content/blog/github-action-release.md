@@ -3,6 +3,7 @@ title: '使用 GitHub Action 自动化发布 npm 版本'
 description: '本文将介绍如何利用 GitHub Action 自动化发布 npm 包版本和 GitHub release。'
 pubDate: '2023-02-18'
 image: 'https://images.sayhub.me/blog/opensource/github.jpeg'
+category: '编程技术'
 tags: [开源]
 ---
 

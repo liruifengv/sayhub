@@ -3,6 +3,7 @@ title: '打造你自己的 JavaScript 运行时'
 description: '教你使用 Rust 和 deno_core 打造属于你自己的 JavaScript 运行时。'
 pubDate: '2023-04-05'
 image: 'https://images.sayhub.me/blog/deno/deno-v8.avif'
+category: '编程技术'
 tags: [Deno, JavaScript, Rust, front-end]
 ---
 

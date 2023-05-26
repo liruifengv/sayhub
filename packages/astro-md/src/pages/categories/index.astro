@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content'
+import PageLayout from '~/layouts/PageLayout.astro'
+
+const basename = import.meta.env.BASE_URL
+
+const allPosts = await getCollection('blog')
+
+// 查找所有分类
+const categories = [...new Set(allPosts.map((post) => post.data.category).flat())]
+
+// 根据分类获取文章数量
+function getCountByCategory(category) {
+  return allPosts.filter((post) => post.data.category.includes(category)).length
+}
+
+// 根据分类查找最近 3 篇文章
+function getPostsByCategory(category) {
+  return allPosts.filter((post) => post.data.category.includes(category)).slice(0, 3)
+}
+
+const meta = {
+  title: `全部分类`,
+  description: `全部分类`,
+}
+---
+
+<PageLayout {meta}>
+  <div class="w-full flex flex-col md:flex-row">
+    {
+      categories &&
+        Array.isArray(categories) &&
+        categories.map((category) => (
+          <div class="w-full md:w-[50%] my-2 md:mx-2 py-4 px-4 box-border bg-white rounded-lg flex flex-col dark:text-white dark:bg-[#24272d] border dark:border-[#353840]">
+            <div class="flex items-center">
+              <div class="text-xl">{category}</div>
+              <div class="text-sm mx-2 text-gray-500">共 {getCountByCategory(category)} 篇</div>
+            </div>
+            <div>
+              {getPostsByCategory(category).map((post) => (
+                <div class="my-2 cursor-pointer">
+                  <a href={`${basename}blog/${post.slug}/`} class="text-blue-500 hover:text-blue-700">
+                    {post.data.title}
+                  </a>
+                </div>
+              ))}
+            </div>
+            <a class="flex w-full flex-row-reverse hover:text-blue-500" href={`${basename}categories/${category}/`}>
+              查看更多 &gt;
+            </a>
+          </div>
+        ))
+    }
+  </div>
+</PageLayout>

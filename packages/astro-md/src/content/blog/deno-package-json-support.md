@@ -3,6 +3,7 @@ title: 'Node/Deno 之父 ry: 我们为什么给 Deno 添加了 package.json 支�
 description: ''
 pubDate: '2023-04-12'
 image: 'https://images.sayhub.me/blog/deno-package-json-support/deno-1.png'
+category: '编程技术'
 tags: [Deno]
 ---
 

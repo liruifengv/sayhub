@@ -3,6 +3,7 @@ title: '2022 年终总结'
 description: '2022 年是难以言表的一年，没完没了的疫情席卷着我们。所幸的是，2022 年末的时候，迎来了新的转机。抓住 12 月的尾巴，写一下今年的年终总结。'
 pubDate: '2022-12-28'
 image: 'https://images.sayhub.me/blog/2022-year-end-summary/2022'
+category: '年终总结'
 tags: [年终总结]
 ---
 

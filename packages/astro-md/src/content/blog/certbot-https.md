@@ -3,6 +3,7 @@ title: '使用Certbot申请免费 HTTPS 证书及自动续期'
 description: '今天来使用 Certbot 来申请免费的HTTPS证书，并且自动续期'
 pubDate: '2023-03-02'
 image: 'https://images.sayhub.me/blog/certbot-https/HTTPS-cover.png'
+category: '编程技术'
 tags: [HTTPS, nginx]
 ---
 
