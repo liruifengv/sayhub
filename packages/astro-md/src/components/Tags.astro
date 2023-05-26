@@ -1,14 +1,28 @@
 ---
 const { tags, class: className = 'text-sm', showCount = false } = Astro.props
+import { getCollection } from 'astro:content'
 import PostTag from '~/components/Tag.astro'
+
+const allPosts = await getCollection('blog')
+
+function getTagCount(tagName) {
+  return allPosts.filter((post) => post.data.tags.includes(tagName)).length
+}
+
+const postTags = tags
+  .map((tag) => ({
+    name: tag,
+    count: getTagCount(tag),
+  }))
+  .sort((a, b) => b.count - a.count)
 ---
 
 {
-  tags && Array.isArray(tags) && (
+  postTags && Array.isArray(postTags) && (
     <div class={className}>
-      {tags.map((tag) => (
-        <PostTag tagName={tag} showCount={showCount}>
-          {tag}
+      {postTags.map((tag) => (
+        <PostTag tag={tag} showCount={showCount}>
+          {showCount ? `${tag.name} (${tag.count})` : tag.name}
         </PostTag>
       ))}
     </div>
