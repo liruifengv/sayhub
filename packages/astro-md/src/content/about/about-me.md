@@ -4,7 +4,7 @@ description: '李瑞丰/liruifengv/关于我/关于本站/关于 SayHub'
 image: 'https://images.sayhub.me/static/images/placeholder-about.jpg'
 ---
 
-## 我是 lirufiengv(李瑞丰)
+## 我是 liruifengv(李瑞丰)
 
 我是一名前端工程师，居住工作在 中国天津。2017 年入行，热爱前端，热爱技术，热爱开源。
 
