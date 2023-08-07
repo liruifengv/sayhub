@@ -134,7 +134,7 @@ fn main() {
 
 ```js
 // example.js
-Deno.core.print("Hello runjs!");
+Deno.core.print('Hello runjs!')
 ```
 
 注意，我们使用的是 `Deno.core` 中的 print 函数 - 这是一个全局可用的内置对象，由 `deno_core` Rust crate 提供。
@@ -156,22 +156,22 @@ Hello runjs!⏎
 
 ```js
 // runtime.js
-((globalThis) => {
-  const core = Deno.core;
+;((globalThis) => {
+  const core = Deno.core
 
   function argsToMessage(...args) {
-    return args.map((arg) => JSON.stringify(arg)).join(" ");
+    return args.map((arg) => JSON.stringify(arg)).join(' ')
   }
 
   globalThis.console = {
     log: (...args) => {
-      core.print(`[out]: ${argsToMessage(...args)}\n`, false);
+      core.print(`[out]: ${argsToMessage(...args)}\n`, false)
     },
     error: (...args) => {
-      core.print(`[err]: ${argsToMessage(...args)}\n`, true);
+      core.print(`[err]: ${argsToMessage(...args)}\n`, true)
     },
-  };
-})(globalThis);
+  }
+})(globalThis)
 ```
 
 函数 `console.log` 和 `console.error` 将接受多个参数，将它们转换为 JSON（以便我们可以检查非原始 JS 对象）并在每个消息前加上 `log` 或 `error` 前缀。这是一个“普通的” JavaScript 文件，就像我们在 ES 模块之前在浏览器中编写 JavaScript 一样。
@@ -191,9 +191,9 @@ let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
 最后，让我们使用我们的新 `console` API 更新 `example.js`：
 
 ```js ins={2,3}
-- Deno.core.print("Hello runjs!");
-+ console.log("Hello", "runjs!");
-+ console.error("Boom!");
+;-Deno.core.print('Hello runjs!')
+;+console.log('Hello', 'runjs!')
+;+console.error('Boom!')
 ```
 
 再次运行它：
@@ -333,5 +333,3 @@ $ cargo run
 此教程的[第二部分](https://deno.com/blog/roll-your-own-javascript-runtime-pt2)已经发布，实现了 fetch-like API 并添加了 TypeScript 转译功能。
 
 完整的示例代码在 [denoland 的 GitHub](https://github.com/denoland/roll-your-own-javascript-runtime)。也可以在译者的仓库查看[第一部分代码](https://github.com/liruifengv/runjs)。
-
-

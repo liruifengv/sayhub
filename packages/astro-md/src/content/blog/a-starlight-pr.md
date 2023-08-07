@@ -28,8 +28,10 @@ tags: [front-end, 开源]
 我的第一思路是，使用 JS 来实现，点击 sidebar 的父节点时，切换它的 class，然后通过控制子节点 CSS 的显隐来实现展开收起的效果。
 
 代码如下：
+
 ```astro
-<sidebar-sublist> // 新增
+<sidebar-sublist>
+  // 新增
   <ul>
     {
       Astro.props.sublist.map((entry) => (
@@ -40,7 +42,9 @@ tags: [front-end, 开源]
             </a>
           ) : (
             <>
-              <div class="sidebar-group-header"> // 修改
+              <div class="sidebar-group-header">
+                {' '}
+                // 修改
                 <h2>{entry.label}</h2>
                 <Icon name="down-caret" class="icon caret" /> // 新增
               </div>
@@ -57,6 +61,7 @@ tags: [front-end, 开源]
 解释一下，首先，这里使用了一个 `sidebar-sublist` 自定义组件包裹，然后在给父级的 div 上加上了一个 ` class="sidebar-group-header"` 便于后续事件控制，然后加了一个向下的箭头 Icon。
 
 script 部分：
+
 ```js
 <script>
   class SiderBarSublist extends HTMLElement {
@@ -76,29 +81,31 @@ script 部分：
 </script>
 
 ```
+
 这里定义了 `SiderBarSublist` web 组件，用于定义事件，在点击 `sidebar-group-header` 时，切换 `aria-expanded` 的值。
 
 CSS 部分：
+
 ```css
-  .sidebar-group-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
-  }
+.sidebar-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
 
-  .caret {
-    transition: transform 0.2s ease-in-out;
-  }
+.caret {
+  transition: transform 0.2s ease-in-out;
+}
 
-  [aria-expanded='false'] .caret {
-    transform: rotate(-90deg);
-  }
+[aria-expanded='false'] .caret {
+  transform: rotate(-90deg);
+}
 
-  [aria-expanded='false'] + * {
-    display: none;
-  }
+[aria-expanded='false'] + * {
+  display: none;
+}
 ```
 
 通过 `[aria-expanded='false'] + * ` 后代选择器，让子节点在父节点 `aria-expanded` 为 `false` 时隐藏。然后又通过 `[aria-expanded='false'] .caret` 选择器，让箭头在父节点 `aria-expanded` 为 `false` 时旋转，从箭头向下，变成箭头向右，折叠收起的状态，同时加了一点过渡动画。
@@ -122,34 +129,32 @@ Chris 说，如果没有 JavaScript 难道没办法实现这个功能吗？ 他�
 修改后代码如下：
 
 ```astro
-  <details open>
-    <summary class="sidebar-group-header">
-      <h2>{entry.label}</h2>
-      <Icon name="down-caret" class="icon caret" />
-    </summary>
-    <Astro.self sublist={entry.entries} />
-  </details>
+<details open>
+  <summary class="sidebar-group-header">
+    <h2>{entry.label}</h2>
+    <Icon name="down-caret" class="icon caret" />
+  </summary>
+  <Astro.self sublist={entry.entries} />
+</details>
 ```
 
 ```css
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--sl-sidebar-item-padding-inline);
+  cursor: pointer;
+  user-select: none;
+}
 
-  summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: var(--sl-sidebar-item-padding-inline);
-    cursor: pointer;
-    user-select: none;
-  }
+details:not([open]) .caret {
+  transform: rotate(-90deg);
+}
 
-  details:not([open]) .caret {
-    transform: rotate(-90deg);
-  }
-
-  .caret {
-    transition: transform 0.2s ease-in-out;
-  }
-
+.caret {
+  transition: transform 0.2s ease-in-out;
+}
 ```
 
 我遵从了 Chris 的建议，使用了 `details` 和 `summary` 标签，实现了同样的功能，并且惊人的发现，代码量如此之少。
@@ -161,8 +166,9 @@ Chris 又提到了一些小建议：
 - 使用向右的箭头 Icon `right-caret`
 
 ```astro
- <Icon name="right-caret" class="caret" size="1.25rem" />
+<Icon name="right-caret" class="caret" size="1.25rem" />
 ```
+
 ```css
 [open] .caret {
   transform: rotateZ(90deg);
@@ -171,64 +177,64 @@ Chris 又提到了一些小建议：
 
 这里默认使用了向右的箭头，同时简化了 CSS 代码。由之前的`transform: rotate(-90deg);` 变成了 `transform: rotateZ(90deg);`。
 
-使用更明确的 `rotateZ`，并且从-90度变成了90度，这样的话，也更加的直观。
+使用更明确的 `rotateZ`，并且从-90 度变成了 90 度，这样的话，也更加的直观。
 
-- 有一些从右向左书写的语言，比如阿拉伯语或希伯来语，为了正确显示，应该把箭头图标翻转180度。
+- 有一些从右向左书写的语言，比如阿拉伯语或希伯来语，为了正确显示，应该把箭头图标翻转 180 度。
 
 ```css
- :global([dir='rtl']) .caret {
-    transform: rotateZ(180deg);
-  }
+:global([dir='rtl']) .caret {
+  transform: rotateZ(180deg);
+}
 ```
 
-dir 是用来指明文本书写方向的，`rtl` 是从右向左，`ltr` 是从左向右。所以这里使用 `:global([dir='rtl'])` 选择器，来选择从右向左书写的语言，然后把箭头图标翻转180度。
+dir 是用来指明文本书写方向的，`rtl` 是从右向左，`ltr` 是从左向右。所以这里使用 `:global([dir='rtl'])` 选择器，来选择从右向左书写的语言，然后把箭头图标翻转 180 度。
 
 - Safari 中 `summary` 的兼容性。
 
 在 Safari 中， `summary` 标签自带一个默认箭头，这里需要用 CSS 把它去除：
 
 ```css
-  summary::marker,
-  summary::-webkit-details-marker {
-    display: none;
-  }
+summary::marker,
+summary::-webkit-details-marker {
+  display: none;
+}
 ```
 
 ### 最终代码如下
 
 ```astro
-  <details open>
-    <summary class="sidebar-group-header">
-      <h2>{entry.label}</h2>
-      <Icon name="down-caret" class="icon caret" />
-    </summary>
-    <Astro.self sublist={entry.entries} />
-  </details>
+<details open>
+  <summary class="sidebar-group-header">
+    <h2>{entry.label}</h2>
+    <Icon name="down-caret" class="icon caret" />
+  </summary>
+  <Astro.self sublist={entry.entries} />
+</details>
 ```
 
 ```css
-  summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: var(--sl-sidebar-item-padding-inline);
-    cursor: pointer;
-    user-select: none;
-  }
-  summary::marker,
-  summary::-webkit-details-marker {
-    display: none;
-  }
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--sl-sidebar-item-padding-inline);
+  cursor: pointer;
+  user-select: none;
+}
+summary::marker,
+summary::-webkit-details-marker {
+  display: none;
+}
 
-  .caret {
-    transition: transform 0.2s ease-in-out;
-  }
-  :global([dir='rtl']) .caret {
-    transform: rotateZ(180deg);
-  }
-  [open] .caret {
-    transform: rotateZ(90deg);
-  }
+.caret {
+  transition: transform 0.2s ease-in-out;
+}
+:global([dir='rtl']) .caret {
+  transform: rotateZ(180deg);
+}
+[open] .caret {
+  transform: rotateZ(90deg);
+}
 ```
 
 最后，我们使用 0 行 JS 代码，实现了一个侧边栏的展开收起功能。
@@ -236,6 +242,7 @@ dir 是用来指明文本书写方向的，`rtl` 是从右向左，`ltr` 是从�
 ## 小结
 
 总结一下这个 PR 学到的知识点：
+
 - 在实现一个功能之前，先思考一下，这个功能有没有必要使用 JS 来实现，如果不使用 JS，有没有更好的实现方式。
 - `details` 和 `summary` 标签的使用。
 - 使用更简单的组合，来使得代码更加的简洁可读。
@@ -249,4 +256,3 @@ dir 是用来指明文本书写方向的，`rtl` 是从右向左，`ltr` 是从�
 之前我也写过一篇 《[我的开源之旅&新手如何参与开源社区](https://sayhub.me/blog/opensource/)》，没有经验的同学，可以看一下我这篇文章，里面有一些我参与开源项目的经验分享。
 
 总之，别怕，大胆去做吧。
-

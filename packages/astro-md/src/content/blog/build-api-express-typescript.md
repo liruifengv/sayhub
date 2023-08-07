@@ -31,37 +31,37 @@ tags: [Deno]
 在这个文件中，让我们通过 `npm` 指定器导入 Express。
 
 ```js
-import express, { NextFunction, Request, Response } from "npm:express@4.18.2";
+import express, { NextFunction, Request, Response } from 'npm:express@4.18.2'
 ```
 
 这将为我们提供 express，但不提供类型定义。让我们通过添加这个注释来导入类型定义：
 
 ```js
 // @deno-types="npm:@types/express@4"
-import express, { NextFunction, Request, Response } from "npm:express@4.18.2";
+import express, { NextFunction, Request, Response } from 'npm:express@4.18.2'
 ```
 
 接下来，我们需要定义一种与 Express 应用程序接口交互的方式，我们还需要定义一个端口，以便它运行，我们将从环境变量中获取它：
 
 ```js
-const app = express();
-const port = Number(Deno.env.get("PORT")) || 3000;
+const app = express()
+const port = Number(Deno.env.get('PORT')) || 3000
 ```
 
 让我们定义一个测试路由，它将在收到 GET 请求时打招呼，我们现在将其作为默认基本路由：
 
 ```js
-app.get("/", (_req, res) => {
-  res.status(200).send("Hello from Deno and Express!");
-});
+app.get('/', (_req, res) => {
+  res.status(200).send('Hello from Deno and Express!')
+})
 ```
 
 现在我们已经构建了简单的逻辑，我们只需要它来监听并开始处理请求！为此，我们将使用 .`listen()`，如下所示：
 
 ```js
 app.listen(port, () => {
-  console.log(`Listening on ${port} ...`);
-});
+  console.log(`Listening on ${port} ...`)
+})
 ```
 
 现在我们已经准备好了！
@@ -114,9 +114,9 @@ Available tasks:
 
 ```js
 const reqLogger = function (req, _res, next) {
-  console.info(`${req.method} request to "${req.url}" by ${req.hostname}`);
-  next();
-};
+  console.info(`${req.method} request to "${req.url}" by ${req.hostname}`)
+  next()
+}
 ```
 
 你可以拥有任意多的中间件，并以适合你的方式组织它。只要记住，响应的速度取决于中间件链如何快速将控制权交还给框架。中间件按照框架通知它的顺序执行。
@@ -126,7 +126,7 @@ const reqLogger = function (req, _res, next) {
 所以我们现在已经处于一个非常好的地方来开始开发。运行 `./generate_data.ts` 命令（如果 shebang 不起作用，可以使用 `deno run -A ./generate_data.ts`），它将在 `data_blob.json` 中生成一些模拟用户数据，我们可以通过 Deno 的导入类型断言安全地像使用任何其他只读数据存储一样使用它：
 
 ```js
-import demoData from "./data_blob.json" assert { type: "json" };
+import demoData from './data_blob.json' assert { type: 'json' }
 ```
 
 我们现在可以在处理程序中访问 `demoData.users`，所以让我们编写两个处理程序：
@@ -135,60 +135,61 @@ import demoData from "./data_blob.json" assert { type: "json" };
 - 一个额外的动态路由，允许我们通过 ID 查找单个用户
 
 ```js
-app.get("/users", (_req, res) => {
-  res.status(200).json(demoData.users);
-});
+app.get('/users', (_req, res) => {
+  res.status(200).json(demoData.users)
+})
 
-app.get("/users/:id", (req, res) => {
-  const idx = Number(req.params.id);
+app.get('/users/:id', (req, res) => {
+  const idx = Number(req.params.id)
   for (const user of demoData.users) {
     if (user.id === idx) {
-      res.status(200).json(user);
+      res.status(200).json(user)
     }
   }
-  res.status(400).json({ msg: "User not found" });
-});
+  res.status(400).json({ msg: 'User not found' })
+})
 ```
 
 我们还可以清除默认路由的 hello world，这使我们有了一个很好的 API 起点：
 
 ```js
 // @deno-types="npm:@types/express@4"
-import express, { NextFunction, Request, Response } from "npm:express@4.18.2";
-import demoData from "./data_blob.json" assert { type: "json" };
+import express, { NextFunction, Request, Response } from 'npm:express@4.18.2'
+import demoData from './data_blob.json' assert { type: 'json' }
 
-const app = express();
-const port = Number(Deno.env.get("PORT")) || 3000;
+const app = express()
+const port = Number(Deno.env.get('PORT')) || 3000
 
 const reqLogger = function (req, _res, next) {
-  console.info(`${req.method} request to "${req.url}" by ${req.hostname}`);
-  next();
-};
+  console.info(`${req.method} request to "${req.url}" by ${req.hostname}`)
+  next()
+}
 
-app.use(reqLogger);
+app.use(reqLogger)
 
-app.get("/users", (_req, res) => {
-  res.status(200).json(demoData.users);
-});
+app.get('/users', (_req, res) => {
+  res.status(200).json(demoData.users)
+})
 
-app.get("/users/:id", (req, res) => {
-  const idx = Number(req.params.id);
+app.get('/users/:id', (req, res) => {
+  const idx = Number(req.params.id)
   for (const user of demoData.users) {
     if (user.id === idx) {
-      res.status(200).json(user);
+      res.status(200).json(user)
     }
   }
-  res.status(400).json({ msg: "User not found" });
-});
+  res.status(400).json({ msg: 'User not found' })
+})
 
 app.listen(port, () => {
-  console.log(`Listening on ${port} ...`);
-});
+  console.log(`Listening on ${port} ...`)
+})
 ```
 
 请注意，`Hello, world!` 处理程序已被删除（并且在链接的存储库中不存在）。
 
 ## 下一步
+
 我们有一个非常好的起点，一个 REST API 只有不到 30 行代码。现在，你可以使用 `app.post()` 添加一个 `POST` 处理程序，使用 `app.put()` 添加一个 `PUT` 处理程序，或者你想要的任何其他方法。
 
 在未来的文章中，我们将介绍如何使用 Deno 的测试运行器和基准测试工具，以便我们更加放心地将我们的代码从概念验证转换为我们在生产中信任的内容。我们将在那之后用一些方法来部署我们的项目。

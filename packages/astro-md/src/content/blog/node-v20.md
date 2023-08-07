@@ -73,36 +73,36 @@ Node 的权限模型第一个版本有以下功能：
 我们来实战一下，写下以下 JS 代码：
 
 ```js
-const fs = require('fs');
+const fs = require('fs')
 
 console.log('test')
 
-const canWrite = process.permission.has('fs.write');
-const canWriteTest = process.permission.has('fs.write', '/Users/liruifeng/');
+const canWrite = process.permission.has('fs.write')
+const canWriteTest = process.permission.has('fs.write', '/Users/liruifeng/')
 
 console.log('canWrite:', canWrite)
 console.log('canWriteTest:', canWriteTest)
 
-const canRead = process.permission.has('fs.read');
-const canReadTest = process.permission.has('fs.read', '/Users/liruifeng/');
+const canRead = process.permission.has('fs.read')
+const canReadTest = process.permission.has('fs.read', '/Users/liruifeng/')
 
 console.log('canRead:', canRead)
 console.log('canReadTest:', canReadTest)
 
 fs.readFile('./test.txt', 'utf-8', (err, data) => {
-  if(err) return console.log('err:', err)
+  if (err) return console.log('err:', err)
   console.log('data:', data)
 })
 ```
 
 执行：
-  
+
 ```bash
 node --experimental-permission index.js
 ```
 
 此时我们使用了 `--experimental-permission` 标志，但是没有指定权限，所以会出现以下报错：
-  
+
 ```bash
 $ node --experimental-permission index.js
 node:internal/modules/cjs/loader:171
@@ -121,6 +121,7 @@ Error: Access to this API has been restricted
 ```
 
 给 `/Users/liruifeng/` 文件夹加上读取权限：
+
 ```bash
 node --experimental-permission --allow-fs-read=/Users/liruifeng/ index.js
 ```
@@ -146,7 +147,7 @@ data: test
 
 ```js
 fs.writeFile('./test.txt', 'test write', (err) => {
-  if(err) return console.log('err:', err)
+  if (err) return console.log('err:', err)
   console.log('write success')
 })
 ```
@@ -192,6 +193,7 @@ node --experimental-permission --allow-fs-read=/Users/liruifeng/  --allow-fs-wri
 ```
 
 成功了，输出如下：
+
 ```
 test
 canWrite: false
@@ -215,10 +217,11 @@ data: test write
 我们先创建一个 `hello.js` 文件：
 
 ```js
-console.log(`Hello, ${process.argv[2]}!`);
+console.log(`Hello, ${process.argv[2]}!`)
 ```
+
 在创建一个 `sea-config.json` 文件：
-  
+
 ```json
 {
   "main": "hello.js",
@@ -227,16 +230,17 @@ console.log(`Hello, ${process.argv[2]}!`);
 ```
 
 执行：
-    
-```bash 
-node --experimental-sea-config sea-config.json 
-```
-此时会生成一个 `sea-prep.blob` 文件。
-
-然后我们创建可执行文件的副本node并根据需要命名：
 
 ```bash
-cp $(command -v node) hello 
+node --experimental-sea-config sea-config.json
+```
+
+此时会生成一个 `sea-prep.blob` 文件。
+
+然后我们创建可执行文件的副本 node 并根据需要命名：
+
+```bash
+cp $(command -v node) hello
 ```
 
 删除二进制文件的签名：
@@ -250,16 +254,17 @@ codesign --remove-signature hello
 ```bash
  npx postject hello NODE_SEA_BLOB sea-prep.blob \
     --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 \
-    --macho-segment-name NODE_SEA 
+    --macho-segment-name NODE_SEA
 ```
 
 签名：
 
 ```bash
-codesign --sign - hello 
+codesign --sign - hello
 ```
 
 运行
+
 ```bash
 ./hello liruifeng
 Hello, liruifeng!

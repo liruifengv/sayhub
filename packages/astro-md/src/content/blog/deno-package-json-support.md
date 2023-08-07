@@ -43,7 +43,7 @@ JavaScript 生态系统依赖于[单一的集中式模块注册表](https://www.
 使用裸指示符的导入语句（如下所示）是简洁而熟悉的：
 
 ```js
-import express from "express";
+import express from 'express'
 ```
 
 裸指示符（`"express"`）提供了对依赖项的有用的模糊引用，这允许通过 semver 解析来解决重复依赖问题。但是，如果使用裸指示符编写库，则必须有一个依赖项清单来明确这些裸指示符指的是什么。
@@ -67,7 +67,7 @@ Deno 的向后兼容性将 Node 和 NPM 的不理想的遗留功能保持在一�
 例如，导入 [Oak](https://deno.land/x/oak) 将如下所示：
 
 ```js
-import oak from "deno:oak@12";
+import oak from 'deno:oak@12'
 ```
 
 请注意，只指定了主要版本 - 运行时将具有特殊的 semver 解析逻辑来查找与之匹配的 Oak 的正确版本。
@@ -86,8 +86,8 @@ import oak from "deno:oak@12";
 这个配置使任何代码都可以在代码中使用 `"oak"` 和 `"chalk"` 裸指示符。Oak 来自 Deno 注册表，Chalk 来自 NPM 注册表。代码中的导入将简单地是：
 
 ```js
-import oak from "oak";
-import chalk from "chalk";
+import oak from 'oak'
+import chalk from 'chalk'
 ```
 
 无论使用现代的 import map 工作流还是 Node.js package.json 工作流，Deno 都旨在成为开发人员用来加速工作的可靠工具。JavaScript，世界级默认的编程语言，值得这种不断努力来改善其生态系统和工具。

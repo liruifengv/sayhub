@@ -1,28 +1,23 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import vercel from "@astrojs/vercel/static";
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { defineConfig } from 'astro/config'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
+import vercel from '@astrojs/vercel/static'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sayhub.me/',
   experimental: {
-    assets: true
+    assets: true,
   },
-  integrations: [
-    tailwind(),
-    mdx(),
-    sitemap(),
-  ],
+  integrations: [tailwind(), mdx(), sitemap()],
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src')
+        '~': path.resolve(__dirname, './src'),
       },
     },
   },
@@ -30,4 +25,4 @@ export default defineConfig({
     analytics: true,
     imageService: true,
   }),
-});
+})
