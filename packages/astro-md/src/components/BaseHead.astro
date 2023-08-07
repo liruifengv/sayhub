@@ -12,6 +12,8 @@ export interface Props {
 const { title, description, image = `${CDN_URL}/logo.png` } = Astro.props
 
 const url = Astro.url
+
+const metaImg = `${image}?imageView2/0/format/webp/q/55|imageslim`
 ---
 
 <!-- Global Metadata -->
@@ -23,15 +25,15 @@ const url = Astro.url
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta property="twitter:image" content={image} />
+<meta property="twitter:image" content={metaImg} />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="og:image" content={image} />
+<meta property="og:image" content={metaImg} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
-<link rel="shortcut icon" href={`${CDN_URL}/logo.png`} />
+<link rel="shortcut icon" href={`${CDN_URL}/logo.png?imageView2/0/format/webp/q/55|imageslim`} />
 
 <script>
   var _hmt = _hmt || []
