@@ -1,4 +1,4 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss'
+import rss from '@astrojs/rss'
 import { SITE_DESCRIPTION, SITE_TITLE } from '../config'
 import { getCollection } from 'astro:content'
 

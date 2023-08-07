@@ -28,5 +28,6 @@ export default defineConfig({
   },
   adapter: vercel({
     analytics: true,
+    imageService: true,
   }),
 });
