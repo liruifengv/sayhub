@@ -16,6 +16,8 @@ export interface Props {
 const { post, url } = Astro.props
 
 const coverImg = `${post.image}?imageMogr2/thumbnail/320x216!/gravity/NorthWest/crop/320x216/format/webp/blur/1x0/quality/75`
+
+const mobileImg = `${post.image}?imageView2/0/format/webp/q/55|imageslim`
 ---
 
 <div
@@ -27,7 +29,7 @@ const coverImg = `${post.image}?imageMogr2/thumbnail/320x216!/gravity/NorthWest/
         <a href={url} class="inline-block">
           <picture>
             <source media="(min-width: 768px)" srcset={coverImg} />
-            <source media="(max-width: 767px)" srcset={post.image} />
+            <source media="(max-width: 767px)" srcset={mobileImg} />
             <img class="rounded-t-lg md:rounded-none md:rounded-l-lg" alt={post.title} />
           </picture>
         </a>
