@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import { Picture } from '@astrojs/image/components'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
 import PostFooter from '~/components/PostFooter.astro'
@@ -54,17 +53,7 @@ const meta = {
         </div>
       </header>
       <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
-        {
-          image && (
-            <Picture
-              class="w-full rounded-lg"
-              src={image}
-              alt="descriptive text"
-              widths={[400, 900]}
-              aspectRatio="16:9"
-            />
-          )
-        }
+        {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" />}
         <div class="mt-6">
           <slot />
         </div>

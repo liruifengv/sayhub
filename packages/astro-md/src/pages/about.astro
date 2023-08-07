@@ -2,7 +2,6 @@
 import { getEntryBySlug } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import PageLayout from '~/layouts/PageLayout.astro'
-import { Picture } from '@astrojs/image/components'
 
 const AboutMe = await getEntryBySlug('about', 'about-me')
 
@@ -29,11 +28,7 @@ const meta = {
         </h1>
       </header>
       <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
-        {
-          image && (
-            <Picture src={image} alt="descriptive text" widths={[400, 900]} aspectRatio="16:9" class="rounded-lg" />
-          )
-        }
+        {image && <img src={image} alt="descriptive text" class="rounded-lg" />}
         <div class="mt-6">
           <Content />
         </div>
