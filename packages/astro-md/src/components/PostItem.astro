@@ -30,7 +30,7 @@ const mobileImg = `${post.image}?imageView2/0/format/webp/q/55|imageslim`
           <picture>
             <source media="(min-width: 768px)" srcset={coverImg} />
             <source media="(max-width: 767px)" srcset={mobileImg} />
-            <img class="rounded-t-lg md:rounded-none md:rounded-l-lg" alt={post.title} />
+            <img class="rounded-t-lg md:rounded-none md:rounded-l-lg" alt={post.title} width={320} height={216} />
           </picture>
         </a>
       </div>
