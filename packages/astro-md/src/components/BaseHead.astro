@@ -9,7 +9,7 @@ export interface Props {
   image: string
 }
 
-const { title, description, image = `${CDN_URL}/logo.png` } = Astro.props
+const { title, description, image = `${CDN_URL}/blog/deno/deno-v8.webp` } = Astro.props
 
 const url = Astro.url
 
@@ -45,7 +45,7 @@ const metaImg = `${image}?imageView2/0/format/webp/q/55|imageslim`
   })()
 </script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFGJXRM62M"></script>
+<script defer async src="https://www.googletagmanager.com/gtag/js?id=G-PFGJXRM62M"></script>
 <script>
   window.dataLayer = window.dataLayer || []
   function gtag() {
