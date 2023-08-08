@@ -1,3 +1,4 @@
+export const HEADER_TITLE = 'SayHub'
 export const SITE_TITLE = 'SayHub 李瑞丰/liruifengv的个人博客网站'
 export const SITE_URL = 'https://sayhub.me'
 export const SITE_DESCRIPTION =

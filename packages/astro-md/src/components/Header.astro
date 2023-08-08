@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon'
 import HeaderLink from './HeaderLink.astro'
 import ToggleMenu from '~/components/ToggleMenu.astro'
 import ToggleTheme from '~/components/ToggleTheme.astro'
-import { SITE_TITLE, CDN_URL, SITE_URL } from '~/config'
+import { HEADER_TITLE, CDN_URL, SITE_URL } from '~/config'
 
 const basename = import.meta.env.BASE_URL
 ---
@@ -17,7 +17,7 @@ const basename = import.meta.env.BASE_URL
           src={`${CDN_URL}/logo.png?imageView2/0/format/webp/q/55|imageslim`}
           alt="logo"
         />
-        <span class="ml-4 text-2xl text-gray-900 font-bold dark:text-slate-200">{SITE_TITLE}</span>
+        <span class="ml-4 text-2xl text-gray-900 font-bold dark:text-slate-200">{HEADER_TITLE}</span>
       </a>
       <div class="flex items-center md:hidden">
         <ToggleTheme />
