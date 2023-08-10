@@ -12,6 +12,7 @@ export default defineConfig({
   site: 'https://sayhub.me/',
   experimental: {
     assets: true,
+    viewTransitions: true,
   },
   integrations: [tailwind(), mdx(), sitemap()],
   vite: {

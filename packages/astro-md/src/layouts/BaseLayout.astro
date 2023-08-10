@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
 import { CDN_URL } from '~/config'
-
+import { ViewTransitions } from 'astro:transitions'
 const { meta, isBlog } = Astro.props
 
 // markdown 样式 css
@@ -20,19 +20,26 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
       )
     }
   </head>
+  <ViewTransitions fallback="swap" />
   <body class="antialiased">
     <slot />
-    <script is:inline>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
+    <script>
+      const setDarkMode = () => {
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
       }
 
-      window.onload = function () {
+      setDarkMode()
+      // 在视图过渡动画导航时运行
+      document.addEventListener('astro:beforeload', setDarkMode)
+
+      document.addEventListener('astro:beforeload', () => {
         const menuIcon = document.querySelector('#toggle-menu')
         menuIcon.addEventListener('click', () => {
           menuIcon.classList.toggle('expanded')
@@ -50,7 +57,7 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
             })
           })
         }
-      }
+      })
     </script>
     <style is:global>
       /* body 根据 dark 主题改变背景颜色 */
