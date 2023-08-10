@@ -35,11 +35,7 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
         }
       }
 
-      setDarkMode()
-      // 在视图过渡动画导航时运行
-      document.addEventListener('astro:beforeload', setDarkMode)
-
-      document.addEventListener('astro:beforeload', () => {
+      const setThemeToggle = () => {
         const menuIcon = document.querySelector('#toggle-menu')
         menuIcon.addEventListener('click', () => {
           menuIcon.classList.toggle('expanded')
@@ -57,7 +53,17 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
             })
           })
         }
-      })
+      }
+
+      window.onload = function () {
+        setThemeToggle()
+      }
+
+      setDarkMode()
+      // 在视图过渡动画导航时运行
+      document.addEventListener('astro:beforeload', setDarkMode)
+
+      document.addEventListener('astro:beforeload', setThemeToggle)
     </script>
     <style is:global>
       /* body 根据 dark 主题改变背景颜色 */
