@@ -8,9 +8,9 @@ const { heading } = Astro.props
     {heading.text}
   </a>
   {
-    heading.subheadings.length > 0 && (
+    heading?.subheadings.length > 0 && (
       <ul>
-        {heading.subheadings.map((subheading) => (
+        {heading?.subheadings.map((subheading) => (
           <Astro.self heading={subheading} />
         ))}
       </ul>
