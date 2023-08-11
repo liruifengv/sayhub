@@ -25,4 +25,11 @@ export default defineConfig({
   adapter: vercel({
     analytics: true,
   }),
+  markdown: {
+    shikiConfig: {
+      // 选择 Shiki 内置的主题（或添加你自己的主题）
+      // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+      theme: 'material-theme-darker',
+    },
+  },
 })
