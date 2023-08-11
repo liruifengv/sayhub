@@ -1,0 +1,32 @@
+---
+import type { MarkdownHeading } from 'astro'
+import MobileTableOfContents from './TableOfContents/MobileTableOfContents.astro'
+import RightSidebarPanel from './RightSidebarPanel.astro'
+import TableOfContents from './TableOfContents.astro'
+import { generateToC } from './TableOfContents/generateToC'
+
+interface Props {
+  headings: MarkdownHeading[]
+  tocConfig: { maxHeadingLevel: number; minHeadingLevel: number } | false
+}
+
+const { headings, tocConfig } = Astro.props
+const tocProps = tocConfig && {
+  ...tocConfig,
+  toc: generateToC(headings, {
+    ...tocConfig,
+    title: '概述',
+  }),
+}
+---
+
+{
+  tocProps && (
+    <>
+      <MobileTableOfContents {...tocProps} />
+      <RightSidebarPanel>
+        <TableOfContents {...tocProps} />
+      </RightSidebarPanel>
+    </>
+  )
+}

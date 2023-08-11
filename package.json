@@ -29,8 +29,7 @@
   "lint-staged": {
     "*.{js,jsx,astro,tsx,vue}": [
       "prettier --write"
-    ],
-    "*.css": "stylelint --allow-empty-input"
+    ]
   },
   "browserslist": {
     "production": [

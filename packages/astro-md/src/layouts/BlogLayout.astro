@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
 import PostFooter from '~/components/PostFooter.astro'
-import TableOfContents from '~/components/TableOfContents.astro'
+import RightSidebar from '~/components/RightSidebar.astro'
 
 type Heading = {
   depth: number
@@ -19,6 +19,11 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const basename = import.meta.env.BASE_URL
 
 const { title, description, pubDate, image, tags, category, headings } = Astro.props
+
+const tocConfig = {
+  minHeadingLevel: 1,
+  maxHeadingLevel: 4,
+}
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
@@ -55,7 +60,7 @@ const myFade = {
 <PageLayout {meta} isBlog={true}>
   <div class="flex w-full flex-col-reverse md:flex-row justify-center">
     <div
-      class="bg-white w-full md:w-[50%] min-w-[50%] max-w-3xl rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840]"
+      class="bg-white w-full md:w-[50%] min-w-[50%] max-w-3xl rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840] mt-10 md:mt-0"
     >
       <section class="px-6 py-6 mx-auto max-w-3xl">
         <header>
@@ -88,10 +93,10 @@ const myFade = {
             <slot />
           </div>
         </article>
-        {tags?.length > 0 && <PostTags class="text-base" tags={tags} />}
+        {tags && tags.length && <PostTags class="text-base" tags={tags} />}
         <PostFooter />
       </section>
     </div>
-    <TableOfContents headings={headings} />
+    <RightSidebar headings={headings} tocConfig={tocConfig} />
   </div>
 </PageLayout>
