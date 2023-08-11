@@ -3,13 +3,13 @@
 const { heading } = Astro.props
 ---
 
-<li>
-  <a href={'#' + heading.slug}>
+<li class="mt-2">
+  <a href={'#' + heading.slug} class="hover:text-primary-600 underline">
     {heading.text}
   </a>
   {
     heading?.subheadings.length > 0 && (
-      <ul>
+      <ul class="ml-4">
         {heading?.subheadings.map((subheading) => (
           <Astro.self heading={subheading} />
         ))}

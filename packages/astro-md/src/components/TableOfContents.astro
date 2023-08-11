@@ -4,13 +4,18 @@ import TableOfContentsHeading from './TableOfContentsHeading.astro'
 const { headings } = Astro.props
 const toc = buildToc(headings)
 
+type Heading = {
+  depth: number
+  slug: string
+  text: string
+}
+
 function buildToc(headings) {
-  const toc = []
+  const toc: Heading[] = []
   const parentHeadings = new Map()
   headings.forEach((h) => {
     const heading = { ...h, subheadings: [] }
     parentHeadings.set(heading.depth, heading)
-    // Change 2 to 1 if your markdown includes your <h1>
     if (heading.depth === 2) {
       toc.push(heading)
     } else {
@@ -22,8 +27,9 @@ function buildToc(headings) {
 ---
 
 <nav
-  class="toc bg-white rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840] px-6 py-6 mb-4 md:mb-0 md:ml-4 h-100%;"
+  class="toc bg-white rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840] px-6 py-6 mb-4 md:mb-0 md:ml-4 w-full md:w-[20rem] h-fit sticky top-200"
 >
+  <div class="text-xl">目录 Table Of Contents</div>
   <ul>
     {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
   </ul>
