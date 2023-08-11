@@ -4,12 +4,21 @@ import { getCollection } from 'astro:content'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
 import PostFooter from '~/components/PostFooter.astro'
+import TableOfContents from '~/components/TableOfContents.astro'
 
-type Props = CollectionEntry<'blog'>['data']
+type Heading = {
+  depth: number
+  slug: string
+  text: string
+}
+
+type Props = CollectionEntry<'blog'>['data'] & {
+  headings: Heading[]
+}
 
 const basename = import.meta.env.BASE_URL
 
-const { title, description, pubDate, image, tags, category } = Astro.props
+const { title, description, pubDate, image, tags, category, headings } = Astro.props
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
@@ -44,42 +53,43 @@ const myFade = {
 ---
 
 <PageLayout {meta} isBlog={true}>
-  <div
-    class="w-full md:w-[80%] xl:w-[60%] bg-white rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840]"
-  >
-    <section class="px-6 py-6 mx-auto max-w-3xl">
-      <header>
-        <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-          {title}
-        </h1>
-        <div class="flex justify-center px-4 mb-4">
-          {
-            pubDate && (
-              <div>
-                发表日期： <time>{pubDate}</time>
-              </div>
-            )
-          }
-          {
-            category && (
-              <div class="ml-4">
-                分类：
-                <a class="hover:text-blue-500" href={`${basename}categories/${category}/`}>
-                  {category}
-                </a>
-              </div>
-            )
-          }
-        </div>
-      </header>
-      <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
-        {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" transition:animate={myFade} />}
-        <div class="mt-6">
-          <slot />
-        </div>
-      </article>
-      {tags?.length > 0 && <PostTags class="text-base" tags={tags} />}
-      <PostFooter />
-    </section>
+  <div class="flex w-full md:w-[80%] xl:w-[60%] flex-col md:flex-row">
+    <div class="bg-white rounded-lg dark:text-white dark:bg-[#24272d] border dark:border-[#353840]">
+      <section class="px-6 py-6 mx-auto max-w-3xl">
+        <header>
+          <h1 class="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+            {title}
+          </h1>
+          <div class="flex justify-center px-4 mb-4">
+            {
+              pubDate && (
+                <div>
+                  发表日期： <time>{pubDate}</time>
+                </div>
+              )
+            }
+            {
+              category && (
+                <div class="ml-4">
+                  分类：
+                  <a class="hover:text-blue-500" href={`${basename}categories/${category}/`}>
+                    {category}
+                  </a>
+                </div>
+              )
+            }
+          </div>
+        </header>
+        <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
+          {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" transition:animate={myFade} />}
+          <div class="mt-6">
+            <slot />
+          </div>
+        </article>
+        {tags?.length > 0 && <PostTags class="text-base" tags={tags} />}
+        <PostFooter />
+      </section>
+    </div>
+    <TableOfContents headings={headings} />
   </div>
 </PageLayout>
