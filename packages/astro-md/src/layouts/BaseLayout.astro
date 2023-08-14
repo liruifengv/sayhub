@@ -70,6 +70,11 @@ import '../style/props.css'
       html {
         scroll-padding-top: 60px;
       }
+      @media (max-width: 640px) {
+        html {
+          scroll-padding-top: 110px;
+        }
+      }
       /* body 根据 dark 主题改变背景颜色 */
       body {
         @apply bg-gray-100 dark:bg-[#17181c];
