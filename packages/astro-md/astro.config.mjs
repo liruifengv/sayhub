@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sayhub.me',
-  trailingSlash: 'never'
+  trailingSlash: 'never',
   experimental: {
     assets: true,
     viewTransitions: true,
