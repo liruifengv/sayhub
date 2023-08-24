@@ -5,3 +5,8 @@ node_modules
 *.yaml
 *.yml
 *.conf.js
+.DS_Store
+.vercel
+.astro
+.cache
+.vscode

@@ -2,12 +2,6 @@
 
 我的个人博客网站。[![Built with Astro](https://astro.badg.es/v1/built-with-astro/tiny.svg)](https://astro.build)
 
-## monorepo
-
-- [x] Vue 早期版本，Vue + webpack
-- [x] React + Vite 版本，访问链接：https://react-vite.sayhub.me/
-- [x] [Astro](https://astro.build) + Markdown 当前版本：https://sayhub.me
-
 ## Features
 
 - [x] SSG 静态渲染， SEO 友好，极速渲染
@@ -28,5 +22,7 @@
 [如何用 RSS 订阅？](https://zhuanlan.zhihu.com/p/55026716)
 
 ## 博客模板
+
 由我的个人网站孵化出一个博客模板，帮助想要搭建个人博客网站的同学快速搭建基于 [Astro](https://astro.build) 的高性能网站，欢迎使用。
+
 ### 模板：[sayhub-blog-template](https://github.com/liruifengv/sayhub-blog-template)
