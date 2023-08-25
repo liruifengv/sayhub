@@ -1,6 +1,6 @@
 export const HEADER_TITLE = 'SayHub'
-export const SITE_TITLE = 'SayHub 李瑞丰/liruifengv的个人博客网站'
+export const SITE_TITLE = 'SayHub - 编程技术研究，原创中文技术文章及教程'
 export const SITE_URL = 'https://sayhub.me'
 export const SITE_DESCRIPTION =
-  '李瑞丰/liruifengv的博客网站，包括个人文章、自我介绍等内容，技术文章涵盖前端、后端、运维、Rust、Vue、React、Node、Deno等多个领域。'
+  '研究互联网产品和编程技术，提供原创中文精品文章及教程，涵盖前端、后端、运维、Rust、Vue、React、Node、Deno、Electron、Tauri 等多个领域。'
 export const CDN_URL = 'https://images.sayhub.me'
