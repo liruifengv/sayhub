@@ -21,7 +21,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 ---
 
 <Layout {meta}>
-  <div class="min-w-[80%] flex justify-center">
+  <div class="flex flex-col">
     <ul>
       {
         posts.map((post) => (
@@ -31,5 +31,10 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
         ))
       }
     </ul>
+    <div
+      class="h-[50px] flex items-center justify-center bg-white max-w-sm md:max-w-3xl rounded-sm dark:text-white dark:bg-[#24272d] border dark:border-[#353840] box-border cursor-pointer sticky"
+    >
+      <a href="/blog">查看更多文章</a>
+    </div>
   </div>
 </Layout>
