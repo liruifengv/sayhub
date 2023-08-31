@@ -35,26 +35,6 @@ const meta = {
   description: description,
   image: image,
 }
-
-const anim = {
-  old: {
-    name: 'fadeIn',
-    duration: '0.2s',
-    easing: 'linear',
-    fillMode: 'forwards',
-  },
-  new: {
-    name: 'fadeOut',
-    duration: '0.3s',
-    easing: 'linear',
-    fillMode: 'backwards',
-  },
-}
-
-const myFade = {
-  forwards: anim,
-  backwards: anim,
-}
 ---
 
 <PageLayout {meta} isBlog={true}>
@@ -91,7 +71,7 @@ const myFade = {
           </div>
         </header>
         <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
-          {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" transition:animate={myFade} />}
+          {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" />}
           <div class="mt-6">
             <slot />
           </div>
