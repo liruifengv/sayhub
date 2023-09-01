@@ -9,7 +9,7 @@ tags: [front-end, astro, 开源]
 
 昨天，Astro 给我发了 250 美金的社区奖励！请看下图，没想到参与开源还有钱拿，简直太爽了。
 
-Astro 会把开源的捐赠，每个月拿出一部分给优秀的贡献者做奖励，而我很荣幸获得了250 美金！！！
+Astro 会把开源的捐赠，每个月拿出一部分给优秀的贡献者做奖励，而我很荣幸获得了 250 美金！！！
 
 ![](https://images.sayhub.me/astro/winner.png)
 
@@ -17,9 +17,10 @@ Astro 会把开源的捐赠，每个月拿出一部分给优秀的贡献者做�
 
 从去年开始，我就开始参与 Astro 的项目贡献，提交了一些代码，后来开始参与 Astro 中文文档的维护和翻译。
 
-但是，Astro 的团队更新太快了，业余参与的我根本没有那么多的精力，中文文档还要200多页未翻译。
+但是，Astro 的团队更新太快了，业余参与的我根本没有那么多的精力，中文文档还要 200 多页未翻译。
 
 ## 组织社区参与翻译
+
 于是，我组织了一波社区的同学来参与 Astro 的中文文档翻译：
 
 ![](https://images.sayhub.me/astro/x1.jpg)
@@ -41,6 +42,7 @@ Astro 还给一些译者赠送了一个 Astro logo 的帽子和定制贴纸。�
 ![](https://images.sayhub.me/astro/stick.jpg)
 
 ## Astro v3.0 已发布 🚀🚀🚀
+
 Astro v3.0 昨天正式发布了，感兴趣的同学可以阅读[官方公告](https://astro.build/blog/astro-3/)。
 
 想要开发自己的个人网站的，可以使用 [Astro](https://docs.astro.build/zh-cn/getting-started/) 试一试，或许你会爱上它。
