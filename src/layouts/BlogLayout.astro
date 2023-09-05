@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
 import PostFooter from '~/components/PostFooter.astro'
@@ -24,11 +23,6 @@ const tocConfig = {
   minHeadingLevel: 1,
   maxHeadingLevel: 4,
 }
-
-const posts = (await getCollection('blog'))
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .filter((post) => post.data.title !== title)
-  .slice(0, 5)
 
 const meta = {
   title: title,
