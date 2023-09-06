@@ -6,7 +6,6 @@ const { meta, isBlog } = Astro.props
 
 // markdown 样式 css
 const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
-import '../style/props.css'
 ---
 
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ import '../style/props.css'
   <ViewTransitions fallback="swap" />
   <body class="antialiased">
     <slot />
-    <script>
+    <script is:inline>
       const setDarkMode = () => {
         if (
           localStorage.theme === 'dark' ||
@@ -62,9 +61,9 @@ import '../style/props.css'
 
       setDarkMode()
       // 在视图过渡动画导航时运行
-      document.addEventListener('astro:beforeload', setDarkMode)
+      document.addEventListener('astro:after-swap', setDarkMode)
 
-      document.addEventListener('astro:beforeload', setThemeToggle)
+      document.addEventListener('astro:after-swap', setThemeToggle)
     </script>
     <style is:global>
       html {

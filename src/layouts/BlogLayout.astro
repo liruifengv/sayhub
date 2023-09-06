@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
 import PageLayout from '~/layouts/PageLayout.astro'
 import PostTags from '~/components/Tags.astro'
 import PostFooter from '~/components/PostFooter.astro'
@@ -25,35 +24,10 @@ const tocConfig = {
   maxHeadingLevel: 4,
 }
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .filter((post) => post.data.title !== title)
-  .slice(0, 5)
-
 const meta = {
   title: title,
   description: description,
   image: image,
-}
-
-const anim = {
-  old: {
-    name: 'fadeIn',
-    duration: '0.2s',
-    easing: 'linear',
-    fillMode: 'forwards',
-  },
-  new: {
-    name: 'fadeOut',
-    duration: '0.3s',
-    easing: 'linear',
-    fillMode: 'backwards',
-  },
-}
-
-const myFade = {
-  forwards: anim,
-  backwards: anim,
 }
 ---
 
@@ -70,7 +44,7 @@ const myFade = {
           >
             {title}
           </h1>
-          <div class="flex justify-center px-4 mb-4">
+          <div class="flex justify-center mb-4">
             {
               pubDate && (
                 <div>
@@ -91,7 +65,7 @@ const myFade = {
           </div>
         </header>
         <article class="container markdown-body dark:text-white dark:bg-[#24272d]">
-          {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" transition:animate={myFade} />}
+          {image && <img class="w-full rounded-lg" src={image} alt="descriptive text" />}
           <div class="mt-6">
             <slot />
           </div>

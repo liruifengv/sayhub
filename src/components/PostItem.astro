@@ -1,5 +1,6 @@
 ---
 import PostTags from '~/components/Tags.astro'
+import { Image } from 'astro:assets'
 
 export interface Props {
   post: {
@@ -25,15 +26,26 @@ const mobileImg = `${post.image}?imageView2/0/format/webp/q/55|imageslim`
 >
   {
     post.image && (
-      <div class="md:shrink-0 md:w-80">
-        <a href={url} class="inline-block">
-          <picture>
-            <source media="(min-width: 768px)" srcset={coverImg} width={320} height={216} />
-            <source media="(max-width: 767px)" srcset={mobileImg} width={360} height={200} />
-            <img class="rounded-t-lg md:rounded-none md:rounded-l-lg" alt={post.title} />
-          </picture>
+      <>
+        <a href={url} class="hidden md:inline-block shrink-0">
+          <Image
+            src={coverImg}
+            width={320}
+            height={216}
+            class="rounded-t-lg md:rounded-none md:rounded-l-lg h-full"
+            alt={post.title}
+          />
         </a>
-      </div>
+        <a href={url} class="inline-block md:hidden shrink-0">
+          <Image
+            src={mobileImg}
+            width={360}
+            height={200}
+            class="rounded-t-lg md:rounded-none md:rounded-l-lg w-full"
+            alt={post.title}
+          />
+        </a>
+      </>
     )
   }
   <div class="py-4 px-4 md:min-w-[400px]">

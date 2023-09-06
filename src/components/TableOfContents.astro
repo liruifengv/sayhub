@@ -12,8 +12,8 @@ const { toc, maxHeadingLevel = 3, minHeadingLevel = 1 } = Astro.props
 ---
 
 <starlight-toc data-min-h={minHeadingLevel} data-max-h={maxHeadingLevel}>
-  <nav aria-labelledby="starlight__on-this-page">
-    <h2 id="starlight__on-this-page" class="dark:text-white text-gray-900">目录</h2>
+  <nav aria-labelledby="on-this-page">
+    <h2 id="on-this-page" class="text-2xl mb-2 dark:text-white text-gray-900">本文目录</h2>
     <TableOfContentsList {toc} />
   </nav>
 </starlight-toc>

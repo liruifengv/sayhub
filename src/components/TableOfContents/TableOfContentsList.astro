@@ -14,11 +14,7 @@ const { toc, isMobile = false, depth = 0 } = Astro.props
   {
     toc.map((heading) => (
       <li>
-        <a
-          href={'#' + heading.slug}
-          aria-current={heading.current && 'true'}
-          class="dark:hover:text-white dark:text-white text-gray-900"
-        >
+        <a href={'#' + heading.slug} aria-current={heading.current && 'true'} class="dark:text-white text-gray-900">
           <span>{heading.text}</span>
         </a>
         {heading.children.length > 0 && <Astro.self toc={heading.children} depth={depth + 1} isMobile={isMobile} />}
@@ -35,29 +31,30 @@ const { toc, isMobile = false, depth = 0 } = Astro.props
   a {
     --pad-inline: 0.5rem;
     display: block;
-    border-radius: 0.25rem;
-    padding-block: 0.25rem;
+    border-radius: 0.2rem;
+    padding-block: 0.2rem;
     padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
     line-height: 1.25;
+    font-size: 14px;
   }
   a[aria-current='true'],
   a[aria-current='true']:hover,
   a[aria-current='true']:focus {
-    color: var(--sl-color-text-invert);
+    color: #fff;
     font-weight: 600;
-    background-color: var(--sl-color-text-accent);
+    background-color: #3d50f5;
   }
   .isMobile a {
     --pad-inline: 1rem;
     display: flex;
     justify-content: space-between;
     gap: var(--pad-inline);
-    border-top: 1px solid var(--sl-color-gray-6);
+    border-top: 1px solid #c0c2c9;
     border-radius: 0;
     padding-block: 0.5rem;
-    font-size: var(--sl-text-sm);
+    font-size: 14px;
     text-decoration: none;
-    outline-offset: var(--sl-outline-offset-inside);
+    @apply dark:border-gray-700;
   }
   .isMobile:first-child > li:first-child > a {
     border-top: 0;
@@ -66,12 +63,13 @@ const { toc, isMobile = false, depth = 0 } = Astro.props
   .isMobile a[aria-current='true']:hover,
   .isMobile a[aria-current='true']:focus {
     font-weight: 600;
+    @apply text-black dark:text-white;
     background-color: unset;
   }
   .isMobile a[aria-current='true']::after {
     content: '';
     width: 1rem;
-    background-color: var(--sl-color-text-accent);
+    background-color: #3d50f5;
     /* Check mark SVG icon */
     -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNCAxNCc+PHBhdGggZD0nTTEwLjkxNCA0LjIwNmEuNTgzLjU4MyAwIDAgMC0uODI4IDBMNS43NCA4LjU1NyAzLjkxNCA2LjcyNmEuNTk2LjU5NiAwIDAgMC0uODI4Ljg1N2wyLjI0IDIuMjRhLjU4My41ODMgMCAwIDAgLjgyOCAwbDQuNzYtNC43NmEuNTgzLjU4MyAwIDAgMCAwLS44NTdaJy8+PC9zdmc+Cg==');
     mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNCAxNCc+PHBhdGggZD0nTTEwLjkxNCA0LjIwNmEuNTgzLjU4MyAwIDAgMC0uODI4IDBMNS43NCA4LjU1NyAzLjkxNCA2LjcyNmEuNTk2LjU5NiAwIDAgMC0uODI4Ljg1N2wyLjI0IDIuMjRhLjU4My41ODMgMCAwIDAgLjgyOCAwbDQuNzYtNC43NmEuNTgzLjU4MyAwIDAgMCAwLS44NTdaJy8+PC9zdmc+Cg==');

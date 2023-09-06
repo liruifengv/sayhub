@@ -18,14 +18,14 @@ const { toc, maxHeadingLevel, minHeadingLevel } = Astro.props
     class="lg:hidden bg-white dark:bg-[#24272d] dark:text-white text-gray-900 border-white"
   >
     <details id="starlight__mobile-toc">
-      <summary id="starlight__on-this-page--mobile" class="flex dark:text-white text-gray-900">
-        <div class="toggle flex bg-white dark:bg-[#24272d]">
-          目录
-          <Icon name="el:chevron-right" class="caret" size="1rem" />
+      <summary id="on-this-page--mobile" class="flex">
+        <div class="toggle flex">
+          本文目录
+          <Icon name="el:chevron-right" class="caret" size="0.5rem" />
         </div>
-        <span class="display-current dark:text-white text-gray-900">{toc[0]?.text}</span>
+        <span class="display-current">{toc[0]?.text}</span>
       </summary>
-      <div class="dropdown border-white dark:text-white text-gray-900">
+      <div class="dropdown border-white">
         <TableOfContentsList toc={toc} isMobile />
       </div>
     </details>
@@ -35,24 +35,19 @@ const { toc, maxHeadingLevel, minHeadingLevel } = Astro.props
 <style>
   nav {
     position: fixed;
-    top: calc(var(--sl-nav-height) - 1px);
+    top: calc(3.5rem - 1px);
     inset-inline: 0;
-    border-top: 1px solid var(--sl-color-gray-5);
-  }
-  @media (min-width: 50rem) {
-    nav {
-      inset-inline-start: var(--sl-content-inline-start, 0);
-    }
+    border-top: 1px solid #edeef3;
   }
 
   summary {
     gap: 0.5rem;
     align-items: center;
-    height: var(--sl-mobile-toc-height);
-    border-bottom: 1px solid var(--sl-color-hairline-shade);
+    height: 48px;
+    border-bottom: 1px solid #edeef3;
+    @apply dark:border-gray-700;
     padding: 0.5rem 1rem;
-    font-size: var(--sl-text-xs);
-    outline-offset: var(--sl-outline-offset-inside);
+    font-size: 12px;
   }
   summary::marker,
   summary::-webkit-details-marker {
@@ -64,7 +59,7 @@ const { toc, maxHeadingLevel, minHeadingLevel } = Astro.props
     gap: 1rem;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid var(--sl-color-gray-5);
+    border: 1px solid #edeef3;
     border-radius: 0.5rem;
     padding-block: 0.5rem;
     padding-inline-start: 0.75rem;
@@ -72,12 +67,13 @@ const { toc, maxHeadingLevel, minHeadingLevel } = Astro.props
     line-height: 1;
     user-select: none;
     cursor: pointer;
+    @apply dark:border-gray-700;
   }
   details[open] .toggle {
-    border-color: var(--sl-color-accent);
+    border-color: #c0c2c9;
   }
   details .toggle:hover {
-    border-color: var(--sl-color-gray-2);
+    border-color: #c0c2c9;
   }
 
   :global([dir='rtl']) .caret {
@@ -94,13 +90,11 @@ const { toc, maxHeadingLevel, minHeadingLevel } = Astro.props
   }
 
   .dropdown {
-    --border-top: 1px;
-    margin-top: calc(-1 * var(--border-top));
-    border: var(--border-top) solid var(--sl-color-gray-6);
-    border-top-color: var(--sl-color-hairline-shade);
-    max-height: calc(85vh - var(--sl-nav-height) - var(--sl-mobile-toc-height));
+    border-top-color: #16181d;
+    max-height: calc(85vh - 3.5rem - 3rem);
     overflow-y: auto;
-    box-shadow: var(--sl-shadow-md);
+    box-shadow: 0 8px 4px hsl(0deg 0% 0% / 8%), 0 5px 2px hsl(0deg 0% 0% / 8%), 0 3px 2px hsl(0deg 0% 0% / 12%),
+      0 1px 1px hsl(0deg 0% 0% / 15%);
   }
 </style>
 
