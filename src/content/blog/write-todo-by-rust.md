@@ -1,7 +1,7 @@
 ---
-title: 'Rust 实战教程之用 Rust 写一个 命令行 TODO List（一）'
+title: 'Rust 实战教程之用 Rust 写一个命令行 TODO List（一）'
 description: ''
-pubDate: '2023-08-24'
+pubDate: '2023-09-06'
 image: 'https://images.sayhub.me/blog/Rust/rustacean-flat-gesture.png'
 category: '编程技术'
 tags: [Rust]
@@ -345,16 +345,108 @@ Ok，这样就可以自增 id 了。
 
 接下来我们实现删除方法，删除方法接受一个 id，删除对应的 todo。
 
-### 使用 `clap` 优化 CLI
+回到 `database.rs`，为 `Database` 实现一个 `remove_record` 方法。
 
-### 优化代码结构及错误处理
+```rs
+pub fn remove_record(&mut self, id: i32) {}
+```
 
-### db 文件存储位置
+接下来根据参数 id 读取文件找到对应的行：
+  
+  ```rs
+  pub fn remove_record(&mut self, id: i32) {
+      // 使用 BufReader 读取文件
+      let reader = BufReader::new(&self.file);
+      let mut lines = reader.lines().enumerate();
+      // 根据 id 找出对应的行
+      let line = lines.find(|(_, line)| {
+          let record = parse_record_line(line.as_ref().unwrap());
+          record.id == id
+      });
+  }
+  ```
+  然后要做的操作就是，在源文件中删除这一行，然后将剩余的行写入到源文件中。
+  
+  ```rs
+    use std::io::{BufRead, BufReader, Seek, Write};
 
+      // 删除记录
+    pub fn remove_record(&mut self, id: i32) {
+        let reader = BufReader::new(&self.file);
+        let mut lines = reader.lines().enumerate();
+        let line = lines.find(|(_, line)| {
+            let record = parse_record_line(line.as_ref().unwrap());
+            record.id == id
+        });
+        // match 匹配判断该行是否存在
+        match line {
+            Some((i, _)) => {
+                // 读取源文件内容
+                let contents = fs::read_to_string(".rododb").unwrap();
+                // 过滤掉对应的行，这里使用的对应 api 可以查看 Rust 标准库
+                let new_contents = contents
+                    .lines()
+                    .enumerate()
+                    .filter(|(j, _)| *j != i)
+                    .map(|(_, line)| line)
+                    .collect::<Vec<_>>()
+                    .join("\n");
+                // 将新的内容写入到源文件中
+                // 这里使用了 std::io::Seek，需要导入
+                self.file.seek(std::io::SeekFrom::Start(0)).unwrap();
+                self.file.write_all(new_contents.as_bytes()).unwrap();
+                self.file.set_len(new_contents.len() as u64).unwrap();
+
+                println!(" ❌ Item removed!\n");
+            }
+            None => {
+                println!("No such record: {}", id);
+            }
+        }
+    }
+  ```
+
+回到 `main.rs`，调用 `remove_record` 方法。
+
+```rs
+    match command.as_str() {
+        // 省略
+        "rm" => {
+            if args.len() < 3 {
+                println!("Usage: rodo rm [id]");
+                return;
+            }
+            // 这里 id 是字符串，需要转换成 i32
+            let id = args[2].parse::<i32>().unwrap();
+            db.remove_record(id);
+        }
+        // 省略
+    }
+```
+我们来测试一下：
+  
+  ```console
+  $ cargo run add test
+   📝 Item added: test
+  $ cargo run ls
+   ⬜️ 1: test
+  $ cargo run rm 1
+  ❌ Item removed!
+  $ cargo run ls
+  No records. You can add one with `rodo add [content]`
+  ```
+OK，没问题，删除成功。
 ## 小结
 
-到这里，整个项目基本就结束了，我们实现了一个简单的命令行 TODO List。此外还可以支持一些命令，比如 `rodo clean` 清空整个 todo list 数据。
+到这里，我们实现了 todo list 的基本功能，但是还有很多可以优化的地方，比如：
+- 使用 `clap` 优化 CLI 的处理和交互
+- 优化代码结构和错误处理
+- db 文件现在存储在项目根目录，应该存储在用户目录下
 
-这个项目的代码我已经上传到 GitHub，欢迎大家 star 和 fork，也可以贡献代码，对于本篇文章有任何疑问，欢迎在 GitHub 上提 issue。有错误的地方，欢迎指正。
+由于篇幅有限，这些问题我们都将在下一篇文章中进行优化。
 
-[todo-rs 仓库地址](https://github.com/liruifengv/todo-rs)
+这个项目的代码我已经上传到 GitHub，本节内容在 `part-1` 分支，欢迎大家 star 和 fork，也可以贡献代码，对于本篇文章有任何疑问，欢迎在 GitHub 上提 issue。有错误的地方，欢迎指正。
+
+- [todo-rs 仓库地址](https://github.com/liruifengv/todo-rs)
+
+- [todo-rs part-1](https://github.com/liruifengv/todo-rs/tree/part-1)
