@@ -141,7 +141,7 @@ fn main() {
 
 ![](https://images.sayhub.me/blog/Rust/p4.png)
 
-然后执行 `cargo run add -h` 和 `cargo run rm -h ，可以看到也打印出了子命令的帮助信息。
+然后执行 `cargo run add -h` 和 `cargo run rm -h` ，可以看到也打印出了子命令的帮助信息。
 
 ## 优化代码结构及错误处理
 
