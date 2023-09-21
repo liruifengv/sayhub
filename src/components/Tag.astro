@@ -6,7 +6,7 @@ const className = `bg-[#195C28] rounded-md text-[#f5f5f7] inline-block mr-4 mt-4
 const { tag } = Astro.props
 ---
 
-<div class={className} transition:animate="slide">
+<div class={className}>
   <a href={`${basename}tag/${tag.name}`}>
     <slot />
   </a>
