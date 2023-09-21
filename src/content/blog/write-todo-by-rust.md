@@ -20,6 +20,7 @@ tags: [Rust]
 本次第一个系列是用 Rust 做一个命令行的 TODO List。
 
 后续可能系列：
+
 - Rust 和 actix 开发服务端
 - Rust 写一个 Markdown parser
 - Rust 开发 WebAssembly
@@ -59,10 +60,10 @@ tags: [Rust]
 ### 项目初始化
 
 使用如下命令创建项目：
-  
-  ```bash
-  cargo new todo-rs
-  ```
+
+```bash
+cargo new todo-rs
+```
 
 ![初始化项目](https://images.sayhub.me/blog/Rust/p1.png)
 
@@ -124,7 +125,7 @@ fn main() {
             println!("Unknown command: {}", command);
         }
     }
-``` 
+```
 
 执行 `cargo run`，这里我们对不同的命令做了不同的处理，如果参数数量不对，会输出提示信息。
 
@@ -144,14 +145,15 @@ Remove
 $ cargo run test
 Unknown command: test
 ```
+
 ### 实现 todo 数据存储
 
 既然是 todo list，那么数据需要有地方存储。这里我们写一个超简易的数据库，实际就是个文本文件，每一行是一个 todo，由 id 和内容组成，用逗号分隔。
-  
-  ```txt
-  1, test
-  2, test2
-  ```
+
+```txt
+1, test
+2, test2
+```
 
 新建一个 `database.rs` 文件。
 
@@ -252,6 +254,7 @@ fn main() {
 $ cargo run add test
 📝 Item added: test
 ```
+
 同时会在 `.rododb` 文件中看到一条记录。
 
 ```txt
@@ -268,7 +271,7 @@ $ cargo run add test
 
 这里实现一个 `parse_record_line` 方法，接受一个字符串，返回一个 `Record`。
 
-```rs 
+```rs
 // 解析记录行
 pub fn parse_record_line(line: &str) -> Record {
   let fields: Vec<&str> = line.split(',').collect();
@@ -352,59 +355,60 @@ pub fn remove_record(&mut self, id: i32) {}
 ```
 
 接下来根据参数 id 读取文件找到对应的行：
-  
-  ```rs
+
+```rs
+pub fn remove_record(&mut self, id: i32) {
+    // 使用 BufReader 读取文件
+    let reader = BufReader::new(&self.file);
+    let mut lines = reader.lines().enumerate();
+    // 根据 id 找出对应的行
+    let line = lines.find(|(_, line)| {
+        let record = parse_record_line(line.as_ref().unwrap());
+        record.id == id
+    });
+}
+```
+
+然后要做的操作就是，在源文件中删除这一行，然后将剩余的行写入到源文件中。
+
+```rs
+  use std::io::{BufRead, BufReader, Seek, Write};
+
+    // 删除记录
   pub fn remove_record(&mut self, id: i32) {
-      // 使用 BufReader 读取文件
       let reader = BufReader::new(&self.file);
       let mut lines = reader.lines().enumerate();
-      // 根据 id 找出对应的行
       let line = lines.find(|(_, line)| {
           let record = parse_record_line(line.as_ref().unwrap());
           record.id == id
       });
+      // match 匹配判断该行是否存在
+      match line {
+          Some((i, _)) => {
+              // 读取源文件内容
+              let contents = fs::read_to_string(".rododb").unwrap();
+              // 过滤掉对应的行，这里使用的对应 api 可以查看 Rust 标准库
+              let new_contents = contents
+                  .lines()
+                  .enumerate()
+                  .filter(|(j, _)| *j != i)
+                  .map(|(_, line)| line)
+                  .collect::<Vec<_>>()
+                  .join("\n");
+              // 将新的内容写入到源文件中
+              // 这里使用了 std::io::Seek，需要导入
+              self.file.seek(std::io::SeekFrom::Start(0)).unwrap();
+              self.file.write_all(new_contents.as_bytes()).unwrap();
+              self.file.set_len(new_contents.len() as u64).unwrap();
+
+              println!(" ❌ Item removed!\n");
+          }
+          None => {
+              println!("No such record: {}", id);
+          }
+      }
   }
-  ```
-  然后要做的操作就是，在源文件中删除这一行，然后将剩余的行写入到源文件中。
-  
-  ```rs
-    use std::io::{BufRead, BufReader, Seek, Write};
-
-      // 删除记录
-    pub fn remove_record(&mut self, id: i32) {
-        let reader = BufReader::new(&self.file);
-        let mut lines = reader.lines().enumerate();
-        let line = lines.find(|(_, line)| {
-            let record = parse_record_line(line.as_ref().unwrap());
-            record.id == id
-        });
-        // match 匹配判断该行是否存在
-        match line {
-            Some((i, _)) => {
-                // 读取源文件内容
-                let contents = fs::read_to_string(".rododb").unwrap();
-                // 过滤掉对应的行，这里使用的对应 api 可以查看 Rust 标准库
-                let new_contents = contents
-                    .lines()
-                    .enumerate()
-                    .filter(|(j, _)| *j != i)
-                    .map(|(_, line)| line)
-                    .collect::<Vec<_>>()
-                    .join("\n");
-                // 将新的内容写入到源文件中
-                // 这里使用了 std::io::Seek，需要导入
-                self.file.seek(std::io::SeekFrom::Start(0)).unwrap();
-                self.file.write_all(new_contents.as_bytes()).unwrap();
-                self.file.set_len(new_contents.len() as u64).unwrap();
-
-                println!(" ❌ Item removed!\n");
-            }
-            None => {
-                println!("No such record: {}", id);
-            }
-        }
-    }
-  ```
+```
 
 回到 `main.rs`，调用 `remove_record` 方法。
 
@@ -423,22 +427,26 @@ pub fn remove_record(&mut self, id: i32) {}
         // 省略
     }
 ```
+
 我们来测试一下：
-  
-  ```console
-  $ cargo run add test
-   📝 Item added: test
-  $ cargo run ls
-   ⬜️ 1: test
-  $ cargo run rm 1
-  ❌ Item removed!
-  $ cargo run ls
-  No records. You can add one with `rodo add [content]`
-  ```
+
+```console
+$ cargo run add test
+ 📝 Item added: test
+$ cargo run ls
+ ⬜️ 1: test
+$ cargo run rm 1
+❌ Item removed!
+$ cargo run ls
+No records. You can add one with `rodo add [content]`
+```
+
 OK，没问题，删除成功。
+
 ## 小结
 
 到这里，我们实现了 todo list 的基本功能，但是还有很多可以优化的地方，比如：
+
 - 使用 `clap` 优化 CLI 的处理和交互
 - 优化代码结构和错误处理
 - db 文件现在存储在项目根目录，应该存储在用户目录下

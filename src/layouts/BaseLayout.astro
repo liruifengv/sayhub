@@ -23,7 +23,7 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
   <ViewTransitions fallback="swap" />
   <body class="antialiased">
     <slot />
-    <script is:inline>
+    <script>
       const setDarkMode = () => {
         if (
           localStorage.theme === 'dark' ||
@@ -47,9 +47,29 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
         const themeIcons = document.querySelectorAll('[data-toggle-theme]')
         if (themeIcons && themeIcons.length) {
           themeIcons.forEach((elem) => {
-            elem.addEventListener('click', () => {
-              document.documentElement.classList.toggle('dark')
-              localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+            elem.addEventListener('click', async (e) => {
+              const x = e.clientX
+              const y = e.clientY
+
+              const clipPath = [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))}px at ${x}px ${y}px)`,
+              ]
+
+              const isDark = !document.documentElement.classList.contains('dark')
+
+              await document.startViewTransition(() => {
+                document.documentElement.classList.toggle('dark')
+                localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+              }).ready
+              document.documentElement.animate(
+                { clipPath: isDark ? clipPath.reverse() : clipPath },
+                {
+                  duration: 300,
+                  easing: 'ease-in',
+                  pseudoElement: `::view-transition-${isDark ? 'old' : 'new'}(root)`,
+                }
+              )
             })
           })
         }
@@ -59,13 +79,35 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
         setThemeToggle()
       }
 
-      setDarkMode()
       // 在视图过渡动画导航时运行
       document.addEventListener('astro:after-swap', setDarkMode)
 
       document.addEventListener('astro:after-swap', setThemeToggle)
     </script>
     <style is:global>
+      ::view-transition-image-pair(root) {
+        isolation: auto;
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+        display: block;
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+      }
+      ::view-transition-old(root),
+      .dark::view-transition-new(root) {
+        z-index: 1;
+      }
+      ::view-transition-new(root),
+      .dark::view-transition-old(root) {
+        z-index: 9999;
+      }
+
       html {
         scroll-padding-top: 60px;
       }
