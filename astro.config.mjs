@@ -19,7 +19,12 @@ export default defineConfig({
     },
   },
   adapter: vercel({
-    analytics: true,
+    speedInsights: {
+      enabled: true,
+    },
+    webAnalytics: {
+      enabled: true,
+    },
   }),
   markdown: {
     shikiConfig: {

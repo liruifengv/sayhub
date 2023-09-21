@@ -5,18 +5,11 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  "eslint.codeActionsOnSave.mode": "all",
   "html.format.enable": false,
   "json.format.enable": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "astro", // Enable .astro
-    "typescript", // Enable .ts
-    "typescriptreact" // Enable .tsx
-  ],
   "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   }
 }

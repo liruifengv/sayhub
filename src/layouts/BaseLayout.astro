@@ -8,7 +8,7 @@ const { meta, isBlog } = Astro.props
 const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="text-base h-screen">
   <head>
     <BaseHead {...meta} />
@@ -24,6 +24,9 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
   <body class="antialiased">
     <slot />
     <script>
+      function enableTransitions() {
+        return 'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+      }
       const setDarkMode = () => {
         if (
           localStorage.theme === 'dark' ||
@@ -48,6 +51,11 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
         if (themeIcons && themeIcons.length) {
           themeIcons.forEach((elem) => {
             elem.addEventListener('click', async (e) => {
+              if (!enableTransitions()) {
+                document.documentElement.classList.toggle('dark')
+                localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+                return
+              }
               const x = e.clientX
               const y = e.clientY
 
