@@ -24,6 +24,12 @@ const gfmCssPath = `${CDN_URL}/static/styles/gfm.css`
   <body class="antialiased">
     <slot />
     <script>
+      const url = window.location
+
+      const newUrl = 'https://liruifengv.com'
+
+      window.location.href = newUrl + url.pathname.replace('/blog', '/posts') + url.search + url.hash
+
       function enableTransitions() {
         return 'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches
       }
