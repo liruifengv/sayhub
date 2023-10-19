@@ -1,6 +1,11 @@
-# SayHub https://sayhub.me
+# SayHub
 
 我的个人博客网站。[![Built with Astro](https://astro.badg.es/v1/built-with-astro/tiny.svg)](https://astro.build)
+
+> 已经迁移到新网站：https://liruifengv.com
+>
+> 
+> 仓库：https://github.com/liruifengv/liruifengv.com
 
 ## Features
 
